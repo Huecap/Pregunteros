@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autoevaluación - Redes de Información (3er Parcial)</title>
+    <style>
+        :root {
+            --primary: #0056b3;
+            --secondary: #00a8cc;
+            --light: #f4f9f9;
+            --dark: #333;
+            --success: #28a745;
+            --error: #dc3545;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light);
+            color: var(--dark);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .main-content {
+            padding: 40px;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 { 
+            color: var(--primary); 
+            border-bottom: 2px solid var(--secondary); 
+            padding-bottom: 10px; 
+            text-align: center;
+        }
+
+        .question-block {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+            border-left: 5px solid var(--primary);
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .question-text {
+            font-weight: bold;
+            font-size: 1.15rem;
+            margin-bottom: 15px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option-btn {
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s;
+            font-size: 1rem;
+        }
+
+        .option-btn:hover {
+            background-color: #f0f8ff;
+            border-color: var(--primary);
+        }
+
+        .option-btn.correct {
+            background-color: #d4edda;
+            border-color: var(--success);
+            color: #155724;
+        }
+
+        .option-btn.incorrect {
+            background-color: #f8d7da;
+            border-color: var(--error);
+            color: #721c24;
+        }
+
+        .feedback {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #fafafa;
+            border-radius: 5px;
+            font-style: italic;
+            font-size: 0.95rem;
+            display: none;
+            border-left: 3px solid #999;
+        }
+
+        .score-board {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 20px;
+            background: var(--primary);
+            color: white;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin-top: 20px;
+            background-color: var(--dark);
+            border: none;
+            color: white;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            transition: background 0.3s;
+        }
+
+        .nav-btn:hover {
+            background-color: black;
+        }
+
+        /* Loading State */
+        #loading-msg {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            padding: 20px;
+        }
+        .error-msg {
+            color: var(--error);
+            text-align: center;
+            background: #ffe6e6;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid var(--error);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-content">
+        
+        <div id="quiz">
+            <h1>Autoevaluación Interactiva (Redes 3er Parcial)</h1>
+            
+            <div class="score-board" id="score-board">Puntuación: 0 / 0</div>
+            
+            <div id="quiz-content">
+                <div id="loading-msg">⏳ Cargando preguntas desde preguntas.json...</div>
+            </div>
+
+            <button class="nav-btn" onclick="resetQuiz()">🔄 Reiniciar Quiz</button>
+        </div>
+
+    </div>
+
+    <script>
+        // Variables globales
+        let questions = [];
+        let currentScore = 0;
+        let answeredCount = 0;
+
+        // URL del archivo JSON (debe estar en la misma carpeta)
+        const JSON_URL = 'preguntas.json';
+
+        // Función principal para iniciar
+        async function init() {
+            const container = document.getElementById('quiz-content');
+            
+            try {
+                const response = await fetch(JSON_URL);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                
+                questions = await response.json();
+                loadQuiz(); // Una vez cargado, mostramos el quiz
+
+            } catch (error) {
+                console.error("Error cargando el JSON:", error);
+                container.innerHTML = `
+                    <div class="error-msg">
+                        <h3>❌ Error al cargar las preguntas</h3>
+                        <p>No se pudo leer el archivo <strong>preguntas.json</strong>.</p>
+                        <p><small>Nota: Si estás abriendo este archivo directamente (file://), los navegadores bloquean la carga de archivos externos por seguridad. Usa un servidor local (como Live Server en VS Code).</small></p>
+                        <p>Detalle técnico: ${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        function loadQuiz() {
+            const container = document.getElementById('quiz-content');
+            container.innerHTML = '';
+            currentScore = 0;
+            answeredCount = 0;
+            updateScore();
+
+            // Barajar preguntas aleatoriamente
+            const shuffledQuestions = [...questions].sort(() => 0.5 - Math.random());
+
+            shuffledQuestions.forEach((item, index) => {
+                const qBlock = document.createElement('div');
+                qBlock.className = 'question-block';
+
+                const qText = document.createElement('div');
+                qText.className = 'question-text';
+                qText.textContent = `${index + 1}. ${item.q}`;
+                qBlock.appendChild(qText);
+
+                const optionsDiv = document.createElement('div');
+                optionsDiv.className = 'options';
+
+                item.options.forEach((opt, optIndex) => {
+                    const btn = document.createElement('button');
+                    btn.className = 'option-btn';
+                    btn.textContent = opt;
+                    btn.onclick = () => checkAnswer(btn, optIndex, item.a, item.info, optionsDiv);
+                    optionsDiv.appendChild(btn);
+                });
+
+                qBlock.appendChild(optionsDiv);
+
+                const feedback = document.createElement('div');
+                feedback.className = 'feedback';
+                qBlock.appendChild(feedback);
+
+                container.appendChild(qBlock);
+            });
+        }
+
+        function checkAnswer(btn, selectedIndex, correctIndex, infoText, parentDiv) {
+            if (parentDiv.classList.contains('answered')) return;
+            parentDiv.classList.add('answered');
+
+            const feedbackDiv = parentDiv.nextElementSibling;
+            feedbackDiv.style.display = 'block';
+
+            const buttons = parentDiv.querySelectorAll('.option-btn');
+
+            if (selectedIndex === correctIndex) {
+                btn.classList.add('correct');
+                feedbackDiv.innerHTML = `<span style="color:green; font-weight:bold">✅ ¡Correcto!</span> ${infoText}`;
+                currentScore++;
+            } else {
+                btn.classList.add('incorrect');
+                buttons[correctIndex].classList.add('correct');
+                feedbackDiv.innerHTML = `<span style="color:red; font-weight:bold">❌ Incorrecto.</span> ${infoText}`;
+            }
+
+            answeredCount++;
+            updateScore();
+        }
+
+        function updateScore() {
+            document.getElementById('score-board').textContent = `Puntuación: ${currentScore} / ${questions.length}`;
+        }
+
+        function resetQuiz() {
+            if (questions.length === 0) {
+                init(); // Reintentar carga si falló
+            } else if (confirm("¿Estás seguro de que quieres reiniciar el test?")) {
+                loadQuiz();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // Arrancar la aplicación
+        init();
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,1223 @@
+[
+    {
+        "q": "¿Qué sucede si en una comunicación TCP el campo 'Ventana de Recepción' llega con valor 0?",
+        "options": [
+            "Se cierra la conexión inmediatamente.",
+            "El emisor detiene momentáneamente la transmisión de datos.",
+            "Se activa el algoritmo de inicio lento.",
+            "El receptor descarta los paquetes."
+        ],
+        "a": 1,
+        "info": "Ventana=0 indica que el búfer del receptor está lleno. El emisor espera hasta recibir una ventana > 0 para no saturar al receptor (Control de Flujo)."
+    },
+    {
+        "q": "¿Qué protocolo de capa de transporte utiliza el DNS para consultas estándar de resolución de nombres?",
+        "options": [
+            "TCP puerto 80",
+            "TCP puerto 53",
+            "UDP puerto 53",
+            "UDP puerto 67"
+        ],
+        "a": 2,
+        "info": "DNS utiliza principalmente UDP en el puerto 53 para las consultas debido a su rapidez y baja sobrecarga."
+    },
+    {
+        "q": "Si capturas tráfico con Wireshark y ves paquetes TFTP, ¿sobre qué protocolo de transporte están corriendo?",
+        "options": [
+            "TCP",
+            "UDP",
+            "IP",
+            "ICMP"
+        ],
+        "a": 1,
+        "info": "TFTP (Trivial File Transfer Protocol) es un protocolo simple que corre sobre UDP en el puerto 69."
+    },
+    {
+        "q": "En gestión de red SNMP, ¿qué mensaje envía el Agente al Manager sin que este se lo haya pedido para reportar un evento?",
+        "options": [
+            "Get-Response",
+            "Set-Request",
+            "Trap",
+            "Get-Bulk"
+        ],
+        "a": 2,
+        "info": "El mensaje TRAP es enviado por el agente de forma asíncrona para notificar al NMS sobre un evento o fallo inesperado."
+    },
+    {
+        "q": "¿Qué tipo de traducción NAT permite que múltiples hosts privados salgan a internet usando una sola IP pública diferenciándose por puertos?",
+        "options": [
+            "NAT Estática",
+            "NAT Dinámica",
+            "PAT (Port Address Translation)",
+            "DMZ"
+        ],
+        "a": 2,
+        "info": "PAT (o NAT con sobrecarga) utiliza el número de puerto de origen para mapear múltiples direcciones privadas a una sola dirección pública."
+    },
+    {
+        "q": "¿Qué garantiza el servicio de 'Integridad' en seguridad de redes?",
+        "options": [
+            "Que la información no sea leída por terceros.",
+            "Que la información no haya sido modificada o alterada en el tránsito.",
+            "Que el servicio esté siempre disponible.",
+            "Que el emisor es quien dice ser."
+        ],
+        "a": 1,
+        "info": "La integridad asegura que los datos recibidos son idénticos a los enviados, sin alteraciones. Se suele lograr mediante funciones Hash."
+    },
+    {
+        "q": "En el correo electrónico, ¿qué protocolo se usa para ENVIAR correo entre servidores (MTA a MTA)?",
+        "options": [
+            "POP3",
+            "IMAP",
+            "SMTP",
+            "HTTP"
+        ],
+        "a": 2,
+        "info": "SMTP (Simple Mail Transfer Protocol) es el estándar utilizado para la transferencia y entrega de correos entre servidores."
+    },
+    {
+        "q": "¿Cuál de los siguientes NO es un componente de la gestión de red SNMP?",
+        "options": [
+            "Agente",
+            "MIB (Base de Información de Gestión)",
+            "Estación Administradora (NMS)",
+            "Servidor Autorizado de Nombres"
+        ],
+        "a": 3,
+        "info": "El Servidor Autorizado de Nombres es un componente del sistema DNS, no de la arquitectura de gestión SNMP."
+    },
+    {
+        "q": "Si un router usa NAT Dinámico (sin PAT) y tiene un pool de 20 IPs públicas. ¿Cuántos hosts pueden salir a internet simultáneamente?",
+        "options": [
+            "Ilimitados",
+            "Solo 1",
+            "20",
+            "Depende de los puertos"
+        ],
+        "a": 2,
+        "info": "En NAT Dinámico puro, la relación es 1 a 1. Si hay 20 IPs públicas, solo 20 hosts internos pueden tener conexión simultánea."
+    },
+    {
+        "q": "¿Qué se necesita configurar en la cabecera MIME para indicar el tipo de archivo adjunto?",
+        "options": [
+            "Content-type",
+            "Type-transfer",
+            "Subject-Encoding",
+            "File-Header"
+        ],
+        "a": 0,
+        "info": "El encabezado 'Content-type' en MIME especifica el tipo de medio (ej. image/gif, application/pdf) del contenido del mensaje."
+    },
+    {
+        "q": "¿Qué protocolo permite a un usuario ver sus correos y organizar carpetas en el servidor sin descargarlos y borrarlos obligatoriamente?",
+        "options": [
+            "POP3",
+            "SMTP",
+            "IMAP",
+            "SNMP"
+        ],
+        "a": 2,
+        "info": "IMAP mantiene los correos en el servidor, permitiendo sincronización entre múltiples dispositivos y organización en carpetas."
+    },
+    {
+        "q": "En el saludo de tres vías (three-way handshake) de TCP, ¿qué flags tiene activados el segundo segmento (del Servidor al Cliente)?",
+        "options": [
+            "SYN",
+            "SYN y ACK",
+            "FIN y ACK",
+            "ACK"
+        ],
+        "a": 1,
+        "info": "El segundo paso es la respuesta del servidor aceptando la conexión: activa SYN (para sincronizar su secuencia) y ACK (para confirmar el SYN del cliente)."
+    },
+    {
+        "q": "¿Cuál de las siguientes opciones describe mejor una DMZ (Zona Desmilitarizada)?",
+        "options": [
+            "Una red privada virtual cifrada.",
+            "Una subred lógica que expone servicios al exterior (como Web o Email) protegiendo la red interna.",
+            "Un protocolo de gestión de claves.",
+            "Un área de la memoria caché del router."
+        ],
+        "a": 1,
+        "info": "La DMZ es una zona intermedia de seguridad donde se ubican servidores públicos, aislándolos de la LAN corporativa."
+    },
+    {
+        "q": "Para garantizar confidencialidad con criptografía asimétrica, si A quiere enviar un mensaje secreto a B, ¿con qué clave cifra A?",
+        "options": [
+            "Con la clave privada de A.",
+            "Con la clave pública de A.",
+            "Con la clave privada de B.",
+            "Con la clave pública de B."
+        ],
+        "a": 3,
+        "info": "Para confidencialidad, se cifra con la Clave Pública del Destinatario (B) para que solo B (con su Clave Privada) pueda descifrarlo."
+    },
+    {
+        "q": "¿Qué comando en Windows permite vaciar la caché local de resolución de DNS?",
+        "options": [
+            "ipconfig /all",
+            "ipconfig /flushdns",
+            "nslookup -clear",
+            "netstat -r"
+        ],
+        "a": 1,
+        "info": "El comando 'ipconfig /flushdns' elimina las entradas de nombres de dominio almacenadas temporalmente en la caché del host."
+    },
+    {
+        "q": "¿Qué protocolo de la capa de aplicación se utiliza para la transferencia de archivos utilizando dos puertos (20 y 21)?",
+        "options": [
+            "TFTP",
+            "HTTP",
+            "FTP",
+            "SMTP"
+        ],
+        "a": 2,
+        "info": "FTP utiliza el puerto 21 para el control (comandos) y el puerto 20 para la transferencia de datos."
+    },
+    {
+        "q": "¿Cuál es la función del campo 'Número de Secuencia' en la cabecera TCP?",
+        "options": [
+            "Identificar la aplicación destino.",
+            "Permitir reordenar los segmentos en el destino y detectar pérdidas.",
+            "Realizar el control de flujo.",
+            "Verificar la integridad de los datos (checksum)."
+        ],
+        "a": 1,
+        "info": "TCP numera cada byte enviado. El número de secuencia permite al receptor reensamblar los datos en el orden correcto."
+    },
+    {
+        "q": "En el protocolo H.323 de VoIP, ¿qué función cumple el Gatekeeper?",
+        "options": [
+            "Codificar la voz.",
+            "Controlar el ancho de banda y realizar la traducción de direcciones (alias a IP) en su zona.",
+            "Conectar la red IP con la red telefónica pública (PSTN).",
+            "Reproducir el audio en el terminal."
+        ],
+        "a": 1,
+        "info": "El Gatekeeper es el cerebro de la zona H.323, gestiona el registro de terminales, control de admisión y ancho de banda."
+    },
+    {
+        "q": "¿Qué algoritmo de control utiliza TCP para evitar saturar la red (no solo al receptor)?",
+        "options": [
+            "Ventana de Recepción (Flow Control)",
+            "Ventana de Congestión (Congestion Control)",
+            "Algoritmo de Dijkstra",
+            "Mecanismo de Keepalive"
+        ],
+        "a": 1,
+        "info": "La Ventana de Congestión es una variable que limita el envío de datos basándose en la capacidad de la red, no del receptor."
+    },
+    {
+        "q": "¿Cuál es una ventaja principal de usar UDP sobre TCP para aplicaciones de streaming de video o voz en tiempo real?",
+        "options": [
+            "Garantiza que no se pierdan paquetes.",
+            "Ordena los paquetes automáticamente.",
+            "Tiene menor sobrecarga (overhead) y latencia al no requerir acuse de recibo.",
+            "Cifra los datos por defecto."
+        ],
+        "a": 2,
+        "info": "UDP es preferido en tiempo real porque la velocidad es prioritaria; retransmitir paquetes perdidos (como hace TCP) causaría retrasos inaceptables."
+    },
+    {
+        "q": "¿Qué registro de recurso DNS se utiliza para identificar el servidor de correo de un dominio?",
+        "options": [
+            "A",
+            "NS",
+            "CNAME",
+            "MX"
+        ],
+        "a": 3,
+        "info": "El registro MX (Mail Exchange) especifica el servidor encargado de recibir correos electrónicos para el dominio."
+    },
+    {
+        "q": "¿Qué característica define a una 'Firma Digital'?",
+        "options": [
+            "Garantiza confidencialidad pero no autenticidad.",
+            "Utiliza solo claves simétricas.",
+            "Garantiza autenticidad, integridad y no repudio.",
+            "Es un mecanismo para ocultar la dirección IP."
+        ],
+        "a": 2,
+        "info": "La firma digital asegura que el mensaje viene de quien dice ser, que no fue alterado y que el autor no puede negar haberlo enviado."
+    },
+    {
+        "q": "En una conexión TCP, ¿qué flag se utiliza para solicitar el cierre de la conexión?",
+        "options": [
+            "SYN",
+            "RST",
+            "FIN",
+            "PSH"
+        ],
+        "a": 2,
+        "info": "El flag FIN (Finish) se utiliza para indicar que el emisor ha terminado de enviar datos y desea cerrar la conexión."
+    },
+    {
+        "q": "¿Qué protocolo se utiliza comúnmente para asegurar las comunicaciones web (HTTP)?",
+        "options": [
+            "IPSec",
+            "SSL/TLS",
+            "SSH",
+            "Kerberos"
+        ],
+        "a": 1,
+        "info": "HTTPS utiliza SSL (Secure Sockets Layer) o su sucesor TLS (Transport Layer Security) para cifrar la comunicación web."
+    },
+    {
+        "q": "¿Cuál es el propósito del campo 'TTL' (Time To Live) en un registro DNS?",
+        "options": [
+            "Indicar la prioridad del servidor.",
+            "Definir el tiempo que un servidor o cliente puede guardar el registro en su caché.",
+            "Contar cuántos saltos puede dar el paquete.",
+            "Identificar el tipo de sistema operativo."
+        ],
+        "a": 1,
+        "info": "El TTL en DNS indica cuántos segundos es válida la información antes de que deba ser consultada nuevamente al servidor autoritativo."
+    },
+    {
+        "q": "Si configuras un Firewall para filtrar paquetes basándose solo en IP y puerto, ¿qué tipo de firewall es?",
+        "options": [
+            "Proxy de Aplicación",
+            "Filtrado de Paquetes (Stateless)",
+            "Firewall de Próxima Generación",
+            "IDS"
+        ],
+        "a": 1,
+        "info": "El filtrado de paquetes tradicional inspecciona encabezados IP y de transporte (TCP/UDP) de forma individual sin mantener estado de sesión."
+    },
+    {
+        "q": "¿Qué puerto utiliza por defecto el protocolo POP3?",
+        "options": [
+            "25",
+            "143",
+            "110",
+            "80"
+        ],
+        "a": 2,
+        "info": "POP3 escucha en el puerto TCP 110."
+    },
+    {
+        "q": "En VoIP, ¿qué protocolo se encarga del transporte de los datos de audio/video en tiempo real?",
+        "options": [
+            "SIP",
+            "H.323",
+            "RTP",
+            "RTCP"
+        ],
+        "a": 2,
+        "info": "RTP (Real-time Transport Protocol) transporta el flujo de medios (voz/video), mientras que SIP/H.323 manejan la señalización."
+    },
+    {
+        "q": "¿Cuál es una ventaja de NAT Estática?",
+        "options": [
+            "Ahorra muchas direcciones IP públicas.",
+            "Permite que servidores internos sean accesibles desde internet con una IP fija.",
+            "Es más seguro que NAT dinámico.",
+            "No requiere configuración en el router."
+        ],
+        "a": 1,
+        "info": "NAT Estática asigna 1 a 1 una IP pública a una privada, ideal para servidores (Web, Email) que necesitan ser ubicables desde fuera."
+    },
+    {
+        "q": "¿Qué significa que HTTP sea un protocolo 'sin estado'?",
+        "options": [
+            "Que no usa conexión TCP.",
+            "Que el servidor no guarda información sobre las peticiones anteriores del cliente.",
+            "Que solo funciona en Estados Unidos.",
+            "Que no garantiza la entrega de datos."
+        ],
+        "a": 1,
+        "info": "HTTP no recuerda interacciones previas. Para mantener sesiones (estado) se utilizan mecanismos externos como Cookies."
+    },
+    {
+        "q": "¿Qué es un 'Socket' en el contexto de la capa de transporte?",
+        "options": [
+            "El puerto físico donde se conecta el cable.",
+            "La combinación de una Dirección IP y un Número de Puerto.",
+            "Un protocolo de seguridad.",
+            "Una sesión de capa de aplicación."
+        ],
+        "a": 1,
+        "info": "Un socket (ej. 192.168.1.5:80) identifica de manera única un punto final de una comunicación en la red."
+    },
+    {
+        "q": "¿Qué algoritmo de encriptación es un ejemplo de clave simétrica?",
+        "options": [
+            "RSA",
+            "DES",
+            "Diffie-Hellman",
+            "SHA-1"
+        ],
+        "a": 1,
+        "info": "DES (y AES) son algoritmos simétricos donde emisor y receptor comparten la misma clave."
+    },
+    {
+        "q": "En una captura Wireshark, ¿qué indica un paquete con el flag RST activado?",
+        "options": [
+            "Inicio de conexión.",
+            "Finalización normal de conexión.",
+            "Reinicio o rechazo abrupto de la conexión.",
+            "Datos urgentes."
+        ],
+        "a": 2,
+        "info": "RST (Reset) indica que la conexión debe abortarse inmediatamente, usualmente por un error o puerto cerrado."
+    },
+    {
+        "q": "¿Qué función cumple el protocolo ARP (aunque es de capa inferior, es vital para la entrega)?",
+        "options": [
+            "Traduce nombres de dominio a IP.",
+            "Traduce direcciones IP a direcciones MAC.",
+            "Asigna direcciones IP dinámicamente.",
+            "Encamina paquetes entre redes."
+        ],
+        "a": 1,
+        "info": "ARP resuelve la dirección física (MAC) asociada a una dirección lógica (IP) conocida en la red local."
+    },
+    {
+        "q": "¿Qué es el 'Incremento Aditivo' en el control de congestión TCP?",
+        "options": [
+            "Duplicar la ventana de congestión por cada ACK.",
+            "Aumentar linealmente la ventana de congestión si se reciben ACKs correctamente.",
+            "Reducir la ventana a la mitad.",
+            "Sumar bits de paridad."
+        ],
+        "a": 1,
+        "info": "En la fase de evasión de congestión, TCP aumenta la ventana lentamente (aditivamente) para sondear el ancho de banda disponible."
+    },
+    {
+        "q": "¿Qué tipo de VPN permite conectar dos redes completas (ej. sucursal con casa central) de forma permanente?",
+        "options": [
+            "VPN de Acceso Remoto",
+            "VPN SSL",
+            "VPN Site-to-Site (Punto a Punto)",
+            "VPN Host-to-Host"
+        ],
+        "a": 2,
+        "info": "Las VPN Site-to-Site conectan redes enteras mediante routers/gateways, siendo transparentes para los usuarios individuales."
+    },
+    {
+        "q": "¿Qué protocolo utiliza el comando 'ping'?",
+        "options": [
+            "TCP",
+            "UDP",
+            "ICMP",
+            "SNMP"
+        ],
+        "a": 2,
+        "info": "Ping utiliza mensajes ICMP (Echo Request y Echo Reply) para verificar conectividad."
+    },
+    {
+        "q": "En SNMP, ¿qué es la MIB?",
+        "options": [
+            "El software del agente.",
+            "El protocolo de transporte.",
+            "La base de datos jerárquica que define las variables gestionables.",
+            "El mensaje de alerta."
+        ],
+        "a": 2,
+        "info": "La MIB (Management Information Base) estructura la información (objetos) que el agente puede reportar o el manager puede configurar."
+    },
+    {
+        "q": "¿Qué es un ataque de 'Hombre en el medio' (Man-in-the-Middle)?",
+        "options": [
+            "Un ataque de denegación de servicio.",
+            "Interceptar y posiblemente alterar la comunicación entre dos partes sin que lo noten.",
+            "Adivinar contraseñas por fuerza bruta.",
+            "Infectar un servidor con un virus."
+        ],
+        "a": 1,
+        "info": "En un ataque MitM, el atacante se sitúa entre las víctimas para leer o modificar los mensajes interceptados."
+    },
+    {
+        "q": "¿Qué puerto utiliza el protocolo HTTPS?",
+        "options": [
+            "80",
+            "8080",
+            "443",
+            "22"
+        ],
+        "a": 2,
+        "info": "HTTPS, la versión segura de HTTP sobre TLS/SSL, utiliza el puerto estándar 443."
+    },
+    {
+        "q": "En el contexto de DNS, ¿qué es una consulta 'Iterativa'?",
+        "options": [
+            "El servidor contactado asume la responsabilidad total de encontrar la respuesta.",
+            "El servidor responde con la mejor respuesta que tiene (ej. referencia a otro servidor) y el cliente debe seguir preguntando.",
+            "Una consulta interna en la caché.",
+            "Una transferencia de zona."
+        ],
+        "a": 1,
+        "info": "En la consulta iterativa, el servidor DNS no hace el trabajo completo; le dice al solicitante 'yo no sé, pero pregunta a este otro servidor'."
+    },
+    {
+        "q": "¿Qué significa el acrónimo AAA en seguridad?",
+        "options": [
+            "Authentication, Authorization, Accounting",
+            "Access, Availability, Administration",
+            "Authentication, Administration, Area",
+            "Authorization, Access, Audit"
+        ],
+        "a": 0,
+        "info": "AAA es un marco de seguridad para controlar quién entra (Autenticación), qué puede hacer (Autorización) y qué hizo (Contabilización/Auditoría)."
+    },
+    {
+        "q": "¿Qué cabecera agrega IPsec en modo túnel para proteger el paquete?",
+        "options": [
+            "Solo una cabecera TCP.",
+            "Una nueva cabecera IP, encapsulando el paquete original completo.",
+            "Solo una firma digital al final.",
+            "No agrega cabeceras, solo cifra el payload."
+        ],
+        "a": 1,
+        "info": "En modo túnel, IPsec cifra y encapsula todo el paquete IP original dentro de un nuevo paquete IP, ocultando las direcciones originales."
+    },
+    {
+        "q": "¿Cuál de los siguientes es un protocolo de señalización utilizado en VoIP?",
+        "options": [
+            "RTP",
+            "SIP",
+            "UDP",
+            "PCM"
+        ],
+        "a": 1,
+        "info": "SIP (Session Initiation Protocol) se usa para establecer, modificar y terminar sesiones multimedia (señalización)."
+    },
+    {
+        "q": "Si un mensaje de correo tiene múltiples destinatarios visibles, ¿en qué campo del encabezado van?",
+        "options": [
+            "To (o Cc)",
+            "Bcc",
+            "From",
+            "Return-Path"
+        ],
+        "a": 0,
+        "info": "'To' y 'Cc' muestran los destinatarios a todos. 'Bcc' (Blind Carbon Copy) los oculta."
+    },
+    {
+        "q": "¿Qué desventaja principal tiene NAT?",
+        "options": [
+            "Expone la topología interna.",
+            "Requiere más IPs públicas que privadas.",
+            "Rompe el principio de conectividad extremo a extremo y puede afectar el rendimiento.",
+            "No permite el uso de DHCP."
+        ],
+        "a": 2,
+        "info": "NAT modifica las cabeceras IP (y puertos en PAT), lo que consume CPU y rompe la transparencia de la comunicación end-to-end."
+    },
+    {
+        "q": "¿Qué es un 'Hash'?",
+        "options": [
+            "Un algoritmo de compresión sin pérdida.",
+            "Una función unidireccional que genera una cadena de longitud fija a partir de datos de cualquier tamaño.",
+            "Una clave privada.",
+            "Un tipo de virus."
+        ],
+        "a": 1,
+        "info": "El hash es como una 'huella digital' de los datos, usada para verificar integridad."
+    },
+    {
+        "q": "¿Qué mecanismo utiliza TCP para garantizar que no se sature al receptor lento?",
+        "options": [
+            "Ventana de congestión.",
+            "Control de flujo (Ventana deslizante).",
+            "Algoritmo de Nagle.",
+            "Keep-alive."
+        ],
+        "a": 1,
+        "info": "El Control de Flujo usa el campo 'Ventana' en el encabezado TCP para que el receptor indique cuánto espacio libre tiene."
+    },
+    {
+        "q": "En SNMP v1 y v2, ¿cómo se autentican los mensajes (generalmente)?",
+        "options": [
+            "Usuario y contraseña encriptados.",
+            "Certificados digitales.",
+            "Comunidad (Community String) en texto plano.",
+            "Kerberos."
+        ],
+        "a": 2,
+        "info": "SNMPv1/v2 usan 'comunidades' (como 'public' o 'private') que viajan en texto claro, lo cual es una vulnerabilidad de seguridad."
+    },
+    {
+        "q": "¿Qué protocolo de capa de aplicación se usa para asignar direcciones IP dinámicamente?",
+        "options": [
+            "DNS",
+            "ARP",
+            "DHCP",
+            "NAT"
+        ],
+        "a": 2,
+        "info": "DHCP (Dynamic Host Configuration Protocol) asigna IPs, máscaras y gateways a los clientes automáticamente."
+    },
+    {
+        "q": "¿Cuál es el puerto estándar para el protocolo SSH?",
+        "options": [
+            "21",
+            "23",
+            "22",
+            "443"
+        ],
+        "a": 2,
+        "info": "SSH (Secure Shell) utiliza el puerto TCP 22 para administración remota segura."
+    },
+    {
+        "q": "¿Qué flag TCP se utiliza para indicar que hay datos urgentes?",
+        "options": [
+            "PSH",
+            "URG",
+            "RST",
+            "FIN"
+        ],
+        "a": 1,
+        "info": "El flag URG indica que el campo 'Puntero Urgente' es válido y debe ser procesado con prioridad."
+    },
+    {
+        "q": "En criptografía, ¿qué es el 'No Repudio'?",
+        "options": [
+            "Que el mensaje llegue rápido.",
+            "Que el emisor no pueda negar haber enviado el mensaje.",
+            "Que el receptor no pueda leer el mensaje.",
+            "Que la clave no se pierda."
+        ],
+        "a": 1,
+        "info": "El no repudio se logra comúnmente con firmas digitales, vinculando matemáticamente al autor con el documento."
+    },
+    {
+        "q": "¿Qué tipo de registro DNS mapea un nombre de dominio a una dirección IPv6?",
+        "options": [
+            "A",
+            "AAAA",
+            "CNAME",
+            "PTR"
+        ],
+        "a": 1,
+        "info": "El registro 'A' es para IPv4 (32 bits), mientras que 'AAAA' es para IPv6 (128 bits)."
+    },
+    {
+        "q": "¿Qué hace un servidor Proxy?",
+        "options": [
+            "Solo filtra paquetes por IP.",
+            "Actúa como intermediario entre el cliente y el servidor destino, pudiendo realizar caché y filtrado.",
+            "Asigna direcciones IP.",
+            "Encripta todo el tráfico de la red."
+        ],
+        "a": 1,
+        "info": "El proxy realiza peticiones en nombre del cliente, ocultando la IP interna y permitiendo control de contenido."
+    },
+    {
+        "q": "En el contexto de NAT, ¿qué es 'Inside Local'?",
+        "options": [
+            "La IP pública del router.",
+            "La IP privada del host en la red interna.",
+            "La IP del servidor en internet.",
+            "La IP pública asignada al host."
+        ],
+        "a": 1,
+        "info": "Inside Local es la dirección IP real configurada en el dispositivo dentro de la red privada."
+    },
+    {
+        "q": "¿Qué protocolo es la base para la transferencia de hipertexto en la Web?",
+        "options": [
+            "HTML",
+            "HTTP",
+            "URL",
+            "DNS"
+        ],
+        "a": 1,
+        "info": "HTTP (HyperText Transfer Protocol) es el protocolo de transporte de recursos en la web. HTML es el lenguaje de marcado."
+    },
+    {
+        "q": "¿Cuál de los siguientes es un algoritmo de Hashing?",
+        "options": [
+            "AES",
+            "RSA",
+            "SHA-256",
+            "Diffie-Hellman"
+        ],
+        "a": 2,
+        "info": "SHA-256 es un algoritmo de hash seguro. Los otros son algoritmos de cifrado o intercambio de claves."
+    },
+    {
+        "q": "Si un paquete TCP tiene el flag PSH (Push) activado, ¿qué debe hacer el receptor?",
+        "options": [
+            "Descartar el paquete.",
+            "Pasar los datos a la capa de aplicación de inmediato sin esperar a llenar el búfer.",
+            "Cerrar la conexión.",
+            "Retransmitir el último ACK."
+        ],
+        "a": 1,
+        "info": "PSH indica al stack TCP receptor que no debe esperar más datos en el búfer, sino entregarlos ya a la aplicación."
+    },
+    {
+        "q": "¿Qué es un 'Ataque de denegación de servicio' (DoS)?",
+        "options": [
+            "Robar contraseñas.",
+            "Saturar un sistema o red para que no pueda atender a usuarios legítimos.",
+            "Interceptar correos.",
+            "Inyectar código SQL."
+        ],
+        "a": 1,
+        "info": "DoS busca agotar los recursos (ancho de banda, CPU) del objetivo para dejarlo indisponible."
+    },
+    {
+        "q": "¿Qué protocolo de gestión de claves se utiliza comúnmente con IPsec?",
+        "options": [
+            "IKE (Internet Key Exchange)",
+            "DHCP",
+            "DNS",
+            "ARP"
+        ],
+        "a": 0,
+        "info": "IKE se utiliza para negociar las asociaciones de seguridad (SA) y las claves en una VPN IPsec."
+    },
+    {
+        "q": "¿Qué campo del encabezado IP se modifica al pasar por un router (además del Checksum)?",
+        "options": [
+            "Dirección Origen",
+            "Dirección Destino",
+            "TTL (Time To Live)",
+            "Versión"
+        ],
+        "a": 2,
+        "info": "El router decrementa el TTL en 1. Si llega a 0, el paquete se descarta para evitar bucles infinitos."
+    },
+    {
+        "q": "¿Qué es el 'Window Scaling' en TCP?",
+        "options": [
+            "Una técnica para reducir el tamaño de la ventana.",
+            "Una opción para permitir tamaños de ventana mayores a 65,535 bytes.",
+            "Una forma de cerrar ventanas emergentes.",
+            "Un algoritmo de encriptación."
+        ],
+        "a": 1,
+        "info": "Window Scaling es una opción TCP que permite usar un multiplicador para aumentar el tamaño efectivo del búfer de recepción en redes de alta velocidad."
+    },
+    {
+        "q": "En DNS, ¿qué es un servidor 'Raíz' (Root Server)?",
+        "options": [
+            "El servidor DNS de mi ISP.",
+            "Uno de los 13 conjuntos de servidores en la cima de la jerarquía DNS que conocen los TLDs.",
+            "Un servidor que almacena todas las IPs de internet.",
+            "El servidor de Windows."
+        ],
+        "a": 1,
+        "info": "Los servidores raíz son el punto de partida para resolver nombres de dominio, apuntando a los servidores TLD (.com, .org, etc.)."
+    },
+    {
+        "q": "¿Qué protocolo se utiliza para convertir la voz analógica en paquetes digitales en VoIP?",
+        "options": [
+            "Codecs (como G.711, G.729)",
+            "SMTP",
+            "DNS",
+            "DHCP"
+        ],
+        "a": 0,
+        "info": "Los Codecs codifican y comprimen el audio. RTP luego transporta esos paquetes."
+    },
+    {
+        "q": "¿Qué es una 'Autoridad de Certificación' (CA)?",
+        "options": [
+            "Un servidor de correo.",
+            "Una entidad de confianza que emite y firma certificados digitales.",
+            "Un firewall.",
+            "Un administrador de red."
+        ],
+        "a": 1,
+        "info": "La CA valida la identidad de una entidad y emite un certificado digital vinculando su clave pública a su identidad."
+    },
+    {
+        "q": "¿Cuál es la principal diferencia entre FTP Activo y Pasivo?",
+        "options": [
+            "El cifrado.",
+            "Quién inicia la conexión de datos (el servidor en Activo, el cliente en Pasivo).",
+            "La velocidad.",
+            "El puerto de control."
+        ],
+        "a": 1,
+        "info": "En FTP Pasivo, el cliente inicia ambas conexiones (Control y Datos), lo cual es más amigable con los firewalls del lado del cliente."
+    },
+    {
+        "q": "¿Qué es el 'Jitter' en VoIP?",
+        "options": [
+            "El retraso total.",
+            "La variación en el tiempo de llegada de los paquetes.",
+            "La pérdida de paquetes.",
+            "El eco."
+        ],
+        "a": 1,
+        "info": "El jitter es la fluctuación en la latencia. Un jitter alto degrada la calidad de la voz, requiriendo búferes de jitter."
+    },
+    {
+        "q": "En una VPN SSL (como OpenVPN o Clientless), ¿qué protocolo de transporte se suele usar para el túnel?",
+        "options": [
+            "Solo TCP.",
+            "TCP o UDP (preferiblemente UDP para rendimiento).",
+            "ICMP.",
+            "IGMP."
+        ],
+        "a": 1,
+        "info": "Aunque SSL implica TCP, los túneles VPN modernos sobre SSL/TLS prefieren encapsular en UDP para evitar el problema de 'TCP sobre TCP'."
+    },
+    {
+        "q": "¿Qué ataque mitiga el uso de 'Sequence Numbers' aleatorios iniciales en TCP?",
+        "options": [
+            "Phishing.",
+            "TCP Session Hijacking / Spoofing.",
+            "SQL Injection.",
+            "Sniffing pasivo."
+        ],
+        "a": 1,
+        "info": "Si los números de secuencia son predecibles, un atacante puede inyectar paquetes falsos en una sesión activa."
+    },
+    {
+        "q": "¿Qué es un 'Webmail'?",
+        "options": [
+            "Un servidor SMTP.",
+            "Un cliente de correo basado en interfaz web (HTTP/HTTPS) que actúa como MUA.",
+            "Un virus de correo.",
+            "Un tipo de spam."
+        ],
+        "a": 1,
+        "info": "Webmail (como Gmail o Outlook web) permite acceder al correo usando un navegador, interactuando por detrás con IMAP/SMTP."
+    },
+    {
+        "q": "Si un servidor web escucha en el puerto 8080 en lugar del 80, ¿cómo debe escribir la URL el usuario?",
+        "options": [
+            "http://servidor",
+            "http://servidor:8080",
+            "https://servidor",
+            "ftp://servidor"
+        ],
+        "a": 1,
+        "info": "Si no se usa el puerto estándar, debe especificarse explícitamente en la URL con dos puntos."
+    },
+    {
+        "q": "¿Qué comando muestra las conexiones de red activas y los puertos abiertos en una PC?",
+        "options": [
+            "ping",
+            "tracert",
+            "netstat",
+            "nslookup"
+        ],
+        "a": 2,
+        "info": "netstat (Network Statistics) muestra conexiones TCP activas, puertos en escucha y estadísticas."
+    },
+    {
+        "q": "¿Qué es el 'Slow Start' en TCP?",
+        "options": [
+            "Arrancar la PC lentamente.",
+            "Un algoritmo de control de congestión que comienza enviando pocos datos y aumenta exponencialmente.",
+            "Un retraso en el DNS.",
+            "Una falla en el cable."
+        ],
+        "a": 1,
+        "info": "Slow Start evita saturar la red de golpe, sondeando la capacidad disponible aumentando la ventana gradualmente."
+    },
+    {
+        "q": "¿Qué protocolo de capa de aplicación utiliza el puerto TCP 23 y transmite datos sin cifrar?",
+        "options": [
+            "SSH",
+            "Telnet",
+            "FTP",
+            "HTTP"
+        ],
+        "a": 1,
+        "info": "Telnet sirve para acceso remoto por línea de comandos, pero es inseguro. SSH lo reemplaza."
+    },
+    {
+        "q": "En criptografía, ¿qué es una 'Clave de Sesión'?",
+        "options": [
+            "Una clave asimétrica permanente.",
+            "Una clave simétrica temporal generada para una única comunicación.",
+            "La contraseña del usuario.",
+            "La clave pública de la CA."
+        ],
+        "a": 1,
+        "info": "Las claves de sesión se usan por eficiencia: se negocian con asimétrica (lento) y se usan para cifrar los datos con simétrica (rápido)."
+    },
+    {
+        "q": "¿Qué significa que un firewall sea 'Stateful' (con estado)?",
+        "options": [
+            "Que solo mira cada paquete aisladamente.",
+            "Que recuerda el estado de las conexiones activas y permite el tráfico de retorno automáticamente.",
+            "Que está ubicado en Estados Unidos.",
+            "Que consume mucha memoria."
+        ],
+        "a": 1,
+        "info": "Un firewall stateful sabe si un paquete entrante es respuesta a una petición saliente legítima, permitiéndolo sin una regla explícita de entrada."
+    },
+    {
+        "q": "¿Qué registro DNS se utiliza para crear un alias de un nombre a otro?",
+        "options": [
+            "A",
+            "MX",
+            "CNAME",
+            "NS"
+        ],
+        "a": 2,
+        "info": "CNAME (Canonical Name) permite que un dominio sea un alias de otro (ej. www.sitio.com -> sitio.com)."
+    },
+    {
+        "q": "¿Qué componente de H.323 conecta redes diferentes (ej. IP a PSTN)?",
+        "options": [
+            "Gatekeeper",
+            "Gateway",
+            "Terminal",
+            "MCU"
+        ],
+        "a": 1,
+        "info": "El Gateway realiza la traducción de señalización y medios entre la red VoIP y redes de telefonía tradicional."
+    },
+    {
+        "q": "¿Cuál es el propósito de ARP Gratuito (Gratuitous ARP)?",
+        "options": [
+            "Ahorrar dinero.",
+            "Anunciar o actualizar la IP/MAC de un host a la red sin que nadie lo haya pedido (ej. detección de IP duplicada).",
+            "Borrar la caché ARP.",
+            "Encriptar la MAC."
+        ],
+        "a": 1,
+        "info": "Los hosts envían ARP Gratuito al arrancar para verificar que nadie más tenga su IP o para actualizar las tablas de los demás (ej. en clústers)."
+    },
+    {
+        "q": "¿Qué hace el bit ACK en una cabecera TCP?",
+        "options": [
+            "Inicia la conexión.",
+            "Indica que el campo 'Número de Confirmación' es válido.",
+            "Resetea la conexión.",
+            "Indica fin de datos."
+        ],
+        "a": 1,
+        "info": "Salvo el primer paquete SYN, casi todos los paquetes TCP tienen el flag ACK activado para confirmar datos recibidos."
+    },
+    {
+        "q": "¿Qué es IPSec en 'Modo Transporte'?",
+        "options": [
+            "Cifra todo el paquete IP original y crea uno nuevo.",
+            "Cifra solo la carga útil (payload) del paquete IP, manteniendo la cabecera IP original.",
+            "Se usa para VPNs sitio a sitio.",
+            "No usa encriptación."
+        ],
+        "a": 1,
+        "info": "El modo transporte se usa generalmente para comunicaciones host-a-host donde los extremos son los que hablan IPSec."
+    },
+    {
+        "q": "Si un mensaje SMTP falla, ¿quién suele generar el mensaje de rebote (NDR)?",
+        "options": [
+            "El UA del emisor.",
+            "El MTA (Mail Transfer Agent).",
+            "El DNS.",
+            "El receptor."
+        ],
+        "a": 1,
+        "info": "El MTA que no puede entregar el correo genera un reporte de no entrega (Bounce/NDR) al remitente."
+    },
+    {
+        "q": "¿Qué significa 'Confiabilidad' en el contexto de TCP?",
+        "options": [
+            "Que los datos están encriptados.",
+            "Que se garantiza la entrega, el orden y la integridad de los datos.",
+            "Que es muy rápido.",
+            "Que usa autenticación."
+        ],
+        "a": 1,
+        "info": "TCP es confiable porque usa ACKs, retransmisiones y números de secuencia para asegurar que los datos lleguen bien."
+    },
+    {
+        "q": "En una red con DHCP, ¿qué mensaje envía un cliente para buscar un servidor?",
+        "options": [
+            "DHCP OFFER",
+            "DHCP DISCOVER",
+            "DHCP REQUEST",
+            "DHCP ACK"
+        ],
+        "a": 1,
+        "info": "El cliente envía un DHCP DISCOVER en broadcast para encontrar servidores DHCP disponibles."
+    },
+    {
+        "q": "¿Qué es un ataque de 'Phishing'?",
+        "options": [
+            "Un virus.",
+            "Un intento de engañar al usuario para que revele información confidencial (como contraseñas) haciéndose pasar por una entidad confiable.",
+            "Escanear puertos.",
+            "Interceptar WiFi."
+        ],
+        "a": 1,
+        "info": "El phishing es ingeniería social, atacando al humano en lugar de al software directamente."
+    },
+    {
+        "q": "¿Qué es 'Diffie-Hellman'?",
+        "options": [
+            "Un algoritmo de cifrado simétrico.",
+            "Un protocolo para el intercambio seguro de claves a través de un canal inseguro.",
+            "Una función hash.",
+            "Un tipo de firewall."
+        ],
+        "a": 1,
+        "info": "Diffie-Hellman permite a dos partes generar un secreto compartido (clave) sin haberlo transmitido directamente."
+    },
+    {
+        "q": "¿Cuál es la función de RTCP (Real-time Transport Control Protocol)?",
+        "options": [
+            "Enviar los datos de voz.",
+            "Proporcionar estadísticas de calidad (pérdida, jitter) y control sobre la sesión RTP.",
+            "Hacer el setup de la llamada.",
+            "Traducir direcciones."
+        ],
+        "a": 1,
+        "info": "RTCP trabaja junto a RTP para monitorear la calidad del servicio (QoS) de la transmisión multimedia."
+    },
+    {
+        "q": "¿Qué es la 'Autorización' en AAA?",
+        "options": [
+            "Identificar al usuario.",
+            "Determinar qué recursos o comandos puede usar el usuario una vez identificado.",
+            "Registrar qué hizo el usuario.",
+            "Cifrar la contraseña."
+        ],
+        "a": 1,
+        "info": "La autorización define los permisos y privilegios del usuario autenticado."
+    },
+    {
+        "q": "¿Qué es un 'Socket pair'?",
+        "options": [
+            "Dos enchufes.",
+            "La combinación de (IP origen, Puerto origen) y (IP destino, Puerto destino) que define una conexión única.",
+            "Un protocolo de capa 2.",
+            "Un cable cruzado."
+        ],
+        "a": 1,
+        "info": "El par de sockets define unívocamente una conexión TCP o flujo UDP en la red."
+    },
+    {
+        "q": "¿Qué hace el comando 'tracert' (o traceroute)?",
+        "options": [
+            "Mide la velocidad de internet.",
+            "Muestra la ruta (saltos/routers) que toman los paquetes hacia un destino.",
+            "Configura la IP.",
+            "Limpia la caché DNS."
+        ],
+        "a": 1,
+        "info": "Tracert usa el campo TTL de IP y mensajes ICMP para identificar cada router en el camino."
+    },
+    {
+        "q": "¿Qué es NAT 'Overloading'?",
+        "options": [
+            "Cuando el router se satura.",
+            "Lo mismo que PAT (Port Address Translation).",
+            "NAT Estática.",
+            "Un ataque de seguridad."
+        ],
+        "a": 1,
+        "info": "Overloading se refiere a sobrecargar una única IP pública con múltiples conexiones privadas usando puertos (PAT)."
+    },
+    {
+        "q": "En seguridad, ¿qué es un 'Exploit'?",
+        "options": [
+            "Un parche de seguridad.",
+            "Un software o código que aprovecha una vulnerabilidad específica para comprometer un sistema.",
+            "Un antivirus.",
+            "Un firewall."
+        ],
+        "a": 1,
+        "info": "El exploit es la herramienta o técnica usada para aprovechar un fallo de seguridad (vulnerabilidad)."
+    },
+    {
+        "q": "¿Qué es la 'Latencia'?",
+        "options": [
+            "El ancho de banda.",
+            "El tiempo que tarda un paquete en viajar desde el origen al destino.",
+            "La pérdida de datos.",
+            "La variación del retardo."
+        ],
+        "a": 1,
+        "info": "La latencia es el retardo de propagación y procesamiento en la red."
+    },
+    {
+        "q": "¿Qué cabecera es más grande, TCP o UDP?",
+        "options": [
+            "UDP",
+            "TCP",
+            "Son iguales",
+            "Depende de los datos"
+        ],
+        "a": 1,
+        "info": "La cabecera mínima de TCP es de 20 bytes (con muchas funciones), mientras que la de UDP es de solo 8 bytes."
+    },
+    {
+        "q": "Si usas 'nslookup' y obtienes 'Non-authoritative answer', ¿qué significa?",
+        "options": [
+            "Que la respuesta es falsa.",
+            "Que la respuesta proviene de la caché de un servidor DNS, no del servidor autoritativo del dominio.",
+            "Que el dominio no existe.",
+            "Que hubo un error de red."
+        ],
+        "a": 1,
+        "info": "Indica que el servidor DNS consultado tenía el dato guardado (caché) y no necesitó preguntar al dueño original del dominio."
+    },
+    {
+        "q": "¿Qué es SNMP 'Get-Next'?",
+        "options": [
+            "Pedir el siguiente valor en la estructura de árbol MIB (útil para recorrer tablas).",
+            "Pedir el valor anterior.",
+            "Escribir un valor.",
+            "Recibir una alerta."
+        ],
+        "a": 0,
+        "info": "Get-Next se usa para recorrer secuencialmente la MIB, ideal para leer tablas de enrutamiento o interfaces."
+    },
+    {
+        "q": "¿Qué es el 'Checksum' en los protocolos de transporte?",
+        "options": [
+            "Un número de secuencia.",
+            "Un valor calculado para detectar errores en los datos del segmento.",
+            "Una dirección IP.",
+            "Un puerto."
+        ],
+        "a": 1,
+        "info": "El checksum verifica que el segmento no haya sufrido corrupción de bits durante la transmisión."
+    },
+    {
+        "q": "En VoIP, ¿qué es un 'Softphone'?",
+        "options": [
+            "Un teléfono físico suave.",
+            "Una aplicación de software que simula un teléfono en una PC o móvil.",
+            "Un router.",
+            "Un cable."
+        ],
+        "a": 1,
+        "info": "Softphones (como Skype, Zoom, Zoiper) permiten hacer VoIP sin hardware telefónico dedicado."
+    },
+    {
+        "q": "¿Qué es una 'Botnet'?",
+        "options": [
+            "Una red de robots físicos.",
+            "Una red de computadoras infectadas (zombies) controladas remotamente por un atacante.",
+            "Una red rápida.",
+            "Un tipo de firewall."
+        ],
+        "a": 1,
+        "info": "Las botnets se usan comúnmente para lanzar ataques DDoS masivos."
+    },
+    {
+        "q": "¿Qué es el 'Multiplexing' en la capa de transporte?",
+        "options": [
+            "Usar múltiples cables.",
+            "Permitir que múltiples aplicaciones usen la red simultáneamente diferenciándolas por puertos.",
+            "Comprimir datos.",
+            "Encriptar datos."
+        ],
+        "a": 1,
+        "info": "La multiplexación permite que el navegador, el correo y Spotify envíen datos por la misma conexión IP usando distintos puertos."
+    },
+    {
+        "q": "¿Qué es un certificado 'Autofirmado'?",
+        "options": [
+            "Un certificado firmado por una CA confiable.",
+            "Un certificado firmado por el mismo creador, no validado por una autoridad externa.",
+            "Un certificado vencido.",
+            "Un certificado de papel."
+        ],
+        "a": 1,
+        "info": "Los certificados autofirmados son gratis y cifran la conexión, pero los navegadores muestran advertencias porque no hay un tercero que valide la identidad."
+    },
+    {
+        "q": "¿Qué es el 'Throughput'?",
+        "options": [
+            "La capacidad teórica de la red.",
+            "La tasa real de transferencia de datos exitosa a través de la red.",
+            "El retardo.",
+            "El costo de la red."
+        ],
+        "a": 1,
+        "info": "El throughput es la velocidad real medida, que suele ser menor al ancho de banda teórico debido a overhead y congestión."
+    },
+    {
+        "q": "¿Qué protocolo se usa para sincronizar relojes en la red?",
+        "options": [
+            "SNMP",
+            "NTP (Network Time Protocol)",
+            "HTTP",
+            "SMTP"
+        ],
+        "a": 1,
+        "info": "NTP es crucial para la seguridad (logs, Kerberos) y para correlacionar eventos en la red."
+    },
+    {
+        "q": "¿Qué es una 'VLAN'?",
+        "options": [
+            "Una red inalámbrica.",
+            "Una red de área local virtual que segmenta dominios de difusión en un switch.",
+            "Un protocolo de enrutamiento.",
+            "Un tipo de cable."
+        ],
+        "a": 1,
+        "info": "Las VLANs mejoran la seguridad y el rendimiento al separar lógicamente dispositivos en el mismo hardware físico."
+    },
+    {
+        "q": "En TCP, ¿qué significa el estado 'ESTABLISHED'?",
+        "options": [
+            "Que la conexión se está cerrando.",
+            "Que el handshake se completó y la conexión está activa y lista para transferir datos.",
+            "Que el servidor está escuchando.",
+            "Que hubo un error."
+        ],
+        "a": 1,
+        "info": "Es el estado normal de una sesión TCP durante la transferencia de datos."
+    },
+    {
+        "q": "¿Qué es un ataque de 'Fuerza Bruta'?",
+        "options": [
+            "Golpear el servidor.",
+            "Probar todas las combinaciones posibles de contraseñas hasta encontrar la correcta.",
+            "Engañar al usuario.",
+            "Interceptar tráfico."
+        ],
+        "a": 1,
+        "info": "Es un método de prueba y error exhaustivo. Se mitiga limitando intentos de login."
+    },
+    {
+        "q": "¿Qué hace el protocolo Spanning Tree (STP)?",
+        "options": [
+            "Enruta paquetes IP.",
+            "Evita bucles (loops) en topologías de conmutación (switches) de capa 2.",
+            "Asigna direcciones IP.",
+            "Bloquea virus."
+        ],
+        "a": 1,
+        "info": "STP bloquea puertos redundantes para evitar tormentas de broadcast, activándolos si el enlace principal falla."
+    },
+    {
+        "q": "¿Qué es 'QoS' (Calidad de Servicio)?",
+        "options": [
+            "Un sistema operativo.",
+            "Mecanismos para priorizar cierto tipo de tráfico (ej. voz) sobre otro.",
+            "Un protocolo de correo.",
+            "Un tipo de cable."
+        ],
+        "a": 1,
+        "info": "QoS es vital para VoIP y video, asegurando ancho de banda y baja latencia frente a descargas de archivos."
+    },
+    {
+        "q": "¿Qué es un 'Proxy Inverso'?",
+        "options": [
+            "Un proxy que protege a los clientes.",
+            "Un servidor que se sitúa frente a los servidores web para balancear carga y protegerlos, recibiendo las peticiones de internet.",
+            "Un servidor DNS.",
+            "Un router."
+        ],
+        "a": 1,
+        "info": "A diferencia del proxy normal (que sirve a clientes internos), el inverso protege y optimiza los servidores internos frente a internet."
+    },
+    {
+        "q": "¿Qué es la 'Encapsulación'?",
+        "options": [
+            "Comprimir archivos.",
+            "El proceso de añadir cabeceras de protocolo a los datos a medida que bajan por las capas del modelo OSI/TCP-IP.",
+            "Enviar datos por túnel.",
+            "Borrar datos."
+        ],
+        "a": 1,
+        "info": "Datos -> Segmento -> Paquete -> Trama -> Bits. Cada capa añade su propia información de control."
+    }
+]
