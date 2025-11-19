@@ -1,0 +1,321 @@
+[
+  {
+    "q": "El protocolo UDP se utiliza a menudo para aplicaciones de tiempo real (audio, video). ¿Cuál es la principal característica de su diseño que prioriza la velocidad y la baja sobrecarga, a pesar de no ser fiable?",
+    "options": [
+      "Utiliza un búfer de recepción muy grande para compensar la pérdida de datos.",
+      "Mantiene el estado de la conexión mediante temporizadores para retransmisión.",
+      "Tiene poca sobrecarga porque no maneja variables ni temporizadores para control de flujo o congestión.",
+      "Implementa la ventana deslizante, pero solo en el emisor."
+    ],
+    "a": 3,
+    "info": "La ventaja de la rapidez de UDP se debe a su poca sobrecarga, ya que es un protocolo no orientado a conexión que no mantiene el estado, no retransmite, ni implementa control de flujo ni congestión."
+  },
+  {
+    "q": "El campo Suma de Verificación (Checksum) del segmento UDP es opcional. Si se utiliza, ¿qué partes incluye en su cálculo para detectar errores?",
+    "options": [
+      "Solo el encabezado UDP y los datos.",
+      "La cabecera UDP, los datos, y la cabecera IP completa.",
+      "La cabecera UDP, los datos, y un pseudoencabezado de IP.",
+      "Solo las direcciones de puerto de origen y destino."
+    ],
+    "a": 3,
+    "info": "La Suma de Verificación de UDP controla la cabecera, los datos y un pseudoencabezado de IP. Si el cálculo no coincide en el destino, el segmento se descarta."
+  },
+  {
+    "q": "En el control de congestión TCP, el mecanismo de Incremento Aditivo / Decremento Multiplicativo (AIMD) se ilustra con un gráfico de sierra. ¿Qué evento provoca la caída brusca (Decremento Multiplicativo) de la tasa de envío?",
+    "options": [
+      "La expiración del TTL del segmento en un router.",
+      "El emisor recibe un ACK, asumiendo que la red está tranquila.",
+      "El emisor no recibe ACK (se pierde el segmento o expira el temporizador), reduciendo la ventana de congestión a la mitad.",
+      "El campo de Ventana de Recepción llega a cero."
+    ],
+    "a": 3,
+    "info": "El Decremento Multiplicativo ocurre cuando se detecta una pérdida (no se recibe ACK), lo que se interpreta como congestión en la red, y la tasa de transmisión se reduce a la mitad."
+  },
+  {
+    "q": "Un host inicia una conexión TCP con un servidor. ¿En qué rango de puertos se espera que el sistema operativo del host (cliente) genere su Puerto de Origen para esta conexión saliente?",
+    "options": [
+      "Puertos públicos o Well Known (1 al 1023).",
+      "Puertos registrados (1024 al 49.151).",
+      "Puertos dinámicos o privados (49.152 al 65.535).",
+      "Cualquier puerto menor a 1000."
+    ],
+    "a": 3,
+    "info": "Los puertos dinámicos o privados (49152-65535) son generados por la PC cada vez que se inicia una conexión, funcionando como el puerto de origen para la conversación."
+  },
+  {
+    "q": "Un servicio de red está configurado para escuchar solicitudes entrantes de clientes. ¿En qué tipo de puerto debe estar configurado el servidor para que los clientes lo contacten de forma predecible?",
+    "options": [
+      "Puertos dinámicos (49152-65535).",
+      "Puertos públicos, bien conocidos (Well Known) (1 al 1023) o registrados (1024 al 49151).",
+      "Cualquier puerto generado de forma aleatoria por el servidor.",
+      "Solo el puerto 80 (HTTP)."
+    ],
+    "a": 2,
+    "info": "Los servidores (servicios) normalmente escuchan en puertos fijos y conocidos (Well Known o Registrados) para que los clientes sepan dónde contactarlos (ej., HTTP 80, HTTPS 443)."
+  },
+  {
+    "q": "Tras ejecutar el comando netstat -n, se observa una conexión en el estado TIME_WAIT. ¿Qué indica este estado?",
+    "options": [
+      "El socket está esperando iniciar una conexión (SYN_SENT).",
+      "El socket tiene una conexión establecida y está transfiriendo datos (ESTABLISHED).",
+      "El socket está cerrado en un sentido, y la conexión remota ha finalizado (CLOSE_WAIT).",
+      "El socket está esperando después de cerrarse a que concluyan los paquetes que siguen en la red."
+    ],
+    "a": 4,
+    "info": "El estado TIME_WAIT se utiliza para garantizar que los paquetes rezagados de la conexión terminada (que aún están viajando por la red) sean descartados antes de que se reutilice el socket."
+  },
+  {
+    "q": "Se observa una conexión TCP en estado CLOSE_WAIT. ¿Qué significa esto para el host local?",
+    "options": [
+      "El host local ha iniciado el cierre de la conexión.",
+      "La conexión remota ha finalizado, y se espera que el socket local se cierre.",
+      "Ambos sockets han finalizado, pero los datos aún no se han enviado (CLOSING).",
+      "El socket está esperando posibles conexiones entrantes (LISTEN)."
+    ],
+    "a": 2,
+    "info": "CLOSE_WAIT indica que el otro extremo de la conexión ya ha terminado (envió FIN), y el host local está esperando que su aplicación cierre activamente el socket."
+  },
+  {
+    "q": "El objetivo principal de NAT (Network Address Translation) es:",
+    "options": [
+      "Aumentar la seguridad utilizando protocolos de capa 3.",
+      "Mejorar el rendimiento de la red al reducir el tráfico en el router de borde.",
+      "Resolver el problema del agotamiento de direcciones IPv4 y permitir que hosts privados accedan a Internet.",
+      "Asegurar que las direcciones privadas se encaminen correctamente en Internet."
+    ],
+    "a": 3,
+    "info": "NAT fue desarrollado principalmente para conservar direcciones IPv4 y permitir la comunicación de redes privadas con el exterior, además de proporcionar privacidad al ocultar la topología interna."
+  },
+  {
+    "q": "¿Cuál es una desventaja importante de NAT, especialmente en implementaciones grandes con un solo router de borde?",
+    "options": [
+      "Se pueden encaminar direcciones privadas en Internet.",
+      "El router NAT puede convertirse en un cuello de botella porque todos los paquetes de entrada y salida pasan por el mismo dispositivo.",
+      "Se conservan direcciones IP públicas mediante la compartición a nivel de puerto.",
+      "No brinda seguridad, ya que las direcciones internas son visibles desde Internet."
+    ],
+    "a": 2,
+    "info": "Una desventaja clave es que el router NAT centraliza todo el tráfico de ingreso y egreso, convirtiéndose en un cuello de botella potencial para el rendimiento de la red."
+  },
+  {
+    "q": "El tipo de NAT denominado NAT estática (NAT 1:1) se utiliza principalmente para:",
+    "options": [
+      "Ahorrar direcciones IP públicas al compartir una IP con muchos hosts.",
+      "Permitir que solo los hosts internos inicien conexiones hacia afuera.",
+      "Permitir que servidores y dispositivos internos sean accesibles (vistos) desde el exterior (Internet).",
+      "Asignar direcciones IP de un pool de forma dinámica a medida que se necesitan."
+    ],
+    "a": 3,
+    "info": "La NAT estática (1:1) asocia una IP pública dedicada a una IP privada de forma fija, usándose para servidores internos que necesitan ser alcanzables desde Internet."
+  },
+  {
+    "q": "En el contexto de NAT dinámica, si una empresa tiene 100 dispositivos internos y un pool de 20 direcciones IP públicas, ¿cuántos dispositivos pueden tener conexiones simultáneas hacia Internet en un momento determinado?",
+    "options": [
+      "100 (todos los dispositivos internos).",
+      "20, ya que el número de conexiones simultáneas está limitado por el número de direcciones IP públicas disponibles en el pool.",
+      "65.535 (el número máximo de puertos).",
+      "Solo el dispositivo que inicie la conexión primero."
+    ],
+    "a": 2,
+    "info": "En NAT dinámica, el número de conexiones simultáneas hacia Internet es igual al número de direcciones IP públicas disponibles en el pool. Los demás hosts deben esperar que se libere una IP."
+  },
+  {
+    "q": "El protocolo PAT (Port Address Translation) es el que más ahorra direcciones IP públicas. ¿Cómo logra mapear múltiples conexiones internas a una única dirección IP pública?",
+    "options": [
+      "Reemplazando solo la dirección IP de origen, sin tocar el puerto.",
+      "Utilizando la IP pública, pero cambiando el Número de Puerto de Origen para cada conversación para distinguirlas.",
+      "Asignando una IP pública diferente de forma estática a cada host.",
+      "Utilizando DNS para resolver diferentes dominios a la misma IP privada."
+    ],
+    "a": 2,
+    "info": "PAT (también llamado NAT de sobrecarga) modifica tanto la IP de origen como el número de puerto de origen (capa 4) para crear mapeos únicos, permitiendo a miles de conexiones compartir una sola IP pública."
+  },
+  {
+    "q": "Al implementar PAT, si la PC-A ($10.10.0.3:50501$) y la PC-B ($10.10.0.5:50501$) intentan conectarse al Servidor Web ($34.5.6.7:80$) usando el mismo puerto de origen (50501), ¿qué acción debe tomar el router PAT en el paquete de la PC-B?",
+    "options": [
+      "Bloquear el paquete de la PC-B, ya que el puerto de origen ya está en uso.",
+      "Permitir la salida del paquete de la PC-B sin cambios, ya que las IP privadas son diferentes.",
+      "Cambiar el Puerto de Origen (ej. a 50502) en el paquete de la PC-B antes de salir, para que la respuesta pueda ser dirigida correctamente al regresar.",
+      "Descartar el paquete porque el router no debe modificar la capa de transporte."
+    ],
+    "a": 3,
+    "info": "El router PAT debe asegurar que el par (IP pública:Puerto externo) sea único. Como ambas PC intentan usar el mismo puerto 50501, el router cambia el puerto de la segunda conexión (PC-B) a 50502 (u otro disponible) en la parte Outside de la tabla."
+  },
+  {
+    "q": "¿Cuál es la necesidad fundamental que impulsa la existencia del Sistema de Nombre de Dominio (DNS) en las redes modernas?",
+    "options": [
+      "Garantizar la seguridad mediante el cifrado de las direcciones IP.",
+      "Reducir la latencia de las comunicaciones en tiempo real.",
+      "Traducir nombres de dominio fáciles de recordar para los humanos a las direcciones IP necesarias para el proceso de encapsulamiento.",
+      "Permitir que los hosts se comuniquen usando UDP en el puerto 53."
+    ],
+    "a": 3,
+    "info": "Los humanos usamos nombres (dominios), pero las PC usan direcciones IP. DNS actúa como un servicio de traducción para obtener la IP destino requerida para la capa de red."
+  },
+  {
+    "q": "DNS se describe como una base de datos distribuida implementada en una jerarquía de servidores de nombres. ¿Cuál fue el principal problema que se intentó evitar al no implementar DNS como una base de datos centralizada?",
+    "options": [
+      "El exceso de direcciones IP públicas.",
+      "Un único punto de fallo, gran volumen de tráfico, distancia de los hosts y dificultad de mantenimiento.",
+      "La incapacidad de usar UDP en el puerto 53.",
+      "La necesidad de usar el registro AAAA para IPv6."
+    ],
+    "a": 2,
+    "info": "La distribución jerárquica de DNS evita los inconvenientes de una base de datos centralizada, asegurando la fiabilidad y escalabilidad."
+  },
+  {
+    "q": "El protocolo DNS brinda un servicio clave a los protocolos de la capa de aplicación. ¿En qué puerto y protocolo de la capa de transporte opera DNS para la mayoría de las consultas estándar?",
+    "options": [
+      "TCP, puerto 80.",
+      "UDP, puerto 25.",
+      "UDP, puerto 53.",
+      "TCP, puerto 443."
+    ],
+    "a": 3,
+    "info": "DNS corre sobre UDP en el puerto 53. El uso de UDP para consultas estándar se debe a que son rápidas y cortas, minimizando la sobrecarga de la conexión TCP."
+  },
+  {
+    "q": "¿Qué representa el campo TTL (Tiempo de Vida) en un registro de recurso DNS?",
+    "options": [
+      "El número de saltos que puede dar el paquete DNS.",
+      "El tiempo máximo que el registro puede permanecer en la Base de Datos del servidor autorizado.",
+      "El tiempo de vida en segundos del registro de recurso, determinando cuándo debe ser eliminado de la caché.",
+      "El tiempo que tarda en completarse una consulta recursiva."
+    ],
+    "a": 3,
+    "info": "El TTL controla cuánto tiempo (en segundos) un servidor local o un host cliente puede almacenar la respuesta DNS en su caché antes de que deba consultar de nuevo al servidor autorizado."
+  },
+  {
+    "q": "En el contexto de DNS, si la PC-A envía una consulta al Servidor Local, y este asume toda la responsabilidad de buscar la respuesta a través de la jerarquía de servidores (Raíz, Intermedio, Autorizado), ¿a qué tipo de consulta se refiere?",
+    "options": [
+      "Consulta recursiva.",
+      "Consulta iterativa.",
+      "Consulta de caché.",
+      "Consulta CNAME."
+    ],
+    "a": 1,
+    "info": "En una consulta recursiva, el servidor consultado (servidor local) se compromete a obtener la respuesta completa para el cliente, realizando todas las consultas posteriores (hacia Raíz, Intermedio, etc.) por su cuenta."
+  },
+  {
+    "q": "Si la PC-A envía una consulta al Servidor Local, y este solo le responde con la dirección IP del Servidor Raíz para que la PC-A continúe la búsqueda, ¿a qué tipo de consulta se refiere, y quién realiza las consultas subsiguientes?",
+    "options": [
+      "Consulta recursiva; el Servidor Local.",
+      "Consulta iterativa; el Servidor Local (que hace de cliente en las consultas subsiguientes).",
+      "Consulta autorizada; el Servidor Autorizado.",
+      "Consulta MX; el Servidor de Correo."
+    ],
+    "a": 2,
+    "info": "En una consulta iterativa, el servidor responde al cliente con la dirección de otro servidor (ej. el Raíz) que está 'más cerca' de la respuesta. El cliente (en este caso el Servidor Local que actúa como cliente) es el que realiza la siguiente consulta en la cadena."
+  },
+  {
+    "q": "Un registro A en la base de datos DNS mapea un nombre de dominio a:",
+    "options": [
+      "Un nombre de servidor de correo (Mail Exchanger).",
+      "Un nombre de dominio canónico (Alias).",
+      "Una dirección IPv4 de un host (Entero de 32 bits).",
+      "Una dirección IPv6 de un host (Registro AAAA)."
+    ],
+    "a": 3,
+    "info": "El registro A es fundamental para la resolución de nombres, ya que traduce el nombre del host (ej. [www.claro.com](https://www.claro.com).ar) a su dirección IPv4 (ej. 104.18.1.212)."
+  },
+  {
+    "q": "Si se desea encontrar la dirección del servidor de correo electrónico responsable de un dominio, ¿qué tipo de registro debe buscar el Servidor DNS Local?",
+    "options": [
+      "Registro A.",
+      "Registro CNAME.",
+      "Registro MX (Mail Exchanger).",
+      "Registro NS."
+    ],
+    "a": 3,
+    "info": "El registro MX (Intercambio de Correo) indica el dominio dispuesto a aceptar correo electrónico para la zona consultada, junto con su prioridad."
+  },
+  {
+    "q": "El comando ipconfig /flushdns se utiliza para:",
+    "options": [
+      "Ver la caché DNS de la PC (`/displaydns`).",
+      "Ver la dirección del servidor DNS local (`/all`).",
+      "Vaciar la memoria caché DNS del dispositivo.",
+      "Realizar una consulta DNS recursiva."
+    ],
+    "a": 3,
+    "info": "Este comando elimina todas las entradas temporales de dominio-IP que la PC ha almacenado localmente, forzándola a realizar nuevas consultas la próxima vez."
+  },
+  {
+    "q": "El protocolo SMTP (Simple Mail Transfer Protocol) se utiliza para:",
+    "options": [
+      "Recibir correo del servidor al cliente (POP3/IMAP).",
+      "Proporcionar una interfaz gráfica al usuario (MUA).",
+      "El envío y transferencia de mensajes de correo electrónico entre Agentes de Transferencia de Mensajes (MTA).",
+      "Codificar adjuntos binarios (MIME)."
+    ],
+    "a": 3,
+    "info": "SMTP es el protocolo orientado a conexión que utiliza TCP Puerto 25 para mover (enviar) mensajes desde el Agente de Usuario al servidor de correo y entre servidores de correo (MTA a MTA)."
+  },
+  {
+    "q": "Si Pilar envía un correo de `pilar@hotmail.com` a Thiago (`thiago@gmail.com`), ¿qué acción realiza el servidor HOTMAIL (MTA) antes de enviar el mensaje al servidor GMAIL?",
+    "options": [
+      "Utiliza POP3 para verificar la bandeja de Thiago.",
+      "Consulta al Servidor DNS para obtener el registro MX del dominio `gmail.com`.",
+      "Envía el correo directamente al servidor GMAIL sin consultar DNS.",
+      "Utiliza MIME para codificar el cuerpo del mensaje."
+    ],
+    "a": 2,
+    "info": "Cuando el origen y el destino están en servidores diferentes, el MTA de origen (HOTMAIL) debe consultar DNS para encontrar el registro MX (Mail Exchanger) que le indica la IP del servidor de destino (GMAIL) al cual debe enviar el mensaje mediante SMTP."
+  },
+  {
+    "q": "El protocolo POP3 (Post Office Protocol version 3) se caracteriza por una limitación clave en su uso original. ¿Cuál es esta característica?",
+    "options": [
+      "Permite al usuario organizar mensajes en carpetas en el servidor (IMAP).",
+      "Permite consultar el correo desde múltiples dispositivos simultáneamente (IMAP).",
+      "Los mensajes se descargan del servidor, se almacenan en el cliente y se eliminan en el servidor.",
+      "Corre sobre TCP Puerto 143 (IMAP)."
+    ],
+    "a": 3,
+    "info": "POP3 es simple, pero descarga los mensajes al cliente y luego los elimina del servidor, limitando la consulta posterior desde otros dispositivos."
+  },
+  {
+    "q": "¿Qué protocolo es más adecuado si un usuario necesita consultar su correo electrónico desde varios dispositivos diferentes y mantener sus mensajes organizados en carpetas en el servidor de forma remota?",
+    "options": [
+      "SMTP (Envío).",
+      "POP3 (Elimina del servidor).",
+      "IMAP (Internet Message Access Protocol).",
+      "MIME (Codificación de adjuntos)."
+    ],
+    "a": 3,
+    "info": "IMAP es un protocolo más complejo que permite el acceso a mensajes almacenados en el servidor, la organización en carpetas y la consulta simultánea desde múltiples dispositivos."
+  },
+  {
+    "q": "El protocolo MIME (Multipurpose Internet Mail Extensions) surgió debido a una limitación de SMTP. ¿Cuál fue el objetivo principal de MIME?",
+    "options": [
+      "Reemplazar a SMTP por completo para aumentar la velocidad.",
+      "Permitir la transferencia de correo cifrado (HTTPS).",
+      "Continuar utilizando SMTP, pero agregar una estructura al cuerpo del mensaje y definir reglas de codificación para mensajes NO ASCII (como archivos binarios).",
+      "Gestionar el control de flujo de la cola de correo."
+    ],
+    "a": 3,
+    "info": "MIME es un conjunto de especificaciones que permite el intercambio de todo tipo de archivos (no solo texto ASCII) a través de SMTP, agregando encabezados de codificación y tipo de contenido."
+  },
+  {
+    "q": "¿Qué función cumple el encabezado MIME Content-Type?",
+    "options": [
+      "Define cómo se envuelve el mensaje para su transmisión (`Content-Transfer-Encoding`).",
+      "Indica una cadena legible por humanos que indica el contenido (`Content-Description`).",
+      "Indica la naturaleza (Tipo/Subtipo) y el formato del contenido del mensaje (ej. `text/html`, `image/jpeg`).",
+      "Identifica la versión MIME."
+    ],
+    "a": 3,
+    "info": "El Content-Type indica la naturaleza del mensaje (audio, video, texto) y su formato específico (subtipo), permitiendo al cliente de correo interpretarlo correctamente."
+  },
+  {
+    "q": "En la arquitectura de correo electrónico, ¿qué agente es el responsable de brindar la interfaz gráfica al usuario, permitiéndole redactar, leer y organizar los mensajes?",
+    "options": [
+      "Agente de Transferencia de Mensajes (MTA).",
+      "Agente de Entrega de Correo (MDA).",
+      "Agente de Usuario de Correo (MUA ó UA).",
+      "Servidor DNS."
+    ],
+    "a": 3,
+    "info": "El Agente de Usuario (UA) es el programa cliente (como Outlook, Thunderbird o el navegador en Webmail) que interactúa directamente con el usuario."
+  }
+]

@@ -1,0 +1,332 @@
+[
+  {
+    "q": "Históricamente, ¿cuál fue la principal razón económica que impulsó a los operadores de redes de datos a interesarse en transportar voz a través de sus redes (Voz sobre IP)?",
+    "options": [
+      "La voz es más fácil de transportar que los datos.",
+      "El tráfico de voz crecía de manera exponencial, mientras que el tráfico de datos era plano.",
+      "La voz requería una gran cantidad de ancho de banda adicional en las redes de paquetes.",
+      "Vieron la telefonía de Internet como una forma de ganar una gran cantidad de dinero adicional sin tener que colocar una nueva fibra, ya que la voz requería ancho de banda minúsculo en redes ya dimensionadas para el tráfico de datos."
+    ],
+    "a": 4,
+    "info": "El interés económico surgió porque, para 2002, el tráfico de datos era mucho mayor que el de voz, y el ancho de banda adicional para la voz era minúsculo, permitiendo a los operadores obtener grandes ingresos con la infraestructura existente. [cite: 3495, 3500, 3501]"
+  },
+  {
+    "q": "La recomendación H.323 de la ITU se tituló 'Sistemas Telefónicos Visuales y Equipo para Redes de Área Local que Proporcionan una Calidad de Servicio No Garantizada'. ¿Cuál fue el objetivo principal de crear este estándar?",
+    "options": [
+      "Asegurar que la calidad de servicio siempre fuera perfecta.",
+      "Diseñar una forma más simple y modular de transmitir voz sobre IP.",
+      "Establecer una pila de protocolos común para evitar que cada fabricante diseñara la suya propia, asegurando que el sistema funcionara.",
+      "Reemplazar completamente la Red Telefónica Pública Conmutada (PSTN)."
+    ],
+    "a": 3,
+    "info": "El estándar H.323 se creó para proporcionar una arquitectura y conjunto de protocolos comunes bajo la protección de la ITU, evitando el caos de la incompatibilidad entre fabricantes. [cite: 3505, 3506, 3507]"
+  },
+  {
+    "q": "En el modelo arquitectónico H.323, ¿cuál es el componente central que conecta la red de Internet con la Red de Telefonía (PSTN)?",
+    "options": [
+      "El Terminal.",
+      "El Gatekeeper.",
+      "La Puerta de Enlace (Gateway).",
+      "El Protocolo RAS."
+    ],
+    "a": 3,
+    "info": "La Puerta de Enlace (Gateway) es el componente que habla los protocolos H.323 en el lado de Internet y los protocolos PSTN en el lado del teléfono, permitiendo la comunicación entre ambas redes. [cite: 3520, 3521, 3530]"
+  },
+  {
+    "q": "¿Qué componente en H.323 controla los 'puntos finales bajo su jurisdicción' (terminales), y a este conjunto de puntos finales y su controlador se le llama Zona?",
+    "options": [
+      "La Puerta de Enlace.",
+      "El Gatekeeper.",
+      "El Terminal.",
+      "La Red de Telefonía."
+    ],
+    "a": 2,
+    "info": "El Gatekeeper es el controlador que gestiona los terminales dentro de una LAN o un área específica (Zona). [cite: 3523, 3528]"
+  },
+  {
+    "q": "Según la ITU, el sistema PCM (Modulación por Codificación de Pulsos) para codificar un canal de voz (Recomendación G.711) muestrea 8000 veces por segundo con una muestra de 8 bits. ¿Cuál es la tasa de bits resultante de la voz descomprimida que todos los sistemas H.323 deben soportar?",
+    "options": [
+      "8 Kbps.",
+      "32 Kbps.",
+      "64 Kbps.",
+      "128 Kbps."
+    ],
+    "a": 3,
+    "info": "La codificación PCM (G.711) utiliza 8000 \times 8 \text{ bits/segundo}, resultando en voz descomprimida a 64 \text{ Kbps}. Todos los sistemas H.323 deben soportar este estándar. [cite: 3539, 3540]"
+  },
+  {
+    "q": "¿Cuál es el protocolo de la ITU utilizado en H.323 para establecer y liberar conexiones, proporcionar tonos de marcado, y emitir sonidos de marcado, similar a la telefonía estándar?",
+    "options": [
+      "H.225 (RAS).",
+      "G.711.",
+      "Q.931.",
+      "RTP."
+    ],
+    "a": 3,
+    "info": "El protocolo Q.931 de la ITU se utiliza para la señalización de llamadas (establecimiento y liberación de conexiones) y para proporcionar los elementos de la telefonía estándar, como los tonos de marcado. [cite: 3545, 3547, 3548]"
+  },
+  {
+    "q": "¿Qué protocolo utiliza el Terminal H.323 para hablar con el Gatekeeper, en un canal conocido como canal RAS (Registro/Admisión/Estado)?",
+    "options": [
+      "Q.931.",
+      "RTP.",
+      "H.225.",
+      "H.245."
+    ],
+    "a": 3,
+    "info": "El protocolo H.225 se utiliza específicamente para el canal RAS, permitiendo a los terminales unirse/dejar la zona, solicitar/regresar ancho de banda y proporcionar actualizaciones de estado al Gatekeeper. [cite: 3551, 3552, 3553]"
+  },
+  {
+    "q": "En H.323, ¿cuál es el protocolo que se utiliza para la transmisión real de los datos (audio/video) de la llamada, transportando el flujo de medios en tiempo real?",
+    "options": [
+      "TCP.",
+      "Q.931.",
+      "RTP (Real-time Transport Protocol).",
+      "H.225 (RAS)."
+    ],
+    "a": 3,
+    "info": "El protocolo RTP (Real-time Transport Protocol) se utiliza para el flujo de datos en tiempo real (voz/video). [cite: 3558, 3611]"
+  },
+  {
+    "q": "Durante el procedimiento de llamada H.323, el Terminal PC primero tiene que descubrir y registrarse con el Gatekeeper. ¿Qué protocolo de transporte se utiliza para estos mensajes iniciales (descubrimiento y registro RAS) y por qué?",
+    "options": [
+      "TCP, porque es orientado a la conexión.",
+      "TCP, porque el sistema telefónico es orientado a la conexión.",
+      "UDP, porque genera menor información adicional (menor sobrecarga) en contraste con la necesidad de TCP. [cite: 3581]",
+      "UDP, porque H.323 no soporta TCP."
+    ],
+    "a": 3,
+    "info": "El canal RAS (Registro/Admisión/Estado) utiliza UDP (puerto 1718 para descubrimiento) porque, a diferencia del establecimiento de la llamada que requiere TCP (Q.931), RAS se beneficia de la menor sobrecarga de UDP. [cite: 3565, 3568, 3581]"
+  },
+  {
+    "q": "En el procedimiento de llamada H.323, ¿por qué es necesario que la PC envíe un mensaje de admisión RAS solicitando ancho de banda al Gatekeeper antes de establecer la llamada (mensaje SETUP de Q.931)?",
+    "options": [
+      "Para que el Gatekeeper pueda iniciar el cifrado de la llamada.",
+      "Para que el Gatekeeper pueda limitar el número de llamadas y evitar sobrescribir la línea saliente, ayudando a proporcionar la calidad de servicio necesaria.",
+      "Porque Q.931 solo puede ejecutarse sobre una conexión UDP con ancho de banda preasignado.",
+      "Para que la PC pueda negociar los codecs (H.245)."
+    ],
+    "a": 2,
+    "info": "La solicitud de ancho de banda es un paso crucial que permite al Gatekeeper controlar la admisión de llamadas para gestionar la capacidad de la red y asegurar una calidad de servicio mínima. [cite: 3570, 3573]"
+  },
+  {
+    "q": "¿Qué protocolo utiliza la PC Invocadora para enviar el mensaje SETUP que especifica el número telefónico al que se está llamando, una vez que se ha establecido la conexión TCP con el Gatekeeper?",
+    "options": [
+      "H.225 (RAS).",
+      "RTP.",
+      "H.245.",
+      "Q.931."
+    ],
+    "a": 4,
+    "info": "El mensaje SETUP se envía usando Q.931 a través de la conexión TCP para iniciar el establecimiento de la llamada. [cite: 3585]"
+  },
+  {
+    "q": "Una vez que se ha establecido la conexión y el teléfono de destino suena, la oficina central regresa un mensaje ALERT de Q.931. ¿Qué indica este mensaje a la PC invocadora?",
+    "options": [
+      "Que el Gatekeeper ya no está en el ciclo.",
+      "Que se ha proporcionado el ancho de banda.",
+      "Que la persona levantó el teléfono.",
+      "Que ya se ha emitido el sonido de timbre (sonando) en el teléfono al que se llama."
+    ],
+    "a": 4,
+    "info": "El mensaje ALERT de Q.931 notifica a la PC invocadora que el teléfono de destino está sonando. [cite: 3590]"
+  },
+  {
+    "q": "¿Qué protocolo se utiliza en H.323 para negociar los parámetros de la llamada (ej. si soporta vídeo, qué codecs soporta) una vez que la conexión se ha establecido?",
+    "options": [
+      "Q.931.",
+      "H.225.",
+      "H.245.",
+      "RTCP."
+    ],
+    "a": 3,
+    "info": "El protocolo H.245 se utiliza para anunciar las capacidades del terminal, negociar los parámetros de la llamada y establecer los canales de datos unidireccionales. [cite: 3604, 3606, 3607]"
+  },
+  {
+    "q": "Una vez que se establecen los dos canales de datos unidireccionales mediante H.245, es posible que los codecs utilizados en los canales hacia adelante e inverso sean diferentes. ¿Por qué ocurre esto en H.323?",
+    "options": [
+      "Porque Q.931 fuerza el uso de diferentes codecs.",
+      "Porque solo RTP puede manejar codecs diferentes.",
+      "Porque el Gatekeeper requiere diferentes codecs para el control de congestión.",
+      "Debido a que cada lado puede tener equipo diferente, lo que resulta en codecs distintos en los canales de envío y recepción."
+    ],
+    "a": 4,
+    "info": "La asimetría es posible porque el equipo en el lado de envío puede ser diferente del equipo en el lado de recepción, lo que permite que se utilicen codecs diferentes en las direcciones de flujo (canales hacia adelante e inverso). [cite: 3608]"
+  },
+  {
+    "q": "¿Qué protocolo, en el contexto de H.323, maneja el control de congestionamiento y, si el vídeo está presente, se encarga de la sincronización de audio/vídeo?",
+    "options": [
+      "RTP.",
+      "Q.931.",
+      "RTCP (Real-time Transport Control Protocol).",
+      "H.245."
+    ],
+    "a": 3,
+    "info": "RTCP (el protocolo de control asociado a RTP) maneja el control de congestionamiento y la sincronización de flujos multimedia (audio/vídeo) en una llamada. [cite: 3613, 3616]"
+  },
+  {
+    "q": "¿Cuál de los siguientes canales lógicos entre el invocador y el invocado es responsable de la transmisión real de datos de la llamada?",
+    "options": [
+      "Canal de señalamiento de llamada (Q.931).",
+      "Canal de control de llamada (H.245).",
+      "Canal hacia adelante de datos (RTP) y Canal inverso de datos (RTP).",
+      "Canal de control de datos (RTCP)."
+    ],
+    "a": 3,
+    "info": "Los datos de la llamada (el flujo de voz/medios) se transportan a través de los canales de datos (hacia adelante e inverso) que utilizan el protocolo RTP. [cite: 3625, 3628]"
+  },
+  {
+    "q": "El protocolo SIP (Protocolo de Inicio de Sesión) fue diseñado por la IETF con el objetivo de ser una forma más simple y modular de VoIP en comparación con H.323. ¿Cuál es una de las principales diferencias arquitectónicas entre ambos?",
+    "options": [
+      "H.323 es modular, y SIP es una pila de protocolos completa.",
+      "H.323 tiene una arquitectura monolítica (pila completa), y SIP es un solo módulo diseñado para interactuar con aplicaciones de Internet.",
+      "H.323 utiliza URL para el direccionamiento, y SIP utiliza números telefónicos.",
+      "SIP solo puede ejecutarse sobre TCP, mientras que H.323 solo puede ejecutarse sobre UDP."
+    ],
+    "a": 2,
+    "info": "H.323 es una pila de protocolos completa y monolítica, mientras que SIP es un módulo simple y modular diseñado para integrarse fácilmente con otros protocolos de Internet. [cite: 3638, 3680]"
+  },
+  {
+    "q": "En contraste con H.323 (que utiliza host o número telefónico), ¿cómo define SIP los números telefónicos en su protocolo?",
+    "options": [
+      "Como direcciones IP.",
+      "Como nombres DNS.",
+      "Como URLs, permitiendo que las páginas Web puedan contenerlos para iniciar llamadas con un clic.",
+      "Como coordenadas geográficas."
+    ],
+    "a": 3,
+    "info": "SIP utiliza el formato de URL para el direccionamiento, lo que facilita su integración con la web. [cite: 3639, 3680]"
+  },
+  {
+    "q": "A pesar de sus diferencias, ¿qué protocolo de la capa de transporte utiliza tanto H.323 (para la señalización de llamadas) como SIP (Protocolo de Inicio de Sesión) para el establecimiento de sesiones, debido a que el sistema telefónico existente está orientado a la conexión?",
+    "options": [
+      "UDP.",
+      "TCP.",
+      "RTP.",
+      "ICMP."
+    ],
+    "a": 2,
+    "info": "Tanto Q.931 (señalamiento de llamadas de H.323) como la señalización de llamadas de SIP pueden ejecutarse sobre TCP (o UDP para SIP), siendo TCP necesario para interactuar con los protocolos orientados a conexión de la red telefónica. [cite: 3580, 3660, 3680]"
+  },
+  {
+    "q": "¿Qué formato de mensajes utiliza el protocolo SIP, que facilita la integración con otras aplicaciones de Internet y lo diferencia de H.323?",
+    "options": [
+      "Binario comprimido.",
+      "Binario.",
+      "ASCII.",
+      "Base64."
+    ],
+    "a": 3,
+    "info": "SIP utiliza un formato de mensajes basado en texto (ASCII), mientras que H.323 utiliza un formato binario. [cite: 3680]"
+  },
+  {
+    "q": "¿Qué protocolo es el responsable de la terminación de una sesión SIP?",
+    "options": [
+      "INVITE.",
+      "ACK.",
+      "BYE.",
+      "OPTIONS."
+    ],
+    "a": 3,
+    "info": "El método BYE es el mensaje de SIP que solicita la terminación de una sesión. [cite: 3662]"
+  },
+  {
+    "q": "El protocolo SIP sólo maneja el establecimiento, manejo y terminación de sesiones. Para la transmisión de datos (medios), ¿qué protocolos utiliza SIP?",
+    "options": [
+      "Q.931 sobre TCP.",
+      "H.225 (RAS).",
+      "RTP/RTCP.",
+      "Mensajes de correo electrónico."
+    ],
+    "a": 3,
+    "info": "Tanto H.323 como SIP utilizan los protocolos RTP/RTCP para el transporte de medios (audio/video). [cite: 3658, 3680]"
+  },
+  {
+    "q": "¿Qué método SIP se utiliza para informar a un servidor de redireccionamiento sobre la ubicación actual del usuario?",
+    "options": [
+      "INVITE.",
+      "ACK.",
+      "OPTIONS.",
+      "REGISTER."
+    ],
+    "a": 4,
+    "info": "El método REGISTER se utiliza para que el Agente de Usuario notifique a un Servidor de Redireccionamiento o Servidor de Ubicación dónde puede ser contactado el usuario actualmente. [cite: 3662, 3665]"
+  },
+  {
+    "q": "En el procedimiento de llamada H.323, una vez que la PC Invocadora recibe el mensaje CONNECT de Q.931, ¿qué indica este mensaje?",
+    "options": [
+      "Que el teléfono de destino está sonando.",
+      "Que la PC Invocadora debe contactar al Gatekeeper para liberar el ancho de banda.",
+      "Que la persona en el otro extremo levantó el teléfono, y se ha establecido una conexión.",
+      "Que la llamada ha sido terminada."
+    ],
+    "a": 3,
+    "info": "El mensaje CONNECT de Q.931 es la confirmación final de que el teléfono de destino ha sido descolgado y la conexión está lista. [cite: 3591]"
+  },
+  {
+    "q": "Una vez que se ha establecido la conexión H.323, ¿cuál es la ruta que toman los paquetes de voz subsiguientes?",
+    "options": [
+      "Van directo al Gatekeeper.",
+      "Van directo a la oficina central de la PSTN.",
+      "Ignoran al Gatekeeper y van directo a la dirección IP de la Puerta de Enlace.",
+      "Pasan por el Servidor de Ubicación."
+    ],
+    "a": 3,
+    "info": "Tras el establecimiento, el Gatekeeper sale del ciclo, y los paquetes de datos van directamente entre el terminal de la PC y la Puerta de Enlace (Gateway). [cite: 3594, 3595]"
+  },
+  {
+    "q": "¿Qué elemento en H.323 tiene una Base de Datos local para variables sobre estado e historia, similar a una MIB en SNMP, y está bajo la jurisdicción del Gatekeeper?",
+    "options": [
+      "El Servidor de Ubicación SIP.",
+      "La Puerta de Enlace.",
+      "El Agente SNMP.",
+      "El Terminal."
+    ],
+    "a": 4,
+    "info": "Los Terminales de H.323 son los dispositivos de comunicación. La pregunta original parece referirse al Agente SNMP asociado al dispositivo (Terminal) o al Terminal mismo que gestiona su estado. En el modelo H.323, el Terminal es el dispositivo de comunicación en el borde. [cite: 3522]"
+  },
+  {
+    "q": "¿Cuál es el protocolo específico en H.323 que se utiliza para terminar la conexión cuando cualquiera de las dos partes cuelga?",
+    "options": [
+      "H.245 (Control de llamada).",
+      "RTCP (Control de datos).",
+      "H.225 (RAS).",
+      "Q.931 (Señalamiento de llamada)."
+    ],
+    "a": 4,
+    "info": "El protocolo Q.931 (Señalamiento de llamadas) se utiliza tanto para el inicio (SETUP) como para la terminación de la conexión. [cite: 3618]"
+  },
+  {
+    "q": "¿Qué mensaje RAS se envía al Gatekeeper para liberar el ancho de banda que se había asignado al inicio de la llamada, una vez que la conexión ha sido terminada?",
+    "options": [
+      "INVITE.",
+      "SETUP (Q.931).",
+      "BYE (SIP).",
+      "Un mensaje RAS (Registro/Admisión/Estado)."
+    ],
+    "a": 4,
+    "info": "La PC invocadora contacta al Gatekeeper nuevamente con un mensaje RAS para liberar el ancho de banda una vez que la llamada ha terminado (usando Q.931 para la terminación). [cite: 3619]"
+  },
+  {
+    "q": "En el contexto de H.323, los Terminales necesitan un protocolo para unirse y dejar la zona, solicitar y regresar ancho de banda, y proporcionar actualizaciones de estado. ¿Cuál de los siguientes métodos SIP realiza una función similar al canal RAS de H.225 en H.323?",
+    "options": [
+      "INVITE.",
+      "BYE.",
+      "OPTIONS (Consulta de capacidades).",
+      "REGISTER (Ubicación actual del usuario)."
+    ],
+    "a": 4,
+    "info": "El canal RAS de H.225 maneja el registro y estado del terminal dentro de una zona. El método REGISTER de SIP cumple una función similar, informando al servidor de redireccionamiento sobre la ubicación actual del usuario. [cite: 3555, 3662]"
+  },
+  {
+    "q": "¿Cuál es la principal desventaja de H.323 en comparación con SIP, según la IETF?",
+    "options": [
+      "H.323 es más modular y simple.",
+      "H.323 fue diseñado por la IETF, no por la ITU.",
+      "H.323 tiene una implementación grande y compleja debido a su naturaleza monolítica y el gran tamaño de sus estándares (1400 páginas).",
+      "H.323 no soporta llamadas de múltiples partes."
+    ],
+    "a": 3,
+    "info": "H.323 es notablemente más complejo y grande (1400 páginas) en comparación con SIP (250 páginas) y requiere una implementación más compleja. [cite: 3680]"
+  }
+]

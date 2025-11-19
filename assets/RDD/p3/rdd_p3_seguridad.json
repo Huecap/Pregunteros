@@ -1,0 +1,332 @@
+[
+  {
+    "q": "El concepto de Confidencialidad en la comunicación segura se enfoca en que:",
+    "options": [
+      "Los elementos puedan ser modificados solo por partes autorizadas (Integridad).",
+      "Los elementos deben estar disponibles para las partes autorizadas (Disponibilidad).",
+      "El emisor no pueda repudiar el contenido (No Repudio).",
+      "La información debe ser accedida solamente por partes autorizadas, protegiéndola de ataques pasivos como la interceptación."
+    ],
+    "a": 4,
+    "info": "La Confidencialidad se asegura de que solo las partes autorizadas puedan leer la información, siendo la encriptación la solución principal contra la interceptación."
+  },
+  {
+    "q": "En el contexto de las amenazas a la seguridad, un ataque de Modificación se dirige a comprometer qué requisito de una comunicación segura?",
+    "options": [
+      "Disponibilidad (Interrupción).",
+      "Confidencialidad (Interceptación).",
+      "Integridad.",
+      "Autenticación (Invención)."
+    ],
+    "a": 3,
+    "info": "La Modificación implica que alguien altera el contenido del mensaje, atacando directamente la integridad (garantizar la exactitud de la información tal cual fue generada)."
+  },
+  {
+    "q": "¿Qué requisito de una comunicación segura se ataca mediante una Invención (cuando un atacante introduce mensajes y se hace pasar por otro)?",
+    "options": [
+      "Integridad.",
+      "Confidencialidad.",
+      "Disponibilidad.",
+      "Autenticación."
+    ],
+    "a": 4,
+    "info": "La Invención es un ataque activo a la Autenticación, ya que compromete la verificación de la identidad del remitente del mensaje."
+  },
+  {
+    "q": "La encriptación se implementa a través de un algoritmo que depende principalmente de un parámetro clave. ¿Qué método criptográfico requiere que el emisor y el receptor utilicen la misma clave?",
+    "options": [
+      "Asimétrico o de clave pública.",
+      "Cifrado de corrientes de datos.",
+      "Simétrico o de clave privada.",
+      "Técnicas de transposición."
+    ],
+    "a": 3,
+    "info": "Los sistemas simétricos (o de clave privada) utilizan una única clave secreta y compartida para cifrar y descifrar la información."
+  },
+  {
+    "q": "En el proceso de encriptación asimétrica (clave pública), si Ana cifra un mensaje con su propia clave privada y luego lo cifra con la clave pública de Juan, ¿cuál es el objetivo de usar la clave privada de Ana en este orden?",
+    "options": [
+      "Garantizar la Confidencialidad.",
+      "Garantizar la Disponibilidad.",
+      "Garantizar la Autenticación (verificar la identidad del transmisor).",
+      "Garantizar la Integridad."
+    ],
+    "a": 3,
+    "info": "Cifrar con la clave privada del emisor (Ana) garantiza que solo ella pudo haber cifrado el mensaje original, cumpliendo la condición de Autenticación."
+  },
+  {
+    "q": "La Auditoría forma parte del concepto AAA (Autenticación, Autorización y Auditoría). ¿Cuál es su función?",
+    "options": [
+      "Verificar la identidad del remitente (Autenticación).",
+      "Autorizar al usuario a acceder a determinados recursos (Autorización).",
+      "Registrar todos los accesos a los recursos que realiza el usuario previamente autorizado.",
+      "Garantizar el no repudio."
+    ],
+    "a": 3,
+    "info": "La Auditoría consiste en mantener un registro (logs) de todas las acciones y accesos a los recursos realizados por un usuario ya autenticado y autorizado."
+  },
+  {
+    "q": "Los Hash Criptográficos se utilizan como solución a la Integridad. ¿Qué característica fundamental tiene una función de hash?",
+    "options": [
+      "Produce un mensaje de longitud variable.",
+      "Permite recuperar el texto plano (es doble vía).",
+      "Produce una representación del mensaje de longitud fija (digesto de mensaje) y es una función de único sentido.",
+      "Es un sistema simétrico de clave privada."
+    ],
+    "a": 3,
+    "info": "Una función de hash es de único sentido (no se puede revertir) y siempre genera un valor (digesto) de longitud fija, independientemente del tamaño del mensaje de entrada."
+  },
+  {
+    "q": "Un ataque de Repetición (Replay Attack) puede ser mitigado en sistemas de firmas de clave simétrica mediante el uso de:",
+    "options": [
+      "Algoritmos de cifrado de bloques (DES, AES).",
+      "Claves públicas.",
+      "Timestamps (fecha y hora) en cada mensaje.",
+      "El protocolo PAP."
+    ],
+    "a": 3,
+    "info": "Los Timestamps (marcas de tiempo) se utilizan para proteger los mensajes ante ataques de repetición, asegurando que un mensaje no pueda ser retransmitido fraudulentamente."
+  },
+  {
+    "q": "El protocolo de autenticación CHAP (Challenge Handshake Authentication Protocol) es más seguro que PAP. ¿Cuál es su mecanismo de seguridad principal?",
+    "options": [
+      "Envía la contraseña en texto plano.",
+      "Utiliza un desafío (challenge) que es cifrado por el cliente y verificado por el servidor.",
+      "Utiliza una única clave de sesión.",
+      "Depende de la clave pública del servidor."
+    ],
+    "a": 2,
+    "info": "CHAP utiliza un desafío (una palabra) que el cliente debe cifrar usando una clave secreta y devolver al servidor. El servidor verifica el cifrado, garantizando la autenticación sin enviar la contraseña en texto plano."
+  },
+  {
+    "q": "¿Cuál es la función del Centro de Distribución de Claves (KDC) en la implementación de Firmas de clave simétrica?",
+    "options": [
+      "Emitir certificados digitales (CA).",
+      "Aplicar un algoritmo de hash al mensaje (MD5).",
+      "Generar una clave simétrica de sesión que se utiliza solo una vez entre dos partes que desean comunicarse de forma confidencial.",
+      "Almacenar las claves públicas de todos los usuarios."
+    ],
+    "a": 3,
+    "info": "El KDC es el intermediario de confianza que distribuye eficientemente claves simétricas de sesión únicas a los usuarios para cada nueva transacción."
+  },
+  {
+    "q": "Las Firmas Digitales (cualquier tipo) deben cumplir con la condición de No Repudio. Esto significa que:",
+    "options": [
+      "El mensaje no se ha alterado (Integridad).",
+      "La información viaja cifrada (Confidencialidad).",
+      "El emisor no pueda repudiar después el contenido del mensaje que envió.",
+      "El receptor no ha podido confeccionar el mensaje él mismo."
+    ],
+    "a": 3,
+    "info": "El No Repudio es la condición que garantiza que se puede rastrear al autor del mensaje y que este no puede negar haberlo enviado."
+  },
+  {
+    "q": "Según el proceso de cifrado de clave pública para autenticación y confidencialidad (ej. [cite: 4277, 4278, 4279, 4280]), si el mensaje enviado es C_J(C_A(P)) (donde P es el texto plano, C_A es la clave privada de Ana, y C_J es la clave pública de Juan), ¿qué clave se utilizó para garantizar la Confidencialidad (secreto)?",
+    "options": [
+      "La clave privada de Ana (C_A).",
+      "La clave pública de Juan (C_J).",
+      "La clave de sesión (R1).",
+      "El hash criptográfico."
+    ],
+    "a": 2,
+    "info": "El cifrado con la clave pública del destinatario (C_J) garantiza la Confidencialidad, ya que solo la clave privada del destinatario (Juan) puede descifrar el mensaje[cite: 4278, 4279]."
+  },
+  {
+    "q": "El Firewall se define como una combinación de hardware y software que aísla la red interna de Internet. ¿Cuál es su rol principal?",
+    "options": [
+      "Garantizar que todos los paquetes TCP estén en estado ESTABLISHED.",
+      "Realizar la traducción de direcciones de red (NAT/PAT).",
+      "Controlar el flujo de tráfico hacia y desde la empresa, permitiendo algunos paquetes y bloqueando otros.",
+      "Reemplazar la funcionalidad de los switches y routers."
+    ],
+    "a": 3,
+    "info": "El firewall es el punto de control centralizado que aplica las políticas de seguridad, controlando qué tráfico (paquetes) puede ingresar o egresar de la red interna[cite: 4330, 4331]."
+  },
+  {
+    "q": "El tipo de Firewall Filtrado de Paquetes toma decisiones basándose en la información de la capa de red y de transporte. ¿Cuál es una desventaja de este método?",
+    "options": [
+      "Permite filtrar según perfiles de usuario (Pasarelas de Aplicación).",
+      "Cada paquete se analiza de manera independiente a los demás, lo que lo hace lento.",
+      "Mantiene un registro de las conexiones a través de tablas dinámicas (Firewall con Estado).",
+      "Las decisiones se basan en datos de aplicación."
+    ],
+    "a": 2,
+    "info": "El Firewall de Filtrado de Paquetes es lento porque requiere analizar las direcciones IP, puertos y bits SYN/ACK de cada paquete individualmente para tomar una decisión de filtrado[cite: 4345, 4341, 4342, 4343, 4347]."
+  },
+  {
+    "q": "Una de las características de un Firewall con Estado (Stateful) es que:",
+    "options": [
+      "Se basa en datos de aplicación para filtrar.",
+      "Solo filtra las direcciones IP y no los puertos.",
+      "Utiliza tablas dinámicas para seguir el estado en tiempo real de las sesiones (end-to-end) y permite paquetes desde el exterior solo si la conexión se inició en el interior.",
+      "Filtra solo mediante políticas permisivas."
+    ],
+    "a": 3,
+    "info": "El Firewall con Estado mantiene un registro dinámico de las conexiones activas, permitiendo que las respuestas del exterior ingresen únicamente si fueron solicitadas (iniciadas) por un host interno, mejorando la seguridad y el rendimiento[cite: 4354, 4355]."
+  },
+  {
+    "q": "En un Firewall de Pasarelas de Aplicación, ¿en qué capa se basan las decisiones de filtrado?",
+    "options": [
+      "Capa de Transporte (puertos TCP/UDP).",
+      "Capa de Red (direcciones IP).",
+      "Capa de Enlace (direcciones MAC).",
+      "Capa de Aplicación (datos de aplicación)."
+    ],
+    "a": 4,
+    "info": "La Pasarela de Aplicación es un servidor específico que filtra basándose en los datos de la Capa de Aplicación, lo que también le permite filtrar según perfiles de usuarios[cite: 4361, 4362]."
+  },
+  {
+    "q": "Una desventaja clave de utilizar un Firewall de Pasarelas de Aplicación es que:",
+    "options": [
+      "Solo se requiere una pasarela para todas las aplicaciones.",
+      "Las decisiones son muy rápidas y solo se basan en IP/Puerto.",
+      "Se requiere una pasarela de aplicación para cada aplicación que se necesite controlar (ej. una para Telnet, otra para HTTP, etc.).",
+      "No permite filtrar según perfiles de usuarios."
+    ],
+    "a": 3,
+    "info": "La principal desventaja es la necesidad de tener un servidor de aplicación específico para cada protocolo que se desee controlar, lo que aumenta la complejidad y el costo[cite: 4363]."
+  },
+  {
+    "q": "Las Políticas de Seguridad son un documento formal. ¿Cuál es un requisito fundamental de este documento en relación con su mantenimiento?",
+    "options": [
+      "Solo se crea una vez y nunca se modifica.",
+      "Solo debe tratar temas de criptografía.",
+      "Es un documento vivo, se actualiza constantemente.",
+      "Se utiliza para asistir en el diseño de hardware, no de software."
+    ],
+    "a": 3,
+    "info": "Las Políticas de Seguridad deben ser actualizadas constantemente (documento vivo) para adaptarse a nuevas amenazas, tecnologías y operaciones de la organización[cite: 4124]."
+  },
+  {
+    "q": "En el desarrollo de Políticas de Seguridad, el requisito de establecer una jerarquía de permisos de acceso se traduce en dar a los empleados:",
+    "options": [
+      "Acceso ilimitado a todos los recursos.",
+      "Acceso basado únicamente en su dirección IP.",
+      "Solo el acceso mínimo necesario para cumplir con sus funciones.",
+      "Acceso a la web y a los adjuntos de correo electrónico."
+    ],
+    "a": 3,
+    "info": "Las políticas establecen una jerarquía de permisos para asegurar que los empleados tengan solo el acceso mínimo indispensable (principio del mínimo privilegio) para realizar su trabajo[cite: 4122]."
+  },
+  {
+    "q": "El protocolo IPsec (IP security) se implementa como un estándar de seguridad en la capa de red. ¿Cuál es uno de sus servicios principales?",
+    "options": [
+      "Control de congestión.",
+      "Servicio de DHCP.",
+      "Protección contra ataques de repetición.",
+      "Traducción de direcciones de red."
+    ],
+    "a": 3,
+    "info": "Los servicios principales de IPsec incluyen Confidencialidad, Integridad de datos, Autenticación, y Protección contra ataques de repetición[cite: 4463, 4464, 4465, 4466]."
+  },
+  {
+    "q": "Si se requiere tráfico seguro en ambas direcciones entre dos puntos finales que utilizan IPsec, ¿cuántas Asociaciones de Seguridad (SA) son necesarias?",
+    "options": [
+      "Solo una.",
+      "Dos, ya que una SA es una conexión simplex entre dos puntos finales.",
+      "Una por cada capa de protocolo.",
+      "Tantas como paquetes TCP se envíen."
+    ],
+    "a": 2,
+    "info": "Una Asociación de Seguridad (SA) es una conexión simplex (unidireccional). Por lo tanto, se requieren dos SA para soportar tráfico seguro en ambas direcciones (dúplex)[cite: 4476, 4479]."
+  },
+  {
+    "q": "¿Qué protocolo de IPsec proporciona Integridad y Autenticación, pero no Cifrado (Confidencialidad)?",
+    "options": [
+      "ESP (Encapsulating Security Payload).",
+      "AH (Authentication Header).",
+      "3DES.",
+      "SSL."
+    ],
+    "a": 2,
+    "info": "El protocolo AH (Authentication Header) proporciona autenticación e integridad. ESP (Encapsulating Security Payload) proporciona cifrado, autenticación e integridad[cite: 4511, 4512, 4515, 4516, 4517]."
+  },
+  {
+    "q": "En el Modo Túnel de IPsec, ¿qué se encapsula en un nuevo paquete IP con un nuevo encabezado, y dónde se utiliza comúnmente este modo?",
+    "options": [
+      "Solo el encabezado TCP; utilizado para comunicaciones PC a PC.",
+      "Solo la carga útil del paquete IP; utilizado para VPN de acceso remoto.",
+      "Todo el paquete IP original; utilizado cuando el paquete termina en un firewall de una empresa.",
+      "Solo el encabezado IP; utilizado para evitar el cuello de botella."
+    ],
+    "a": 3,
+    "info": "En el Modo Túnel, todo el paquete IP se encapsula y se utiliza generalmente entre pasarelas o firewalls (ej. para VPN punto a punto)[cite: 4536, 4537]."
+  },
+  {
+    "q": "El Modo de Transporte de IPsec se diferencia del Modo Túnel en que:",
+    "options": [
+      "El Modo de Transporte encapsula todo el paquete IP.",
+      "El Modo de Transporte solo autentica o cifra la carga útil del paquete IP.",
+      "El Modo de Transporte agrega un encabezado IP extra.",
+      "El Modo de Transporte se utiliza cuando el paquete termina en un firewall."
+    ],
+    "a": 2,
+    "info": "El Modo de Transporte se utiliza para comunicaciones de PC a PC y solo cifra o autentica la porción de datos (carga útil) del paquete IP, dejando el encabezado IP original intacto[cite: 4523, 4525]."
+  },
+  {
+    "q": "Una VPN (Red Privada Virtual) se define como una red privada creada mediante el uso de túneles sobre una red pública (Internet). ¿Cuál es una de sus principales ventajas en comparación con las redes privadas formadas por líneas alquiladas?",
+    "options": [
+      "Alto costo de implementación.",
+      "No utiliza protocolos de cifrado.",
+      "Costo reducido, ya que permite utilizar la infraestructura de Internet.",
+      "No es escalable."
+    ],
+    "a": 3,
+    "info": "Las VPN ofrecen un costo reducido al aprovechar la infraestructura existente de Internet, a diferencia de las líneas alquiladas que eran de alto costo[cite: 4561, 4562, 4555, 4556]."
+  },
+  {
+    "q": "Una VPN de Acceso Remoto (utilizada para teletrabajo) soporta una arquitectura cliente-servidor. ¿Cuál de las siguientes es una opción para la creación de esta VPN?",
+    "options": [
+      "VPN Frame Relay.",
+      "VPN ATM.",
+      "VPN SSL (a través de un navegador web y cifrado nativo SSL).",
+      "VPN MPLS."
+    ],
+    "a": 3,
+    "info": "Las opciones de VPN de acceso remoto incluyen VPN SSL (cifrado a nivel de capa de transporte) y VPN IPsec (cifrado a nivel de capa de red)[cite: 4588, 4589]."
+  },
+  {
+    "q": "El protocolo SSL/TLS se sitúa entre la capa de aplicación y la de transporte. ¿Cuál es el rol de SSL en el lado emisor?",
+    "options": [
+      "Leer del socket TCP y desencriptar los datos.",
+      "Recibir datos, encriptarlos y dirigirlos a un socket TCP.",
+      "Comprobar la lista de CA de confianza.",
+      "Generar la clave pública RSA del servidor."
+    ],
+    "a": 2,
+    "info": "En el lado emisor, SSL recibe los datos de la aplicación, los encripta y los pasa al socket TCP. En el lado receptor, realiza la operación inversa[cite: 4597, 4598]."
+  },
+  {
+    "q": "Durante el Protocolo de Acuerdo SSL, ¿qué elemento clave envía el servidor al navegador para que este pueda verificar la identidad del servidor?",
+    "options": [
+      "La clave simétrica de sesión.",
+      "La versión del SSL del navegador.",
+      "Su certificado (que contiene la clave pública RSA del servidor).",
+      "El hash criptográfico."
+    ],
+    "a": 3,
+    "info": "El servidor responde con su certificado (clave pública RSA), lo que permite al navegador verificar su identidad contra la lista de CAs de confianza que posee[cite: 4610, 4611]."
+  },
+  {
+    "q": "Una vez que el navegador comprueba la validez del certificado del servidor, ¿qué paso se realiza para generar la clave que se utilizará para cifrar los mensajes durante toda la sesión SSL?",
+    "options": [
+      "El servidor genera un hash MD5 y lo envía.",
+      "El servidor utiliza su clave privada para el cifrado.",
+      "El navegador genera una clave simétrica de sesión, la encripta con la clave pública del servidor y la envía.",
+      "Se utiliza la clave pública de la CA."
+    ],
+    "a": 3,
+    "info": "El navegador genera la clave simétrica de sesión, la cifra con la clave pública del servidor y la envía. Esta clave de sesión se utilizará para cifrar y desencriptar todos los datos intercambiados durante la sesión[cite: 4614, 4615, 4618]."
+  },
+  {
+    "q": "El Modo Túnel de IPsec tiene el inconveniente de que agrega un encabezado IP extra. ¿Cuál es el motivo de este encabezado adicional?",
+    "options": [
+      "Para cifrar la carga útil del paquete IP.",
+      "Para que las máquinas de la LAN sean conscientes de la existencia de IPsec.",
+      "Se requiere para encapsular todo el paquete IP original dentro de un nuevo paquete IP para el túnel.",
+      "Para proporcionar protección contra ataques de repetición."
+    ],
+    "a": 3,
+    "info": "El encabezado IP extra es necesario porque el Modo Túnel encapsula completamente el paquete IP original dentro de un nuevo paquete IP para enviarlo a través del túnel[cite: 4536, 4543]."
+  }
+]

@@ -1,0 +1,343 @@
+[
+  {
+    "q": "En el contexto de TCP, el concepto de socket se define como la combinación de la dirección IP y el número de puerto. ¿Cuál es el propósito fundamental de utilizar este par (IP + Puerto) en la capa de transporte?",
+    "options": [
+      "Permitir la encapsulación de segmentos TCP en paquetes IP.",
+      "Identificar de manera única y sin ambigüedades una comunicación específica entre dos aplicaciones en hosts distintos en Internet.",
+      "Establecer la conexión lógica entre el emisor y el receptor sin la necesidad de un three-way handshake.",
+      "Gestionar el control de flujo utilizando el campo 'Tamaño de Ventana'."
+    ],
+    "a": 2,
+    "info": "El socket, compuesto por (IP:Puerto), es la clave para la demultiplexión en el destino, permitiendo que la capa de transporte entregue los datos al proceso de aplicación correcto. Identifica la comunicación de forma única e irrepetible."
+  },
+  {
+    "q": "Se realiza una transferencia de datos de la PC-A a la PC-B mediante TCP, donde los segmentos son de 1000 bytes. Si el segmento 1 tiene SEC=1 y el segmento 2 tiene SEC=1001, y la PC-B recibe ambos, ¿cuál debe ser el valor del campo Número de Confirmación de Recepción (ACK) que la PC-B envía a la PC-A, y por qué?",
+    "options": [
+      "ACK=1, porque es el primer segmento de la comunicación.",
+      "ACK=1001, porque es el inicio del segundo segmento que se recibió.",
+      "ACK=2000, porque se han recibido 2000 bytes en total.",
+      "ACK=2001, porque indica el número del siguiente byte que la PC-B espera recibir de la PC-A."
+    ],
+    "a": 4,
+    "info": "El Número de Confirmación (ACK) siempre contiene el valor del siguiente byte esperado, no el total recibido ni el último byte. Tras recibir los bytes 1 al 2000, la PC-B espera el byte 2001."
+  },
+  {
+    "q": "El campo Tamaño de Ventana de Recepción en el encabezado TCP juega un rol crucial en el control de flujo. ¿Cómo impacta directamente en el comportamiento del emisor?",
+    "options": [
+      "Ajusta la tasa de transmisión del emisor basándose en la congestión de la red (Decremento multiplicativo).",
+      "Indica la cantidad máxima de bytes que el emisor puede tener en la red en un momento determinado (Ventana de Congestión).",
+      "Indica la cantidad de bytes que el receptor puede aceptar sin que su búfer se sature, limitando la cantidad de datos que el emisor puede transmitir sin acuse de recibo.",
+      "Define el tamaño máximo de segmento (MSS) que el receptor puede aceptar para evitar fragmentación IP."
+    ],
+    "a": 3,
+    "info": "La Ventana de Recepción implementa el control de flujo extremo a extremo, variando dinámicamente según el espacio libre en el búfer del receptor. Un valor de cero (Ventana=0) detiene la transmisión del emisor."
+  },
+  {
+    "q": "El protocolo TCP implementa Control de Congestión utilizando el método de 'Incremento Aditivo / Decremento Multiplicativo' (AIMD). ¿Qué evento provoca que TCP active la fase de Decremento Multiplicativo y cómo se manifiesta este ajuste en la tasa de transmisión?",
+    "options": [
+      "La recepción de un segmento con el bit ECE activado; la tasa se reduce a la mitad.",
+      "La recepción de un segmento con el bit CWR activado; la tasa se aumenta linealmente.",
+      "La pérdida de un segmento (tiempo de espera excedido o no recepción de ACK); la ventana de congestión se reduce a la mitad.",
+      "La recepción de múltiples ACK duplicados; la ventana de recepción se reduce a cero."
+    ],
+    "a": 3,
+    "info": "El decremento multiplicativo se produce cuando se detecta una pérdida (usualmente por la expiración de un temporizador de retransmisión o ACKs duplicados), asumiendo congestión en la red. La reacción es reducir drásticamente la Ventana de Congestión (a la mitad)."
+  },
+  {
+    "q": "Un host (PC-A) desea iniciar una conexión TCP con un servidor (PC-B). ¿Cuál es el significado del bit SYN en el primer segmento enviado por PC-A, y qué otro flag es indispensable en la respuesta del PC-B para avanzar en el establecimiento de la conexión?",
+    "options": [
+      "SYN=1 indica que el segmento contiene datos urgentes; la respuesta de B debe tener PSH=1.",
+      "SYN=1 solicita el establecimiento de una conexión; la respuesta de B debe tener SYN=1 y ACK=1.",
+      "SYN=1 inicia la liberación de la conexión; la respuesta de B debe tener FIN=1.",
+      "SYN=1 avisa que A ya redujo la tasa de transmisión (CWR); la respuesta de B debe tener ECE=1."
+    ],
+    "a": 2,
+    "info": "El bit SYN (Synchronize) se usa para solicitar una conexión. La respuesta del servidor (segundo paso del three-way handshake) debe llevar SYN=1 (solicitando la conexión de vuelta) y ACK=1 (acuse de recibo del SYN inicial)."
+  },
+  {
+    "q": "Durante la fase de transferencia de datos de TCP, un router intermedio se congestiona y marca un paquete IP con el bit ECN. Cuando el receptor (PC-B) recibe este paquete, ¿qué acción debe tomar en el segmento TCP de respuesta para informar al emisor (PC-A) sobre la congestión, siguiendo el protocolo ECN?",
+    "options": [
+      "Activar el bit CWR (Congestion Window Reduced) para notificar que la congestión fue evitada.",
+      "Activar el bit RST (Reset) para forzar el restablecimiento de la conexión debido a la congestión.",
+      "Activar el bit ECE (ECN Echo) para indicar que se recibió el aviso de congestión en la capa IP.",
+      "Establecer el campo 'Tamaño de Ventana' a cero para detener el flujo de datos."
+    ],
+    "a": 3,
+    "info": "La PC-B, al recibir el aviso de congestión (ECN en la cabecera IP), activa el bit ECE en su segmento TCP de respuesta (Echo) para notificar al emisor (PC-A) que debe reducir su ventana de congestión."
+  },
+  {
+    "q": "UDP se considera un protocolo de transporte no fiable y sin conexión. ¿Cuál de las siguientes afirmaciones es una consecuencia directa de su diseño de 'máximo esfuerzo' (best-effort)?",
+    "options": [
+      "Utiliza un ACK selectivo (SACK) para retransmitir solo los datagramas perdidos.",
+      "Tiene mayor sobrecarga de gestión debido a la necesidad de temporizadores por cada datagrama enviado.",
+      "Es mucho más rápido y se utiliza preferentemente para aplicaciones de tiempo real como la voz y el video, donde la pérdida de datos es tolerable por la baja latencia.",
+      "Implementa Ventana Deslizante para el control de flujo, pero no para el control de congestión."
+    ],
+    "a": 3,
+    "info": "UDP es rápido y tiene poca sobrecarga porque no implementa control de flujo, control de congestión, ni temporizadores. Esto lo hace ideal para aplicaciones en tiempo real que priorizan la velocidad sobre la fiabilidad."
+  },
+  {
+    "q": "Una de las opciones negociables en el establecimiento de la conexión TCP es el MSS (Maximum Segment Size). ¿Cuál es la principal razón para que un host defina y negocie el MSS en este momento?",
+    "options": [
+      "Asegurar que el tamaño del segmento TCP sea siempre mayor que el tamaño de la cabecera IP.",
+      "Definir el tamaño de la ventana de congestión inicial para el control de flujo.",
+      "Evitar la fragmentación del paquete IP que encapsula el segmento TCP, ya que la fragmentación disminuye el rendimiento en la red (específicamente en IPv4).",
+      "Permitir al receptor confirmar la recepción de rangos de números de secuencia (SACK)."
+    ],
+    "a": 3,
+    "info": "El MSS se negocia para definir el tamaño máximo de la carga útil de TCP. Esto es crucial para que, al encapsularse en un paquete IP, el paquete total no exceda la MTU del camino, evitando así la costosa fragmentación en la capa IP (principalmente en IPv4)."
+  },
+  {
+    "q": "En una red donde la PC-A (IP: 192.168.1.10, Puerto: 50000) se conecta al Servidor WEB (IP: 34.8.9.100, Puerto: 80), ¿por qué es posible que otra PC-B (IP: 192.168.1.20, Puerto: 50000) pueda conectarse simultáneamente al mismo Servidor WEB en el Puerto 80?",
+    "options": [
+      "Porque el Servidor WEB solo distingue a los clientes por su dirección IP.",
+      "Porque el número de puerto del cliente es 'dinámico' y su valor no es importante para el servidor.",
+      "Porque la comunicación se identifica de manera única por el socket completo (IP Origen + Puerto Origen + IP Destino + Puerto Destino), haciendo que las dos conexiones sean distintas.",
+      "Porque el Servidor WEB solo abre el Puerto 80 en modo LISTEN, permitiendo múltiples conexiones."
+    ],
+    "a": 3,
+    "info": "Aunque ambas PC-A y PC-B usan el mismo Puerto Origen (50000) y Puerto Destino (80), la combinación de los cuatro elementos del socket es diferente (IP Origen es 192.168.1.10 vs 192.168.1.20). Esto permite que el servidor distinga ambas conversaciones de forma única."
+  },
+  {
+    "q": "El protocolo TCP/IP, tanto en IPv4 como en IPv6, es considerado un protocolo de interred no fiable o de 'máximo esfuerzo' (best-effort). ¿Qué mecanismo utiliza TCP en la capa de transporte para construir un servicio fiable sobre esta capa de red inherentemente no fiable?",
+    "options": [
+      "Utiliza el campo Longitud de Encabezado (Header Length) para garantizar la integridad de la cabecera.",
+      "Se apoya en la numeración de secuencia, el campo de confirmación de recepción (ACK) y los temporizadores para gestionar la retransmisión de segmentos perdidos.",
+      "Requiere que todos los routers de la red reserven recursos para la conexión (servicio orientado a conexión).",
+      "Activa el bit URG (Urgente) para garantizar la entrega de datos de control."
+    ],
+    "a": 2,
+    "info": "La fiabilidad de TCP se construye mediante mecanismos de temporización y retransmisión. Si el emisor no recibe un ACK antes de que expire el temporizador, asume la pérdida y retransmite los datos, garantizando así la entrega."
+  },
+  {
+    "q": "El protocolo TCP ofrece conexiones dúplex y punto a punto. ¿Qué implica específicamente la característica de ser dúplex en el establecimiento de la conexión?",
+    "options": [
+      "Que el segmento debe incluir tanto el Puerto Origen como el Puerto Destino.",
+      "Que los paquetes de datos deben viajar por el mismo camino físico en ambas direcciones.",
+      "Que se deben establecer y gestionar dos sockets separados: uno para la transmisión de A a B (Socket 1) y otro para la transmisión de B a A (Socket 2).",
+      "Que la capa de transporte puede multiplexar datos de diferentes aplicaciones."
+    ],
+    "a": 3,
+    "info": "Las conexiones dúplex de TCP significan que la comunicación puede ocurrir simultáneamente en ambas direcciones. Esto requiere la apertura de dos sockets lógicos, que se gestionan y liberan por separado."
+  },
+  {
+    "q": "¿Cuál es la función principal del flag FIN en el encabezado TCP, y por qué el proceso de liberación de una conexión requiere, en el escenario normal, el intercambio de cuatro segmentos (FIN, ACK, FIN, ACK)?",
+    "options": [
+      "El FIN solicita una retransmisión de datos urgentes; se requieren cuatro segmentos para confirmar la integridad del reenvío.",
+      "El FIN solicita el establecimiento de un nuevo socket; se requieren cuatro segmentos para el three-way handshake.",
+      "El FIN solicita la liberación de una conexión (socket); se requieren cuatro segmentos porque TCP debe finalizar cada uno de los dos sockets lógicos (dúplex) de la comunicación por separado.",
+      "El FIN indica que el número de secuencia ha finalizado; se requieren cuatro segmentos para asegurar que el buffer de recepción esté vacío."
+    ],
+    "a": 3,
+    "info": "El bit FIN (Finalize) se usa para liberar un socket. Dado que TCP usa dos sockets (dúplex), cada uno debe ser finalizado de forma independiente (solicitud FIN y confirmación ACK), resultando en un proceso de cuatro vías."
+  },
+  {
+    "q": "A diferencia de TCP, el protocolo UDP solo tiene un campo de Suma de Verificación (Checksum) opcional. Si este campo se utiliza, ¿qué partes del datagrama UDP se incluyen en el cálculo para garantizar la integridad?",
+    "options": [
+      "Solo el encabezado UDP y los datos de la aplicación.",
+      "El encabezado UDP, los datos de la aplicación, y el pseudoencabezado de IP.",
+      "Solo los datos de la aplicación y el campo de longitud de UDP.",
+      "Solo el encabezado UDP y la cabecera Ethernet."
+    ],
+    "a": 2,
+    "info": "La suma de verificación de UDP, si se utiliza, garantiza la integridad del encabezado UDP, los datos, y un pseudoencabezado de IP. Este pseudoencabezado incluye información de la capa de red (como direcciones IP) para detectar un enrutamiento incorrecto."
+  },
+  {
+    "q": "En el control de congestión ECN de TCP, si el Host A recibe un segmento de Host B con el bit CWR (Congestion Window Reduced) activado, ¿qué significa esto para A en la dinámica de control de congestión?",
+    "options": [
+      "A debe activar el bit ECE para notificar al router de la congestión.",
+      "A está informando a B que él (A) ha recibido el aviso de congestión y ya ha reducido su tasa de transferencia (ventana de congestión).",
+      "A debe aumentar su ventana de congestión, aplicando el Incremento Aditivo.",
+      "A está solicitando a B que le envíe más datos, ya que su búfer está vacío."
+    ],
+    "a": 2,
+    "info": "El bit CWR es activado por el emisor (PC-A) para avisar al receptor (PC-B) que, tras recibir un aviso de congestión (ECE), el emisor ya redujo su Ventana de Congestión y, por ende, su tasa de transferencia de datos a la red."
+  },
+  {
+    "q": "¿Cuál es la principal diferencia entre el Control de Flujo (implementado por el campo Tamaño de Ventana) y el Control de Congestión (implementado por la Ventana de Congestión) en TCP?",
+    "options": [
+      "El Control de Flujo es un mecanismo local del emisor para limitar los reenvíos, mientras que el Control de Congestión es global para la red.",
+      "El Control de Flujo se enfoca en que un emisor rápido no sature el búfer del receptor, mientras que el Control de Congestión se enfoca en que el emisor no sature la red (routers).",
+      "El Control de Flujo solo se implementa en UDP, y el Control de Congestión solo en TCP.",
+      "El Control de Flujo es estático, y el Control de Congestión varía dinámicamente con el tiempo."
+    ],
+    "a": 2,
+    "info": "El Control de Flujo es extremo a extremo y protege al receptor (dispositivo terminal) de ser desbordado. El Control de Congestión ajusta la tasa del emisor para evitar saturar los dispositivos intermedios de la red (routers)."
+  },
+  {
+    "q": "¿Qué función cumple el campo Apuntador de Urgente (Urgent Pointer) en el encabezado TCP, y cuál flag debe ser activado para que este campo sea considerado válido?",
+    "options": [
+      "Permite al receptor confirmar la recepción de rangos de números de secuencia; requiere el flag SACK.",
+      "Indica el número de secuencia a partir del cual se deben procesar inmediatamente los datos urgentes en el segmento; requiere el flag URG.",
+      "Avisa al receptor que ya se redujo la ventana de congestión; requiere el flag CWR.",
+      "Permite al emisor forzar la entrega inmediata de los datos a la aplicación en el destino; requiere el flag PSH."
+    ],
+    "a": 2,
+    "info": "El Apuntador de Urgente indica el byte de la carga útil a partir del cual se encuentran los datos urgentes (ej. 'cancelar'). El bit URG debe estar activado para indicar que este campo está en uso y debe ser procesado de manera especial por el receptor."
+  },
+  {
+    "q": "Se observa en el comando `netstat -n` una conexión con el estado CLOSE_WAIT. ¿Qué indica este estado en el socket de la máquina local?",
+    "options": [
+      "El socket está esperando iniciar una conexión (SYN_SENT).",
+      "El socket tiene una conexión establecida y está transfiriendo datos (ESTABLISHED).",
+      "La conexión remota (el otro host) ha finalizado el socket, y la máquina local está esperando la orden de cierre para su propio socket.",
+      "El socket está esperando después de cerrarse a que concluyan los paquetes que siguen en la red (TIME_WAIT)."
+    ],
+    "a": 3,
+    "info": "El estado CLOSE_WAIT indica que la conexión remota ha enviado un FIN y ha cerrado su lado. El socket local está esperando que la aplicación local inicie el cierre de su propio lado de la conexión."
+  },
+  {
+    "q": "La Multiplexión en la capa de transporte se define como la capacidad del origen para recibir segmentos de diferentes aplicaciones y enviarlos por el mismo medio de transmisión. ¿Qué par de campos en el encabezado TCP/UDP es esencial para que el destino pueda realizar la Demultiplexión?",
+    "options": [
+      "Número de Secuencia y Número de Confirmación de Recepción.",
+      "Longitud de Encabezado TCP y Suma de Verificación.",
+      "Puerto de Origen y Puerto de Destino.",
+      "Apuntador Urgente y Tamaño de Ventana."
+    ],
+    "a": 3,
+    "info": "La demultiplexión se basa en el número de Puerto de Destino para identificar a qué aplicación entregar los datos. El Puerto de Origen es necesario junto con la IP para identificar la conversación de forma única (socket)."
+  },
+  {
+    "q": "¿Qué mecanismo se utiliza en TCP para permitir que los hosts manejen búferes de recepción mayores a los 65.535 bytes limitados por los 16 bits del campo 'Tamaño de Ventana'?",
+    "options": [
+      "El Maximum Segment Size (MSS).",
+      "El Apuntador Urgente (Urgent Pointer).",
+      "El Escalado de Ventana (Window Scaling), negociado en el campo Opciones durante el establecimiento de la conexión.",
+      "El ECN (Explicit Congestion Notification)."
+    ],
+    "a": 3,
+    "info": "El Escalado de Ventana es una opción de TCP que se negocia durante el three-way handshake. Permite aumentar el tamaño efectivo del campo 'Tamaño de Ventana' (16 bits) a más de 64 KiB, posibilitando la gestión de búferes más grandes."
+  },
+  {
+    "q": "Cuando el flag PSH (Push) se activa en un segmento TCP, ¿cuál es el efecto deseado en el host receptor?",
+    "options": [
+      "El host receptor debe retransmitir el segmento de inmediato al emisor.",
+      "El host receptor debe esperar a que el búfer se llene completamente antes de entregar los datos a la aplicación.",
+      "El host receptor debe entregar los datos del segmento a la aplicación de inmediato, sin esperar a que el búfer de recepción se llene más.",
+      "El host receptor debe ignorar el campo 'Número de Confirmación de Recepción'."
+    ],
+    "a": 3,
+    "info": "El bit PSH se usa para obligar al receptor a 'empujar' los datos inmediatamente a la capa de aplicación, incluso si su búfer aún no ha alcanzado un umbral de procesamiento."
+  },
+  {
+    "q": "El campo Opciones del encabezado TCP es de longitud variable y se usa principalmente durante el establecimiento de la conexión. Además de MSS y Escalado de Ventana, ¿cuál es una opción avanzada que permite al receptor confirmar la recepción de bloques de datos que llegaron correctamente pero fuera de orden, mejorando la eficiencia de la retransmisión?",
+    "options": [
+      "URG (Urgent Pointer).",
+      "FIN (Finalize).",
+      "SACK (Selective Acknowledgement).",
+      "PSH (Push)."
+    ],
+    "a": 3,
+    "info": "SACK (ACK Selectivos) es una opción que permite al receptor informar al emisor sobre rangos específicos (bloques) de datos recibidos y aceptados, incluso si llegaron desordenados o si hay huecos. Esto evita que el emisor retransmita datos que ya llegaron (Comportamiento por defecto: retransmite a partir del byte esperado)."
+  },
+  {
+    "q": "¿Cuál es la principal diferencia de propósito entre los puertos Well Known (1-1023) y los puertos Registrados (1024-49.151)?",
+    "options": [
+      "Los Well Known son usados por el cliente, y los Registrados por el servidor.",
+      "Los Well Known representan servicios del sistema/protocolos estándar (ej. HTTP 80), mientras que los Registrados son para aplicaciones de terceros que requieren un puerto fijo no estándar.",
+      "Los Well Known son usados por TCP, y los Registrados por UDP.",
+      "Los Well Known son dinámicos, y los Registrados son estáticos."
+    ],
+    "a": 2,
+    "info": "Los puertos Well Known identifican los servicios de red más comunes (ej. 80 para web, 25 para email). Los puertos Registrados también son fijos, pero están reservados para aplicaciones específicas de terceros."
+  },
+  {
+    "q": "Un administrador de red debe configurar un servicio que requiere mínima latencia y no puede permitirse el retraso causado por la retransmisión o el reordenamiento. Si bien la pérdida ocasional de datos es aceptable, ¿qué protocolo de la capa de transporte debe seleccionar y por qué?",
+    "options": [
+      "TCP, porque garantiza la entrega ordenada y sin errores, ideal para minimizar la latencia.",
+      "UDP, porque es sin conexión, no fiable, tiene baja sobrecarga de gestión (sin temporizadores) y es muy rápido.",
+      "TCP con el bit PSH activado, ya que esto forzará la entrega inmediata.",
+      "UDP con el campo 'Suma de Verificación' desactivado, para maximizar la velocidad."
+    ],
+    "a": 2,
+    "info": "UDP es la elección correcta para aplicaciones en tiempo real (voz, video, juegos) que priorizan la velocidad y la baja latencia, sacrificando la fiabilidad. La no implementación de ACK/retransmisión lo hace muy rápido."
+  },
+  {
+    "q": "Si un host detecta que su búfer de recepción está completamente lleno (sin espacio para más datos), ¿cuál es el mecanismo de Control de Flujo que utiliza para notificar al emisor que debe detener temporalmente la transmisión, y qué valor se envía en la cabecera TCP?",
+    "options": [
+      "Activa el bit CWR y envía Ventana = 0.",
+      "Activa el bit FIN y envía Ventana = 5000 bytes.",
+      "Envía Ventana = 0 (cero) en el campo Tamaño de Ventana de Recepción.",
+      "Envía un segmento con REC=1 y Ventana = 0."
+    ],
+    "a": 3,
+    "info": "Si el búfer de recepción se llena, el host establece el campo 'Tamaño de Ventana de Recepción' a cero para detener el flujo de datos desde el emisor. Esta es la forma más directa de control de flujo."
+  },
+  {
+    "q": "El protocolo DNS (Sistema de Nombre de Dominio) utiliza principalmente el protocolo UDP en el puerto 53 para las consultas estándar. ¿Cuál es la razón principal para que DNS prefiera UDP en lugar de TCP para estas consultas?",
+    "options": [
+      "UDP permite la transferencia de archivos de gran tamaño (Archivos de Zona).",
+      "UDP proporciona la fiabilidad necesaria para la resolución de nombres.",
+      "Las consultas DNS son simples y cortas, por lo que usar UDP reduce la sobrecarga de la conexión (handshake) y la hace más rápida.",
+      "TCP es solo para el correo electrónico y la web, no para servicios de infraestructura."
+    ],
+    "a": 3,
+    "info": "DNS utiliza UDP/53 para la mayoría de las consultas por la rapidez. La pequeña cantidad de datos de una consulta y la necesidad de baja latencia hacen que la sobrecarga del handshake de TCP sea innecesaria. TCP se usa para transferencias de zona grandes."
+  },
+  {
+    "q": "En el protocolo DHCP (Dynamic Host Configuration Protocol), que se encarga de la asignación automática de direcciones IP, ¿qué puertos y protocolo de transporte utiliza típicamente el servidor DHCP para escuchar las solicitudes de los clientes?",
+    "options": [
+      "TCP, Puerto 25.",
+      "UDP, Puerto 53.",
+      "TCP, Puerto 80.",
+      "UDP, Puertos 67 y 68."
+    ],
+    "a": 4,
+    "info": "DHCP utiliza UDP para las transacciones. El servidor escucha en el Puerto 67."
+  },
+  {
+    "q": "El protocolo PAT (Port Address Translation), también conocido como NAT de sobrecarga (NAT Overload), es el tipo de traducción de direcciones de red más común. ¿Qué es lo que permite que múltiples hosts internos (privados) compartan una única dirección IP pública para el acceso a Internet?",
+    "options": [
+      "La asignación de una IP pública única a cada host interno.",
+      "La reutilización y traducción del Puerto de Origen junto con la dirección IP para distinguir las diferentes sesiones internas.",
+      "La asignación de un puerto de destino Well Known diferente para cada host interno.",
+      "La implementación del Control de Flujo TCP para gestionar la congestión."
+    ],
+    "a": 2,
+    "info": "PAT utiliza el número de puerto de origen para diferenciar las conexiones de múltiples hosts internos que comparten una única IP pública. La IP y el puerto de origen se modifican al salir, y se mapean de vuelta al entrar."
+  },
+  {
+    "q": "Si en una simulación de TCP se produce un comportamiento de Incremento Aditivo/Decremento Multiplicativo (AIMD) en la ventana de congestión, y se observa que la tasa de transmisión aumenta linealmente (Aditivo) hasta que ocurre una pérdida, ¿qué valor se utiliza para determinar la nueva tasa de transmisión después de la pérdida (Decremento Multiplicativo)?",
+    "options": [
+      "Se aumenta la tasa exponencialmente, reiniciando el Slow Start.",
+      "La ventana de congestión se reduce a cero, forzando una renegociación.",
+      "La ventana de congestión se reduce a la mitad de su valor antes de la pérdida.",
+      "Se aplica la ventana de recepción reportada por el destino."
+    ],
+    "a": 3,
+    "info": "En AIMD, la respuesta a la pérdida de un segmento (asumiendo congestión) es el Decremento Multiplicativo, donde la ventana de congestión se reduce a la mitad para aliviar la saturación de la red."
+  },
+  {
+    "q": "En el caso de que la Ventana de Congestión (Control de Congestión) de TCP indique que se pueden enviar 10.000 bytes, pero el campo Tamaño de Ventana de Recepción (Control de Flujo) del receptor indica que solo quedan 8.000 bytes disponibles en su búfer, ¿cuál es la cantidad de bytes que el emisor debe enviar a la red en ese momento?",
+    "options": [
+      "10.000 bytes, ya que la Ventana de Congestión es la limitante principal.",
+      "8.000 bytes, ya que la Ventana de Recepción es la limitante principal.",
+      "18.000 bytes (la suma de ambas ventanas).",
+      "La ventana inicial acordada en el three-way handshake."
+    ],
+    "a": 2,
+    "info": "El emisor siempre debe enviar la menor de las dos ventanas: la Ventana de Congestión (limitación de la red) y la Ventana de Recepción (limitación del búfer del receptor). En este caso, el control de flujo domina para evitar saturar el búfer del receptor."
+  },
+  {
+    "q": "¿Qué protocolo utiliza TCP en el puerto 21/20 (control/datos) para la transferencia de archivos y se caracteriza por establecer conexiones paralelas (una para control y otra para datos)?",
+    "options": [
+      "HTTP (Hypertext Transfer Protocol).",
+      "SMTP (Simple Mail Transfer Protocol).",
+      "FTP (File Transfer Protocol).",
+      "TFTP (Trivial File Transfer Protocol)."
+    ],
+    "a": 3,
+    "info": "FTP (File Transfer Protocol) utiliza TCP, requiriendo dos conexiones paralelas: Puerto 21 para la conexión de control y Puerto 20 (u otro puerto dinámico) para la conexión de datos."
+  },
+  {
+    "q": "El servicio de la capa de transporte que garantiza la entrega ordenada de los datos y la integridad de los datos (mediante la suma de verificación) es:",
+    "options": [
+      "UDP, por su bajo overhead.",
+      "TCP, utilizando los números de secuencia y la suma de verificación de segmento.",
+      "IP, mediante el control de la fragmentación.",
+      "SNMP, mediante la gestión de red."
+    ],
+    "a": 2,
+    "info": "TCP garantiza la fiabilidad del servicio, lo que incluye la entrega ordenada (gracias a los números de secuencia) y la integridad (gracias a la suma de verificación del segmento)."
+  }
+]

@@ -1,0 +1,343 @@
+[
+  {
+    "q": "El protocolo FTP (File Transfer Protocol) utiliza dos conexiones TCP paralelas. ¿Cuál es la característica principal de la Conexión de Control (Puerto 21)?",
+    "options": [
+      "Es no persistente y se libera inmediatamente después de enviar un comando.",
+      "Es una conexión de datos y solo se usa para transferir archivos.",
+      "Es persistente, permanece abierta TODO el tiempo, y mantiene el ESTADO del usuario enviando comandos al servidor.",
+      "Corre sobre UDP para asegurar una conexión rápida y sencilla."
+    ],
+    "a": 3,
+    "info": "La Conexión de Control (Puerto 21, TCP) es persistente y se encarga de la autenticación y la gestión de comandos (LIST, RETR, STOR), manteniendo el estado de la sesión del usuario hasta que se desconecta."
+  },
+  {
+    "q": "A diferencia de la Conexión de Control, ¿qué característica principal define a la Conexión de Datos de FTP (Puerto 20)?",
+    "options": [
+      "Es persistente y se utiliza para el envío de comandos.",
+      "Es no persistente y se inicia y libera cada vez que se envía un comando de transferencia de archivo (RETR o STOR).",
+      "Utiliza UDP para una transferencia rápida y no fiable.",
+      "Mantiene el estado del usuario en el servidor."
+    ],
+    "a": 2,
+    "info": "La Conexión de Datos (Puerto 20, TCP) es no persistente. Se establece para cada transferencia individual de archivo (bidireccional) y se cierra tan pronto como finaliza la transmisión."
+  },
+  {
+    "q": "El protocolo TFTP (Trivial File Transfer Protocol) se considera 'Trivial' porque corre sobre UDP (Puerto 69). A pesar de usar un protocolo no fiable, ¿cómo implementa TFTP su propia forma de fiabilidad para garantizar la transferencia de archivos?",
+    "options": [
+      "Establece dos conexiones paralelas (control y datos).",
+      "Utiliza SSH para asegurar que los datos viajen cifrados.",
+      "Envía bloques de datos de 512 bytes y espera un ACK por cada bloque, retransmitiendo en caso contrario.",
+      "No implementa ningún mecanismo de fiabilidad, por ser un protocolo rápido."
+    ],
+    "a": 3,
+    "info": "TFTP es un protocolo de aplicación que implementa un mecanismo de fiabilidad sencillo a nivel de aplicación (cada bloque de 512 bytes se asienta con un ACK), lo que le permite correr sobre UDP."
+  },
+  {
+    "q": "TFTP se utiliza comúnmente para la inicialización de dispositivos de red y la transferencia de la imagen del Sistema Operativo. ¿Cuál es una característica de TFTP que lo hace adecuado para este entorno?",
+    "options": [
+      "Permite autenticación segura del usuario.",
+      "Permite la transferencia de archivos de gran tamaño (GB) cifrados.",
+      "Es rápido y sencillo, con una cabecera de solo 4 bytes y no requiere autenticación de usuario.",
+      "Utiliza TCP para garantizar la integridad de los datos en entornos de red sin fallas."
+    ],
+    "a": 3,
+    "info": "TFTP es ideal para dispositivos que recién inician (sin disco o con configuración mínima) porque es muy ligero (cabecera de 4 bytes) y no requiere de un complejo proceso de autenticación o cifrado."
+  },
+  {
+    "q": "El Modelo de Gestión de Red definido por la ISO se divide en varias áreas. Si el administrador está enfocado en 'cuantificar, medir, registrar, analizar y controlar el rendimiento de los componentes de una red', ¿a qué área se refiere?",
+    "options": [
+      "Gestión de Fallos.",
+      "Gestión de Configuración.",
+      "Gestión de Seguridad.",
+      "Gestión de Rendimiento."
+    ],
+    "a": 4,
+    "info": "La Gestión de Rendimiento se centra en el análisis proactivo de la performance de la red, midiendo, registrando y controlando el comportamiento de los componentes."
+  },
+  {
+    "q": "Dentro del Modelo ISO, ¿cuál es el área responsable de 'especificar, registrar y controlar el acceso de los usuarios y de los dispositivos a los recursos de la red'?",
+    "options": [
+      "Gestión de Fallos.",
+      "Gestión de Configuración.",
+      "Gestión de Cuentas.",
+      "Gestión de Seguridad."
+    ],
+    "a": 3,
+    "info": "La Gestión de Cuentas se encarga de definir los perfiles y permisos de acceso (quién accede a qué) a los recursos de la red."
+  },
+  {
+    "q": "En la arquitectura de gestión SNMP, ¿qué componente es un software simple y sencillo que se ejecuta en el router o servidor (Nodo administrado) y es responsable de responder peticiones e informar problemas?",
+    "options": [
+      "La Estación Administradora (NMS).",
+      "La Base de Información de Administración (MIB).",
+      "El Agente SNMP.",
+      "El Protocolo HTTP."
+    ],
+    "a": 3,
+    "info": "El Agente SNMP es el software ligero que reside en el dispositivo administrado. Se comunica con la NMS, respondiendo a consultas (sondeo) o enviando avisos (Traps) de forma autónoma."
+  },
+  {
+    "q": "La Estación Administradora (NMS) puede obtener información de la red de dos maneras principales. Una es el Sondeo (Polling). ¿Cuál es la otra, que implica un aviso no solicitado del dispositivo administrado a la NMS en caso de un suceso inesperado?",
+    "options": [
+      "Get-Request.",
+      "Set-Request.",
+      "Trampa (Trap).",
+      "Get-Bulk-Request."
+    ],
+    "a": 3,
+    "info": "Los Traps (o Sucesos no solicitados) son mensajes enviados por el Agente SNMP a la NMS cuando ocurre un evento importante (ej. la impresora se queda sin papel), sin que haya habido una consulta previa (sondeo)."
+  },
+  {
+    "q": "¿Qué componente de SNMP describe la información de cada agente, contiene el conjunto de objetos administrados, y define el formato para intercambiar los datos?",
+    "options": [
+      "El Agente SNMP.",
+      "El Base de Información de Administración (MIB).",
+      "La Estación Administradora (NMS).",
+      "El protocolo HTTP."
+    ],
+    "a": 2,
+    "info": "La MIB (Management Information Base) es la base de datos lógica que define y describe todas las variables (objetos) que pueden ser consultadas o modificadas por SNMP en un dispositivo."
+  },
+  {
+    "q": "En el protocolo SNMP, si la Estación Administradora (NMS) quiere actualizar la configuración de una o más variables en un dispositivo administrado, ¿qué mensaje debe enviar?",
+    "options": [
+      "Get-Request.",
+      "Get-Response.",
+      "SnmpV2-Trap.",
+      "Set-Request."
+    ],
+    "a": 4,
+    "info": "El mensaje Set-Request se utiliza para que la Estación Administradora (NMS) modifique o actualice el valor de una o más variables (configuración o estado) en el Agente SNMP de un dispositivo."
+  },
+  {
+    "q": "El protocolo HTTP (HyperText Transfer Protocol) se define como un protocolo sin estado. ¿Qué significa esto para el servidor Web?",
+    "options": [
+      "Que no utiliza TCP para la conexión.",
+      "Que no guarda información sobre conexiones anteriores con el cliente.",
+      "Que la conexión TCP permanece abierta todo el tiempo.",
+      "Que requiere del uso de la clave privada del cliente."
+    ],
+    "a": 2,
+    "info": "Sin estado significa que cada solicitud del cliente es tratada de forma independiente, y el servidor no recuerda las interacciones previas con ese cliente. Esto se compensa mediante el uso de cookies."
+  },
+  {
+    "q": "Para que las aplicaciones Web puedan mantener el estado y guardar información sobre las interacciones previas de un cliente (a pesar de que HTTP es sin estado), ¿qué tecnología se utiliza comúnmente, que permite al servidor almacenar información en el cliente?",
+    "options": [
+      "El comando GET.",
+      "Las cookies.",
+      "El protocolo FTP.",
+      "El protocolo SNMP."
+    ],
+    "a": 2,
+    "info": "Las cookies son pequeños fragmentos de información que el servidor Web puede almacenar en el navegador (cliente) para mantener el estado y rastrear sesiones."
+  },
+  {
+    "q": "En el proceso del Navegador (Cliente) para obtener un recurso, ¿cuál es el paso que debe realizarse inmediatamente antes de emitir el comando GET (Recurso)?",
+    "options": [
+      "Visualizar el recurso al cliente.",
+      "Liberar la conexión TCP.",
+      "Establecer una conexión TCP con el puerto 80.",
+      "Solicitar al Servidor DNS la resolución del dominio."
+    ],
+    "a": 3,
+    "info": "El proceso es: 1. Determinar URL -> 2. Resolver DNS -> 3. Establecer conexión TCP (Puerto 80) -> 4. Emitir comando GET -> 5. Liberar conexión TCP -> 6. Visualizar recurso."
+  },
+  {
+    "q": "¿Qué hace el comando HTTP HEAD?",
+    "options": [
+      "Solicita leer el contenido completo de una página Web (GET).",
+      "Solicita leer la cabecera de una página Web.",
+      "Envía datos al servidor (POST).",
+      "Elimina la página Web (DELETE)."
+    ],
+    "a": 2,
+    "info": "El comando HEAD se utiliza para solicitar solo la información de la cabecera del recurso, sin transferir el cuerpo del mensaje."
+  },
+  {
+    "q": "El protocolo HTTPS no es un protocolo aparte, sino que HTTP corre sobre TLS (Transport Layer Security). ¿Qué característica fundamental añade esta capa TLS/SSL?",
+    "options": [
+      "Garantiza que el servidor no sea un cuello de botella.",
+      "Permite que HTTP guarde información sobre conexiones anteriores (cookies).",
+      "Cifra los datos para que viajen seguros entre el cliente y el servidor (garantizando la confidencialidad).",
+      "Cambia el puerto a 80."
+    ],
+    "a": 3,
+    "info": "HTTPS utiliza TCP puerto 443 y se ejecuta sobre TLS/SSL. La función de esta capa es cifrar los datos del mensaje HTTP para asegurar la transferencia de recursos."
+  },
+  {
+    "q": "En la arquitectura de Administración de Red Jerárquica, ¿qué rol cumple la NMS cliente?",
+    "options": [
+      "Tiene la misma jerarquía y responsabilidad que el Servidor NMS.",
+      "Es una estación que recopila información local y la envía a la estación principal (Servidor NMS).",
+      "No tiene Base de Datos (MIB) local.",
+      "Es la única que puede enviar Traps a los agentes."
+    ],
+    "a": 2,
+    "info": "En la arquitectura jerárquica, las NMS cliente (segundo nivel) actúan como intermediarios, realizando consultas locales y reportando la información al Servidor NMS (primer nivel)."
+  },
+  {
+    "q": "El grupo de objetos Interfaces dentro de la MIB-II se describe como el conjunto que contiene la información de las interfaces de red. ¿Qué tipo de métrica se mide en este grupo?",
+    "options": [
+      "Nombre, ubicación, descripción del equipo (System)[cite: 192].",
+      "Algoritmos, parámetros y estadísticas TCP[cite: 192].",
+      "Interfaces de red y su tráfico medido[cite: 192].",
+      "Estadísticas de paquetes IP[cite: 192]."
+    ],
+    "a": 3,
+    "info": "El grupo Interfaces de la MIB-II se enfoca en métricas relacionadas con las interfaces físicas y lógicas de red, como el tráfico medido[cite: 192]."
+  },
+  {
+    "q": "Si un Administrador de Red quiere obtener una tabla grande o una lista extensa de información del Agente SNMP, ¿qué tipo de mensaje SNMP es el más eficiente para usar?",
+    "options": [
+      "Get-Request.",
+      "Get-Next-Request.",
+      "Get-Bulk-Request.",
+      "Set-Request."
+    ],
+    "a": 3,
+    "info": "El mensaje Get-Bulk-Request se introdujo para optimizar la obtención de grandes volúmenes de datos, como tablas completas de la MIB, reduciendo el número de mensajes intercambiados."
+  },
+  {
+    "q": "En el formato de un mensaje de correo electrónico, ¿qué sección es interpretada por los Agentes de Transferencia de Mensajes (MTA), conteniendo información para el enrutamiento?",
+    "options": [
+      "El Cuerpo del Mensaje.",
+      "El Encabezado (UA).",
+      "La Envoltura.",
+      "Las cookies."
+    ],
+    "a": 3,
+    "info": "La Envoltura contiene la información necesaria para la transferencia del mensaje a través de los servidores de correo (MTA), que es distinta del Encabezado, que es para el Agente de Usuario (UA)."
+  },
+  {
+    "q": "El protocolo SMTP tiene una limitación histórica de que solo transfiere datos ASCII. ¿Qué protocolo de la capa de aplicación se desarrolló para superar esta limitación, agregando una estructura y reglas de codificación para archivos NO ASCII (binarios)?",
+    "options": [
+      "POP3.",
+      "IMAP.",
+      "MIME (Multipurpose Internet Mail Extensions).",
+      "TFTP."
+    ],
+    "a": 3,
+    "info": "MIME se utiliza para codificar contenido no ASCII (como imágenes, audio, video y archivos de aplicación) para que puedan ser transportados de forma segura a través del protocolo SMTP."
+  },
+  {
+    "q": "Una de las versiones del protocolo SNMP se destaca por añadir acceso seguro a las MIB mediante la autenticación y el cifrado. ¿A qué versión se refiere?",
+    "options": [
+      "SNMPv1.",
+      "SNMPv2.",
+      "SNMPv3.",
+      "SNMPv4."
+    ],
+    "a": 3,
+    "info": "SNMPv3 es la versión que brinda acceso seguro a las MIB, lo cual es crucial dado que la información de gestión puede ser sensible."
+  },
+  {
+    "q": "¿Cuál es la arquitectura de Administración de Red donde cada NMS tiene igual jerarquía y autonomía, manteniendo su propia Base de Información Local (Local MIB) y solo intercambiando información cuando es necesario?",
+    "options": [
+      "Centralizada.",
+      "Jerárquica.",
+      "Distribuida.",
+      "Cliente-Servidor."
+    ],
+    "a": 3,
+    "info": "La arquitectura distribuida se caracteriza porque las NMS tienen autonomía e igual jerarquía, sin una NMS central que las dirija."
+  },
+  {
+    "q": "En el contexto de FTP, ¿qué comando solicita la transferencia de un archivo desde el servidor al cliente, iniciando una nueva conexión no persistente en el puerto de datos?",
+    "options": [
+      "STOR nombre_archivo (Almacenar en servidor).",
+      "LIST (Listar directorio).",
+      "RETR nombre_archivo (Recuperar desde servidor).",
+      "PASS palabra_clave."
+    ],
+    "a": 3,
+    "info": "El comando RETR (Retrieve) se utiliza para descargar un archivo del servidor, lo que activa el establecimiento de la Conexión de Datos (Puerto 20)."
+  },
+  {
+    "q": "Si un navegador (UA) está conectado a su buzón de correo remoto a través de la web, ¿qué protocolo utiliza para comunicarse con el buzón, a pesar de que el protocolo subyacente para el envío es SMTP?",
+    "options": [
+      "SMTP directamente.",
+      "POP3 directamente.",
+      "HTTP.",
+      "TFTP."
+    ],
+    "a": 3,
+    "info": "En el correo basado en la web (webmail), el Agente de Usuario es el navegador, y el usuario se comunica con su buzón remoto mediante HTTP (o HTTPS)."
+  },
+  {
+    "q": "¿Qué representa el valor $213104$ en la URL `https://uv.frc.utn.edu.ar/mod/folder/view.php?id=213104`?",
+    "options": [
+      "El nombre DNS de la máquina.",
+      "El protocolo de acceso.",
+      "La Ruta de acceso al recurso.",
+      "El puerto TCP."
+    ],
+    "a": 3,
+    "info": "La URL se compone del Protocolo de acceso (`https://`), el Nombre DNS de la máquina (`uv.frc.utn.edu.ar/mod/folder/view.php`) y la Ruta o Recurso específico (`?id=213104`)."
+  },
+  {
+    "q": "¿Cuál de los siguientes comandos HTTP se utiliza para enviar datos al servidor con el fin de actualizar contenidos?",
+    "options": [
+      "GET.",
+      "HEAD.",
+      "PUT.",
+      "POST."
+    ],
+    "a": 3,
+    "info": "El comando PUT se utiliza para enviar datos al servidor con la intención de crear o reemplazar un recurso con el contenido enviado."
+  },
+  {
+    "q": "El protocolo FTP corre sobre TCP. ¿Cuál es la principal razón por la que se eligió TCP para la transferencia de archivos?",
+    "options": [
+      "Es más rápido y sencillo que UDP.",
+      "Permite la transferencia de datos en bloques de 512 bytes.",
+      "Garantiza que la transferencia de archivos sea fiable (ordenada, íntegra y sin pérdidas), a pesar de que el protocolo en sí no sea seguro (no cifre).",
+      "Permite que la conexión se libere solo después de 5 minutos de inactividad."
+    ],
+    "a": 3,
+    "info": "La fiabilidad del servicio de TCP (entrega ordenada, integridad, retransmisión) es esencial para la transferencia de archivos, donde la pérdida o el desorden de bytes es inaceptable."
+  },
+  {
+    "q": "En el encabezado de un mensaje MIME, ¿qué campo define cómo se codifica el cuerpo del mensaje para ser transmitido a través de la red (ej. ASCII, Base64)?",
+    "options": [
+      "MIME-Version.",
+      "Content-Type.",
+      "Content-Description.",
+      "Content-Transfer-Encoding."
+    ],
+    "a": 4,
+    "info": "Content-Transfer-Encoding especifica el esquema de codificación utilizado, asegurando que el UA (Agente de Usuario) del destino pueda decodificar el mensaje correctamente."
+  },
+  {
+    "q": "La arquitectura de Administración de Red Centralizada es adecuada para empresas pequeñas. ¿Qué implica esta arquitectura respecto a las Estaciones Administradoras?",
+    "options": [
+      "Hay múltiples NMS con jerarquía igualitaria.",
+      "Hay una sola NMS central desde donde se gestionan todos los dispositivos y se accede a una base de datos centralizada.",
+      "Las NMS cliente recopilan información y la procesan localmente.",
+      "Se utiliza exclusivamente el mensaje Trap."
+    ],
+    "a": 2,
+    "info": "En la arquitectura centralizada, una única NMS tiene la inteligencia y la responsabilidad de gestionar toda la red y almacenar toda la información en una BD centralizada."
+  },
+  {
+    "q": "¿Qué grupo de la MIB-II se enfoca en las métricas relacionadas con la gestión del propio protocolo SNMP?",
+    "options": [
+      "System.",
+      "IP.",
+      "Interfaces.",
+      "SNMP."
+    ],
+    "a": 4,
+    "info": "El grupo SNMP de la MIB-II contiene las estadísticas de tráfico y parámetros de gestión del propio protocolo SNMP (Simple Network Management Protocol)."
+  },
+  {
+    "q": "En el Modelo ISO de Gestión de Red, ¿qué área se enfoca en 'registrar, detectar y solucionar las condiciones de fallos de una red', requiriendo una actitud proactiva del administrador?",
+    "options": [
+      "Gestión de Rendimiento.",
+      "Gestión de Configuración.",
+      "Gestión de Fallos.",
+      "Gestión de Seguridad."
+    ],
+    "a": 3,
+    "info": "La Gestión de Fallos se ocupa de la detección, registro y resolución de los problemas o interrupciones en la red, con el objetivo de mantener la operatividad."
+  }
+]

@@ -1,0 +1,13 @@
+{
+    "Redes de Datos": {
+        "Parcial 3": {
+            "TCP": "./assets/rdd/p3/rdd_p3_tcp.json",
+            "UDP": "./assets/rdd/p3/rdd_p3_udp.json",
+            "NAT - PAT": "./assets/rdd/p3/rdd_p3_nat_pat.json",
+            "Capa Aplicacion": "./assets/rdd/p3/rdd_p3_capa_aplicacion.json",
+            "Voz - IP": "./assets/rdd/p3/rdd_p3_voz_ip.json",
+            "Seguridad": "./assets/rdd/p3/rdd_p3_seguridad.json",
+            "Integradoras" : "./assets/rdd/p3/rdd_p3_integradoras.json"
+        }
+    }
+}
