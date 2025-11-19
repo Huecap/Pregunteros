@@ -19,7 +19,7 @@ const quizTitle = document.getElementById('quiz-title');
 
 async function initMenu() {
     try {
-        const response = await fetch(MASTER_JSON);
+        const response = await fetch(resolvePath(MASTER_JSON));
         if (!response.ok) throw new Error("No se pudo cargar materias.json");
         const data = await response.json();
         renderMenu(data);
@@ -105,7 +105,7 @@ async function loadQuizQuestions(url) {
     updateScore();
 
     try {
-        const response = await fetch(url);
+        const response = await fetch(resolvePath(url));
         if (!response.ok) throw new Error(`No se encontró el archivo: ${url}`);
         
         questions = await response.json();
@@ -190,6 +190,13 @@ function resetQuiz() {
         loadQuizQuestions(currentFileUrl);
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+}
+
+function resolvePath(path) {
+  const base = window.location.pathname.includes("Pregunteros")
+    ? "/Pregunteros/"
+    : "/";
+  return base + path;
 }
 
 // Iniciar App

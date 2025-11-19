@@ -186,7 +186,7 @@
       "A recibió hasta el 1800 inclusive"
     ],
     "a": 1,
-    "info": "El ACK en TCP es acumulativo e indica el *siguiente* byte que el receptor espera recibir. Si ACK=1800, significa que se recibieron correctamente los bytes hasta el 1799."
+    "info": "El ACK en TCP es acumulativo e indica el siguiente byte que el receptor espera recibir. Si ACK=1800, significa que se recibieron correctamente los bytes hasta el 1799."
   },
   {
     "q": "¿Cuál de los siguientes campos utiliza el protocolo TCP para implementar el control de flujo extremo a extremo?",
@@ -661,5 +661,336 @@
     ],
     "a": 1,
     "info": "POP3 (Post Office Protocol v3) corre en el puerto 110 TCP. Su diseño original es simple: conectar, descargar mensajes a la PC local y borrarlos del servidor."
+  }
+  ,
+  {
+    "q": "¿Qué se deberá configurar en el encabezado MIME si se desea enviar un archivo en formato PDF en un mensaje de correo electrónico?",
+    "options": [
+      "Content-type: application/pdf",
+      "Type: PDF",
+      "Format: PDF",
+      "Content-transfer-encoding: PDF"
+    ],
+    "a": 0,
+    "info": "El campo 'Content-Type' indica el tipo de medio. Para archivos PDF, el tipo MIME estándar es 'application/pdf'[cite: 1408, 1411]."
+  },
+  {
+    "q": "Desde una computadora se inician dos conexiones FTP diferentes a servidores distintos. ¿Cuántos sockets TCP intervienen en total en la PC cliente (suponiendo modo activo estándar)?",
+    "options": [
+      "Dos",
+      "Cuatro",
+      "Seis",
+      "Tres"
+    ],
+    "a": 1,
+    "info": "El protocolo FTP utiliza dos conexiones por sesión: una de control (puerto 21) y una de datos (puerto 20). Si hay 2 sesiones FTP simultáneas, habrá 2 de control + 2 de datos = 4 sockets/conexiones[cite: 1437, 1446]."
+  },
+  {
+    "q": "¿Cuál de las siguientes es una característica distintiva del protocolo TFTP?",
+    "options": [
+      "Utiliza TCP para garantizar la entrega",
+      "Requiere autenticación de usuario y contraseña",
+      "No permite autenticación de usuario y corre sobre UDP",
+      "Es un protocolo complejo con cifrado integrado"
+    ],
+    "a": 2,
+    "info": "TFTP (Trivial File Transfer Protocol) es un protocolo simple que corre sobre UDP (puerto 69) y, a diferencia de FTP, no soporta autenticación de usuario[cite: 1467, 1475]."
+  },
+  {
+    "q": "Si se captura un segmento con puerto origen 52000 y puerto destino 143, ¿a qué corresponde?",
+    "options": [
+      "Solicitud de una PC a un servidor FTP",
+      "Solicitud de una PC a un servidor de correo IMAP",
+      "Respuesta de un servidor DNS",
+      "Solicitud de una PC a un servidor POP3"
+    ],
+    "a": 1,
+    "info": "El puerto 143 corresponde al protocolo IMAP (Internet Message Access Protocol). Si está en el destino, es una solicitud del cliente al servidor[cite: 1371, 1372]."
+  },
+  {
+    "q": "Un administrador desea centralizar la administración de imágenes de sistemas operativos y configuraciones de routers (backup). ¿Qué servicio debería configurar?",
+    "options": [
+      "Un servidor TFTP",
+      "Un servidor HTTP",
+      "Un servidor SMTP",
+      "Un servidor DNS"
+    ],
+    "a": 0,
+    "info": "TFTP es ampliamente utilizado para la transferencia rápida de archivos de configuración y arranque (booting) de dispositivos sin disco o routers, debido a su simplicidad[cite: 1473, 1480]."
+  },
+  {
+    "q": "¿Cuál de los siguientes NO es un área de la gestión de red definida por el modelo ISO?",
+    "options": [
+      "Gestión de Fallos",
+      "Gestión de Configuración",
+      "Gestión de Planificación",
+      "Gestión de Seguridad"
+    ],
+    "a": 2,
+    "info": "Las 5 áreas funcionales de gestión ISO son: Fallos, Configuración, Contabilidad (Cuentas), Rendimiento y Seguridad. 'Planificación' no es un área formal del modelo[cite: 1500, 1501, 1504, 1506, 1508]."
+  },
+  {
+    "q": "¿Qué función cumple la MIB (Base de Información de Gestión) en SNMP?",
+    "options": [
+      "Almacena los correos electrónicos de los administradores",
+      "Define y almacena el conjunto de objetos (variables) que pueden ser administrados",
+      "Es el software que ejecuta el agente",
+      "Traduce direcciones IP a nombres"
+    ],
+    "a": 1,
+    "info": "La MIB es una base de datos jerárquica que describe la información que un agente SNMP puede reportar o configurar (ej. tráfico de interfaz, uso de CPU)[cite: 1635, 1637]."
+  },
+  {
+    "q": "¿Qué mensaje envía una estación administradora (NMS) para modificar el valor de una variable en un dispositivo gestionado?",
+    "options": [
+      "Get-Request",
+      "Set-Request",
+      "Trap",
+      "Get-Response"
+    ],
+    "a": 1,
+    "info": "El mensaje `Set-Request` es utilizado por la NMS para escribir o actualizar el valor de una variable en el agente (ej. apagar una interfaz)[cite: 1722]."
+  },
+  {
+    "q": "¿Cuáles son campos típicos utilizados por el Agente de Usuario (UA) en el encabezado de un correo electrónico?",
+    "options": [
+      "Received, Return-Path",
+      "To, Subject, Date",
+      "HELO, MAIL FROM",
+      "SYN, ACK"
+    ],
+    "a": 1,
+    "info": "Campos como 'To:', 'Subject:', y 'Date:' son generados y leídos por el Agente de Usuario (el programa de correo) para el usuario final[cite: 1353]."
+  },
+  {
+    "q": "El mensaje `Get-Bulk-Request` de SNMP se utiliza para:",
+    "options": [
+      "Solicitar el valor de una sola variable",
+      "Informar de un error crítico (Trap)",
+      "Obtener una gran cantidad de datos (ej. una tabla completa) eficientemente",
+      "Escribir múltiples variables a la vez"
+    ],
+    "a": 2,
+    "info": "`Get-Bulk-Request` optimiza la transmisión permitiendo a la NMS solicitar grandes bloques de datos (como tablas de enrutamiento) en un solo mensaje, evitando múltiples `Get-Next`[cite: 1722]."
+  },
+  {
+    "q": "¿Cuál es una característica fundamental del protocolo HTTP?",
+    "options": [
+      "Es un protocolo con estado (stateful)",
+      "Utiliza UDP para la transferencia de páginas",
+      "Es un protocolo sin estado (stateless)",
+      "Solo permite la descarga de texto"
+    ],
+    "a": 2,
+    "info": "HTTP es 'stateless', lo que significa que el servidor no guarda información sobre las solicitudes previas del cliente. Cada transacción es independiente[cite: 1744]."
+  },
+  {
+    "q": "El comando HTTP utilizado para enviar datos a un servidor para que sean procesados (ej. un formulario) es:",
+    "options": [
+      "GET",
+      "HEAD",
+      "POST",
+      "DELETE"
+    ],
+    "a": 2,
+    "info": "`POST` se utiliza para enviar datos al servidor, como cuando un usuario completa un formulario web o sube un archivo[cite: 1766]."
+  },
+  {
+    "q": "¿Qué elementos conforman el modelo AAA en seguridad de redes?",
+    "options": [
+      "Autenticación, Autorización, Auditoría (Accounting)",
+      "Acceso, Administración, Aleatoriedad",
+      "Algoritmo, Asignación, Autenticidad",
+      "Alta, Administración, Archivo"
+    ],
+    "a": 0,
+    "info": "AAA es el marco de seguridad que gestiona quién entra (Autenticación), qué puede hacer (Autorización) y registra lo que hizo (Auditoría/Contabilidad)[cite: 1891, 1897, 1899]."
+  },
+  {
+    "q": "Un firewall configurado con una política 'Restrictiva' implica que:",
+    "options": [
+      "Se permite todo el tráfico excepto el explícitamente denegado",
+      "Se deniega todo el tráfico por defecto y solo se permite lo explícitamente autorizado",
+      "Solo filtra tráfico de correo electrónico",
+      "No inspecciona el estado de las conexiones"
+    ],
+    "a": 1,
+    "info": "Las políticas restrictivas siguen el principio de 'lo que no está expresamente permitido, está prohibido', siendo más seguras que las permisivas[cite: 2050]."
+  },
+  {
+    "q": "Para garantizar la confidencialidad de un mensaje utilizando criptografía asimétrica, el emisor debe cifrar el mensaje con:",
+    "options": [
+      "Su propia clave privada",
+      "Su propia clave pública",
+      "La clave pública del receptor",
+      "La clave privada del receptor"
+    ],
+    "a": 2,
+    "info": "Para confidencialidad (secreto), se cifra con la clave pública del destinatario, asegurando que solo él (que posee la clave privada correspondiente) pueda descifrarlo[cite: 1962]."
+  },
+  {
+    "q": "El protocolo CHAP (Challenge Handshake Authentication Protocol) mejora la seguridad respecto a PAP porque:",
+    "options": [
+      "Envía la contraseña en texto plano",
+      "Utiliza un esquema de desafío/respuesta y no envía la contraseña por la red",
+      "Utiliza certificados digitales",
+      "No requiere contraseñas"
+    ],
+    "a": 1,
+    "info": "CHAP envía un desafío aleatorio que el cliente firma con su contraseña (hash). La contraseña nunca viaja por la red, evitando ataques de intercepción simples[cite: 1908]."
+  },
+  {
+    "q": "¿Qué define una Política de Seguridad en una organización?",
+    "options": [
+      "El software antivirus a utilizar",
+      "Un documento formal que establece reglas de acceso, responsabilidades y protección de activos",
+      "La configuración del firewall",
+      "El listado de empleados"
+    ],
+    "a": 1,
+    "info": "Las políticas de seguridad son declaraciones formales (documentos) que rigen cómo se protegen los activos y cómo se comportan los usuarios respecto a la seguridad[cite: 1815]."
+  },
+  {
+    "q": "La Zona Desmilitarizada (DMZ) se utiliza para:",
+    "options": [
+      "Proteger la red interna aislando los servidores de acceso público",
+      "Conectar directamente las PCs de los usuarios a Internet",
+      "Almacenar las bases de datos más críticas",
+      "Eliminar la necesidad de firewalls"
+    ],
+    "a": 0,
+    "info": "La DMZ crea una zona intermedia para servidores públicos (Web, DNS, Correo), impidiendo que un ataque a estos servidores comprometa directamente la red interna (LAN)[cite: 2084, 2086]."
+  },
+  {
+    "q": "¿Qué función cumple una Autoridad de Certificación (CA)?",
+    "options": [
+      "Encriptar el tráfico de red",
+      "Validar identidades y emitir certificados digitales firmados",
+      "Actuar como firewall",
+      "Distribuir claves privadas"
+    ],
+    "a": 1,
+    "info": "La CA es una entidad de confianza que verifica la identidad de un solicitante y firma digitalmente su certificado (vinculando identidad y clave pública)[cite: 2022]."
+  },
+  {
+    "q": "Si en una captura Wireshark de TCP ves: 'Flags: SYN, ACK', ¿qué está ocurriendo?",
+    "options": [
+      "El cliente inicia la conexión",
+      "El servidor responde aceptando la conexión (segundo paso del handshake)",
+      "Se finaliza la conexión",
+      "Se envían datos urgentes"
+    ],
+    "a": 1,
+    "info": "El segmento con SYN y ACK activados es la respuesta del servidor al SYN del cliente, confirmando la solicitud de conexión[cite: 3214, 3219]."
+  },
+  {
+    "q": "Si en una captura Wireshark de TCP ves: 'Flags: FIN, ACK', significa que:",
+    "options": [
+      "Se inicia la conexión",
+      "Un extremo solicita finalizar la conexión y confirma recepción previa",
+      "La ventana está llena",
+      "Es un paquete malformado"
+    ],
+    "a": 1,
+    "info": "El flag FIN indica la intención de cerrar la transmisión. El ACK suele acompañarlo para confirmar el último segmento de datos recibido[cite: 3226]."
+  },
+  {
+    "q": "¿Qué es una VPN (Virtual Private Network)?",
+    "options": [
+      "Una red física dedicada",
+      "Una red privada construida sobre una infraestructura pública (Internet) mediante túneles y cifrado",
+      "Un protocolo de correo",
+      "Un tipo de firewall"
+    ],
+    "a": 1,
+    "info": "Las VPN permiten extender una red privada a través de redes públicas de manera segura (túneles cifrados), reduciendo costos respecto a líneas dedicadas[cite: 2096, 2100]."
+  },
+  {
+    "q": "El protocolo HTTPS utiliza el puerto TCP:",
+    "options": [
+      "80",
+      "21",
+      "443",
+      "8080"
+    ],
+    "a": 2,
+    "info": "HTTPS (HTTP seguro sobre SSL/TLS) utiliza el puerto estándar 443[cite: 1798]."
+  },
+  {
+    "q": "¿Cuál es el propósito de la firma digital?",
+    "options": [
+      "Garantizar confidencialidad (secreto)",
+      "Garantizar autenticación, integridad y no repudio",
+      "Comprimir el mensaje",
+      "Evitar el spam"
+    ],
+    "a": 1,
+    "info": "La firma digital asegura que el mensaje viene de quien dice ser (autenticación), no fue modificado (integridad) y el emisor no puede negarlo (no repudio). No garantiza confidencialidad por sí sola[cite: 1936, 1937, 1938]."
+  },
+  {
+    "q": "En el protocolo TCP, el mecanismo de 'Ventana Deslizante' permite:",
+    "options": [
+      "Encriptar los datos",
+      "Implementar control de flujo y enviar múltiples segmentos sin esperar ACK individual inmediato",
+      "Determinar la ruta de los paquetes",
+      "Fragmentar paquetes IP"
+    ],
+    "a": 1,
+    "info": "La ventana deslizante permite al emisor mantener múltiples paquetes 'en vuelo' (sin confirmar) para aprovechar el ancho de banda, ajustándose a la capacidad del receptor[cite: 295]. "
+  },
+  {
+    "q": "¿Qué indica un valor de 'Window Size = 0' en un segmento TCP recibido?",
+    "options": [
+      "Que la conexión ha finalizado",
+      "Que el buffer del receptor está lleno y el emisor debe pausar",
+      "Que se pueden enviar datos libremente",
+      "Que hubo un error de checksum"
+    ],
+    "a": 1,
+    "info": "Una ventana de cero obliga al emisor a detener la transmisión de datos hasta recibir una actualización de ventana mayor a cero (control de flujo)[cite: 303]."
+  },
+  {
+    "q": "En SNMP, un 'Objeto Gestionado' se identifica mediante:",
+    "options": [
+      "Su dirección IP",
+      "Su OID (Object Identifier) en el árbol MIB",
+      "Su dirección MAC",
+      "Su nombre de host"
+    ],
+    "a": 1,
+    "info": "Los objetos en la MIB se organizan en un árbol jerárquico y se acceden mediante un identificador de objeto único (OID), como 1.3.6.1.2.1...[cite: 1681]."
+  },
+  {
+    "q": "¿Qué protocolo de la capa de aplicación se utiliza para la resolución de nombres de dominio a direcciones IP?",
+    "options": [
+      "DHCP",
+      "DNS",
+      "ARP",
+      "HTTP"
+    ],
+    "a": 1,
+    "info": "DNS (Domain Name System) es el sistema encargado de traducir nombres legibles (dominios) a direcciones IP numéricas[cite: 869]."
+  },
+  {
+    "q": "Si se desea enviar un correo electrónico con una imagen adjunta, ¿qué protocolo permite encapsular este contenido multimedia?",
+    "options": [
+      "SMTP puro",
+      "MIME (Multipurpose Internet Mail Extensions)",
+      "FTP",
+      "SNMP"
+    ],
+    "a": 1,
+    "info": "SMTP original solo soporta texto ASCII. MIME es la extensión que permite incluir adjuntos (imágenes, audio, video) y otros juegos de caracteres[cite: 1393, 1394]."
+  },
+  {
+    "q": "¿Cuál es una característica del protocolo IMAP en comparación con POP3?",
+    "options": [
+      "Descarga y borra los mensajes del servidor",
+      "Mantiene los mensajes en el servidor y sincroniza carpetas/estado",
+      "Es más simple y antiguo",
+      "No permite ver el asunto antes de descargar"
+    ],
+    "a": 1,
+    "info": "IMAP permite gestionar el correo directamente en el servidor, manteniendo la sincronización entre múltiples dispositivos y permitiendo organizar carpetas remotas[cite: 1375]."
   }
 ]
