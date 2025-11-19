@@ -1,0 +1,665 @@
+[
+  {
+    "q": "¿Cuál de los siguientes es un parámetro que permite medir la Calidad de Servicio (QoS) de un flujo de datos?",
+    "options": [
+      "Cantidad de saltos",
+      "Distancia administrativa",
+      "Métrica",
+      "Confiabilidad (Pérdida de paquetes)",
+      "Cifrado"
+    ],
+    "a": 3,
+    "info": "Los parámetros fundamentales de QoS son: Ancho de banda, Retardo (Delay), Variación del retardo (Jitter) y Confiabilidad (pérdida de paquetes). La métrica y distancia administrativa son conceptos de enrutamiento."
+  },
+  {
+    "q": "¿Cuál de los siguientes parámetros de Calidad de Servicio es importante en la transmisión de un correo electrónico?",
+    "options": [
+      "Métrica",
+      "Confidencialidad",
+      "Ancho de banda",
+      "Variabilidad del retardo (Jitter)",
+      "Pérdida o Confiabilidad"
+    ],
+    "a": 4,
+    "info": "El correo electrónico es una aplicación elástica que tolera retardos, pero requiere 100% de confiabilidad (integridad de datos, sin pérdida de paquetes)."
+  },
+  {
+    "q": "El modelado de tráfico (Traffic Shaping) como técnica para brindar calidad de servicio consiste en:",
+    "options": [
+      "Establecer el ritmo con el cual los datos llegan al host receptor",
+      "Almacenar los datos en el buffer del cliente antes de su reproducción",
+      "Controlar y regular la tasa promedio y las ráfagas en el origen de una transmisión",
+      "Brindar suficientes recursos de red para evitar que se produzca congestión"
+    ],
+    "a": 2,
+    "info": "El modelado de tráfico (shaping) retiene los paquetes en exceso en un buffer para programar su salida más tarde, suavizando el flujo de salida para cumplir con una tasa deseada."
+  },
+  {
+    "q": "En el algoritmo de cubeta con goteo (Leaky Bucket) como método para brindar Calidad de servicio:",
+    "options": [
+      "Los hosts pueden acumular fichas y luego enviar varios paquetes juntos",
+      "Es un algoritmo flexible, apto para ráfaga de datos",
+      "Un flujo de datos desigual (con ráfagas) se convierte en un flujo continuo y constante a la red",
+      "El flujo de salida tiene una tasa variable"
+    ],
+    "a": 2,
+    "info": "El algoritmo Leaky Bucket fuerza a que el tráfico salga a una tasa constante, independientemente de las ráfagas de entrada, eliminando los picos de tráfico."
+  },
+  {
+    "q": "Considerando que se implementa 'Token Bucket' (cubeta con fichas) y el host tiene acumuladas 20 fichas (generadas 1 por seg). Si se deben transmitir 25 paquetes, el host podrá:",
+    "options": [
+      "Transmitir los 25 paquetes juntos",
+      "Transmitir 5 paquetes juntos y luego un paquete cada 1 seg",
+      "Transmitir un paquete cada 1 seg",
+      "Transmitir 20 paquetes juntos y luego un paquete cada 1 seg"
+    ],
+    "a": 3,
+    "info": "El Token Bucket permite ráfagas hasta el tamaño de la cubeta (20 fichas = 20 paquetes). Los 5 restantes deberán esperar a la generación de nuevas fichas (1 por segundo)."
+  },
+  {
+    "q": "Si se está implementando el algoritmo de cubeta con fichas (Token Bucket) y el host tiene acumuladas 8 fichas (generadas 1 por seg). Si se tienen que transmitir 12 paquetes, el host podrá:",
+    "options": [
+      "Transmitir un paquete cada 1 seg",
+      "Transmitir 4 paquetes juntos y luego un paquete cada 1 seg",
+      "Transmitir los 12 paquetes juntos",
+      "Transmitir 8 paquetes juntos y luego un paquete cada 1 seg"
+    ],
+    "a": 3,
+    "info": "Al igual que en el caso anterior, se envía la ráfaga permitida por las fichas acumuladas (8) y el resto se envía a la tasa de generación (1 por segundo)."
+  },
+  {
+    "q": "En la planificación FQ (Fair Queueing) como método para brindar calidad de servicio:",
+    "options": [
+      "Los paquetes son clasificados en varias colas y se va procesando un paquete de cada una de las colas (Round Robin)",
+      "Los paquetes se atienden en estricto orden de llegada (FIFO)",
+      "Los paquetes se clasifican y se encaminan por pesos (ej: 5 de cola 1, 3 de cola 2)",
+      "Se atienden primero todos los de máxima prioridad estricta"
+    ],
+    "a": 0,
+    "info": "Fair Queueing (Encolamiento Justo) separa el tráfico en flujos distintos y los atiende de manera equitativa (generalmente uno por uno en ciclo) para evitar que un flujo acapare el ancho de banda."
+  },
+  {
+    "q": "¿Cuáles de las siguientes características corresponden a los Servicios Integrados (IntServ)? (Seleccione la más representativa)",
+    "options": [
+      "Es escalable en redes grandes como Internet",
+      "Se marcan los paquetes cerca del origen (TOS/DSCP)",
+      "Requiere el protocolo de reserva de recursos RSVP",
+      "No garantiza QoS extremo a extremo"
+    ],
+    "a": 2,
+    "info": "IntServ utiliza el protocolo RSVP para reservar recursos específicos en cada router a lo largo de la ruta para cada flujo individual, garantizando QoS extremo a extremo pero con problemas de escalabilidad."
+  },
+  {
+    "q": "¿Cuáles de las siguientes características corresponden a los Servicios Diferenciados (DiffServ)?",
+    "options": [
+      "Se requiere el protocolo de reserva RSVP",
+      "Todos los datos viajan por el mismo camino físico garantizado",
+      "Se marcan los paquetes según su importancia en los campos TOS/clase de tráfico del encabezado IP",
+      "El router debe mantener el estado de cada flujo individual"
+    ],
+    "a": 2,
+    "info": "DiffServ es escalable porque no guarda estado por flujo; en su lugar, clasifica y marca los paquetes (usando el campo TOS/DSCP) para que los routers apliquen políticas según la clase."
+  },
+  {
+    "q": "¿Cuál de las siguientes características corresponde a la tecnología MPLS?",
+    "options": [
+      "Los routers conmutan según la dirección MAC",
+      "Los routers mantienen tablas y conmutan rápidamente en función de una etiqueta insertada entre capa 2 y 3",
+      "Los paquetes de un mismo flujo se encaminan de forma independiente",
+      "Se basa en el protocolo de 'mejor esfuerzo' de internet"
+    ],
+    "a": 1,
+    "info": "MPLS (Multiprotocol Label Switching) inserta una etiqueta corta y conmuta paquetes basándose en ella en lugar de buscar en la tabla de enrutamiento IP completa, permitiendo ingeniería de tráfico y velocidad."
+  },
+  {
+    "q": "En el protocolo TCP, ¿qué información identifica de manera única un socket (punto terminal de conexión)?",
+    "options": [
+      "Dirección MAC + Dirección IP",
+      "Dirección IP + Número de Puerto",
+      "Número de proceso + Dirección MAC",
+      "Dirección IP + Dirección de Red"
+    ],
+    "a": 1,
+    "info": "Un socket se define estrictamente como la combinación de una dirección IP y un número de puerto (16 bits), permitiendo identificar un proceso específico en un host."
+  },
+  {
+    "q": "¿Cuántos bits conforman un puerto lógico en la capa de transporte?",
+    "options": [
+      "32 bits",
+      "8 bits",
+      "16 bits",
+      "48 bits"
+    ],
+    "a": 2,
+    "info": "Los puertos (tanto en TCP como en UDP) son campos de 16 bits, lo que permite valores desde 0 hasta 65535."
+  },
+  {
+    "q": "Para identificar de forma única una comunicación completa entre dos dispositivos A y B, ¿qué registro es necesario?",
+    "options": [
+      "Solo las direcciones IP de A y B",
+      "Solo los puertos de A y B",
+      "El par de sockets: (IP A, Puerto A) y (IP B, Puerto B)",
+      "Las direcciones MAC y las IP"
+    ],
+    "a": 2,
+    "info": "Una conexión TCP se identifica únicamente por sus dos extremos (sockets): IP y puerto de origen + IP y puerto de destino."
+  },
+  {
+    "q": "¿Qué función realiza el protocolo TCP en el destino de una transmisión?",
+    "options": [
+      "Segmenta los datos y agrega cabeceras",
+      "Reensambla los segmentos provenientes de la capa de red, los ordena y los entrega a la aplicación",
+      "Conmuta los paquetes basándose en la IP",
+      "Cifra los datos para mayor seguridad"
+    ],
+    "a": 1,
+    "info": "TCP es responsable de reensamblar el flujo de bytes original a partir de los segmentos recibidos, ordenándolos según el número de secuencia antes de pasarlos a la capa de aplicación."
+  },
+  {
+    "q": "¿Cuál de los siguientes campos del encabezado TCP es fundamental para garantizar la fiabilidad y el orden de los datos?",
+    "options": [
+      "Puerto de origen",
+      "Puntero urgente",
+      "Número de secuencia",
+      "Ventana de congestión"
+    ],
+    "a": 2,
+    "info": "El número de secuencia permite al receptor reordenar los segmentos que llegaron desordenados e identificar cuáles faltan para solicitar su retransmisión."
+  },
+  {
+    "q": "Se está estableciendo una comunicación TCP. Si el emisor desea avisar al receptor que ya redujo su tasa de transferencia ante una congestión, ¿qué flag activa?",
+    "options": [
+      "SYN",
+      "URG",
+      "CWR (Congestion Window Reduced)",
+      "ECE (ECN Echo)"
+    ],
+    "a": 2,
+    "info": "CWR es el flag que utiliza el emisor para confirmar que ha recibido la notificación de congestión y ha reducido su ventana de transmisión."
+  },
+  {
+    "q": "En el campo 'número de reconocimiento' (ACK) de un segmento que A envía a B figura el valor 1800. Esto implica que:",
+    "options": [
+      "B recibió correctamente hasta el byte 1800",
+      "A recibió correctamente hasta el byte 1799 inclusive y espera el 1800",
+      "El próximo segmento que A envíe comenzará en 1800",
+      "A recibió hasta el 1800 inclusive"
+    ],
+    "a": 1,
+    "info": "El ACK en TCP es acumulativo e indica el *siguiente* byte que el receptor espera recibir. Si ACK=1800, significa que se recibieron correctamente los bytes hasta el 1799."
+  },
+  {
+    "q": "¿Cuál de los siguientes campos utiliza el protocolo TCP para implementar el control de flujo extremo a extremo?",
+    "options": [
+      "Ventana de congestión",
+      "Tamaño de ventana de recepción (Window Size)",
+      "Puntero urgente",
+      "Número de reconocimiento"
+    ],
+    "a": 1,
+    "info": "El campo 'Tamaño de ventana' (Window Size) es utilizado por el receptor para decirle al emisor cuánto espacio libre tiene en su buffer, controlando así el flujo para no ser saturado."
+  },
+  {
+    "q": "La función del parámetro MSS (Maximum Segment Size) que se negocia al inicio de una conexión TCP es:",
+    "options": [
+      "Determinar el tamaño máximo de la ventana",
+      "Determinar el tamaño máximo de la carga útil del segmento para evitar fragmentación IP",
+      "Definir la cantidad de sockets",
+      "Establecer la velocidad de transmisión"
+    ],
+    "a": 1,
+    "info": "El MSS especifica la cantidad máxima de datos (en bytes) que un dispositivo puede recibir en un solo segmento TCP, buscando evitar que el paquete IP resultante sea fragmentado."
+  },
+  {
+    "q": "Si en una comunicación TCP, el receptor envía un segmento con 'Ventana de recepción = 0', ¿qué debe hacer el emisor?",
+    "options": [
+      "Cerrar la conexión inmediatamente",
+      "Continuar transmitiendo normalmente",
+      "Detener momentáneamente la transmisión de datos hasta que la ventana sea > 0",
+      "Retransmitir el último segmento"
+    ],
+    "a": 2,
+    "info": "Una ventana de tamaño cero indica que el buffer del receptor está lleno. El emisor debe pausar el envío de datos (control de flujo) hasta recibir una actualización de ventana."
+  },
+  {
+    "q": "En el saludo de tres vías (Three-way handshake) de TCP, ¿qué flags tiene activados el SEGUNDO segmento (respuesta del servidor al cliente)?",
+    "options": [
+      "Solo SYN",
+      "SYN y ACK",
+      "FIN y ACK",
+      "Solo ACK"
+    ],
+    "a": 1,
+    "info": "El proceso es: 1) Cliente envía SYN. 2) Servidor responde con SYN (para abrir su sentido) y ACK (para confirmar el del cliente). 3) Cliente responde ACK."
+  },
+  {
+    "q": "¿Cuál de las siguientes aplicaciones utiliza típicamente el protocolo UDP?",
+    "options": [
+      "Transferencia de archivos (FTP)",
+      "Correo electrónico (SMTP)",
+      "Navegación Web (HTTP)",
+      "Resolución de nombres (DNS) y Streaming"
+    ],
+    "a": 3,
+    "info": "DNS utiliza UDP (puerto 53) para consultas rápidas. Las aplicaciones de tiempo real (streaming, voz) también prefieren UDP por su velocidad, sacrificando fiabilidad."
+  },
+  {
+    "q": "¿Qué campos forman parte de la cabecera del protocolo UDP?",
+    "options": [
+      "Puertos, Secuencia, ACK, Checksum",
+      "Puertos origen/destino, Longitud, Suma de verificación (Checksum)",
+      "Puertos, Ventana, Longitud, Checksum",
+      "Solo Puertos y Datos"
+    ],
+    "a": 1,
+    "info": "UDP tiene una cabecera muy simple de 8 bytes que contiene solo: Puerto Origen, Puerto Destino, Longitud del datagrama y Checksum."
+  },
+  {
+    "q": "La traducción de direcciones de red (NAT) tiene como objetivo principal:",
+    "options": [
+      "Configurar direcciones IPv6",
+      "Ahorrar direcciones IPv4 públicas y permitir acceso a internet a hosts privados",
+      "Facilitar la implementación de DHCP",
+      "Encriptar la comunicación"
+    ],
+    "a": 1,
+    "info": "NAT se desarrolló para mitigar el agotamiento de direcciones IPv4, permitiendo que múltiples dispositivos con IPs privadas salgan a Internet usando IPs públicas."
+  },
+  {
+    "q": "¿Cuál es una ventaja de la NAT Estática?",
+    "options": [
+      "Ahorra muchas direcciones IP públicas",
+      "Permite que servidores internos sean accesibles desde Internet (mapeo 1:1)",
+      "Utiliza puertos para diferenciar conexiones",
+      "Es dinámica y no requiere configuración manual"
+    ],
+    "a": 1,
+    "info": "NAT Estática asigna una IP pública fija a una IP privada específica (1:1). No ahorra IPs, pero es ideal para servidores web/correo que deben ser accesibles desde fuera."
+  },
+  {
+    "q": "En una implementación de PAT (Port Address Translation), ¿qué utiliza el router para diferenciar las múltiples conexiones internas que comparten una sola IP pública?",
+    "options": [
+      "La dirección MAC de origen",
+      "El número de secuencia TCP",
+      "El número de puerto de origen",
+      "La dirección IP de destino"
+    ],
+    "a": 2,
+    "info": "PAT (o NAT con sobrecarga) mapea múltiples IPs privadas a una sola IP pública usando diferentes números de puerto de origen para distinguir cada sesión de retorno."
+  },
+  {
+    "q": "Si un administrador dispone de una sola IP pública para 600 empleados, ¿qué tipo de traducción debe configurar?",
+    "options": [
+      "NAT Estática",
+      "NAT Dinámica",
+      "PAT (Traducción a nivel de puerto)",
+      "No es posible conectar tantos usuarios"
+    ],
+    "a": 2,
+    "info": "PAT permite miles de conexiones simultáneas usando una sola IP pública, variando los puertos de origen (teóricamente hasta ~65000 puertos)."
+  },
+  {
+    "q": "Si se ejecuta el comando 'nslookup' y se establece 'set type=AAAA', ¿qué información se obtendrá?",
+    "options": [
+      "El servidor de correo (MX)",
+      "La dirección IPv4 del dominio",
+      "La dirección IPv6 del dominio",
+      "El servidor de nombres (NS)"
+    ],
+    "a": 2,
+    "info": "En DNS, el registro tipo 'A' corresponde a IPv4, mientras que el registro 'AAAA' corresponde a una dirección IPv6 (128 bits)."
+  },
+  {
+    "q": "El servidor DNS que posee información sobre los dominios de nivel superior (TLD) como .com, .edu, .ar, se denomina:",
+    "options": [
+      "Servidor Local",
+      "Servidor Raíz (Root Server)",
+      "Servidor Autoritativo",
+      "Servidor Caché"
+    ],
+    "a": 1,
+    "info": "Los Servidores Raíz son el primer paso en la resolución jerárquica si no hay caché, y dirigen las consultas hacia los servidores de los dominios de nivel superior (TLD)."
+  },
+  {
+    "q": "¿Qué comando permite borrar o vaciar la memoria caché de resolución de DNS de una PC con Windows?",
+    "options": [
+      "ipconfig /all",
+      "ipconfig /renew",
+      "ipconfig /displaydns",
+      "ipconfig /flushdns"
+    ],
+    "a": 3,
+    "info": "El comando 'ipconfig /flushdns' elimina las entradas almacenadas en la caché del cliente DNS, forzando a la PC a realizar nuevas consultas para resolver nombres."
+  }
+    ,
+  {
+    "q": "¿Cuáles de las siguientes aplicaciones corren sobre el protocolo UDP? (Seleccione las correctas)",
+    "options": [
+      "HTTP, FTP, SMTP",
+      "TFTP, DNS, SNMP",
+      "POP3, IMAP, Telnet",
+      "HTTPS, SSH, FTP"
+    ],
+    "a": 1,
+    "info": "UDP es un protocolo no orientado a conexión utilizado por aplicaciones que requieren rapidez o envíos simples. TFTP (puerto 69), DNS (puerto 53) y SNMP (puerto 161) funcionan sobre UDP."
+  },
+  {
+    "q": "El objetivo principal de la Traducción de Direcciones de Red (NAT) es:",
+    "options": [
+      "Encriptar la información para hacerla segura",
+      "Ahorrar direcciones IPv4 públicas y permitir que hosts con IPs privadas accedan a Internet",
+      "Asignar direcciones IP dinámicamente a los hosts",
+      "Filtrar el tráfico malicioso"
+    ],
+    "a": 1,
+    "info": "NAT (Network Address Translation) fue diseñado principalmente para mitigar el agotamiento de direcciones IPv4, permitiendo que redes enteras con direccionamiento privado salgan a Internet usando pocas IPs públicas."
+  },
+  {
+    "q": "¿Cuál es una ventaja principal de utilizar NAT Estática?",
+    "options": [
+      "Permite conectar múltiples usuarios con una sola IP",
+      "Asigna direcciones dinámicamente según demanda",
+      "Permite que servidores internos sean accesibles desde el exterior (mapeo 1:1)",
+      "No requiere configuración manual"
+    ],
+    "a": 2,
+    "info": "La NAT estática asigna una IP pública fija a una IP privada específica. Esto es ideal para servidores (Web, Correo) que necesitan ser ubicables desde Internet siempre en la misma dirección."
+  },
+  {
+    "q": "En un escenario de NAT Dinámica, si una PC interna envía un paquete a un servidor en Internet, ¿qué cambio sufre el paquete al atravesar el router de borde?",
+    "options": [
+      "Se cambia la IP de destino por una IP privada",
+      "Se cambia la IP de origen (privada) por la primera IP pública disponible en el pool",
+      "Se cambia el puerto de origen únicamente",
+      "No sufre cambios"
+    ],
+    "a": 1,
+    "info": "En NAT Dinámica, el router toma una dirección pública libre de su 'pool' y reemplaza la dirección IP privada de origen del paquete saliente por esta dirección pública."
+  },
+  {
+    "q": "Si un router implementa PAT (Port Address Translation), ¿qué información utiliza para diferenciar múltiples conexiones que comparten la misma IP pública?",
+    "options": [
+      "La dirección MAC",
+      "El número de secuencia TCP",
+      "El número de puerto de origen",
+      "La dirección IP de destino"
+    ],
+    "a": 2,
+    "info": "PAT (o NAT con sobrecarga) utiliza los números de puerto de la capa de transporte para multiplexar múltiples direcciones privadas sobre una única dirección pública."
+  },
+  {
+    "q": "En una tabla de traducción PAT, cuando un paquete regresa desde Internet hacia la red interna, el router busca una coincidencia basándose en:",
+    "options": [
+      "IP origen y Puerto origen",
+      "IP destino y Puerto destino (del paquete entrante)",
+      "Solo la IP destino",
+      "La dirección MAC de destino"
+    ],
+    "a": 1,
+    "info": "El router inspecciona la IP pública de destino y el Puerto de destino del paquete entrante para buscar en su tabla NAT a qué IP privada y Puerto interno corresponde esa sesión."
+  },
+  {
+    "q": "Un administrador tiene 600 puestos de trabajo y una sola IP pública. ¿Qué tipo de traducción debe configurar para dar internet a todos?",
+    "options": [
+      "NAT Estática",
+      "NAT Dinámica",
+      "PAT (Traducción a nivel de puerto)",
+      "No es posible con una sola IP"
+    ],
+    "a": 2,
+    "info": "Con una sola IP pública, la única forma de permitir el acceso simultáneo de múltiples hosts es mediante PAT, que usa los puertos para diferenciar las sesiones (hasta aprox 64000)."
+  },
+  {
+    "q": "¿En qué consiste la NAT Dinámica?",
+    "options": [
+      "Mapeo fijo 1 a 1 entre privada y pública",
+      "Uso de puertos para compartir una IP",
+      "Se posee un pool de IPs públicas y se asignan a los equipos internos según demanda",
+      "No realiza traducción, solo enrutamiento"
+    ],
+    "a": 2,
+    "info": "NAT Dinámica implica tener un grupo (pool) de direcciones públicas. Cada host interno toma una IP del pool temporalmente. Si se acaban las IPs del pool, nadie más puede salir hasta que se libere una."
+  },
+  {
+    "q": "En una comunicación con PAT, si el paquete saliente tiene Origen 10.0.0.1:1025 y Destino 200.1.1.1:80, y la IP pública del router es 205.1.1.1, ¿cómo podría quedar el paquete tras la traducción?",
+    "options": [
+      "Origen 205.1.1.1:1025 (o un nuevo puerto asignado), Destino 200.1.1.1:80",
+      "Origen 10.0.0.1:1025, Destino 205.1.1.1:80",
+      "Origen 200.1.1.1:80, Destino 205.1.1.1:1025",
+      "Origen 205.1.1.1:80, Destino 200.1.1.1:1025"
+    ],
+    "a": 0,
+    "info": "El router reemplaza la IP privada de origen con su IP pública y, si es necesario, asigna un nuevo puerto de origen para identificar la sesión de forma única en su tabla."
+  },
+  {
+    "q": "Si ejecutamos 'nslookup -type=AAAA www.google.com', ¿qué información estamos solicitando?",
+    "options": [
+      "La dirección IPv4 del dominio",
+      "El servidor de correo",
+      "La dirección IPv6 del dominio",
+      "El servidor de nombres autoritativo"
+    ],
+    "a": 2,
+    "info": "El registro tipo 'A' es para IPv4 (32 bits), mientras que el registro 'AAAA' es para direcciones IPv6 (128 bits)."
+  },
+  {
+    "q": "¿Qué función cumplen los Servidores Raíz (Root Servers) en el sistema DNS?",
+    "options": [
+      "Almacenan la caché de todos los usuarios",
+      "Contienen información sobre los dominios de nivel superior (TLD) como .com, .org, .ar",
+      "Resuelven las direcciones IP de las redes locales",
+      "Son los servidores de correo principales"
+    ],
+    "a": 1,
+    "info": "Los servidores raíz son el punto de partida de la jerarquía DNS. No conocen la IP final de 'google.com', pero saben quién maneja el dominio '.com' y te derivan allí."
+  },
+  {
+    "q": "¿Qué comando permite borrar/vaciar la memoria caché DNS en un cliente Windows?",
+    "options": [
+      "ipconfig /all",
+      "ipconfig /release",
+      "ipconfig /displaydns",
+      "ipconfig /flushdns"
+    ],
+    "a": 3,
+    "info": "El comando `ipconfig /flushdns` elimina todas las entradas almacenadas temporalmente en la caché del resolver DNS local, obligando a realizar nuevas consultas."
+  },
+  {
+    "q": "En una red con 400 PCs y un pool de 80 IPs públicas donde nunca se conectan más del 20% a la vez. ¿Qué tipo de NAT es el más adecuado si queremos mapear IP a IP sin usar puertos?",
+    "options": [
+      "PAT",
+      "NAT Estática",
+      "NAT Dinámica",
+      "No se puede implementar"
+    ],
+    "a": 2,
+    "info": "Al tener un pool de IPs y querer asignarlas temporalmente a usuarios activos (sin sobrecarga de puertos), se utiliza NAT Dinámica. Las 80 IPs cubren el 20% de 400 (80 usuarios simultáneos)."
+  },
+  {
+    "q": "¿Qué tipo de consulta DNS realiza típicamente un servidor DNS local a los servidores raíz y TLD para resolver un nombre?",
+    "options": [
+      "Recursiva",
+      "Iterativa",
+      "Inversa",
+      "Directa"
+    ],
+    "a": 1,
+    "info": "El cliente (PC) hace una consulta recursiva al servidor local ('dame la IP'). El servidor local hace consultas iterativas ('dime a quién preguntar') a los servidores de la jerarquía (Raíz -> TLD -> Autoritativo)."
+  },
+  {
+    "q": "Si un servidor DNS local no tiene la respuesta en su caché, ¿cuál es el primer paso en la resolución?",
+    "options": [
+      "Preguntar al servidor TLD",
+      "Preguntar al servidor Raíz (Root Server)",
+      "Preguntar al servidor Autoritativo",
+      "Devolver error"
+    ],
+    "a": 1,
+    "info": "Si no hay caché, el proceso comienza por la cima de la jerarquía: los Servidores Raíz."
+  },
+  {
+    "q": "¿Qué indica un registro DNS de tipo MX?",
+    "options": [
+      "El alias de un nombre canónico",
+      "La dirección IPv4 del host",
+      "El servidor de intercambio de correo para el dominio",
+      "El servidor de nombres del dominio"
+    ],
+    "a": 2,
+    "info": "MX significa 'Mail Exchange'. Indica qué servidores están encargados de recibir correos electrónicos destinados a ese dominio y su prioridad."
+  },
+  {
+    "q": "¿Qué significa que una respuesta DNS sea 'No Autoritativa'?",
+    "options": [
+      "Que la respuesta es falsa",
+      "Que proviene de un servidor raíz",
+      "Que la respuesta fue obtenida de la memoria caché del servidor y no consultada directamente al origen",
+      "Que el dominio no existe"
+    ],
+    "a": 2,
+    "info": "Una respuesta no autoritativa indica que el servidor DNS que responde no es el dueño de la zona, sino que tenía el dato guardado en su caché de una consulta anterior."
+  },
+  {
+    "q": "Si ejecuto 'nslookup -type=NS utn.edu.ar', ¿qué obtengo?",
+    "options": [
+      "La IP del servidor web",
+      "Los servidores de correo",
+      "Los servidores de nombres (Name Servers) delegados para ese dominio",
+      "La dirección IPv6"
+    ],
+    "a": 2,
+    "info": "El registro NS (Name Server) identifica qué servidores DNS tienen la autoridad y la base de datos de registros para ese dominio."
+  },
+  {
+    "q": "En una captura de tráfico, ves un paquete UDP con puerto origen 53 y puerto destino 52000. ¿A qué corresponde?",
+    "options": [
+      "Una solicitud DNS de un cliente a un servidor",
+      "Una respuesta DNS desde un servidor hacia un cliente",
+      "Una transferencia de zona",
+      "Un paquete de voz sobre IP"
+    ],
+    "a": 1,
+    "info": "El puerto 53 es el puerto estándar de los servidores DNS. Si está en el campo 'Origen', es una respuesta que el servidor envía al puerto efímero (aleatorio alto, ej. 52000) del cliente."
+  },
+  {
+    "q": "¿Qué encabezado MIME se debe configurar para enviar una imagen GIF por correo electrónico?",
+    "options": [
+      "Content-Type: text/plain",
+      "Content-Type: image/gif",
+      "Content-Transfer-Encoding: base64",
+      "Subject: Imagen"
+    ],
+    "a": 1,
+    "info": "El encabezado `Content-Type` indica el tipo de medio. Para una imagen GIF, el valor MIME estándar es `image/gif`."
+  },
+  {
+    "q": "Ana envía un correo desde su PC usando Outlook. ¿Qué protocolo se utiliza para subir el correo de su PC al servidor de correo?",
+    "options": [
+      "POP3",
+      "IMAP",
+      "SMTP",
+      "HTTP"
+    ],
+    "a": 2,
+    "info": "SMTP (Simple Mail Transfer Protocol) es un protocolo 'Push' usado para enviar correos desde el cliente al servidor (y entre servidores). POP3 e IMAP son para recibir/bajar."
+  },
+  {
+    "q": "¿Qué protocolo permite consultar correos desde múltiples dispositivos simultáneamente manteniendo el estado (leído, carpetas) sincronizado en el servidor?",
+    "options": [
+      "POP3",
+      "SMTP",
+      "IMAP",
+      "FTP"
+    ],
+    "a": 2,
+    "info": "IMAP (Internet Message Access Protocol, puerto 143/993) mantiene los correos en el servidor y sincroniza el estado, ideal para acceso multidispositivo. POP3 suele descargar y borrar."
+  },
+  {
+    "q": "¿Cuál es el orden correcto de consulta en una resolución DNS completa?",
+    "options": [
+      "Local -> Raíz -> TLD -> Autoritativo",
+      "Raíz -> Local -> TLD -> Autoritativo",
+      "Local -> Autoritativo -> Raíz -> TLD",
+      "TLD -> Raíz -> Local -> Autoritativo"
+    ],
+    "a": 0,
+    "info": "El resolver local consulta primero a la Raíz (.), este lo deriva al TLD (.com, .org), y este lo deriva al servidor Autoritativo del dominio final (ej. google.com)."
+  },
+  {
+    "q": "Si una consulta DNS devuelve una dirección IP (ej. 201.56.89.10), ¿qué tipo de registro se solicitó?",
+    "options": [
+      "MX",
+      "NS",
+      "A",
+      "CNAME"
+    ],
+    "a": 2,
+    "info": "El registro tipo 'A' (Address) es el que asocia un nombre de dominio con su dirección IPv4 de 32 bits."
+  },
+  {
+    "q": "¿Cuál de los siguientes campos es propio de la cabecera del protocolo MIME y no del SMTP clásico?",
+    "options": [
+      "To:",
+      "From:",
+      "Subject:",
+      "Content-Type:"
+    ],
+    "a": 3,
+    "info": "SMTP original solo soportaba texto ASCII. MIME añadió encabezados como `Content-Type` y `Content-Transfer-Encoding` para soportar adjuntos, multimedia y otros caracteres."
+  },
+  {
+    "q": "El protocolo SMTP utiliza el puerto ____ sobre TCP.",
+    "options": [
+      "110",
+      "143",
+      "25",
+      "53"
+    ],
+    "a": 2,
+    "info": "SMTP utiliza el puerto 25 para la transferencia de correos. (Puertos modernos incluyen 587 para envío de clientes)."
+  },
+  {
+    "q": "¿Qué campos son agregados por los Agentes de Transferencia (MTA) en la cabecera del correo a medida que este viaja?",
+    "options": [
+      "Subject",
+      "Received",
+      "To",
+      "Date"
+    ],
+    "a": 1,
+    "info": "Cada servidor MTA por el que pasa un correo agrega una cabecera `Received:` para trazar la ruta del mensaje, útil para diagnóstico y rastreo."
+  },
+  {
+    "q": "¿Cuál de los siguientes NO es un tipo de contenido principal en MIME?",
+    "options": [
+      "text",
+      "image",
+      "audio",
+      "presentation"
+    ],
+    "a": 3,
+    "info": "Los tipos MIME estándar principales son `text`, `image`, `audio`, `video`, `application`, `multipart`, `message`. 'Presentation' no es un tipo MIME de primer nivel estándar."
+  },
+  {
+    "q": "¿Qué campo de cabecera MIME indica cómo se han codificado los datos binarios para viajar como texto (ej. Base64)?",
+    "options": [
+      "Content-Type",
+      "Content-ID",
+      "Content-Transfer-Encoding",
+      "MIME-Version"
+    ],
+    "a": 2,
+    "info": "`Content-Transfer-Encoding` especifica la codificación usada (como Base64 o Quoted-Printable) para transformar datos binarios en caracteres ASCII seguros para SMTP."
+  },
+  {
+    "q": "Características del protocolo POP3:",
+    "options": [
+      "Puerto 143, sincronización compleja",
+      "Puerto 110, modelo descarga y borrado, simple",
+      "Puerto 25, envío de correos",
+      "Puerto 80, acceso web"
+    ],
+    "a": 1,
+    "info": "POP3 (Post Office Protocol v3) corre en el puerto 110 TCP. Su diseño original es simple: conectar, descargar mensajes a la PC local y borrarlos del servidor."
+  }
+]

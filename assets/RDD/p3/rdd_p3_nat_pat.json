@@ -132,7 +132,7 @@
     "info": "PAT (también llamado NAT de sobrecarga) modifica tanto la IP de origen como el número de puerto de origen (capa 4) para crear mapeos únicos, permitiendo a miles de conexiones compartir una sola IP pública."
   },
   {
-    "q": "Al implementar PAT, si la PC-A ($10.10.0.3:50501$) y la PC-B ($10.10.0.5:50501$) intentan conectarse al Servidor Web ($34.5.6.7:80$) usando el mismo puerto de origen (50501), ¿qué acción debe tomar el router PAT en el paquete de la PC-B?",
+    "q": "Al implementar PAT, si la PC-A (10.10.0.3:50501) y la PC-B (10.10.0.5:50501) intentan conectarse al Servidor Web (34.5.6.7:80) usando el mismo puerto de origen (50501), ¿qué acción debe tomar el router PAT en el paquete de la PC-B?",
     "options": [
       "Bloquear el paquete de la PC-B, ya que el puerto de origen ya está en uso.",
       "Permitir la salida del paquete de la PC-B sin cambios, ya que las IP privadas son diferentes.",
