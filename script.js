@@ -193,11 +193,12 @@ function resetQuiz() {
 }
 
 function resolvePath(path) {
-  const base = window.location.pathname.includes("Pregunteros")
+  const base = window.location.hostname === "huecap.github.io"
     ? "/Pregunteros/"
     : "/";
   return base + path;
 }
+
 
 // Iniciar App
 initMenu();
