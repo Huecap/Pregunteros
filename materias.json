@@ -8,7 +8,7 @@
             "Voz - IP": "assets/rdd/p3/rdd_p3_voz_ip.json",
             "Seguridad": "assets/rdd/p3/rdd_p3_seguridad.json",
             "Integradoras" : "assets/rdd/p3/rdd_p3_integradoras.json",
-            "Pregunteros": "assets/RDD/p3/rdd_p3_pregunteros.json"
+            "Pregunteros": "assets/rdd/p3/rdd_p3_pregunteros.json"
         }
     }
 }
