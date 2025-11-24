@@ -1,5 +1,12 @@
 {
     "Redes de Datos": {
+        "Parcial 1" : {
+            "Arquitectura de Redes" : "assets/redes/p1/rdd_p1_arquitectura.json",
+            "Capa de acceso al medio" : "assets/redes/p1/rdd_p1_capa_acceso_al_medio.json",
+            "IPv4" : "assets/redes/p1/rdd_p1_ipv4.json"
+        }   ,
+        "Parcial 2": {  }
+        ,
         "Parcial 3": {
             "TCP": "assets/redes/p3/rdd_p3_tcp.json",
             "UDP": "assets/redes/p3/rdd_p3_udp.json",

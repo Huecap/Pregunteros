@@ -1,36 +1,101 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plataforma de Estudio - Selección de Materia</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <div class="main-content">
-        
+
         <div id="menu-view">
             <h1>Pregunteros</h1>
+            <div style="text-align: center; margin-bottom: 20px;">
+            </div>
+
+
+            <button id="btn-global-download" class="save-btn hidden"
+                style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+                ⬇️ Descargar JSON Nuevo
+            </button>
             <div id="menu-container">
                 <div id="loading-menu">⏳ Cargando materias...</div>
+
             </div>
+            <button id="btn-open-loader" class="preguntero-btn" style="background-color: #28a745;">
+                📂 Cargar Preguntero Personalizado
+            </button>
         </div>
 
         <div id="quiz-view" class="hidden">
             <button class="back-btn" onclick="showMenu()">⬅ Volver al Menú Principal</button>
-            
+
             <h1 id="quiz-title">Quiz</h1>
             <div class="score-board" id="score-board">Puntuación: 0 / 0</div>
-            
+
             <div id="quiz-content">
-                </div>
+            </div>
 
             <button class="nav-btn" onclick="resetQuiz()">🔄 Reiniciar este Quiz</button>
+            <button class="nav-btn" onclick="exportarJSON()">Exportar JSON</button>
         </div>
-
     </div>
 
+    <div id="modal-loader" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal"
+                style="float:right; cursor:pointer; font-size:28px; font-weight:bold;">&times;</span>
+
+            <h2 style="margin-top: 0; color: #333;">Cargar Nuevo Material</h2>
+            <p style="color: #666; font-size: 0.9em; margin-bottom: 20px;">Completa los datos para editar un archivo
+                local.</p>
+            
+            <p>Asgurase que el formato en el que se encuentren las preguntas sea GIFT</p>
+
+            <div class="form-group" style="margin-bottom: 15px; text-align: left;">
+                <label style="display:block; font-weight:bold; margin-bottom: 5px;">Materia:</label>
+                <input list="materias-datalist" id="input-materia"
+                    style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"
+                    placeholder="Escribe o selecciona...">
+                <datalist id="materias-datalist"></datalist>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 15px; text-align: left;">
+                <label style="display:block; font-weight:bold; margin-bottom: 5px;">Nombre de Unidad:</label>
+                <input type="text" id="input-unidad"
+                    style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"
+                    placeholder="Ej: Unidad 1 - Introducción">
+            </div>
+
+            <div class="form-group" style="margin-bottom: 20px; text-align: left;">
+                <label style="display:block; font-weight:bold; margin-bottom: 5px;">Subir JSON:</label>
+                <input type="file" id="input-file" accept=".json" style="width: 100%;">
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+
+            <button id="btn-process-load" style="
+            width: 100%; 
+            padding: 12px; 
+            background-color: #007bff; 
+            color: white; 
+            border: none; 
+            border-radius: 6px; 
+            font-size: 16px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            transition: background 0.3s;">
+                ✅ Confirmar y Cargar
+            </button>
+        </div>
+    </div>
     <script src="script.js"></script>
+
+
 </body>
+
 </html>

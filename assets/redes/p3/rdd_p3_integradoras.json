@@ -7,7 +7,7 @@
             "Se activa el algoritmo de inicio lento.",
             "El receptor descarta los paquetes."
         ],
-        "a": 1,
+        "a":2,
         "info": "Ventana=0 indica que el búfer del receptor está lleno. El emisor espera hasta recibir una ventana > 0 para no saturar al receptor (Control de Flujo)."
     },
     {
@@ -18,7 +18,7 @@
             "UDP puerto 53",
             "UDP puerto 67"
         ],
-        "a": 2,
+        "a":3,
         "info": "DNS utiliza principalmente UDP en el puerto 53 para las consultas debido a su rapidez y baja sobrecarga."
     },
     {
@@ -29,7 +29,7 @@
             "IP",
             "ICMP"
         ],
-        "a": 1,
+        "a":2,
         "info": "TFTP (Trivial File Transfer Protocol) es un protocolo simple que corre sobre UDP en el puerto 69."
     },
     {
@@ -40,7 +40,7 @@
             "Trap",
             "Get-Bulk"
         ],
-        "a": 2,
+        "a":3,
         "info": "El mensaje TRAP es enviado por el agente de forma asíncrona para notificar al NMS sobre un evento o fallo inesperado."
     },
     {
@@ -51,7 +51,7 @@
             "PAT (Port Address Translation)",
             "DMZ"
         ],
-        "a": 2,
+        "a":3,
         "info": "PAT (o NAT con sobrecarga) utiliza el número de puerto de origen para mapear múltiples direcciones privadas a una sola dirección pública."
     },
     {
@@ -62,7 +62,7 @@
             "Que el servicio esté siempre disponible.",
             "Que el emisor es quien dice ser."
         ],
-        "a": 1,
+        "a":2,
         "info": "La integridad asegura que los datos recibidos son idénticos a los enviados, sin alteraciones. Se suele lograr mediante funciones Hash."
     },
     {
@@ -73,7 +73,7 @@
             "SMTP",
             "HTTP"
         ],
-        "a": 2,
+        "a":3,
         "info": "SMTP (Simple Mail Transfer Protocol) es el estándar utilizado para la transferencia y entrega de correos entre servidores."
     },
     {
@@ -84,7 +84,7 @@
             "Estación Administradora (NMS)",
             "Servidor Autorizado de Nombres"
         ],
-        "a": 3,
+        "a":4,
         "info": "El Servidor Autorizado de Nombres es un componente del sistema DNS, no de la arquitectura de gestión SNMP."
     },
     {
@@ -95,7 +95,7 @@
             "20",
             "Depende de los puertos"
         ],
-        "a": 2,
+        "a":3,
         "info": "En NAT Dinámico puro, la relación es 1 a 1. Si hay 20 IPs públicas, solo 20 hosts internos pueden tener conexión simultánea."
     },
     {
@@ -106,7 +106,7 @@
             "Subject-Encoding",
             "File-Header"
         ],
-        "a": 0,
+        "a":1,
         "info": "El encabezado 'Content-type' en MIME especifica el tipo de medio (ej. image/gif, application/pdf) del contenido del mensaje."
     },
     {
@@ -117,7 +117,7 @@
             "IMAP",
             "SNMP"
         ],
-        "a": 2,
+        "a":3,
         "info": "IMAP mantiene los correos en el servidor, permitiendo sincronización entre múltiples dispositivos y organización en carpetas."
     },
     {
@@ -128,7 +128,7 @@
             "FIN y ACK",
             "ACK"
         ],
-        "a": 1,
+        "a":2,
         "info": "El segundo paso es la respuesta del servidor aceptando la conexión: activa SYN (para sincronizar su secuencia) y ACK (para confirmar el SYN del cliente)."
     },
     {
@@ -139,7 +139,7 @@
             "Un protocolo de gestión de claves.",
             "Un área de la memoria caché del router."
         ],
-        "a": 1,
+        "a":2,
         "info": "La DMZ es una zona intermedia de seguridad donde se ubican servidores públicos, aislándolos de la LAN corporativa."
     },
     {
@@ -150,7 +150,7 @@
             "Con la clave privada de B.",
             "Con la clave pública de B."
         ],
-        "a": 3,
+        "a":4,
         "info": "Para confidencialidad, se cifra con la Clave Pública del Destinatario (B) para que solo B (con su Clave Privada) pueda descifrarlo."
     },
     {
@@ -161,7 +161,7 @@
             "nslookup -clear",
             "netstat -r"
         ],
-        "a": 1,
+        "a":2,
         "info": "El comando 'ipconfig /flushdns' elimina las entradas de nombres de dominio almacenadas temporalmente en la caché del host."
     },
     {
@@ -172,7 +172,7 @@
             "FTP",
             "SMTP"
         ],
-        "a": 2,
+        "a":3,
         "info": "FTP utiliza el puerto 21 para el control (comandos) y el puerto 20 para la transferencia de datos."
     },
     {
@@ -183,7 +183,7 @@
             "Realizar el control de flujo.",
             "Verificar la integridad de los datos (checksum)."
         ],
-        "a": 1,
+        "a":2,
         "info": "TCP numera cada byte enviado. El número de secuencia permite al receptor reensamblar los datos en el orden correcto."
     },
     {
@@ -194,7 +194,7 @@
             "Conectar la red IP con la red telefónica pública (PSTN).",
             "Reproducir el audio en el terminal."
         ],
-        "a": 1,
+        "a":2,
         "info": "El Gatekeeper es el cerebro de la zona H.323, gestiona el registro de terminales, control de admisión y ancho de banda."
     },
     {
@@ -205,7 +205,7 @@
             "Algoritmo de Dijkstra",
             "Mecanismo de Keepalive"
         ],
-        "a": 1,
+        "a":2,
         "info": "La Ventana de Congestión es una variable que limita el envío de datos basándose en la capacidad de la red, no del receptor."
     },
     {
@@ -216,7 +216,7 @@
             "Tiene menor sobrecarga (overhead) y latencia al no requerir acuse de recibo.",
             "Cifra los datos por defecto."
         ],
-        "a": 2,
+        "a":3,
         "info": "UDP es preferido en tiempo real porque la velocidad es prioritaria; retransmitir paquetes perdidos (como hace TCP) causaría retrasos inaceptables."
     },
     {
@@ -227,7 +227,7 @@
             "CNAME",
             "MX"
         ],
-        "a": 3,
+        "a":4,
         "info": "El registro MX (Mail Exchange) especifica el servidor encargado de recibir correos electrónicos para el dominio."
     },
     {
@@ -238,7 +238,7 @@
             "Garantiza autenticidad, integridad y no repudio.",
             "Es un mecanismo para ocultar la dirección IP."
         ],
-        "a": 2,
+        "a":3,
         "info": "La firma digital asegura que el mensaje viene de quien dice ser, que no fue alterado y que el autor no puede negar haberlo enviado."
     },
     {
@@ -249,7 +249,7 @@
             "FIN",
             "PSH"
         ],
-        "a": 2,
+        "a":3,
         "info": "El flag FIN (Finish) se utiliza para indicar que el emisor ha terminado de enviar datos y desea cerrar la conexión."
     },
     {
@@ -260,7 +260,7 @@
             "SSH",
             "Kerberos"
         ],
-        "a": 1,
+        "a":2,
         "info": "HTTPS utiliza SSL (Secure Sockets Layer) o su sucesor TLS (Transport Layer Security) para cifrar la comunicación web."
     },
     {
@@ -271,7 +271,7 @@
             "Contar cuántos saltos puede dar el paquete.",
             "Identificar el tipo de sistema operativo."
         ],
-        "a": 1,
+        "a":2,
         "info": "El TTL en DNS indica cuántos segundos es válida la información antes de que deba ser consultada nuevamente al servidor autoritativo."
     },
     {
@@ -282,7 +282,7 @@
             "Firewall de Próxima Generación",
             "IDS"
         ],
-        "a": 1,
+        "a":2,
         "info": "El filtrado de paquetes tradicional inspecciona encabezados IP y de transporte (TCP/UDP) de forma individual sin mantener estado de sesión."
     },
     {
@@ -293,7 +293,7 @@
             "110",
             "80"
         ],
-        "a": 2,
+        "a":3,
         "info": "POP3 escucha en el puerto TCP 110."
     },
     {
@@ -304,7 +304,7 @@
             "RTP",
             "RTCP"
         ],
-        "a": 2,
+        "a":3,
         "info": "RTP (Real-time Transport Protocol) transporta el flujo de medios (voz/video), mientras que SIP/H.323 manejan la señalización."
     },
     {
@@ -315,7 +315,7 @@
             "Es más seguro que NAT dinámico.",
             "No requiere configuración en el router."
         ],
-        "a": 1,
+        "a":2,
         "info": "NAT Estática asigna 1 a 1 una IP pública a una privada, ideal para servidores (Web, Email) que necesitan ser ubicables desde fuera."
     },
     {
@@ -326,7 +326,7 @@
             "Que solo funciona en Estados Unidos.",
             "Que no garantiza la entrega de datos."
         ],
-        "a": 1,
+        "a":2,
         "info": "HTTP no recuerda interacciones previas. Para mantener sesiones (estado) se utilizan mecanismos externos como Cookies."
     },
     {
@@ -337,7 +337,7 @@
             "Un protocolo de seguridad.",
             "Una sesión de capa de aplicación."
         ],
-        "a": 1,
+        "a":2,
         "info": "Un socket (ej. 192.168.1.5:80) identifica de manera única un punto final de una comunicación en la red."
     },
     {
@@ -348,7 +348,7 @@
             "Diffie-Hellman",
             "SHA-1"
         ],
-        "a": 1,
+        "a":2,
         "info": "DES (y AES) son algoritmos simétricos donde emisor y receptor comparten la misma clave."
     },
     {
@@ -359,7 +359,7 @@
             "Reinicio o rechazo abrupto de la conexión.",
             "Datos urgentes."
         ],
-        "a": 2,
+        "a":3,
         "info": "RST (Reset) indica que la conexión debe abortarse inmediatamente, usualmente por un error o puerto cerrado."
     },
     {
@@ -370,7 +370,7 @@
             "Asigna direcciones IP dinámicamente.",
             "Encamina paquetes entre redes."
         ],
-        "a": 1,
+        "a":2,
         "info": "ARP resuelve la dirección física (MAC) asociada a una dirección lógica (IP) conocida en la red local."
     },
     {
@@ -381,7 +381,7 @@
             "Reducir la ventana a la mitad.",
             "Sumar bits de paridad."
         ],
-        "a": 1,
+        "a":2,
         "info": "En la fase de evasión de congestión, TCP aumenta la ventana lentamente (aditivamente) para sondear el ancho de banda disponible."
     },
     {
@@ -392,7 +392,7 @@
             "VPN Site-to-Site (Punto a Punto)",
             "VPN Host-to-Host"
         ],
-        "a": 2,
+        "a":3,
         "info": "Las VPN Site-to-Site conectan redes enteras mediante routers/gateways, siendo transparentes para los usuarios individuales."
     },
     {
@@ -403,7 +403,7 @@
             "ICMP",
             "SNMP"
         ],
-        "a": 2,
+        "a":3,
         "info": "Ping utiliza mensajes ICMP (Echo Request y Echo Reply) para verificar conectividad."
     },
     {
@@ -414,7 +414,7 @@
             "La base de datos jerárquica que define las variables gestionables.",
             "El mensaje de alerta."
         ],
-        "a": 2,
+        "a":3,
         "info": "La MIB (Management Information Base) estructura la información (objetos) que el agente puede reportar o el manager puede configurar."
     },
     {
@@ -425,7 +425,7 @@
             "Adivinar contraseñas por fuerza bruta.",
             "Infectar un servidor con un virus."
         ],
-        "a": 1,
+        "a":2,
         "info": "En un ataque MitM, el atacante se sitúa entre las víctimas para leer o modificar los mensajes interceptados."
     },
     {
@@ -436,7 +436,7 @@
             "443",
             "22"
         ],
-        "a": 2,
+        "a":3,
         "info": "HTTPS, la versión segura de HTTP sobre TLS/SSL, utiliza el puerto estándar 443."
     },
     {
@@ -447,7 +447,7 @@
             "Una consulta interna en la caché.",
             "Una transferencia de zona."
         ],
-        "a": 1,
+        "a":2,
         "info": "En la consulta iterativa, el servidor DNS no hace el trabajo completo; le dice al solicitante 'yo no sé, pero pregunta a este otro servidor'."
     },
     {
@@ -458,7 +458,7 @@
             "Authentication, Administration, Area",
             "Authorization, Access, Audit"
         ],
-        "a": 0,
+        "a":1,
         "info": "AAA es un marco de seguridad para controlar quién entra (Autenticación), qué puede hacer (Autorización) y qué hizo (Contabilización/Auditoría)."
     },
     {
@@ -469,7 +469,7 @@
             "Solo una firma digital al final.",
             "No agrega cabeceras, solo cifra el payload."
         ],
-        "a": 1,
+        "a":2,
         "info": "En modo túnel, IPsec cifra y encapsula todo el paquete IP original dentro de un nuevo paquete IP, ocultando las direcciones originales."
     },
     {
@@ -480,7 +480,7 @@
             "UDP",
             "PCM"
         ],
-        "a": 1,
+        "a":2,
         "info": "SIP (Session Initiation Protocol) se usa para establecer, modificar y terminar sesiones multimedia (señalización)."
     },
     {
@@ -491,7 +491,7 @@
             "From",
             "Return-Path"
         ],
-        "a": 0,
+        "a":1,
         "info": "'To' y 'Cc' muestran los destinatarios a todos. 'Bcc' (Blind Carbon Copy) los oculta."
     },
     {
@@ -502,7 +502,7 @@
             "Rompe el principio de conectividad extremo a extremo y puede afectar el rendimiento.",
             "No permite el uso de DHCP."
         ],
-        "a": 2,
+        "a":3,
         "info": "NAT modifica las cabeceras IP (y puertos en PAT), lo que consume CPU y rompe la transparencia de la comunicación end-to-end."
     },
     {
@@ -513,7 +513,7 @@
             "Una clave privada.",
             "Un tipo de virus."
         ],
-        "a": 1,
+        "a":2,
         "info": "El hash es como una 'huella digital' de los datos, usada para verificar integridad."
     },
     {
@@ -524,7 +524,7 @@
             "Algoritmo de Nagle.",
             "Keep-alive."
         ],
-        "a": 1,
+        "a":2,
         "info": "El Control de Flujo usa el campo 'Ventana' en el encabezado TCP para que el receptor indique cuánto espacio libre tiene."
     },
     {
@@ -535,7 +535,7 @@
             "Comunidad (Community String) en texto plano.",
             "Kerberos."
         ],
-        "a": 2,
+        "a":3,
         "info": "SNMPv1/v2 usan 'comunidades' (como 'public' o 'private') que viajan en texto claro, lo cual es una vulnerabilidad de seguridad."
     },
     {
@@ -546,7 +546,7 @@
             "DHCP",
             "NAT"
         ],
-        "a": 2,
+        "a":3,
         "info": "DHCP (Dynamic Host Configuration Protocol) asigna IPs, máscaras y gateways a los clientes automáticamente."
     },
     {
@@ -557,7 +557,7 @@
             "22",
             "443"
         ],
-        "a": 2,
+        "a":3,
         "info": "SSH (Secure Shell) utiliza el puerto TCP 22 para administración remota segura."
     },
     {
@@ -568,7 +568,7 @@
             "RST",
             "FIN"
         ],
-        "a": 1,
+        "a":2,
         "info": "El flag URG indica que el campo 'Puntero Urgente' es válido y debe ser procesado con prioridad."
     },
     {
@@ -579,7 +579,7 @@
             "Que el receptor no pueda leer el mensaje.",
             "Que la clave no se pierda."
         ],
-        "a": 1,
+        "a":2,
         "info": "El no repudio se logra comúnmente con firmas digitales, vinculando matemáticamente al autor con el documento."
     },
     {
@@ -590,7 +590,7 @@
             "CNAME",
             "PTR"
         ],
-        "a": 1,
+        "a":2,
         "info": "El registro 'A' es para IPv4 (32 bits), mientras que 'AAAA' es para IPv6 (128 bits)."
     },
     {
@@ -601,7 +601,7 @@
             "Asigna direcciones IP.",
             "Encripta todo el tráfico de la red."
         ],
-        "a": 1,
+        "a":2,
         "info": "El proxy realiza peticiones en nombre del cliente, ocultando la IP interna y permitiendo control de contenido."
     },
     {
@@ -612,7 +612,7 @@
             "La IP del servidor en internet.",
             "La IP pública asignada al host."
         ],
-        "a": 1,
+        "a":2,
         "info": "Inside Local es la dirección IP real configurada en el dispositivo dentro de la red privada."
     },
     {
@@ -623,7 +623,7 @@
             "URL",
             "DNS"
         ],
-        "a": 1,
+        "a":2,
         "info": "HTTP (HyperText Transfer Protocol) es el protocolo de transporte de recursos en la web. HTML es el lenguaje de marcado."
     },
     {
@@ -634,7 +634,7 @@
             "SHA-256",
             "Diffie-Hellman"
         ],
-        "a": 2,
+        "a":3,
         "info": "SHA-256 es un algoritmo de hash seguro. Los otros son algoritmos de cifrado o intercambio de claves."
     },
     {
@@ -645,7 +645,7 @@
             "Cerrar la conexión.",
             "Retransmitir el último ACK."
         ],
-        "a": 1,
+        "a":2,
         "info": "PSH indica al stack TCP receptor que no debe esperar más datos en el búfer, sino entregarlos ya a la aplicación."
     },
     {
@@ -656,7 +656,7 @@
             "Interceptar correos.",
             "Inyectar código SQL."
         ],
-        "a": 1,
+        "a":2,
         "info": "DoS busca agotar los recursos (ancho de banda, CPU) del objetivo para dejarlo indisponible."
     },
     {
@@ -667,7 +667,7 @@
             "DNS",
             "ARP"
         ],
-        "a": 0,
+        "a":1,
         "info": "IKE se utiliza para negociar las asociaciones de seguridad (SA) y las claves en una VPN IPsec."
     },
     {
@@ -678,7 +678,7 @@
             "TTL (Time To Live)",
             "Versión"
         ],
-        "a": 2,
+        "a":3,
         "info": "El router decrementa el TTL en 1. Si llega a 0, el paquete se descarta para evitar bucles infinitos."
     },
     {
@@ -689,7 +689,7 @@
             "Una forma de cerrar ventanas emergentes.",
             "Un algoritmo de encriptación."
         ],
-        "a": 1,
+        "a":2,
         "info": "Window Scaling es una opción TCP que permite usar un multiplicador para aumentar el tamaño efectivo del búfer de recepción en redes de alta velocidad."
     },
     {
@@ -700,7 +700,7 @@
             "Un servidor que almacena todas las IPs de internet.",
             "El servidor de Windows."
         ],
-        "a": 1,
+        "a":2,
         "info": "Los servidores raíz son el punto de partida para resolver nombres de dominio, apuntando a los servidores TLD (.com, .org, etc.)."
     },
     {
@@ -711,7 +711,7 @@
             "DNS",
             "DHCP"
         ],
-        "a": 0,
+        "a":1,
         "info": "Los Codecs codifican y comprimen el audio. RTP luego transporta esos paquetes."
     },
     {
@@ -722,7 +722,7 @@
             "Un firewall.",
             "Un administrador de red."
         ],
-        "a": 1,
+        "a":2,
         "info": "La CA valida la identidad de una entidad y emite un certificado digital vinculando su clave pública a su identidad."
     },
     {
@@ -733,7 +733,7 @@
             "La velocidad.",
             "El puerto de control."
         ],
-        "a": 1,
+        "a":2,
         "info": "En FTP Pasivo, el cliente inicia ambas conexiones (Control y Datos), lo cual es más amigable con los firewalls del lado del cliente."
     },
     {
@@ -744,7 +744,7 @@
             "La pérdida de paquetes.",
             "El eco."
         ],
-        "a": 1,
+        "a":2,
         "info": "El jitter es la fluctuación en la latencia. Un jitter alto degrada la calidad de la voz, requiriendo búferes de jitter."
     },
     {
@@ -755,7 +755,7 @@
             "ICMP.",
             "IGMP."
         ],
-        "a": 1,
+        "a":2,
         "info": "Aunque SSL implica TCP, los túneles VPN modernos sobre SSL/TLS prefieren encapsular en UDP para evitar el problema de 'TCP sobre TCP'."
     },
     {
@@ -766,7 +766,7 @@
             "SQL Injection.",
             "Sniffing pasivo."
         ],
-        "a": 1,
+        "a":2,
         "info": "Si los números de secuencia son predecibles, un atacante puede inyectar paquetes falsos en una sesión activa."
     },
     {
@@ -777,7 +777,7 @@
             "Un virus de correo.",
             "Un tipo de spam."
         ],
-        "a": 1,
+        "a":2,
         "info": "Webmail (como Gmail o Outlook web) permite acceder al correo usando un navegador, interactuando por detrás con IMAP/SMTP."
     },
     {
@@ -788,7 +788,7 @@
             "https://servidor",
             "ftp://servidor"
         ],
-        "a": 1,
+        "a":2,
         "info": "Si no se usa el puerto estándar, debe especificarse explícitamente en la URL con dos puntos."
     },
     {
@@ -799,7 +799,7 @@
             "netstat",
             "nslookup"
         ],
-        "a": 2,
+        "a":3,
         "info": "netstat (Network Statistics) muestra conexiones TCP activas, puertos en escucha y estadísticas."
     },
     {
@@ -810,7 +810,7 @@
             "Un retraso en el DNS.",
             "Una falla en el cable."
         ],
-        "a": 1,
+        "a":2,
         "info": "Slow Start evita saturar la red de golpe, sondeando la capacidad disponible aumentando la ventana gradualmente."
     },
     {
@@ -821,7 +821,7 @@
             "FTP",
             "HTTP"
         ],
-        "a": 1,
+        "a":2,
         "info": "Telnet sirve para acceso remoto por línea de comandos, pero es inseguro. SSH lo reemplaza."
     },
     {
@@ -832,7 +832,7 @@
             "La contraseña del usuario.",
             "La clave pública de la CA."
         ],
-        "a": 1,
+        "a":2,
         "info": "Las claves de sesión se usan por eficiencia: se negocian con asimétrica (lento) y se usan para cifrar los datos con simétrica (rápido)."
     },
     {
@@ -843,7 +843,7 @@
             "Que está ubicado en Estados Unidos.",
             "Que consume mucha memoria."
         ],
-        "a": 1,
+        "a":2,
         "info": "Un firewall stateful sabe si un paquete entrante es respuesta a una petición saliente legítima, permitiéndolo sin una regla explícita de entrada."
     },
     {
@@ -854,7 +854,7 @@
             "CNAME",
             "NS"
         ],
-        "a": 2,
+        "a":3,
         "info": "CNAME (Canonical Name) permite que un dominio sea un alias de otro (ej. www.sitio.com -> sitio.com)."
     },
     {
@@ -865,7 +865,7 @@
             "Terminal",
             "MCU"
         ],
-        "a": 1,
+        "a":2,
         "info": "El Gateway realiza la traducción de señalización y medios entre la red VoIP y redes de telefonía tradicional."
     },
     {
@@ -876,7 +876,7 @@
             "Borrar la caché ARP.",
             "Encriptar la MAC."
         ],
-        "a": 1,
+        "a":2,
         "info": "Los hosts envían ARP Gratuito al arrancar para verificar que nadie más tenga su IP o para actualizar las tablas de los demás (ej. en clústers)."
     },
     {
@@ -887,7 +887,7 @@
             "Resetea la conexión.",
             "Indica fin de datos."
         ],
-        "a": 1,
+        "a":2,
         "info": "Salvo el primer paquete SYN, casi todos los paquetes TCP tienen el flag ACK activado para confirmar datos recibidos."
     },
     {
@@ -898,7 +898,7 @@
             "Se usa para VPNs sitio a sitio.",
             "No usa encriptación."
         ],
-        "a": 1,
+        "a":2,
         "info": "El modo transporte se usa generalmente para comunicaciones host-a-host donde los extremos son los que hablan IPSec."
     },
     {
@@ -909,7 +909,7 @@
             "El DNS.",
             "El receptor."
         ],
-        "a": 1,
+        "a":2,
         "info": "El MTA que no puede entregar el correo genera un reporte de no entrega (Bounce/NDR) al remitente."
     },
     {
@@ -920,7 +920,7 @@
             "Que es muy rápido.",
             "Que usa autenticación."
         ],
-        "a": 1,
+        "a":2,
         "info": "TCP es confiable porque usa ACKs, retransmisiones y números de secuencia para asegurar que los datos lleguen bien."
     },
     {
@@ -931,7 +931,7 @@
             "DHCP REQUEST",
             "DHCP ACK"
         ],
-        "a": 1,
+        "a":2,
         "info": "El cliente envía un DHCP DISCOVER en broadcast para encontrar servidores DHCP disponibles."
     },
     {
@@ -942,7 +942,7 @@
             "Escanear puertos.",
             "Interceptar WiFi."
         ],
-        "a": 1,
+        "a":2,
         "info": "El phishing es ingeniería social, atacando al humano en lugar de al software directamente."
     },
     {
@@ -953,7 +953,7 @@
             "Una función hash.",
             "Un tipo de firewall."
         ],
-        "a": 1,
+        "a":2,
         "info": "Diffie-Hellman permite a dos partes generar un secreto compartido (clave) sin haberlo transmitido directamente."
     },
     {
@@ -964,7 +964,7 @@
             "Hacer el setup de la llamada.",
             "Traducir direcciones."
         ],
-        "a": 1,
+        "a":2,
         "info": "RTCP trabaja junto a RTP para monitorear la calidad del servicio (QoS) de la transmisión multimedia."
     },
     {
@@ -975,7 +975,7 @@
             "Registrar qué hizo el usuario.",
             "Cifrar la contraseña."
         ],
-        "a": 1,
+        "a":2,
         "info": "La autorización define los permisos y privilegios del usuario autenticado."
     },
     {
@@ -986,7 +986,7 @@
             "Un protocolo de capa 2.",
             "Un cable cruzado."
         ],
-        "a": 1,
+        "a":2,
         "info": "El par de sockets define unívocamente una conexión TCP o flujo UDP en la red."
     },
     {
@@ -997,7 +997,7 @@
             "Configura la IP.",
             "Limpia la caché DNS."
         ],
-        "a": 1,
+        "a":2,
         "info": "Tracert usa el campo TTL de IP y mensajes ICMP para identificar cada router en el camino."
     },
     {
@@ -1008,7 +1008,7 @@
             "NAT Estática.",
             "Un ataque de seguridad."
         ],
-        "a": 1,
+        "a":2,
         "info": "Overloading se refiere a sobrecargar una única IP pública con múltiples conexiones privadas usando puertos (PAT)."
     },
     {
@@ -1019,7 +1019,7 @@
             "Un antivirus.",
             "Un firewall."
         ],
-        "a": 1,
+        "a":2,
         "info": "El exploit es la herramienta o técnica usada para aprovechar un fallo de seguridad (vulnerabilidad)."
     },
     {
@@ -1030,7 +1030,7 @@
             "La pérdida de datos.",
             "La variación del retardo."
         ],
-        "a": 1,
+        "a":2,
         "info": "La latencia es el retardo de propagación y procesamiento en la red."
     },
     {
@@ -1041,7 +1041,7 @@
             "Son iguales",
             "Depende de los datos"
         ],
-        "a": 1,
+        "a":2,
         "info": "La cabecera mínima de TCP es de 20 bytes (con muchas funciones), mientras que la de UDP es de solo 8 bytes."
     },
     {
@@ -1052,7 +1052,7 @@
             "Que el dominio no existe.",
             "Que hubo un error de red."
         ],
-        "a": 1,
+        "a":2,
         "info": "Indica que el servidor DNS consultado tenía el dato guardado (caché) y no necesitó preguntar al dueño original del dominio."
     },
     {
@@ -1063,7 +1063,7 @@
             "Escribir un valor.",
             "Recibir una alerta."
         ],
-        "a": 0,
+        "a":1,
         "info": "Get-Next se usa para recorrer secuencialmente la MIB, ideal para leer tablas de enrutamiento o interfaces."
     },
     {
@@ -1074,7 +1074,7 @@
             "Una dirección IP.",
             "Un puerto."
         ],
-        "a": 1,
+        "a":2,
         "info": "El checksum verifica que el segmento no haya sufrido corrupción de bits durante la transmisión."
     },
     {
@@ -1085,7 +1085,7 @@
             "Un router.",
             "Un cable."
         ],
-        "a": 1,
+        "a":2,
         "info": "Softphones (como Skype, Zoom, Zoiper) permiten hacer VoIP sin hardware telefónico dedicado."
     },
     {
@@ -1096,7 +1096,7 @@
             "Una red rápida.",
             "Un tipo de firewall."
         ],
-        "a": 1,
+        "a":2,
         "info": "Las botnets se usan comúnmente para lanzar ataques DDoS masivos."
     },
     {
@@ -1107,7 +1107,7 @@
             "Comprimir datos.",
             "Encriptar datos."
         ],
-        "a": 1,
+        "a":2,
         "info": "La multiplexación permite que el navegador, el correo y Spotify envíen datos por la misma conexión IP usando distintos puertos."
     },
     {
@@ -1118,7 +1118,7 @@
             "Un certificado vencido.",
             "Un certificado de papel."
         ],
-        "a": 1,
+        "a":2,
         "info": "Los certificados autofirmados son gratis y cifran la conexión, pero los navegadores muestran advertencias porque no hay un tercero que valide la identidad."
     },
     {
@@ -1129,7 +1129,7 @@
             "El retardo.",
             "El costo de la red."
         ],
-        "a": 1,
+        "a":2,
         "info": "El throughput es la velocidad real medida, que suele ser menor al ancho de banda teórico debido a overhead y congestión."
     },
     {
@@ -1140,7 +1140,7 @@
             "HTTP",
             "SMTP"
         ],
-        "a": 1,
+        "a":2,
         "info": "NTP es crucial para la seguridad (logs, Kerberos) y para correlacionar eventos en la red."
     },
     {
@@ -1151,7 +1151,7 @@
             "Un protocolo de enrutamiento.",
             "Un tipo de cable."
         ],
-        "a": 1,
+        "a":2,
         "info": "Las VLANs mejoran la seguridad y el rendimiento al separar lógicamente dispositivos en el mismo hardware físico."
     },
     {
@@ -1162,7 +1162,7 @@
             "Que el servidor está escuchando.",
             "Que hubo un error."
         ],
-        "a": 1,
+        "a":2,
         "info": "Es el estado normal de una sesión TCP durante la transferencia de datos."
     },
     {
@@ -1173,7 +1173,7 @@
             "Engañar al usuario.",
             "Interceptar tráfico."
         ],
-        "a": 1,
+        "a":2,
         "info": "Es un método de prueba y error exhaustivo. Se mitiga limitando intentos de login."
     },
     {
@@ -1184,7 +1184,7 @@
             "Asigna direcciones IP.",
             "Bloquea virus."
         ],
-        "a": 1,
+        "a":2,
         "info": "STP bloquea puertos redundantes para evitar tormentas de broadcast, activándolos si el enlace principal falla."
     },
     {
@@ -1195,7 +1195,7 @@
             "Un protocolo de correo.",
             "Un tipo de cable."
         ],
-        "a": 1,
+        "a":2,
         "info": "QoS es vital para VoIP y video, asegurando ancho de banda y baja latencia frente a descargas de archivos."
     },
     {
@@ -1206,7 +1206,7 @@
             "Un servidor DNS.",
             "Un router."
         ],
-        "a": 1,
+        "a":2,
         "info": "A diferencia del proxy normal (que sirve a clientes internos), el inverso protege y optimiza los servidores internos frente a internet."
     },
     {
@@ -1217,7 +1217,7 @@
             "Enviar datos por túnel.",
             "Borrar datos."
         ],
-        "a": 1,
+        "a":2,
         "info": "Datos -> Segmento -> Paquete -> Trama -> Bits. Cada capa añade su propia información de control."
     }
 ]

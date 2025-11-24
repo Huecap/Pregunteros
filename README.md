@@ -1,29 +1,25 @@
 # Quiz App
 
-[Ir Al Preguntero](./Index2.html)
- 
-
 ## 📖 Descripción
 
 **Quiz App** es una herramienta educativa diseñada para ayudar a estudiantes y profesionales a repasar conceptos fundamentales mediante quizes cargados.
 
-La aplicación utiliza un banco de 100 preguntas de opción múltiple diseñadas para reforzar el conocimiento teórico y práctico.
+La aplicación cuenta con los siguientes bancos de preguntas referente a la carrera Ingeniería en sistemas de información:
+
+**4to año**:
+- Redes de Datos
+  - Primer Parcial
+  - Tercer Parcial
 
 ## ✨ Características del banco de preguntas actual
 
-  * **Banco de Preguntas Extenso:** 100 preguntas curadas sobre protocolos y arquitectura de redes.
   * **Modo Aleatorio:** Las preguntas se presentan en orden aleatorio para evitar la memorización de patrones.
   * **Feedback Inmediato:** Cada respuesta incluye una explicación detallada (`info`) del porqué es correcta, basada en la bibliografía del curso.
   * **Seguimiento de Puntaje:** Cálculo de porcentaje de aciertos al finalizar la sesión.
-  * **Categorías Abarcadas:**
-      * Transporte (TCP, UDP, Sockets)
-      * Aplicación (DNS, HTTP, FTP, SMTP, etc.)
-      * VoIP (SIP, H.323, RTP)
-      * Seguridad (Firewalls, IPsec, VPN, Criptografía)
-
+  * 
 ## 🚀 Instalación y Uso
 
-### Pasos para ejecutar
+### Pasos para utilizar el proyecto
 
 1.  **Clonar el repositorio:**
 
@@ -32,13 +28,9 @@ La aplicación utiliza un banco de 100 preguntas de opción múltiple diseñadas
     cd redes-datos-quiz
     ```
 
-2.  **Cargar los datos:**
-    Asegúrate de que el archivo `preguntas.json` se encuentre en la ruta que corresponda a tu proyecto. 
-
-
 ## 📂 Estructura de los Datos (JSON)
 
-La aplicación se alimenta de un archivo `preguntas.json`. Si deseas agregar o modificar preguntas, debes seguir estrictamente este esquema:
+La aplicación se alimenta de archivos `preguntas.json`. Si deseas agregar o modificar preguntas, debes seguir estrictamente este esquema:
 
 ```json
 [
@@ -59,10 +51,32 @@ La aplicación se alimenta de un archivo `preguntas.json`. Si deseas agregar o m
   * **`q`**: (String) La pregunta a realizar.
   * **`options`**: (Array de Strings) Las posibles respuestas.
   * **`a`**: (Integer) El índice de la respuesta correcta dentro del array `options` (empezando desde 0).
-      * 0 = Primera opción
-      * 1 = Segunda opción
+      * 1 = Primera opción
+      * 2 = Segunda opción
       * etc.
   * **`info`**: (String) Contexto adicional o justificación de la respuesta correcta.
+
+
+### Formas de cargar los quizes:
+
+1. Mediante la carga directa en la app de un archivo `json`
+
+2. Mediante la carga en local de archivos al proyecto 
+
+En este caso se debe adjuntar el archivo `.json` con las preguntas correspondientes en el formato utilizado arriba en la carpeta `assets`
+
+Y se debe vincular dicho archivo en el archivo `materias.json`
+
+``` JSON
+ "Nombre de Materia": {
+        "Parcial N (O subdivision)" : {
+            "Unidad 1" : "ubicacion_del_archivo_preguntas_unidad_1.json",
+            "Unidad 2" : "ubicacion_del_archivo_preguntas_unidad_2.json",
+            "..." : ""
+        }   
+  }
+
+``` 
 
 ## 🤝 Contribuciones
 

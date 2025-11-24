@@ -1,7 +1,9 @@
 // Variables globales del Quiz
 let questions = [];
 let currentScore = 0;
-let currentFileUrl = ''; // Para reiniciar el mismo quiz
+let currentFileUrl = ''; 
+let currentMateriaName = ''; // Para el nombre del archivo al descargar
+let currentUnidadName = '';
 
 // URLs
 const MASTER_JSON = 'materias.json';
@@ -12,34 +14,45 @@ const quizView = document.getElementById('quiz-view');
 const menuContainer = document.getElementById('menu-container');
 const quizContent = document.getElementById('quiz-content');
 const quizTitle = document.getElementById('quiz-title');
+const globalDownloadBtn = document.getElementById('btn-global-download');
+
+// Elementos del Modal de Carga
+const modalLoader = document.getElementById('modal-loader');
+const btnOpenLoader = document.getElementById('btn-open-loader');
+const closeModalSpan = document.querySelector('.close-modal');
+const btnProcessLoad = document.getElementById('btn-process-load');
+const inputMateria = document.getElementById('input-materia');
+const inputUnidad = document.getElementById('input-unidad');
+const inputFile = document.getElementById('input-file');
+const dataListMaterias = document.getElementById('materias-datalist');
 
 // --------------------------------------
-// LÓGICA DEL MENÚ (MATERIAS)
+// LÓGICA DE INICIO Y MENÚ
 // --------------------------------------
 
 async function initMenu() {
+    setupLoadButton(); // Configurar eventos del botón cargar
     try {
         const response = await fetch(resolvePath(MASTER_JSON));
         if (!response.ok) throw new Error("No se pudo cargar materias.json");
         const data = await response.json();
         renderMenu(data);
+        populateMateriaDatalist(data); // Llenar el autocompletado
     } catch (error) {
-        menuContainer.innerHTML = `
-            <div class="error-msg">
-                <h3>Error cargando el menú</h3>
-                <p>${error.message}</p>
-                <p>Asegúrate de ejecutar esto en un Servidor Local.</p>
-            </div>`;
+        console.warn("Modo offline o error cargando master:", error);
+        menuContainer.innerHTML += `<p style='color:gray'>No se cargó el menú maestro (¿es carga manual?).</p>`;
     }
 }
 
 function renderMenu(data) {
-    menuContainer.innerHTML = ''; // Limpiar loading
+    // Limpiamos solo los bloques de materias, pero mantenemos el botón de carga si está dentro
+    // Para asegurar orden, limpiamos todo y re-renderizamos si es necesario
+    // Nota: Como el botón está en el HTML estático, vaciamos el container dinámico si usas uno aparte, 
+    // o asumimos que 'menuContainer' es donde van las materias.
+    
+    menuContainer.innerHTML = ''; 
 
-    // data es el objeto: { "Redes": { ... }, "Sistemas": { ... } }
     for (const [materia, parciales] of Object.entries(data)) {
-        
-        // 1. Crear bloque de Materia
         const materiaBlock = document.createElement('div');
         materiaBlock.className = 'materia-block';
         
@@ -48,7 +61,6 @@ function renderMenu(data) {
         title.textContent = materia;
         materiaBlock.appendChild(title);
 
-        // 2. Iterar Parciales
         for (const [parcial, pregunteros] of Object.entries(parciales)) {
             const parcialBlock = document.createElement('div');
             parcialBlock.className = 'parcial-block';
@@ -58,42 +70,123 @@ function renderMenu(data) {
             pTitle.textContent = parcial;
             parcialBlock.appendChild(pTitle);
 
-            // Grid de botones
             const grid = document.createElement('div');
             grid.className = 'preguntero-grid';
 
-            // 3. Iterar Pregunteros (Unidades)
             for (const [nombreUnidad, archivoJson] of Object.entries(pregunteros)) {
                 const btn = document.createElement('button');
                 btn.className = 'preguntero-btn';
                 btn.textContent = nombreUnidad;
-                btn.onclick = () => startQuiz(nombreUnidad, archivoJson);
+                btn.onclick = () => {
+                    currentMateriaName = materia;
+                    currentUnidadName = nombreUnidad;
+                    startQuiz(nombreUnidad, archivoJson);
+                };
                 grid.appendChild(btn);
             }
 
             parcialBlock.appendChild(grid);
             materiaBlock.appendChild(parcialBlock);
         }
-
         menuContainer.appendChild(materiaBlock);
     }
 }
 
-// Navegación entre vistas
+// Llena el <datalist> con las materias existentes en el JSON
+function populateMateriaDatalist(data) {
+    dataListMaterias.innerHTML = '';
+    for (const materia of Object.keys(data)) {
+        const option = document.createElement('option');
+        option.value = materia;
+        dataListMaterias.appendChild(option);
+    }
+}
+
+// --------------------------------------
+// LÓGICA DE CARGA MANUAL (NUEVO CÓDIGO)
+// --------------------------------------
+
+function setupLoadButton() {
+    // Abrir modal
+    btnOpenLoader.onclick = () => {
+        modalLoader.classList.remove('hidden');
+    };
+
+    // Cerrar modal
+    closeModalSpan.onclick = () => {
+        modalLoader.classList.add('hidden');
+    };
+
+    // Click fuera del modal para cerrar
+    window.onclick = (event) => {
+        if (event.target == modalLoader) {
+            modalLoader.classList.add('hidden');
+        }
+    };
+
+    // Procesar la carga
+    btnProcessLoad.onclick = () => {
+        const materia = inputMateria.value.trim() || "Materia_Sin_Nombre";
+        const unidad = inputUnidad.value.trim() || "Unidad_Sin_Nombre";
+        const file = inputFile.files[0];
+
+        if (!file) {
+            alert("Por favor selecciona un archivo JSON.");
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            try {
+                const jsonContent = JSON.parse(e.target.result);
+                
+                // Asignamos a variables globales
+                questions = jsonContent;
+                currentMateriaName = materia;
+                currentUnidadName = unidad;
+                currentFileUrl = null; // Es carga local, no hay URL remota
+
+                // Configuramos la vista
+                modalLoader.classList.add('hidden');
+                menuView.classList.add('hidden');
+                quizView.classList.remove('hidden');
+                
+                quizTitle.textContent = `${materia} - ${unidad}`;
+                
+                // Renderizamos
+                renderQuestions();
+                updateScore();
+
+            } catch (err) {
+                alert("Error al leer el JSON. Verifica el formato del archivo.");
+                console.error(err);
+            }
+        };
+        reader.readAsText(file);
+    };
+    
+    // Configurar botón global de descarga
+    globalDownloadBtn.onclick = exportarJSON;
+}
+
+// --------------------------------------
+// NAVEGACIÓN
+// --------------------------------------
+
 function showMenu() {
     quizView.classList.add('hidden');
+    globalDownloadBtn.classList.add('hidden'); // Ocultar descarga al salir
     menuView.classList.remove('hidden');
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function startQuiz(title, jsonUrl) {
+async function startQuiz(title, jsonUrl) {
     menuView.classList.add('hidden');
     quizView.classList.remove('hidden');
     quizTitle.textContent = title;
     currentFileUrl = jsonUrl;
-    loadQuizQuestions(jsonUrl);
+    await loadQuizQuestions(jsonUrl);
 }
-
 
 // --------------------------------------
 // LÓGICA DEL QUIZ (PREGUNTAS)
@@ -103,6 +196,7 @@ async function loadQuizQuestions(url) {
     quizContent.innerHTML = '<div style="text-align:center; padding:20px">⏳ Cargando preguntas...</div>';
     currentScore = 0;
     updateScore();
+    globalDownloadBtn.classList.add('hidden'); // Ocultar hasta que cargue
 
     try {
         const response = await fetch(resolvePath(url));
@@ -123,36 +217,103 @@ async function loadQuizQuestions(url) {
 
 function renderQuestions() {
     quizContent.innerHTML = '';
-    
-    // Mezclar preguntas
-    const shuffled = [...questions].sort(() => 0.5 - Math.random());
+    globalDownloadBtn.classList.remove('hidden'); // Mostrar botón de descarga
+
+    // 1. Guardamos el índice original antes de mezclar para editar el array correcto
+    const questionsWithIndex = questions.map((q, i) => ({...q, originalIndex: i}));
+    const shuffled = questionsWithIndex.sort(() => 0.5 - Math.random());
 
     shuffled.forEach((item, index) => {
         const qBlock = document.createElement('div');
         qBlock.className = 'question-block';
 
+        // --- BARRA DE CONTROL (Editar / Guardar) ---
+        const controlsDiv = document.createElement('div');
+        controlsDiv.className = 'admin-controls';
+
+        const btnEdit = document.createElement('button');
+        btnEdit.className = 'edit-btn';
+        btnEdit.textContent = '✏️ Editar';
+
+        const btnSave = document.createElement('button');
+        btnSave.className = 'save-btn';
+        btnSave.textContent = '✔️ Listo'; // Cambio texto para no confundir con Descargar
+        btnSave.style.display = 'none';
+
+        controlsDiv.appendChild(btnEdit);
+        controlsDiv.appendChild(btnSave);
+        qBlock.appendChild(controlsDiv);
+
+        // --- TEXTO DE LA PREGUNTA ---
         const qText = document.createElement('div');
         qText.className = 'question-text';
-        qText.textContent = `${index + 1}. ${item.q}`;
+        qText.innerHTML = `<strong>${index + 1}. </strong><span class="q-content">${item.q}</span>`;
         qBlock.appendChild(qText);
 
+        // --- OPCIONES ---
         const optionsDiv = document.createElement('div');
         optionsDiv.className = 'options';
+        
+        const currentOptionBtns = [];
 
         item.options.forEach((opt, optIndex) => {
             const btn = document.createElement('button');
             btn.className = 'option-btn';
             btn.textContent = opt;
-            // Asumimos que item.a viene 0-indexado o 1-indexado. 
-            // Si en tu JSON "a": 1 es la primera opción, usa (item.a - 1).
-            // Si "a": 0 es la primera, usa item.a.
-            // Aquí usaré item.a - 1 basándome en tus ejemplos anteriores.
-            btn.onclick = () => checkAnswer(btn, optIndex, item.a - 1, item.info, optionsDiv);
+            
+            btn.onclick = () => {
+                if (btn.isContentEditable) return; 
+                checkAnswer(btn, optIndex, item.a - 1, item.info, optionsDiv);
+            };
+
+            currentOptionBtns.push(btn);
             optionsDiv.appendChild(btn);
         });
 
         qBlock.appendChild(optionsDiv);
 
+        // --- LOGICA DE EDITAR / GUARDAR (En Memoria) ---
+        btnEdit.onclick = () => {
+            btnEdit.style.display = 'none';
+            btnSave.style.display = 'inline-block';
+
+            // Activar edición pregunta
+            const qSpan = qText.querySelector('.q-content');
+            qSpan.contentEditable = "true";
+            qSpan.classList.add('editable-active');
+            qSpan.focus();
+
+            // Activar edición opciones
+            currentOptionBtns.forEach(btn => {
+                btn.contentEditable = "true";
+                btn.classList.add('editable-active');
+            });
+        };
+
+        btnSave.onclick = () => {
+            btnSave.style.display = 'none';
+            btnEdit.style.display = 'inline-block';
+
+            const qSpan = qText.querySelector('.q-content');
+
+            // ACTUALIZAMOS EL ARRAY GLOBAL 'questions'
+            questions[item.originalIndex].q = qSpan.innerText;
+            
+            currentOptionBtns.forEach((btn, i) => {
+                questions[item.originalIndex].options[i] = btn.innerText;
+                btn.contentEditable = "false";
+                btn.classList.remove('editable-active');
+            });
+
+            qSpan.contentEditable = "false";
+            qSpan.classList.remove('editable-active');
+            
+            // Feedback visual
+            btnEdit.textContent = '✏️ Editado';
+            setTimeout(() => btnEdit.textContent = '✏️ Editar', 2000);
+        };
+
+        // --- FEEDBACK ---
         const feedback = document.createElement('div');
         feedback.className = 'feedback';
         qBlock.appendChild(feedback);
@@ -171,34 +332,59 @@ function checkAnswer(btn, selectedIndex, correctIndex, infoText, parentDiv) {
 
     if (selectedIndex === correctIndex) {
         btn.classList.add('correct');
-        feedbackDiv.innerHTML = `<span style="color:green; font-weight:bold">✅ ¡Correcto!</span> ${infoText}`;
+        feedbackDiv.innerHTML = `<span style="color:green; font-weight:bold">✅ ¡Correcto!</span> ${infoText || ''}`;
         currentScore++;
     } else {
         btn.classList.add('incorrect');
         buttons[correctIndex].classList.add('correct');
-        feedbackDiv.innerHTML = `<span style="color:red; font-weight:bold">❌ Incorrecto.</span> ${infoText}`;
+        feedbackDiv.innerHTML = `<span style="color:red; font-weight:bold">❌ Incorrecto.</span> ${infoText || ''}`;
     }
     updateScore();
 }
 
 function updateScore() {
-    document.getElementById('score-board').textContent = `Puntuación: ${currentScore} / ${questions.length}`;
+    const el = document.getElementById('score-board');
+    if(el) el.textContent = `Puntuación: ${currentScore} / ${questions.length}`;
 }
 
 function resetQuiz() {
     if (confirm("¿Reiniciar este test?")) {
-        loadQuizQuestions(currentFileUrl);
+        if(currentFileUrl) {
+            loadQuizQuestions(currentFileUrl);
+        } else {
+            // Si es archivo cargado manualmente, solo repintamos
+            currentScore = 0;
+            updateScore();
+            renderQuestions();
+        }
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 }
 
 function resolvePath(path) {
-  const base = window.location.hostname === "huecap.github.io"
-    ? "/Pregunteros/"
-    : "/";
+  const base = window.location.hostname === "huecap.github.io" ? "/Pregunteros/" : "/";
   return base + path;
 }
 
+// --------------------------------------
+// DESCARGA DEL JSON
+// --------------------------------------
+
+function exportarJSON() {
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(questions, null, 2));
+    const downloadAnchorNode = document.createElement('a');
+    downloadAnchorNode.setAttribute("href", dataStr);
+    
+    // Generamos un nombre de archivo dinámico basado en el formulario
+    const safeMateria = currentMateriaName.replace(/[^a-z0-9]/gi, '_').toLowerCase();
+    const safeUnidad = currentUnidadName.replace(/[^a-z0-9]/gi, '_').toLowerCase();
+    const fileName = `${safeMateria}_${safeUnidad}_editado.json`;
+
+    downloadAnchorNode.setAttribute("download", fileName);
+    document.body.appendChild(downloadAnchorNode);
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
+}
 
 // Iniciar App
 initMenu();

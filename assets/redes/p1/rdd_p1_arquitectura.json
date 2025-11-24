@@ -1,0 +1,552 @@
+[
+  {
+    "q": "¿Qué es un protocolo de comunicaciones?",
+    "options": [
+      "Un dispositivo físico que conecta redes.",
+      "Un conjunto de reglas convenidas para el intercambio de información.",
+      "Un software para diseñar topologías de red.",
+      "La capa física del modelo OSI."
+    ],
+    "a": 1,
+    "info": "Un protocolo es un conjunto de reglas y normas que permiten que dos o más entidades de un sistema de comunicación se comuniquen entre sí."
+  },
+  {
+    "q": "¿Cuál es el objetivo principal de la arquitectura de capas en las redes?",
+    "options": [
+      "Aumentar la velocidad de transmisión.",
+      "Dividir la complejidad del diseño de red en partes más manejables.",
+      "Eliminar la necesidad de hardware.",
+      "Reducir el número de protocolos necesarios."
+    ],
+    "a": 1,
+    "info": "La arquitectura en capas divide la problemática de la comunicación en subproblemas más sencillos e independientes."
+  },
+  {
+    "q": "En el modelo OSI, ¿cómo se denomina a la unidad de datos (PDU) en la capa de Transporte?",
+    "options": [
+      "Paquete",
+      "Trama",
+      "Segmento",
+      "Bit"
+    ],
+    "a": 2,
+    "info": "La capa de transporte segmenta los datos de la aplicación, por lo que su PDU se denomina 'Segmento'."
+  },
+  {
+    "q": "¿Qué capa del modelo TCP/IP se encarga del direccionamiento lógico y la determinación de la mejor ruta?",
+    "options": [
+      "Capa de Aplicación",
+      "Capa de Transporte",
+      "Capa de Internet",
+      "Capa de Acceso a la Red"
+    ],
+    "a": 2,
+    "info": "La capa de Internet (equivalente a la capa de Red en OSI) maneja el direccionamiento IP y el enrutamiento de paquetes."
+  },
+  {
+    "q": "¿Cuál es el orden correcto del proceso de encapsulamiento de datos en el emisor?",
+    "options": [
+      "Datos -> Segmento -> Paquete -> Trama -> Bits",
+      "Bits -> Trama -> Paquete -> Segmento -> Datos",
+      "Datos -> Trama -> Paquete -> Segmento -> Bits",
+      "Segmento -> Datos -> Trama -> Paquete -> Bits"
+    ],
+    "a": 0,
+    "info": "El encapsulamiento ocurre de arriba hacia abajo: se agregan encabezados en cada capa, pasando de Datos a Segmentos, Paquetes, Tramas y finalmente Bits."
+  },
+  {
+    "q": "¿Qué organismo internacional publica los estándares de Internet conocidos como RFC?",
+    "options": [
+      "IEEE",
+      "ISO",
+      "IETF",
+      "ITU"
+    ],
+    "a": 2,
+    "info": "La IETF (Internet Engineering Task Force) desarrolla y promueve los estándares de Internet, publicados como RFC (Request for Comments)."
+  },
+  {
+    "q": "¿Qué tipo de red se clasifica según su cobertura geográfica como MAN?",
+    "options": [
+      "Red de Área Personal",
+      "Red de Área Local",
+      "Red de Área Metropolitana",
+      "Red de Área Amplia"
+    ],
+    "a": 2,
+    "info": "MAN significa Metropolitan Area Network, cubriendo el ámbito de una ciudad o zona metropolitana."
+  },
+  {
+    "q": "En una comunicación Full-Dúplex:",
+    "options": [
+      "La transmisión es en un solo sentido.",
+      "La transmisión es en ambos sentidos, pero no simultáneamente.",
+      "La transmisión es en ambos sentidos y simultánea.",
+      "No existe transmisión de datos."
+    ],
+    "a": 2,
+    "info": "Full-Dúplex permite enviar y recibir datos al mismo tiempo, como en una llamada telefónica."
+  },
+  {
+    "q": "¿Cuál de las siguientes topologías físicas se caracteriza por tener un nodo central al que se conectan todos los demás?",
+    "options": [
+      "Bus",
+      "Anillo",
+      "Malla",
+      "Estrella"
+    ],
+    "a": 3,
+    "info": "La topología en estrella conecta todos los dispositivos finales a un dispositivo central (como un switch o hub)."
+  },
+  {
+    "q": "¿Qué capas del modelo OSI se combinan para formar la capa de Aplicación en el modelo TCP/IP?",
+    "options": [
+      "Sesión, Presentación y Aplicación",
+      "Red, Transporte y Sesión",
+      "Enlace de Datos y Física",
+      "Aplicación y Transporte"
+    ],
+    "a": 0,
+    "info": "El modelo TCP/IP agrupa las funciones de las capas de Sesión (5), Presentación (6) y Aplicación (7) del modelo OSI en una única capa de Aplicación."
+  },
+  {
+    "q": "¿Qué PDU corresponde a la Capa de Enlace de Datos?",
+    "options": [
+      "Paquete",
+      "Trama",
+      "Segmento",
+      "Datos"
+    ],
+    "a": 1,
+    "info": "En la capa de enlace, al paquete recibido de la capa de red se le añade un encabezado y un tráiler, formando una Trama (Frame)."
+  },
+  {
+    "q": "¿Cuál es la función principal de la Capa Física?",
+    "options": [
+      "Direccionamiento lógico (IP).",
+      "Control de flujo y errores de extremo a extremo.",
+      "Transmisión de bits a través del medio.",
+      "Formateo y encriptación de datos."
+    ],
+    "a": 2,
+    "info": "La capa física se encarga de los medios mecánicos, eléctricos y funcionales para transmitir los bits a través del medio de comunicación."
+  },
+  {
+    "q": "¿Qué topología física conecta todos los dispositivos a un único cable central o canal?",
+    "options": [
+      "Estrella",
+      "Bus",
+      "Malla",
+      "Anillo"
+    ],
+    "a": 1,
+    "info": "En la topología de Bus, todos los equipos comparten un mismo medio de transmisión lineal."
+  },
+  {
+    "q": "¿Qué es una red PAN?",
+    "options": [
+      "Personal Area Network, de muy corto alcance (ej. Bluetooth).",
+      "Public Area Network, para acceso en plazas.",
+      "Private Area Network, exclusiva de empresas.",
+      "Professional Area Network, para oficinas."
+    ],
+    "a": 0,
+    "info": "PAN (Personal Area Network) abarca el entorno personal del usuario, generalmente unos pocos metros."
+  },
+  {
+    "q": "¿Qué organización es responsable del estándar Ethernet (802.3) y Wi-Fi (802.11)?",
+    "options": [
+      "ISO",
+      "IETF",
+      "IEEE",
+      "W3C"
+    ],
+    "a": 2,
+    "info": "El IEEE (Institute of Electrical and Electronics Engineers) define los estándares para las capas física y de enlace, como la familia 802."
+  },
+  {
+    "q": "¿Cuál es una característica de las redes Tier 1 en la arquitectura de Internet?",
+    "options": [
+      "Compran tránsito a otras redes.",
+      "Son proveedores locales residenciales.",
+      "Forman el backbone de Internet y tienen alcance global.",
+      "Solo operan en una ciudad específica."
+    ],
+    "a": 2,
+    "info": "Los Tier 1 son las grandes redes globales que forman la columna vertebral de Internet y se interconectan entre sí sin pagar por el tránsito (peering)."
+  },
+  {
+    "q": "¿Qué define la 'Topología Lógica' de una red?",
+    "options": [
+      "La disposición física de los cables.",
+      "La forma en que los datos viajan por la red (direccionalidad y flujo).",
+      "El tipo de conectores utilizados.",
+      "La marca de los routers."
+    ],
+    "a": 1,
+    "info": "Mientras la topología física es el cableado, la lógica define cómo acceden los hosts a los medios y cómo fluyen los datos."
+  },
+  {
+    "q": "En el proceso de comunicación entre capas, ¿qué es una interfaz?",
+    "options": [
+      "El cable que conecta dos PCs.",
+      "El conjunto de normas de intercomunicación entre capas adyacentes (N y N-1).",
+      "El protocolo utilizado entre capas homólogas.",
+      "El puerto físico del switch."
+    ],
+    "a": 1,
+    "info": "La interfaz define las operaciones primitivas y servicios que la capa inferior ofrece a la capa superior inmediata."
+  },
+  {
+    "q": "¿Qué significa que un protocolo sea 'confiable' en la capa de transporte?",
+    "options": [
+      "Que es muy rápido.",
+      "Que garantiza que los datos lleguen al destino sin errores y en orden.",
+      "Que encripta los datos.",
+      "Que utiliza direcciones IP privadas."
+    ],
+    "a": 1,
+    "info": "La confiabilidad implica mecanismos para asegurar la entrega, retransmisión de perdidos y ordenamiento, como lo hace TCP."
+  },
+  {
+    "q": "¿Cuál fue la red precursora de Internet desarrollada en 1969?",
+    "options": [
+      "MILNET",
+      "NSFNET",
+      "ARPANET",
+      "Ethernet"
+    ],
+    "a": 2,
+    "info": "ARPANET, financiada por DARPA, fue la primera red de conmutación de paquetes y precursora de la actual Internet."
+  },
+  {
+    "q": "¿Qué es un IXP (Internet Exchange Point)?",
+    "options": [
+      "Un tipo de cable submarino.",
+      "Un punto neutro donde diferentes redes (ISPs, CDNs) intercambian tráfico.",
+      "Un protocolo de correo electrónico.",
+      "El router de un usuario doméstico."
+    ],
+    "a": 1,
+    "info": "Un IXP es una infraestructura física donde los proveedores de servicios de internet (ISP) y redes de entrega de contenido (CDN) intercambian tráfico de internet entre sus redes."
+  },
+  {
+    "q": "¿Qué función cumple el 'Peering' en Internet?",
+    "options": [
+      "Es el cobro por el servicio de Internet a los usuarios finales.",
+      "Es la interconexión voluntaria entre redes para intercambiar tráfico sin costo.",
+      "Es el bloqueo de tráfico malicioso.",
+      "Es la asignación de direcciones IP."
+    ],
+    "a": 1,
+    "info": "Peering es el intercambio directo de tráfico entre dos redes, usualmente sin compensación económica (settlement-free), para beneficio mutuo."
+  },
+  {
+    "q": "¿Qué capa del modelo OSI se encarga de la sintaxis y representación de los datos (cifrado, compresión)?",
+    "options": [
+      "Aplicación",
+      "Presentación",
+      "Sesión",
+      "Transporte"
+    ],
+    "a": 1,
+    "info": "La capa de Presentación se ocupa del formato de los datos, asegurando que la información enviada por la capa de aplicación de un sistema pueda ser leída por la capa de aplicación de otro."
+  },
+  {
+    "q": "¿Qué tipo de comunicación es 'Simplex'?",
+    "options": [
+      "Bidireccional simultánea.",
+      "Bidireccional no simultánea.",
+      "Unidireccional (solo envío o solo recepción).",
+      "Multidifusión."
+    ],
+    "a": 2,
+    "info": "Simplex es la transmisión en un solo sentido, como la radio o la televisión abierta."
+  },
+  {
+    "q": "¿Qué es Wireshark?",
+    "options": [
+      "Un antivirus.",
+      "Un analizador de protocolos de red (sniffer).",
+      "Un sistema operativo de red.",
+      "Un tipo de cable de fibra óptica."
+    ],
+    "a": 1,
+    "info": "Wireshark es una herramienta de software utilizada para capturar y analizar paquetes de red en tiempo real."
+  },
+  {
+    "q": "¿Cuál de las siguientes NO es una clasificación de red según su cobertura?",
+    "options": [
+      "LAN",
+      "WAN",
+      "HTTP",
+      "MAN"
+    ],
+    "a": 2,
+    "info": "HTTP es un protocolo de la capa de aplicación, no un tipo de red clasificada por su área de cobertura."
+  },
+  {
+    "q": "En la encapsulación, ¿qué añade la capa de Transporte a los datos?",
+    "options": [
+      "Direcciones MAC origen y destino.",
+      "Direcciones IP origen y destino.",
+      "Números de puerto y control de secuencia.",
+      "Señales eléctricas."
+    ],
+    "a": 2,
+    "info": "La capa de transporte añade un encabezado con números de puerto (para identificar la aplicación) y números de secuencia (para reordenar datos)."
+  },
+  {
+    "q": "¿Qué dispositivo opera típicamente en la Capa 3 (Red/Interred)?",
+    "options": [
+      "Hub",
+      "Switch",
+      "Router",
+      "Cable UTP"
+    ],
+    "a": 2,
+    "info": "El Router es el dispositivo encargado de enrutar paquetes basándose en direcciones lógicas (IP), función de la Capa 3."
+  },
+  {
+    "q": "¿Qué característica define a una red 'Punto a Punto' (Point-to-Point)?",
+    "options": [
+      "Todos comparten el mismo canal de comunicación.",
+      "Existe un enlace dedicado entre dos dispositivos.",
+      "Es una red inalámbrica pública.",
+      "Utiliza topología de bus."
+    ],
+    "a": 1,
+    "info": "En las redes punto a punto, el canal de comunicación conecta exclusivamente a dos dispositivos, garantizando el ancho de banda entre ellos."
+  },
+  {
+    "q": "¿Cuál es la unidad de datos en la Capa de Red del modelo OSI?",
+    "options": [
+      "Bits",
+      "Tramas",
+      "Paquetes",
+      "Segmentos"
+    ],
+    "a": 2,
+    "info": "La PDU (Protocol Data Unit) de la capa de Red es el Paquete."
+  },
+  {
+    "q": "¿Qué capa del modelo TCP/IP se corresponde con las capas Física y de Enlace de Datos del modelo OSI?",
+    "options": [
+      "Capa de Aplicación",
+      "Capa de Transporte",
+      "Capa de Internet",
+      "Capa de Acceso a la Red"
+    ],
+    "a": 3,
+    "info": "La capa de Acceso a la Red (o Interfaz de Red) en TCP/IP abarca las funciones físicas y de enlace del modelo OSI."
+  },
+  {
+    "q": "¿Qué significa 'Half-Duplex'?",
+    "options": [
+      "Comunicación en un solo sentido.",
+      "Comunicación en ambos sentidos, pero no al mismo tiempo.",
+      "Comunicación simultánea en ambos sentidos.",
+      "Comunicación cifrada."
+    ],
+    "a": 1,
+    "info": "Half-Duplex permite la comunicación bidireccional, pero los dispositivos deben turnarse para enviar y recibir (ej. Walkie-Talkie)."
+  },
+  {
+    "q": "¿Qué es una red WAN?",
+    "options": [
+      "Una red dentro de un edificio.",
+      "Una red que cubre un área geográfica extensa (país, continente).",
+      "Una red personal.",
+      "Una red de almacenamiento."
+    ],
+    "a": 1,
+    "info": "WAN (Wide Area Network) es una red de área amplia que interconecta redes más pequeñas a través de grandes distancias geográficas."
+  },
+  {
+    "q": "En el contexto de ISPs, ¿qué caracteriza a un proveedor Tier 3?",
+    "options": [
+      "Es dueño de cables transoceánicos.",
+      "Solo hace peering con Tier 1.",
+      "Es un proveedor local que compra tránsito a redes Tier 2 o Tier 1.",
+      "No cobra a sus clientes."
+    ],
+    "a": 2,
+    "info": "Los Tier 3 son proveedores locales que dan acceso a usuarios finales y deben pagar a proveedores de nivel superior (Tier 2 o 1) para acceder al resto de Internet."
+  },
+  {
+    "q": "¿Qué protocolo de la capa de aplicación se utiliza para la transferencia de archivos?",
+    "options": [
+      "SMTP",
+      "DNS",
+      "FTP",
+      "HTTP"
+    ],
+    "a": 2,
+    "info": "FTP (File Transfer Protocol) es el protocolo estándar para la transferencia de archivos entre cliente y servidor."
+  },
+  {
+    "q": "¿Cuál es la función del 'Trailer' o cola en una Trama de la capa de enlace?",
+    "options": [
+      "Identificar la IP de destino.",
+      "Sincronizar los relojes.",
+      "Detección de errores (FCS/CRC).",
+      "Indicar el protocolo de capa superior."
+    ],
+    "a": 2,
+    "info": "El trailer de la trama generalmente contiene una secuencia de verificación (FCS) para asegurar que los datos no llegaron corruptos."
+  },
+  {
+    "q": "¿Quién desarrolló el modelo TCP/IP?",
+    "options": [
+      "ISO",
+      "Vinton Cerf y Robert Kahn (DARPA)",
+      "IEEE",
+      "Tim Berners-Lee"
+    ],
+    "a": 1,
+    "info": "TCP/IP fue desarrollado por Vinton Cerf y Robert Kahn bajo el auspicio de DARPA en los años 70."
+  },
+  {
+    "q": "¿Qué tipo de red es Internet según su clasificación por cobertura?",
+    "options": [
+      "LAN",
+      "MAN",
+      "WAN global",
+      "PAN"
+    ],
+    "a": 2,
+    "info": "Internet es la WAN más grande del mundo, interconectando redes a nivel global."
+  },
+  {
+    "q": "¿Qué capa del modelo OSI gestiona el establecimiento, mantenimiento y cierre de conexiones (sesiones) entre aplicaciones?",
+    "options": [
+      "Transporte",
+      "Sesión",
+      "Presentación",
+      "Red"
+    ],
+    "a": 1,
+    "info": "La capa de Sesión controla el diálogo entre aplicaciones, estableciendo y terminando las sesiones de comunicación."
+  },
+  {
+    "q": "¿Qué significa la sigla ISO?",
+    "options": [
+      "Internet Standard Organization",
+      "International Organization for Standardization",
+      "Internal System Operation",
+      "Integrated Service Option"
+    ],
+    "a": 1,
+    "info": "ISO es la Organización Internacional de Normalización, creadora del modelo de referencia OSI."
+  },
+  {
+    "q": "En una topología de Malla Completa:",
+    "options": [
+      "Cada nodo está conectado a todos los demás nodos.",
+      "Todos los nodos se conectan a un cable central.",
+      "Los nodos se conectan en círculo.",
+      "Existe un solo camino entre dos nodos."
+    ],
+    "a": 0,
+    "info": "La malla completa ofrece la máxima redundancia y fiabilidad, ya que cada dispositivo tiene una conexión física directa con todos los demás."
+  },
+  {
+    "q": "¿Qué es el desencapsulamiento?",
+    "options": [
+      "El proceso de añadir encabezados a los datos.",
+      "El proceso de eliminar los encabezados y leer la información capa por capa en el receptor.",
+      "El cifrado de los datos.",
+      "La fragmentación de paquetes."
+    ],
+    "a": 1,
+    "info": "El desencapsulamiento es el proceso inverso al encapsulamiento, donde el receptor procesa y elimina los encabezados de protocolo a medida que los datos suben por las capas."
+  },
+  {
+    "q": "¿Qué dirección física se utiliza en la Capa de Enlace de Datos (en redes Ethernet)?",
+    "options": [
+      "Dirección IP",
+      "Dirección de Puerto",
+      "Dirección MAC",
+      "URL"
+    ],
+    "a": 2,
+    "info": "La dirección MAC (Media Access Control) es la dirección física única asignada a la tarjeta de red para la comunicación en la capa de enlace."
+  },
+  {
+    "q": "¿Cuál es una desventaja de la topología de Anillo?",
+    "options": [
+      "Requiere mucho cableado central.",
+      "Si un nodo o el cable falla, se puede caer toda la red (en anillo simple).",
+      "Es difícil de configurar.",
+      "Produce muchas colisiones."
+    ],
+    "a": 1,
+    "info": "En un anillo simple, la ruptura del cable o fallo de un nodo interrumpe el flujo del token, deteniendo la red."
+  },
+  {
+    "q": "¿Qué servicio de Internet traduce nombres de dominio (ej. www.google.com) a direcciones IP?",
+    "options": [
+      "DHCP",
+      "DNS",
+      "FTP",
+      "SMTP"
+    ],
+    "a": 1,
+    "info": "DNS (Domain Name System) es el sistema encargado de la resolución de nombres de dominio a direcciones IP."
+  },
+  {
+    "q": "¿Qué característica define a una red de difusión (Broadcast)?",
+    "options": [
+      "La comunicación es privada entre dos nodos.",
+      "Un solo canal de comunicación es compartido por todas las máquinas.",
+      "Usa fibra óptica exclusivamente.",
+      "No permite colisiones."
+    ],
+    "a": 1,
+    "info": "En redes de difusión, cuando un paquete se envía, es recibido por todas las máquinas conectadas al medio compartido."
+  },
+  {
+    "q": "¿Cuál es el propósito de la 'multiplexación' en la capa de Transporte?",
+    "options": [
+      "Aumentar el ancho de banda físico.",
+      "Permitir que múltiples aplicaciones utilicen la red simultáneamente usando puertos.",
+      "Conectar múltiples cables.",
+      "Dividir la red en subredes."
+    ],
+    "a": 1,
+    "info": "La multiplexación de sesiones permite que distintos servicios (web, mail, chat) operen a la vez en un mismo host, diferenciados por números de puerto."
+  },
+  {
+    "q": "¿Qué es la ITU?",
+    "options": [
+      "Un sindicato de trabajadores de redes.",
+      "La Unión Internacional de Telecomunicaciones, organismo de la ONU.",
+      "Una empresa proveedora de Internet.",
+      "Un protocolo de seguridad."
+    ],
+    "a": 1,
+    "info": "La ITU (International Telecommunication Union) es el organismo especializado de las Naciones Unidas para las tecnologías de la información y la comunicación."
+  },
+  {
+    "q": "¿Qué capa del modelo OSI se encarga de la ruta física y el direccionamiento físico?",
+    "options": [
+      "Capa de Red",
+      "Capa de Enlace de Datos",
+      "Capa Física",
+      "Capa de Transporte"
+    ],
+    "a": 1,
+    "info": "Ojo con la trampa: La Capa de Enlace maneja el direccionamiento físico (MAC) y el acceso al medio. La Capa Física se encarga de la señal, pero el concepto de 'dirección física' es de Enlace."
+  },
+  {
+    "q": "¿Qué innovación introdujo la Web 2.0 respecto a la Web 1.0?",
+    "options": [
+      "El uso de texto plano.",
+      "La interactividad y participación del usuario (redes sociales, wikis).",
+      "La realidad virtual.",
+      "La conexión por dial-up."
+    ],
+    "a": 1,
+    "info": "La Web 2.0 se caracteriza por pasar de páginas estáticas a plataformas dinámicas donde los usuarios generan contenido y colaboran."
+  }
+]

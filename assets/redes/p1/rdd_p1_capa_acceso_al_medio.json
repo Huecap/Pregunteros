@@ -1,0 +1,552 @@
+[
+  {
+    "q": "¿Cuál es la responsabilidad principal de la subcapa MAC (Control de Acceso al Medio) en la Capa de Enlace de Datos?",
+    "options": [
+      "Definir los voltajes y conectores físicos.",
+      "Controlar cómo los dispositivos acceden a los medios y encapsular datos.",
+      "Proporcionar direccionamiento lógico IP.",
+      "Establecer sesiones entre aplicaciones."
+    ],
+    "a": 1,
+    "info": "La subcapa MAC controla el acceso al medio físico y encapsula los paquetes en tramas[cite: 568]."
+  },
+  {
+    "q": "¿Qué método de control de acceso al medio utiliza la Ethernet clásica (Half-Duplex)?",
+    "options": [
+      "CSMA/CA",
+      "Token Passing",
+      "CSMA/CD",
+      "TDMA"
+    ],
+    "a": 2,
+    "info": "Ethernet clásica utiliza CSMA/CD (Carrier Sense Multiple Access with Collision Detection) para gestionar el acceso al bus compartido[cite: 578]."
+  },
+  {
+    "q": "En CSMA/CD, ¿qué hace una estación si detecta una colisión mientras transmite?",
+    "options": [
+      "Continúa transmitiendo para asegurar que lleguen los datos.",
+      "Envía una señal de error al router.",
+      "Detiene la transmisión, envía una señal de congestión (jam) y espera un tiempo aleatorio.",
+      "Cambia inmediatamente a una frecuencia diferente."
+    ],
+    "a": 2,
+    "info": "Al detectar una colisión, la estación deja de transmitir, envía una señal de jam y espera un tiempo aleatorio (backoff) antes de reintentar[cite: 582]."
+  },
+  {
+    "q": "¿Cuál es el propósito principal del mensaje RTS (Request to Send) en CSMA/CA?",
+    "options": [
+      "Detectar colisiones en el cable.",
+      "Solicitar una dirección IP al servidor DHCP.",
+      "Anunciar la intención de transmitir para reservar el medio y evitar colisiones.",
+      "Confirmar la recepción exitosa de una trama de datos."
+    ],
+    "a": 2,
+    "info": "En redes inalámbricas, RTS se usa para anunciar la intención de transmitir y evitar el problema del nodo oculto[cite: 607]."
+  },
+  {
+    "q": "¿Qué topología lógica utiliza Token Ring?",
+    "options": [
+      "Paso de testigo (Token Passing).",
+      "Contienda.",
+      "Difusión.",
+      "Punto a punto."
+    ],
+    "a": 0,
+    "info": "Token Ring utiliza un token que pasa de estación en estación para otorgar el permiso de transmisión de manera determinista[cite: 618]."
+  },
+  {
+    "q": "¿Cuántos bits tiene una dirección MAC?",
+    "options": [
+      "32 bits",
+      "48 bits",
+      "64 bits",
+      "128 bits"
+    ],
+    "a": 1,
+    "info": "Las direcciones MAC tienen 48 bits de longitud (6 bytes) y se expresan en hexadecimal[cite: 707]."
+  },
+  {
+    "q": "¿Qué indica el primer bit del primer byte de una dirección MAC si está establecido en 1?",
+    "options": [
+      "Que es una dirección administrada localmente.",
+      "Que es una dirección de Multicast (grupo).",
+      "Que es una dirección de Unicast (única).",
+      "Que pertenece a un dispositivo Cisco."
+    ],
+    "a": 1,
+    "info": "Si el bit menos significativo del primer byte es 1, indica que es una dirección de Multicast[cite: 731]."
+  },
+  {
+    "q": "¿Cuál es la dirección MAC de Broadcast?",
+    "options": [
+      "00-00-00-00-00-00",
+      "FF-FF-FF-FF-FF-FF",
+      "192.168.1.255",
+      "AA-BB-CC-DD-EE-FF"
+    ],
+    "a": 1,
+    "info": "La dirección de broadcast de capa 2 tiene los 48 bits encendidos (todo F en hexadecimal)[cite: 727]."
+  },
+  {
+    "q": "¿Qué dispositivo de red extiende el dominio de colisión?",
+    "options": [
+      "Switch",
+      "Router",
+      "Hub",
+      "Firewall"
+    ],
+    "a": 2,
+    "info": "Los hubs (y repetidores) operan en capa 1 y extienden el dominio de colisión al retransmitir la señal por todos los puertos[cite: 676]."
+  },
+  {
+    "q": "¿En qué capa del modelo OSI opera un Switch?",
+    "options": [
+      "Capa 1 (Física)",
+      "Capa 2 (Enlace de Datos)",
+      "Capa 3 (Red)",
+      "Capa 4 (Transporte)"
+    ],
+    "a": 1,
+    "info": "Los switches operan en la Capa de Enlace de Datos (Capa 2), tomando decisiones basadas en direcciones MAC[cite: 657]."
+  },
+  {
+    "q": "¿Qué función cumple el campo FCS (Frame Check Sequence) en una trama Ethernet?",
+    "options": [
+      "Indicar la longitud de los datos.",
+      "Sincronizar los relojes del receptor.",
+      "Detectar errores en la transmisión mediante CRC.",
+      "Identificar el protocolo de capa superior."
+    ],
+    "a": 2,
+    "info": "El campo FCS se utiliza para la verificación de la integridad de la trama y detección de errores[cite: 695]."
+  },
+  {
+    "q": "¿Cuál es el tamaño mínimo de una trama Ethernet (sin preámbulo)?",
+    "options": [
+      "32 bytes",
+      "46 bytes",
+      "64 bytes",
+      "1518 bytes"
+    ],
+    "a": 2,
+    "info": "El tamaño mínimo de trama Ethernet es de 64 bytes (46 bytes de datos + encabezados)[cite: 703]."
+  },
+  {
+    "q": "¿Qué tecnología permite a un switch enviar la trama tan pronto como lee la dirección MAC de destino?",
+    "options": [
+      "Store and Forward",
+      "Cut-through",
+      "Fragment Free",
+      "CSMA/CD"
+    ],
+    "a": 1,
+    "info": "El método Cut-through inicia el reenvío de la trama apenas se lee la dirección destino, reduciendo la latencia[cite: 1287]."
+  },
+  {
+    "q": "¿Qué sucede cuando un switch recibe una trama con una dirección MAC destino que no está en su tabla?",
+    "options": [
+      "Descarta la trama.",
+      "Envía la trama de vuelta al origen.",
+      "Difunde (inunda) la trama por todos los puertos excepto el de origen.",
+      "Solicita la dirección al servidor DNS."
+    ],
+    "a": 2,
+    "info": "Si la MAC destino es desconocida, el switch realiza 'flooding' enviándola por todos los puertos activos salvo el de entrada[cite: 1307]."
+  },
+  {
+    "q": "¿Qué protocolo se utiliza para prevenir bucles (loops) en una red con switches redundantes?",
+    "options": [
+      "DHCP",
+      "ARP",
+      "STP (Spanning Tree Protocol)",
+      "RIP"
+    ],
+    "a": 2,
+    "info": "STP (IEEE 802.1d) desactiva lógicamente enlaces redundantes para evitar bucles de capa 2[cite: 1497]."
+  },
+  {
+    "q": "¿Qué estado de puerto en STP envía y recibe datos de usuario?",
+    "options": [
+      "Bloqueo",
+      "Escucha",
+      "Aprendizaje",
+      "Envío (Forwarding)"
+    ],
+    "a": 3,
+    "info": "Solo en el estado de Envío el puerto transmite tramas de datos y actualiza la tabla MAC[cite: 1560]."
+  },
+  {
+    "q": "¿Cuál es la velocidad de transmisión de Fast Ethernet?",
+    "options": [
+      "10 Mbps",
+      "100 Mbps",
+      "1000 Mbps",
+      "10 Gbps"
+    ],
+    "a": 1,
+    "info": "Fast Ethernet (IEEE 802.3u) opera a 100 Mbps[cite: 745]."
+  },
+  {
+    "q": "¿Qué tipo de cable utiliza el estándar 1000Base-T?",
+    "options": [
+      "Cable coaxial fino.",
+      "Fibra óptica monomodo.",
+      "4 pares de UTP categoría 5 o superior.",
+      "Cable coaxial grueso."
+    ],
+    "a": 2,
+    "info": "1000Base-T utiliza 4 pares de cable UTP categoría 5 para lograr Gigabit Ethernet[cite: 758]."
+  },
+  {
+    "q": "¿Qué modo de operación permite enviar y recibir datos simultáneamente?",
+    "options": [
+      "Simplex",
+      "Half-Duplex",
+      "Full-Duplex",
+      "Multiplex"
+    ],
+    "a": 2,
+    "info": "Full-duplex permite la transmisión y recepción simultánea, eliminando la necesidad de detección de colisiones en switches[cite: 660]."
+  },
+  {
+    "q": "¿Qué información utiliza un Bridge para filtrar el tráfico de red?",
+    "options": [
+      "Direcciones IP",
+      "Direcciones MAC",
+      "Puertos TCP",
+      "Protocolos de aplicación"
+    ],
+    "a": 1,
+    "info": "Los bridges operan en capa 2 y filtran tramas basándose en las direcciones MAC de origen y destino[cite: 1199]."
+  },
+  {
+    "q": "¿Cómo aprende un switch las direcciones MAC?",
+    "options": [
+      "Son configuradas manualmente por el administrador.",
+      "Inspeccionando la dirección MAC de origen de las tramas entrantes.",
+      "Mediante el protocolo ARP.",
+      "Inspeccionando la dirección MAC de destino de las tramas."
+    ],
+    "a": 1,
+    "info": "El switch construye su tabla MAC dinámicamente leyendo la dirección MAC de origen de cada trama que ingresa a un puerto[cite: 1316]."
+  },
+  {
+    "q": "¿Qué es una 'Tormenta de difusión' (Broadcast Storm)?",
+    "options": [
+      "Una falla eléctrica en el switch.",
+      "Un ataque de virus informático.",
+      "La circulación indefinida de tramas de broadcast en un bucle de capa 2, saturando la red.",
+      "La pérdida de señal en una red inalámbrica."
+    ],
+    "a": 2,
+    "info": "Las tormentas de difusión ocurren cuando existen bucles físicos sin STP, haciendo que los broadcasts se retransmitan infinitamente[cite: 1479]."
+  },
+  {
+    "q": "¿Qué estándar define las redes inalámbricas WLAN?",
+    "options": [
+      "IEEE 802.3",
+      "IEEE 802.5",
+      "IEEE 802.11",
+      "IEEE 802.15"
+    ],
+    "a": 2,
+    "info": "El estándar IEEE 802.11 define la arquitectura y especificaciones de las redes WLAN[cite: 1628]."
+  },
+  {
+    "q": "¿Qué modo de WLAN permite la comunicación directa entre dispositivos sin un Access Point?",
+    "options": [
+      "Infraestructura",
+      "Ad-hoc",
+      "Extendido",
+      "Roaming"
+    ],
+    "a": 1,
+    "info": "El modo Ad-hoc permite que un conjunto de estaciones se comuniquen directamente entre sí sin un punto de acceso central[cite: 1679]."
+  },
+  {
+    "q": "¿Qué es el SSID?",
+    "options": [
+      "Un protocolo de seguridad.",
+      "El identificador o nombre de la red inalámbrica.",
+      "La dirección MAC del Access Point.",
+      "El tipo de antena utilizada."
+    ],
+    "a": 1,
+    "info": "SSID (Service Set Identifier) es el nombre de la red que identifica al conjunto de servicios básicos (BSS)[cite: 1702]."
+  },
+  {
+    "q": "¿Cuál es una característica del estándar 802.11g?",
+    "options": [
+      "Opera en 5 GHz a 54 Mbps.",
+      "Opera en 2.4 GHz a 11 Mbps.",
+      "Opera en 2.4 GHz a 54 Mbps y es compatible con 802.11b.",
+      "Opera en 60 GHz."
+    ],
+    "a": 2,
+    "info": "802.11g funciona en 2.4 GHz, alcanza hasta 54 Mbps y mantiene compatibilidad con 802.11b[cite: 1835]."
+  },
+  {
+    "q": "¿Qué tecnología introdujo el estándar 802.11n para mejorar la velocidad mediante el uso de múltiples antenas?",
+    "options": [
+      "OFDM",
+      "MIMO (Multiple Input Multiple Output)",
+      "DSSS",
+      "CSMA/CA"
+    ],
+    "a": 1,
+    "info": "802.11n utiliza tecnología MIMO, empleando múltiples antenas para transmitir varios flujos de datos simultáneamente[cite: 1844]."
+  },
+  {
+    "q": "¿Qué estándar de seguridad inalámbrica se considera obsoleto y no recomendado debido a sus vulnerabilidades?",
+    "options": [
+      "WPA2",
+      "WPA3",
+      "WEP",
+      "AES"
+    ],
+    "a": 2,
+    "info": "WEP (Wired Equivalent Privacy) es inseguro y no se recomienda su uso[cite: 1898]."
+  },
+  {
+    "q": "¿Cuál es el estándar IEEE para Bluetooth?",
+    "options": [
+      "802.11",
+      "802.15",
+      "802.16",
+      "802.3"
+    ],
+    "a": 1,
+    "info": "Bluetooth es un estándar para WPAN definido bajo IEEE 802.15[cite: 2022]."
+  },
+  {
+    "q": "¿Qué estándar IEEE corresponde a WiMAX?",
+    "options": [
+      "802.11ac",
+      "802.15",
+      "802.16",
+      "802.1Q"
+    ],
+    "a": 2,
+    "info": "WiMAX, tecnología para WMAN de largo alcance, está estandarizada en IEEE 802.16[cite: 2030]."
+  },
+  {
+    "q": "En una trama Ethernet II, ¿qué campo sigue inmediatamente a la dirección MAC de origen?",
+    "options": [
+      "Preámbulo",
+      "Datos",
+      "Tipo (EtherType)",
+      "FCS"
+    ],
+    "a": 2,
+    "info": "En Ethernet II, el campo que sigue a la dirección de origen es el campo 'Tipo', que indica el protocolo de capa superior[cite: 695]."
+  },
+  {
+    "q": "¿Qué es un BSS (Basic Service Set) en arquitectura 802.11?",
+    "options": [
+      "El conjunto de todos los routers de Internet.",
+      "Una celda controlada por un Access Point donde se conectan los clientes.",
+      "El cable que conecta los APs.",
+      "Un protocolo de seguridad."
+    ],
+    "a": 1,
+    "info": "Un BSS es la celda básica de la arquitectura celular 802.11, controlada por una estación base o AP[cite: 1642]."
+  },
+  {
+    "q": "¿Qué problema de las redes inalámbricas se describe cuando una estación no detecta a un competidor lejano y colisiona?",
+    "options": [
+      "Terminal expuesta.",
+      "Terminal oculta.",
+      "Desvanecimiento de señal.",
+      "Interferencia de microondas."
+    ],
+    "a": 1,
+    "info": "El problema de la terminal oculta ocurre cuando una estación no puede detectar que otra está transmitiendo porque está fuera de su alcance[cite: 1861]."
+  },
+  {
+    "q": "¿Qué método de conmutación verifica la integridad de toda la trama (FCS) antes de reenviarla?",
+    "options": [
+      "Cut-through",
+      "Fragment Free",
+      "Store and Forward",
+      "Fast Forward"
+    ],
+    "a": 2,
+    "info": "Store and Forward almacena la trama completa y verifica el FCS para detectar errores antes de enviarla[cite: 1285]."
+  },
+  {
+    "q": "¿Qué dispositivo divide dominios de colisión pero mantiene un único dominio de broadcast?",
+    "options": [
+      "Hub",
+      "Repetidor",
+      "Switch",
+      "Cable UTP"
+    ],
+    "a": 2,
+    "info": "El switch divide el dominio de colisión por cada puerto, pero por defecto (sin VLANs) mantiene un solo dominio de broadcast[cite: 658]."
+  },
+  {
+    "q": "¿Qué campo de la trama Ethernet se utiliza para la sincronización de bits?",
+    "options": [
+      "Dirección MAC",
+      "FCS",
+      "Preámbulo",
+      "Longitud"
+    ],
+    "a": 2,
+    "info": "El preámbulo (patrón 101010...) se utiliza para la sincronización y estabilización de la señal antes de los datos[cite: 699]."
+  },
+  {
+    "q": "¿Cuál es la función principal de la Capa de Enlace de Datos?",
+    "options": [
+      "Enrutamiento de paquetes IP.",
+      "Transferencia física de bits.",
+      "Acceso a los medios y control de errores en el enlace físico.",
+      "Cifrado de datos de aplicación."
+    ],
+    "a": 2,
+    "info": "La capa de enlace es responsable del acceso al medio, encapsulamiento en tramas y detección de errores físicos[cite: 560]."
+  },
+  {
+    "q": "¿Qué estándar inalámbrico opera en la banda de 5 GHz y alcanza velocidades de hasta 1.3 Gbps?",
+    "options": [
+      "802.11b",
+      "802.11g",
+      "802.11n",
+      "802.11ac"
+    ],
+    "a": 3,
+    "info": "802.11ac (WiFi 5) opera en 5 GHz y ofrece tasas de hasta 1.3 Gbps[cite: 1853]."
+  },
+  {
+    "q": "En el proceso de aprendizaje de un switch, si la dirección MAC origen de una trama no está en la tabla, ¿qué hace el switch?",
+    "options": [
+      "Descarta la trama.",
+      "Agrega la dirección MAC y el puerto a su tabla CAM.",
+      "Envía un mensaje de error al remitente.",
+      "Solicita la dirección al servidor RADIUS."
+    ],
+    "a": 1,
+    "info": "El switch aprende asociando la dirección MAC de origen de la trama entrante con el puerto por el que llegó[cite: 1316]."
+  },
+  {
+    "q": "¿Qué tipo de cableado se asocia con el estándar 10Base2?",
+    "options": [
+      "Par trenzado UTP.",
+      "Fibra óptica.",
+      "Cable coaxial fino.",
+      "Cable coaxial grueso."
+    ],
+    "a": 2,
+    "info": "10Base2 utiliza cable coaxial fino, una tecnología antigua de Ethernet[cite: 641]."
+  },
+  {
+    "q": "¿Qué son las tramas 'Beacon' (Baliza) en una red WLAN?",
+    "options": [
+      "Tramas de datos de usuario.",
+      "Difusiones periódicas del AP para anunciar la red y sincronizar parámetros.",
+      "Mensajes de error de colisión.",
+      "Tramas de solicitud de conexión."
+    ],
+    "a": 1,
+    "info": "Las tramas baliza son enviadas periódicamente por el AP para anunciar su presencia y parámetros a los clientes[cite: 1772]."
+  },
+  {
+    "q": "¿Qué es un 'dominio de broadcast'?",
+    "options": [
+      "El área donde las colisiones pueden ocurrir.",
+      "El área lógica donde los dispositivos pueden comunicarse directamente sin necesidad de un router.",
+      "El alcance de la señal WiFi.",
+      "El conjunto de puertos de un Hub."
+    ],
+    "a": 1,
+    "info": "Un dominio de broadcast es el segmento de red donde un mensaje de difusión llega a todos los dispositivos conectados; los routers dividen estos dominios[cite: 688]."
+  },
+  {
+    "q": "¿Qué cifrado utiliza WPA2?",
+    "options": [
+      "RC4",
+      "TKIP",
+      "AES",
+      "DES"
+    ],
+    "a": 2,
+    "info": "WPA2 implementa el algoritmo de cifrado avanzado AES, siendo más seguro que sus predecesores[cite: 1908]."
+  },
+  {
+    "q": "¿Qué función cumple el 'Fragment Free' en los switches?",
+    "options": [
+      "Lee toda la trama antes de enviarla.",
+      "Lee solo la dirección destino.",
+      "Lee los primeros 64 bytes para filtrar fragmentos de colisión antes de reenviar.",
+      "No realiza ningún filtrado."
+    ],
+    "a": 2,
+    "info": "Libre de fragmentos espera a leer los primeros 64 bytes (tamaño mínimo) para asegurar que no sea un fragmento de colisión[cite: 1289]."
+  },
+  {
+    "q": "¿Cuál es el OUI en la dirección MAC 00-60-2F-3A-07-BC?",
+    "options": [
+      "3A-07-BC",
+      "00-60-2F",
+      "00-60",
+      "07-BC"
+    ],
+    "a": 1,
+    "info": "El OUI (Organizationally Unique Identifier) corresponde a los primeros 3 bytes (24 bits) de la dirección MAC, asignados al fabricante[cite: 712]."
+  },
+  {
+    "q": "¿Qué dispositivo divide dominios de colisión pero NO dominios de broadcast?",
+    "options": [
+      "Hub",
+      "Router",
+      "Switch",
+      "Repetidor"
+    ],
+    "a": 2,
+    "info": "Los switches segmentan dominios de colisión por puerto, pero reenvían broadcasts a todos los puertos (mismo dominio de broadcast)[cite: 677]."
+  },
+  {
+    "q": "¿Qué significa que un puerto STP esté en estado 'Blocking' (Bloqueo)?",
+    "options": [
+      "Envía y recibe datos normalmente.",
+      "Aprende direcciones MAC pero no envía datos.",
+      "No envía datos ni actualiza la tabla MAC, solo recibe BPDUs.",
+      "El puerto está apagado físicamente."
+    ],
+    "a": 2,
+    "info": "En estado de Bloqueo, el puerto descarta datos y no actualiza tablas, solo escucha BPDUs para prevenir bucles[cite: 1555]."
+  },
+  {
+    "q": "¿Qué es la Autonegociación en Ethernet?",
+    "options": [
+      "El proceso para obtener una dirección IP.",
+      "El protocolo para elegir el switch raíz.",
+      "El mecanismo para acordar automáticamente la velocidad y modo dúplex entre dos dispositivos.",
+      "La configuración automática de VLANs."
+    ],
+    "a": 2,
+    "info": "La autonegociación permite que dos dispositivos ajusten automáticamente la velocidad (10/100/1000) y el modo (half/full duplex)[cite: 751]."
+  },
+  {
+    "q": "¿Qué componente de una trama 802.11 se utiliza para la corrección de errores y retransmisión?",
+    "options": [
+      "Campo Duración.",
+      "Dirección MAC 4.",
+      "Control de secuencia (número de fragmento y secuencia).",
+      "SSID."
+    ],
+    "a": 2,
+    "info": "El campo de Control de Secuencia numera las tramas y fragmentos para detectar duplicados y gestionar retransmisiones[cite: 2016]."
+  },
+  {
+    "q": "¿Qué frecuencia utiliza el estándar IEEE 802.11a?",
+    "options": [
+      "2.4 GHz",
+      "5 GHz",
+      "900 MHz",
+      "60 GHz"
+    ],
+    "a": 1,
+    "info": "El estándar 802.11a, aprobado en 1999, utiliza exclusivamente la banda de 5 GHz[cite: 1816]."
+  }
+]
