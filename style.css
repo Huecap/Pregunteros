@@ -1,22 +1,63 @@
 :root {
+    /* --- TUS COLORES ORIGINALES --- */
     --primary: #0056b3;
     --secondary: #00a8cc;
     --light: #f4f9f9;
     --dark: #333;
     --success: #28a745;
     --error: #dc3545;
+    
+    /* --- NUEVAS VARIABLES DINÁMICAS (Por defecto: Modo Claro) --- */
+    --bg-body: var(--light);
+    --bg-paper: #ffffff;      /* Fondo de tarjetas (antes 'white') */
+    --text-main: var(--dark);
+    --text-muted: #555555;
+    --border-color: #dddddd;
+    --input-bg: #ffffff;
     --shadow: 0 4px 6px rgba(0,0,0,0.1);
+    --hover-bg: #f0f8ff;
+    --json-bg: #f9f9f9;
+}
+
+/* --- CONFIGURACIÓN DEL MODO OSCURO --- */
+body.dark-mode {
+    --primary: #4da3ff;       /* Azul más brillante para contraste */
+    --bg-body: #121212;       /* Fondo oscuro */
+    --bg-paper: #1e1e1e;      /* Tarjetas oscuras */
+    --text-main: #e0e0e0;     /* Texto claro */
+    --text-muted: #aaaaaa;
+    --border-color: #444444;
+    --input-bg: #2d2d2d;
+    --shadow: 0 4px 6px rgba(0,0,0,0.5);
+    --hover-bg: #2c3e50;
+    --json-bg: #1e1e1e;
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: var(--light);
-    color: var(--dark);
+    background-color: var(--bg-body); /* MODIFICADO */
+    color: var(--text-main);          /* MODIFICADO */
     display: flex;
     justify-content: center;
     min-height: 100vh;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* Botón flotante para cambiar tema */
+.theme-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-paper);
+    color: var(--text-main);
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    z-index: 1000;
 }
 
 .main-content {
@@ -41,7 +82,7 @@ h1 {
 
 /* --- ESTILOS DEL MENÚ JERÁRQUICO --- */
 .materia-block {
-    background: white;
+    background: var(--bg-paper); /* MODIFICADO */
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 25px;
@@ -50,7 +91,7 @@ h1 {
 
 .materia-title {
     font-size: 1.5rem;
-    color: var(--dark);
+    color: var(--text-main); /* MODIFICADO */
     margin: 0 0 15px 0;
     border-left: 5px solid var(--primary);
     padding-left: 15px;
@@ -59,13 +100,13 @@ h1 {
 .parcial-block {
     margin-left: 20px;
     margin-bottom: 15px;
-    border-left: 2px solid #eee;
+    border-left: 2px solid var(--border-color); /* MODIFICADO */
     padding-left: 15px;
 }
 
 .parcial-title {
     font-size: 1.2rem;
-    color: #555;
+    color: var(--text-muted); /* MODIFICADO */
     margin-bottom: 10px;
 }
 
@@ -85,6 +126,7 @@ h1 {
     transition: transform 0.2s, background 0.2s;
     text-align: center;
     font-size: 0.95rem;
+    width: 100%;
 }
 
 .preguntero-btn:hover {
@@ -96,7 +138,7 @@ h1 {
 .back-btn {
     background: none;
     border: none;
-    color: #666;
+    color: var(--text-muted); /* MODIFICADO */
     cursor: pointer;
     font-size: 1rem;
     margin-bottom: 20px;
@@ -106,7 +148,7 @@ h1 {
 .back-btn:hover { color: var(--primary); text-decoration: underline; }
 
 .question-block {
-    background: white;
+    background: var(--bg-paper); /* MODIFICADO */
     padding: 25px;
     border-radius: 10px;
     box-shadow: var(--shadow);
@@ -126,23 +168,30 @@ h1 {
 
 .option-btn {
     padding: 12px 15px;
-    border: 2px solid #ddd;
+    border: 2px solid var(--border-color); /* MODIFICADO */
     border-radius: 6px;
-    background: white;
+    background: var(--bg-paper); /* MODIFICADO */
+    color: var(--text-main);      /* AGREGADO */
     cursor: pointer;
     text-align: left;
     transition: all 0.2s;
     font-size: 1rem;
 }
 
-.option-btn:hover { background-color: #f0f8ff; border-color: var(--primary); }
-.option-btn.correct { background-color: #d4edda; border-color: var(--success); color: #155724; }
-.option-btn.incorrect { background-color: #f8d7da; border-color: var(--error); color: #721c24; }
+.option-btn:hover { background-color: var(--hover-bg); border-color: var(--primary); }
+.option-btn.correct { background-color: rgba(40, 167, 69, 0.2); border-color: var(--success); color: var(--success); }
+.option-btn.incorrect { background-color: rgba(220, 53, 69, 0.2); border-color: var(--error); color: var(--error); }
+
+/* Ajuste específico para texto legible en modo oscuro */
+body.dark-mode .option-btn.correct { color: #4ade80; }
+body.dark-mode .option-btn.incorrect { color: #f87171; }
 
 .feedback {
-    margin-top: 15px; padding: 10px; background-color: #fafafa;
+    margin-top: 15px; padding: 10px; 
+    background-color: var(--bg-body); /* MODIFICADO */
     border-radius: 5px; font-style: italic; font-size: 0.95rem;
-    display: none; border-left: 3px solid #999;
+    display: none; border-left: 3px solid var(--text-muted);
+    color: var(--text-main);
 }
 
 .score-board {
@@ -153,16 +202,18 @@ h1 {
 
 .nav-btn {
     display: block; width: 100%; padding: 15px; margin-top: 20px;
-    background-color: var(--dark); border: none; color: white;
+    background-color: var(--text-main); /* MODIFICADO: Invertido */
+    border: none; color: var(--bg-paper); 
     text-align: center; cursor: pointer; border-radius: 5px;
     font-size: 1.1rem; transition: background 0.3s;
 }
-.nav-btn:hover { background-color: black; }
+.nav-btn:hover { opacity: 0.8; }
 
 .error-msg {
     color: var(--error); text-align: center; background: #ffe6e6;
     padding: 15px; border-radius: 5px; border: 1px solid var(--error);
 }
+
 /* Estilos para indicar que algo se puede editar */
 .editable-active {
     border: 2px dashed #ff9800;
@@ -173,6 +224,10 @@ h1 {
     cursor: text;
     margin: 1px;
 }
+body.dark-mode .editable-active {
+    background-color: #423805;
+    color: #fff;
+}
 
 /* Contenedor de botones de administración */
 .admin-controls {
@@ -180,29 +235,10 @@ h1 {
     text-align: right;
 }
 
-.edit-btn {
-    background-color: #2196F3; /* Azul */
-    color: white;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
+.edit-btn { background-color: #2196F3; color: white; padding: 5px 10px; border: none; border-radius: 4px; cursor: pointer; }
+.save-btn { background-color: #4CAF50; color: white; padding: 5px 10px; border: none; border-radius: 4px; cursor: pointer; display: none; }
 
-.save-btn {
-    background-color: #4CAF50; /* Verde */
-    color: white;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    display: none; /* Oculto por defecto */
-}
-
-.option-btn[contenteditable="true"] {
-    cursor: text; /* Cambia el cursor sobre los botones al editar */
-}
-
+.option-btn[contenteditable="true"] { cursor: text; }
 
 /* Estilos del Modal */
 .modal {
@@ -216,7 +252,8 @@ h1 {
 .modal.hidden { display: none; }
 
 .modal-content {
-    background-color: #fff;
+    background-color: var(--bg-paper); /* MODIFICADO */
+    color: var(--text-main);           /* AGREGADO */
     padding: 25px;
     border-radius: 8px;
     width: 90%; max-width: 400px;
@@ -226,8 +263,78 @@ h1 {
 .close-modal {
     position: absolute; top: 10px; right: 15px;
     font-size: 28px; font-weight: bold; cursor: pointer;
+    color: var(--text-muted); /* MODIFICADO */
 }
 
 .form-group { margin-bottom: 15px; text-align: left; }
 .form-group label { display: block; font-weight: bold; margin-bottom: 5px; }
-.form-group input { width: 100%; padding: 8px; box-sizing: border-box; }
+.form-group input { 
+    width: 100%; padding: 8px; box-sizing: border-box; 
+    background-color: var(--input-bg); /* MODIFICADO */
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+}
+
+/* Contenedor principal */
+.json-instructions {
+    background-color: var(--json-bg); /* MODIFICADO */
+    border: 1px solid var(--border-color); /* MODIFICADO */
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    font-family: sans-serif;
+}
+
+.json-instructions h3 { margin-top: 0; color: var(--text-main); } /* MODIFICADO */
+
+/* Contenedor del código (estilo oscuro) */
+.code-container {
+    position: relative;
+    background-color: #1e1e1e; /* Fondo oscuro siempre */
+    border-radius: 6px;
+    margin: 15px 0;
+    overflow: hidden;
+}
+
+.code-container pre {
+    margin: 0;
+    padding: 20px;
+    overflow-x: auto;
+    color: #d4d4d4;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 14px;
+}
+
+/* Botón de copiar */
+.copy-btn {
+    position: absolute; top: 10px; right: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px; transition: background 0.2s;
+}
+.copy-btn:hover { background-color: rgba(255, 255, 255, 0.25); }
+
+/* Lista de definiciones */
+.field-definitions ul { list-style: none; padding: 0; }
+.field-definitions li { margin-bottom: 10px; line-height: 1.5; }
+
+.tag {
+    background-color: #e3f2fd; color: #0d47a1; padding: 2px 6px;
+    border-radius: 4px; font-family: monospace; font-weight: bold; margin-right: 8px;
+}
+
+/* Ajuste tag en oscuro */
+body.dark-mode .tag { background-color: #1565c0; color: white; }
+
+.sub-list {
+    margin-top: 5px; padding-left: 20px !important;
+    list-style: disc !important; 
+    color: var(--text-muted); /* MODIFICADO */
+    font-size: 0.9em;
+}
+
+.menu-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

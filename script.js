@@ -386,5 +386,46 @@ function exportarJSON() {
     downloadAnchorNode.remove();
 }
 
+function copyJSONTemplate() {
+    const codeText = document.getElementById('json-template').innerText;
+    navigator.clipboard.writeText(codeText).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        const originalText = btn.textContent;
+        
+        // Feedback visual de que se copió
+        btn.textContent = '✅ ¡Copiado!';
+        btn.style.backgroundColor = '#4CAF50';
+        
+        setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+        }, 2000);
+    }).catch(err => {
+        console.error('Error al copiar: ', err);
+    });
+}
+
+const themeBtn = document.getElementById('theme-toggle');
+const body = document.body;
+
+// 1. Verificar preferencia guardada
+if (localStorage.getItem('theme') === 'dark') {
+    body.classList.add('dark-mode');
+    themeBtn.textContent = '☀️ Modo Claro';
+}
+
+// 2. Evento Click
+themeBtn.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    
+    if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+        themeBtn.textContent = '☀️ Modo Claro';
+    } else {
+        localStorage.setItem('theme', 'light');
+        themeBtn.textContent = '🌙 Modo Oscuro';
+    }
+});
+
 // Iniciar App
 initMenu();

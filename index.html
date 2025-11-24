@@ -11,7 +11,7 @@
 <body>
 
     <div class="main-content">
-
+        <button id="theme-toggle" class="theme-btn">🌙 Modo Oscuro</button>
         <div id="menu-view">
             <h1>Pregunteros</h1>
             <div style="text-align: center; margin-bottom: 20px;">
@@ -26,9 +26,60 @@
                 <div id="loading-menu">⏳ Cargando materias...</div>
 
             </div>
-            <button id="btn-open-loader" class="preguntero-btn" style="background-color: #28a745;">
-                📂 Cargar Preguntero Personalizado
-            </button>
+            <div class="menu-actions">
+                <button id="btn-open-loader" class="preguntero-btn" style="background-color: #28a745;">
+                    📂 Cargar Preguntero Personalizado
+                </button>
+            </div>
+
+           <div class="json-instructions">
+    <h3>📄 Formato de Archivo Requerido</h3>
+    <p>Para cargar nuevas preguntas, asegúrate de que tu archivo <code>.json</code> siga estrictamente esta estructura:</p>
+
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyJSONTemplate()">📋 Copiar Plantilla</button>
+        <pre><code id="json-template">[
+  {
+    "q": "Texto de la pregunta aquí",
+    "options": [
+      "Opción A",
+      "Opción B",
+      "Opción C",
+      "Opción D"
+    ],
+    "a": 1,
+    "info": "Explicación breve del concepto..."
+  }
+]</code></pre>
+    </div>
+
+    <div class="field-definitions">
+        <h4>Referencia de campos:</h4>
+        <ul>
+            <li>
+                <span class="tag">q</span> 
+                <strong>(String):</strong> La pregunta a realizar.
+            </li>
+            <li>
+                <span class="tag">options</span> 
+                <strong>(Array de Strings):</strong> Las posibles respuestas.
+            </li>
+            <li>
+                <span class="tag">a</span> 
+                <strong>(Integer):</strong> El número de la respuesta correcta (basado en 1).
+                <ul class="sub-list">
+                    <li><code>1</code> = Primera opción</li>
+                    <li><code>2</code> = Segunda opción, etc.</li>
+                </ul>
+            </li>
+            <li>
+                <span class="tag">info</span> 
+                <strong>(String):</strong> Contexto adicional o justificación que aparece al responder.
+            </li>
+        </ul>
+    </div>
+</div>
+
         </div>
 
         <div id="quiz-view" class="hidden">
