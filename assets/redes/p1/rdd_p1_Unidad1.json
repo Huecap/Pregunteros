@@ -1,0 +1,443 @@
+[
+  {
+    "q": "Al clasificar las redes según la 'Tecnología de Transmisión', ¿cuál es la característica distintiva que diferencia a una red de difusión (broadcast) de una red punto a punto?",
+    "options": [
+      "En las redes de difusión, el mensaje se divide en paquetes pequeños, mientras que en punto a punto se establece un circuito físico dedicado.",
+      "En las redes de difusión, todos los dispositivos comparten el mismo canal de comunicación y reciben el mensaje, mientras que en punto a punto la conexión es exclusiva entre un par de máquinas.",
+      "Las redes de difusión solo operan en áreas geográficas pequeñas (LAN), mientras que las redes punto a punto son exclusivas de las redes de área amplia (WAN).",
+      "Las redes de difusión utilizan exclusivamente tecnología inalámbrica, mientras que las redes punto a punto requieren medios guiados como fibra óptica."
+    ],
+    "a": 2,
+    "info": "Según la clasificación por tecnología de transmisión, existen dos tipos: Difusión (un solo canal compartido por todas las máquinas) y Punto a punto (muchas conexiones entre pares de máquinas individuales)."
+  },
+  {
+    "q": "En la comparación entre el Modelo OSI y el conjunto de protocolos TCP/IP, ¿cómo se relacionan las capas superiores?",
+    "options": [
+      "La capa de Aplicación del modelo TCP/IP engloba las funcionalidades de las capas de Aplicación, Presentación y Sesión del modelo OSI.",
+      "El modelo TCP/IP posee una capa de Sesión separada, pero combina Presentación y Aplicación en una sola capa superior.",
+      "Ambos modelos son idénticos en las capas superiores, diferenciándose únicamente en que TCP/IP fusiona la capa de Enlace de Datos y Física.",
+      "La capa de Aplicación de TCP/IP solo se encarga de la interfaz de usuario, delegando el cifrado y el control del diálogo a la capa de Transporte."
+    ],
+    "a": 1,
+    "info": "El modelo TCP/IP simplifica las capas superiores del modelo OSI. Su capa de Aplicación maneja la representación de datos (Presentación), el control de diálogo (Sesión) y los protocolos de aplicación propiamente dichos."
+  },
+  {
+    "q": "El protocolo IP (Internet Protocol) ubicado en la capa de Interred se define con ciertas características clave. ¿Cuál de las siguientes combinaciones describe correctamente al protocolo IP?",
+    "options": [
+      "Orientado a conexión, fiable y encargado de la corrección de errores extremo a extremo.",
+      "No orientado a conexión, no fiable (máximo esfuerzo) y encargado del direccionamiento lógico y encaminamiento.",
+      "No orientado a conexión, fiable mediante acuses de recibo y encargado del control de flujo.",
+      "Orientado a conexión, no fiable y dependiente del hardware de red subyacente."
+    ],
+    "a": 2,
+    "info": "IP es un protocolo de 'máximo esfuerzo'. No garantiza la entrega (no fiable), no establece un circuito previo (no orientado a conexión) y su función principal es direccionar y enrutar paquetes a través de distintas redes."
+  },
+  {
+    "q": "Dentro de la estructura actual de Internet, ¿qué característica fundamental define a un ISP de Tier 1 (Nivel 1) frente a los de Tier 2 y Tier 3?",
+    "options": [
+      "Los Tier 1 son proveedores regionales que pagan por el tránsito de datos a los Tier 2 para alcanzar redes globales.",
+      "Los Tier 1 poseen una infraestructura global y se conectan con otros Tier 1 únicamente mediante acuerdos de 'peering' libres de pago (settlement-free), sin comprar tránsito a nadie.",
+      "Los Tier 1 son los Puntos Neutros (IXP) donde se intercambia el tráfico entre proveedores locales y regionales.",
+      "Los Tier 1 se encargan exclusivamente de la última milla, conectando a los usuarios residenciales y empresas finales."
+    ],
+    "a": 2,
+    "info": "Los Tier 1 forman el backbone de Internet. Su característica distintiva es que tienen alcance global y no pagan por tránsito a nadie; intercambian tráfico entre ellos (peering) y venden tránsito a los niveles inferiores."
+  },
+  {
+    "q": "En el contexto de las organizaciones de estandarización, ¿cuál es la función principal de los RFC (Request For Comments) publicados por el IETF?",
+    "options": [
+      "Son leyes internacionales obligatorias que regulan el uso del espectro radioeléctrico en todos los países miembros de la ITU.",
+      "Son documentos que definen los fundamentos técnicos de Internet (protocolos, procedimientos) y recomiendan mejores prácticas, siendo el estándar 'de facto' de la red.",
+      "Son certificaciones de hardware emitidas por la IEEE para asegurar que las placas de red sean compatibles físicamente.",
+      "Son normas exclusivas del modelo OSI desarrolladas por la ISO para la interconexión de sistemas abiertos."
+    ],
+    "a": 2,
+    "info": "El IETF (Internet Engineering Task Force) desarrolla los estándares de Internet. Sus documentos técnicos se denominan RFCs y definen protocolos como IP, TCP, HTTP, etc."
+  },
+  {
+    "q": "¿Cuál es la diferencia técnica y económica principal entre una conexión de 'Tránsito' y una de 'Peering' (Interconexión) en la estructura de Internet?",
+    "options": [
+      "El Tránsito es una conexión gratuita entre pares iguales, mientras que el Peering es un servicio pago que da acceso a todo Internet.",
+      "El Peering permite el intercambio de tráfico solo entre las redes de las partes involucradas (y sus clientes), mientras que el Tránsito es un servicio pago que permite acceder a toda la Internet global.",
+      "El Tránsito se realiza exclusivamente en los IXP (Puntos Neutros), mientras que el Peering se realiza mediante enlaces satelitales.",
+      "No existe diferencia técnica; son sinónimos utilizados indistintamente para referirse a la conexión física entre dos routers."
+    ],
+    "a": 2,
+    "info": "En el Peering (público o privado), dos redes intercambian tráfico propio/de clientes, generalmente sin coste. En el Tránsito, una red paga a otra (jerárquicamente superior) para que esta le dé acceso a todo el resto de Internet."
+  },
+  {
+    "q": "Analizando la evolución de Internet, ¿qué hito fundamental ocurrió en 1983 que marcó la transición operativa de ARPANET hacia lo que hoy conocemos como Internet?",
+    "options": [
+      "La invención de la World Wide Web (WWW) y el primer navegador gráfico por Tim Berners-Lee.",
+      "La creación de la agencia DARPA para proyectos de defensa avanzada.",
+      "La adopción oficial del conjunto de protocolos TCP/IP en todas las máquinas de ARPANET, permitiendo la interconexión de redes heterogéneas.",
+      "La instalación del primer cable transoceánico de fibra óptica para unir América con Europa."
+    ],
+    "a": 3,
+    "info": "Aunque ARPANET nació en 1969, el 1 de enero de 1983 se completó la migración de los protocolos NCP a TCP/IP, lo que permitió que diferentes redes pudieran interconectarse, dando nacimiento a la 'Internet' propiamente dicha."
+  },
+  {
+    "q": "Con respecto a los protocolos de la capa de Transporte del modelo TCP/IP, ¿en qué situación sería mandatorio elegir UDP en lugar de TCP?",
+    "options": [
+      "Cuando se necesita transferir un archivo de contabilidad bancaria donde la integridad de cada bit es crítica.",
+      "Cuando se requiere enviar correos electrónicos (SMTP) para asegurar que lleguen a la bandeja de entrada.",
+      "Cuando se necesita transmisión de voz o video en tiempo real, donde la velocidad es prioritaria y la retransmisión de paquetes perdidos causaría latencia inaceptable.",
+      "Cuando se necesita establecer una sesión orientada a conexión para garantizar que los paquetes lleguen en el orden exacto."
+    ],
+    "a": 3,
+    "info": "UDP es un protocolo no orientado a conexión y no fiable, lo que lo hace muy rápido y ligero. Es ideal para aplicaciones en tiempo real (VoIP, Streaming) donde es preferible perder un paquete que detener la transmisión para retransmitirlo."
+  },
+  {
+    "q": "¿Cuál es la función principal de la Unión Internacional de Telecomunicaciones (ITU) y cómo se divide su trabajo?",
+    "options": [
+      "Desarrolla estándares para redes LAN y WLAN (como Wi-Fi). Se divide en IETF e IRTF.",
+      "Es un organismo de la ONU especializado en TIC. Se divide en ITU-T (Normalización), ITU-R (Radiocomunicaciones) e ITU-D (Desarrollo).",
+      "Es una organización privada que asigna direcciones IP y nombres de dominio. Se divide en IANA e ICANN.",
+      "Es la encargada de desarrollar el modelo OSI y normas de gestión de calidad (ISO 9001)."
+    ],
+    "a": 2,
+    "info": "La ITU (UIT) es el organismo de la ONU para las TIC. Sus sectores son: T (estándares de telecomunicaciones), R (gestión del espectro de radiofrecuencias y órbitas satelitales) y D (desarrollo equitativo de telecomunicaciones)."
+  },
+  {
+    "q": "En la clasificación de redes según el 'Área de Cobertura', ¿dónde se sitúa una MAN (Metropolitan Area Network) y qué la caracteriza?",
+    "options": [
+      "Cubre un área personal de pocos metros (ej. Bluetooth) y conecta periféricos.",
+      "Cubre una extensión geográfica amplia (país o continente), utilizando generalmente infraestructura de terceros (ISPs).",
+      "Cubre un área geográfica equivalente a una ciudad o municipio, interconectando diversas LANs a alta velocidad, a menudo usando fibra óptica o WiMAX.",
+      "Cubre un único edificio o campus, permitiendo compartir recursos como impresoras y archivos localmente."
+    ],
+    "a": 3,
+    "info": "Las MAN (Redes de Área Metropolitana) tienen una cobertura intermedia entre LAN y WAN, abarcando típicamente una ciudad. Se utilizan para interconectar redes locales dispersas dentro de ese radio urbano."
+  }
+,
+  {
+    "q": "Si clasificamos una red según su 'Topología Física', ¿cuál es la principal desventaja de una topología en 'Estrella' en comparación con una topología en 'Malla Completa'?",
+    "options": [
+      "La topología en estrella es más difícil de instalar y configurar inicialmente que la malla.",
+      "En la topología en estrella, si falla el nodo central (switch/hub), toda la red queda inoperativa, mientras que la malla ofrece alta redundancia.",
+      "La topología en estrella requiere mucho más cableado físico que una topología en malla completa para conectar el mismo número de nodos.",
+      "La topología en estrella no soporta comunicaciones Full-Duplex, limitando el ancho de banda disponible."
+    ],
+    "a": 2,
+   "info": "En una estrella, el nodo central es un punto único de fallo. La malla completa, aunque más costosa por el cableado, garantiza que si un enlace o nodo falla, existen rutas alternativas[cite: 57, 71, 72]."
+  },
+  {
+    "q": "Según la 'Direccionalidad de los datos', ¿qué define a una comunicación 'Semidúplex' (Half-Duplex) frente a una 'Dúplex' (Full-Duplex)?",
+    "options": [
+      "En Semidúplex la comunicación es unidireccional (solo envío), mientras que en Dúplex es bidireccional simultánea.",
+      "En Semidúplex ambos dispositivos pueden transmitir y recibir, pero no al mismo tiempo; en Dúplex pueden hacerlo simultáneamente.",
+      "En Semidúplex la comunicación es más rápida porque utiliza el doble de ancho de banda que la comunicación Dúplex.",
+      "En Semidúplex la señal se transmite digitalmente, mientras que en Dúplex la transmisión es analógica."
+    ],
+    "a": 2,
+    "info": "Half-Duplex permite el flujo en ambos sentidos, pero alternadamente (como un walkie-talkie).Full-Duplex permite envío y recepción al mismo tiempo (como un teléfono)[cite: 78, 79]."
+  },
+  {
+    "q": "Dentro de la clasificación por 'Área de Cobertura', ¿qué característica distingue principalmente a una MAN (Metropolitan Area Network) de una WAN (Wide Area Network)?",
+    "options": [
+      "La MAN utiliza exclusivamente tecnologías inalámbricas (WiMAX), mientras que la WAN solo usa fibra óptica.",
+      "La MAN conecta dispositivos personales en un rango de pocos metros, mientras que la WAN conecta edificios.",
+      "La MAN cubre una extensión geográfica correspondiente a una ciudad o municipio, mientras que la WAN se extiende a países o continentes.",
+      "La MAN es una red privada de una empresa, mientras que la WAN es siempre una red pública como Internet."
+    ],
+    "a": 3,
+   "info": "La clasificación por cobertura es jerárquica: PAN (personal), LAN (local/edificio), MAN (ciudad/metropolitana), WAN (país/global) [cite: 51-55]."
+  },
+  {
+    "q": "Al analizar la 'Tecnología de Transmisión', ¿cuál es el comportamiento de una red de 'Difusión' (Broadcast)?",
+    "options": [
+      "Se establece un circuito físico dedicado entre el emisor y el receptor antes de enviar cualquier dato.",
+      "El emisor envía el mensaje a un solo receptor específico utilizando su dirección MAC única, ignorando al resto.",
+      "El canal de comunicación es compartido por todas las máquinas; un paquete enviado es recibido por todas, y cada una verifica si es para ella.",
+      "Se utiliza un token que pasa de máquina en máquina para otorgar el permiso de transmisión."
+    ],
+    "a": 3,
+    "info": "En redes de difusión, el medio es compartido.Todos 'escuchan' la transmisión, pero solo procesa el mensaje aquel dispositivo a quien va dirigido o si es un mensaje de broadcast[cite: 59]."
+  },
+  {
+    "q": "¿Cuál de las siguientes opciones describe correctamente una red clasificada según la 'Movilidad de los dispositivos'?",
+    "options": [
+      "Redes de banda ancha vs. Redes de banda angosta.",
+      "Redes Fijas (los dispositivos no se desplazan durante la conexión) vs. Redes Móviles (permiten desplazamiento manteniendo la conexión).",
+      "Redes Simplex vs. Redes Dúplex.",
+      "Redes PAN vs. Redes LAN."
+    ],
+    "a": 2,
+   "info": "La clasificación por movilidad distingue entre redes donde el terminal está estático (fijas/alambradas) y aquellas donde el terminal puede moverse (móviles/inalámbricas) [cite: 84-86]."
+  },
+  {
+    "q": "En relación a los orígenes de Internet, ¿qué agencia fue la responsable directa de la creación de ARPANET, la precursora de la red actual?",
+    "options": [
+      "La ITU (Unión Internacional de Telecomunicaciones), buscando estandarizar las comunicaciones globales.",
+      "La NSF (National Science Foundation), para conectar supercomputadoras universitarias.",
+      "La DARPA (Defense Advanced Research Projects Agency) del Departamento de Defensa de EE.UU.",
+      "El CERN (Organización Europea para la Investigación Nuclear), para compartir datos científicos."
+    ],
+    "a": 3,
+   "info": "ARPANET fue desarrollada en 1969 por DARPA (Agencia de Proyectos de Investigación Avanzada de Defensa) como una red experimental de conmutación de paquetes[cite: 94, 95]."
+  },
+  {
+    "q": "¿Cuál fue el objetivo fundamental de diseño que impulsó la creación del protocolo TCP/IP para reemplazar a los protocolos originales de ARPANET?",
+    "options": [
+      "Crear una red centralizada que permitiera un control estricto de la información por parte del gobierno.",
+      "Permitir la interconexión de redes físicas heterogéneas (independencia del hardware) y asegurar la conectividad ante fallos.",
+      "Optimizar la velocidad de transferencia de archivos grandes en redes de área local.",
+      "Garantizar que todos los paquetes lleguen en orden secuencial utilizando circuitos virtuales fijos."
+    ],
+    "a": 2,
+   "info": "TCP/IP se diseñó para interconectar diferentes tipos de redes (red de redes), siendo independiente del hardware subyacente y resiliente a fallos[cite: 12, 24, 1667, 1723]."
+  },
+  {
+    "q": "En la arquitectura TCP/IP, ¿cuál es la función específica de la Capa de Transporte?",
+    "options": [
+      "Determinar la mejor ruta lógica (encaminamiento) para que los paquetes lleguen a su destino a través de la red.",
+      "Proporcionar comunicación entre procesos (extremo a extremo), permitiendo la fiabilidad, control de flujo y corrección de errores.",
+      "Definir las características mecánicas y eléctricas de la interfaz de red para la transmisión de bits.",
+      "Ofrecer servicios directos al usuario final como correo electrónico y transferencia de archivos."
+    ],
+    "a": 2,
+   "info": "La capa de Transporte (TCP/UDP) maneja la comunicación host-a-host, segmentación, reensamblaje y, en el caso de TCP, fiabilidad y control de flujo [cite: 1751-1753]."
+  },
+  {
+    "q": "El protocolo IP (Internet Protocol) se caracteriza por ser 'No orientado a conexión' y 'No fiable'. ¿Qué significan exactamente estos términos?",
+    "options": [
+      "Que requiere un saludo de tres vías antes de enviar datos y que garantiza la entrega de todos los paquetes.",
+      "Que no establece un circuito previo antes de transmitir y no garantiza la entrega, orden ni recuperación de paquetes perdidos (best effort).",
+      "Que solo funciona en redes locales y no puede enrutar paquetes a través de Internet.",
+      "Que cifra los datos para que no sean interceptados, pero no verifica la integridad de los mismos."
+    ],
+    "a": 2,
+    "info": "IP es un protocolo de 'máximo esfuerzo'.Envía los paquetes independientemente (sin conexión previa) y no se hace responsable si se pierden o llegan desordenados[cite: 1752, 1762, 1766]."
+  },
+  {
+    "q": "Comparando TCP y UDP, ¿cuál es la ventaja principal de utilizar UDP para aplicaciones de transmisión de video en tiempo real o voz sobre IP (VoIP)?",
+    "options": [
+      "UDP garantiza que no se pierda ningún pixel o fragmento de voz mediante retransmisiones constantes.",
+      "UDP establece una conexión persistente que reserva ancho de banda exclusivo para la transmisión.",
+      "UDP es más rápido y tiene menor sobrecarga (overhead) porque no realiza acuses de recibo ni reordenamiento, reduciendo la latencia.",
+      "UDP cifra automáticamente los datos, proporcionando mayor seguridad que TCP."
+    ],
+    "a": 3,
+    "info": "UDP es un protocolo ligero, sin conexión y no fiable.Al eliminar la sobrecarga de control de TCP, es ideal para tráfico sensible al retardo donde la pérdida ocasional de datos es aceptable[cite: 1733, 1828]."
+  },
+  {
+    "q": "En la estructura de Internet, los proveedores de nivel 1 (Tier 1) constituyen el 'backbone'. ¿Qué característica comercial define su relación con otros Tier 1?",
+    "options": [
+      "Pagan tarifas de tránsito a otros Tier 1 para acceder a regiones donde no tienen fibra.",
+      "Se interconectan exclusivamente a través de Puntos Neutros (IXP) pagando una cuota mensual.",
+      "Mantienen acuerdos de 'peering' libres de pago (settlement-free), intercambiando tráfico sin coste monetario entre ellos.",
+      "Solo venden servicios a usuarios residenciales, no a otros proveedores de servicios (ISP)."
+    ],
+    "a": 3,
+   "info": "Los Tier 1 (como AT&T, Lumen, Verizon) poseen redes globales y se conectan entre sí mediante peering sin costo, cobrando solo a los Tier 2 y 3 por el tránsito[cite: 170, 171, 183]."
+  },
+  {
+    "q": "¿Qué es un IXP (Internet Exchange Point) y cuál es su función principal en la arquitectura de Internet?",
+    "options": [
+      "Es un protocolo de enrutamiento utilizado exclusivamente por los routers de núcleo.",
+      "Es una infraestructura física donde diferentes proveedores de servicios (ISPs) y redes de entrega de contenido (CDNs) intercambian tráfico directamente.",
+      "Es un tipo de cable submarino que conecta diferentes continentes.",
+      "Es el servidor central de DNS que gestiona todos los dominios de Internet."
+    ],
+    "a": 2,
+   "info": "Un IXP (Punto Neutro) es una ubicación física donde múltiples redes se conectan para intercambiar tráfico (peering) localmente, mejorando la latencia y reduciendo costos de tránsito[cite: 177, 208, 222]."
+  },
+  {
+    "q": "¿Cuál es la diferencia fundamental entre una conexión de 'Tránsito' y una de 'Peering'?",
+    "options": [
+      "En el Peering, una red paga a otra por acceso a Internet global; en Tránsito, el intercambio es gratuito.",
+      "El Tránsito es una conexión temporal por demanda, mientras que el Peering es una conexión permanente.",
+      "En el Tránsito, una red paga para que otra transporte su tráfico hacia cualquier destino de Internet; el Peering es un intercambio de tráfico limitado a las redes involucradas.",
+      "El Tránsito se utiliza solo para redes móviles, mientras que el Peering es exclusivo de redes de fibra óptica."
+    ],
+    "a": 3,
+    "info": "El tránsito es un servicio pago de acceso global (A paga a B para llegar a todo Internet).El peering es un intercambio (gratuito o pago) solo de las rutas de los participantes y sus clientes [cite: 178-180, 209-211]."
+  },
+  {
+    "q": "¿Qué función cumple el IETF (Internet Engineering Task Force) en el ecosistema de estándares de Internet?",
+    "options": [
+      "Asigna las direcciones IP y los números de Sistemas Autónomos a nivel mundial.",
+      "Desarrolla y promueve estándares voluntarios de Internet, publicados como RFCs (Request for Comments), enfocándose en protocolos como TCP/IP.",
+      "Regula las tarifas que los ISPs pueden cobrar a los usuarios finales.",
+      "Fabrica el hardware de red certificado para su uso en el backbone de Internet."
+    ],
+    "a": 2,
+   "info": "El IETF es la comunidad técnica que desarrolla los protocolos de Internet (IP, TCP, HTTP, etc.) y publica su documentación técnica como RFCs[cite: 37, 239, 243]."
+  },
+  {
+    "q": "¿Qué es un RFC (Request For Comments) en el contexto de los organismos de estandarización de Internet?",
+    "options": [
+      "Una solicitud formal de presupuesto para proyectos de infraestructura de red.",
+      "Un documento oficial que define estándares, protocolos y mejores prácticas operativas para Internet, publicado por el IETF.",
+      "Un comentario que los usuarios dejan en las páginas web para calificar la calidad del servicio.",
+      "Una licencia de software que permite el uso gratuito de protocolos de red."
+    ],
+    "a": 2,
+    "info": "Los RFC son la serie de documentos donde se definen los estándares técnicos de Internet.El IETF los utiliza para especificar protocolos de enrutamiento, transporte y aplicación[cite: 37, 241, 243, 244]."
+  },
+  {
+    "q": "¿Cuál es el rol principal de la ITU (Unión Internacional de Telecomunicaciones)?",
+    "options": [
+      "Es el organismo de la ONU especializado en TIC que regula el espectro radioeléctrico y estandariza las telecomunicaciones globales.",
+      "Es una organización privada que desarrolla estándares exclusivos para redes de área local (LAN) como Ethernet.",
+      "Es la entidad encargada de gestionar los nombres de dominio (DNS) raíz de Internet.",
+      "Es un consorcio de fabricantes de hardware que define los voltajes y conectores de los cables de red."
+    ],
+    "a": 1,
+   "info": "La ITU (o UIT) es el organismo especializado de las Naciones Unidas para las tecnologías de la información y la comunicación, dividida en sectores como ITU-T (normalización) e ITU-R (radiocomunicaciones)[cite: 37, 230]."
+  },
+  {
+    "q": "El estándar IEEE 802 es fundamental en redes de datos. ¿A qué tipo de tecnologías se aplican principalmente los estándares de esta familia?",
+    "options": [
+      "A los protocolos de enrutamiento global como BGP y OSPF.",
+      "A las redes de área local (LAN) y metropolitana (MAN), incluyendo Ethernet (802.3) y Wi-Fi (802.11).",
+      "A la transmisión de televisión digital por satélite.",
+      "A la seguridad en transacciones de comercio electrónico."
+    ],
+    "a": 2,
+    "info": "El IEEE desarrolla estándares para redes locales y metropolitanas.La familia 802 incluye Ethernet (802.3), Wi-Fi (802.11), Bluetooth (802.15), entre otros[cite: 236, 250]."
+  },
+  {
+    "q": "¿Qué nivel del modelo TCP/IP se encarga del direccionamiento lógico y la determinación de la mejor ruta (encaminamiento) a través de la red?",
+    "options": [
+      "Capa de Acceso a la Red.",
+      "Capa de Internet (Interred).",
+      "Capa de Transporte.",
+      "Capa de Aplicación."
+    ],
+    "a": 2,
+   "info": "La capa de Internet (donde opera el protocolo IP) tiene como funciones principales el direccionamiento lógico (IP addresses) y el enrutamiento de paquetes[cite: 27, 1737, 1738, 1761]."
+  },
+  {
+    "q": "En el proceso de encapsulamiento de datos en el modelo TCP/IP, ¿qué unidad de datos de protocolo (PDU) se genera en la Capa de Transporte?",
+    "options": [
+      "Datos.",
+      "Segmento (o Datagrama en UDP).",
+      "Paquete.",
+      "Trama."
+    ],
+    "a": 2,
+   "info": "El encapsulamiento sigue el orden: Datos (Aplicación) -> Segmento (Transporte) -> Paquete (Internet) -> Trama (Acceso a Red)[cite: 1782, 2226]."
+  },
+  {
+    "q": "¿Qué organización internacional desarrolló el modelo de referencia OSI (Open Systems Interconnection)?",
+    "options": [
+      "IETF (Internet Engineering Task Force).",
+      "IEEE (Institute of Electrical and Electronics Engineers).",
+      "ISO (Organización Internacional de Normalización).",
+      "IAB (Internet Architecture Board)."
+    ],
+    "a": 3,
+   "info": "El modelo OSI fue desarrollado por la ISO (International Organization for Standardization) como un marco conceptual para la interconexión de sistemas abiertos[cite: 37, 232]."
+  },
+  {
+    "q": "Si una red se clasifica por 'Ancho de Banda' como de 'Banda Ancha', ¿qué implica esto generalmente?",
+    "options": [
+      "Que utiliza un solo canal digital para transmitir datos a baja velocidad.",
+      "Que tiene una alta capacidad de transmisión, permitiendo múltiples señales o datos a gran velocidad simultáneamente.",
+      "Que es una red exclusivamente inalámbrica de largo alcance.",
+      "Que utiliza cables coaxiales antiguos con capacidad limitada."
+    ],
+    "a": 2,
+    "info": "Las redes se clasifican en banda angosta y banda ancha.Banda ancha implica una alta capacidad de transporte de información y altas velocidades de acceso[cite: 81, 83]."
+  },
+  {
+    "q": "¿Qué característica define a los proveedores de Internet de Nivel 2 (Tier 2)?",
+    "options": [
+      "Son redes locales que solo dan servicio a usuarios finales y no tienen infraestructura propia.",
+      "Tienen una red extensa (regional o nacional) y hacen peering con otros Tier 2, pero deben comprar tránsito a los Tier 1 para alcance global.",
+      "Son dueños de toda la fibra óptica mundial y no pagan a nadie por conexión.",
+      "Operan exclusivamente dentro de una ciudad y no se conectan a otros proveedores."
+    ],
+    "a": 2,
+    "info": "Los Tier 2 tienen redes grandes pero no globales.Compran tránsito a los Tier 1 para llegar a todo Internet y hacen peering con otros Tier 2 para reducir costos[cite: 173, 201, 203]."
+  },
+  {
+    "q": "En la arquitectura de protocolos TCP/IP, ¿qué protocolos operan típicamente en la Capa de Aplicación?",
+    "options": [
+      "IP, ICMP, ARP.",
+      "TCP, UDP.",
+      "HTTP, FTP, SMTP, DNS.",
+      "Ethernet, Wi-Fi, Frame Relay."
+    ],
+    "a": 3,
+   "info": "La capa de Aplicación incluye los protocolos de alto nivel utilizados por el software, como HTTP (web), FTP (archivos), SMTP (correo) y DNS (nombres)[cite: 1731, 1818]."
+  },
+  {
+    "q": "¿Qué es el 'Backbone' de Internet?",
+    "options": [
+      "El cable que conecta el módem del usuario a la PC.",
+      "La red troncal de alta velocidad y capacidad que interconecta las principales redes y routers de nivel superior (Tier 1) a nivel mundial.",
+      "Un software antivirus que protege el núcleo del sistema operativo.",
+      "El conjunto de servidores DNS raíz ubicados en Estados Unidos."
+    ],
+    "a": 2,
+   "info": "El backbone o columna vertebral está formado por las redes Tier 1, que son las 'superautopistas' de información que transportan el tráfico entre grandes regiones y continentes[cite: 171, 172]."
+  },
+  {
+    "q": "En la clasificación de redes según la 'Tecnología de Transmisión', ¿qué caracteriza a una red 'Punto a Punto'?",
+    "options": [
+      "La existencia de un canal único compartido por todos los usuarios.",
+      "La existencia de múltiples conexiones individuales entre pares de máquinas; para ir de un origen a un destino, la información puede pasar por nodos intermedios.",
+      "El uso exclusivo de satélites para la comunicación.",
+      "La capacidad de enviar un mensaje a todos los destinos simultáneamente con una sola transmisión."
+    ],
+    "a": 2,
+    "info": "Las redes punto a punto consisten en muchas conexiones entre pares individuales de máquinas.Los paquetes a menudo deben atravesar nodos intermedios para llegar al destino[cite: 60]."
+  },
+  {
+    "q": "¿Qué función cumple la 'Multiplexación' en la Capa de Transporte del modelo TCP/IP?",
+    "options": [
+      "Permite combinar múltiples señales físicas en un solo cable de fibra óptica.",
+      "Permite que múltiples aplicaciones en un mismo host utilicen la red simultáneamente, diferenciándolas mediante números de puerto.",
+      "Divide un mensaje largo en paquetes IP más pequeños para que pasen por el router.",
+      "Asigna direcciones IP dinámicas a los dispositivos de la red."
+    ],
+    "a": 2,
+   "info": "La capa de transporte permite la multiplexación de sesiones, es decir, maneja múltiples comunicaciones simultáneas de distintas aplicaciones (usando puertos) sobre la misma conexión de red[cite: 1758]."
+  },
+  {
+    "q": "¿Cuál es la PDU (Unidad de Datos de Protocolo) asociada a la Capa de Acceso a la Red (o Enlace) en el modelo TCP/IP?",
+    "options": [
+      "Paquete.",
+      "Segmento.",
+      "Trama (Frame).",
+      "Bit."
+    ],
+    "a": 3,
+   "info": "En la capa de enlace/acceso a la red, el paquete IP se encapsula en una Trama (Frame), que añade cabeceras físicas (MAC) y trailer de verificación[cite: 1794, 1797, 2261]."
+  },
+  {
+    "q": "En el contexto de la evolución de Internet, ¿qué fenómeno se asocia con la 'Web 2.0' (2000-2010)?",
+    "options": [
+      "La creación de ARPANET y los primeros protocolos.",
+      "El auge de la interactividad, la participación del usuario y las redes sociales.",
+      "La invención del correo electrónico y el protocolo FTP.",
+      "La migración masiva a IPv6 debido al agotamiento de direcciones."
+    ],
+    "a": 2,
+   "info": "La Web 2.0 se caracteriza por el cambio de páginas estáticas a plataformas dinámicas centradas en el usuario, la colaboración y la interactividad (redes sociales, wikis) [cite: 104-106]."
+  },
+  {
+    "q": "¿Qué organización es responsable de la gestión de los estándares '802.11' (Wi-Fi) y '802.3' (Ethernet)?",
+    "options": [
+      "ISO.",
+      "ITU-T.",
+      "IEEE (Institute of Electrical and Electronics Engineers).",
+      "IETF."
+    ],
+    "a": 3,
+   "info": "El IEEE es la organización profesional que desarrolla los estándares de la familia 802 para redes LAN y MAN, incluyendo Ethernet y redes inalámbricas[cite: 236, 237]."
+  },
+  {
+    "q": "De acuerdo con las características de una dirección IPv4, ¿cuál de las siguientes afirmaciones es verdadera?",
+    "options": [
+      "Es una dirección física de 48 bits grabada en la tarjeta de red.",
+      "Es una dirección lógica de 32 bits, jerárquica, que identifica la red y el host.",
+      "Es una dirección alfanumérica utilizada para identificar sitios web (como www.google.com).",
+      "Es una dirección de 128 bits diseñada para reemplazar a las direcciones MAC."
+    ],
+    "a": 2,
+   "info": "Las direcciones IPv4 son direcciones lógicas de 32 bits, jerárquicas (tienen parte de red y parte de host), y se representan en notación decimal punteada [cite: 1223-1225]."
+  }
+]

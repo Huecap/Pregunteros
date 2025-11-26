@@ -1,0 +1,1642 @@
+[
+  {
+    "q": "En el contexto del Modelo OSI, si un protocolo se encarga de establecer, administrar y finalizar las conexiones entre aplicaciones locales y remotas, ¿a qué capa numérica y nombre corresponde?",
+    "options": [
+      "Capa 4 - Transporte",
+      "Capa 5 - Sesión",
+      "Capa 3 - Red",
+      "Capa 6 - Presentación"
+    ],
+    "a": 2,
+    "info": "La Capa 5 (Sesión) es la encargada de la comunicación entre hosts, estableciendo y gestionando las sesiones [cite: 2264-2266]."
+  },
+  {
+    "q": "Analizando la división de la Capa de Enlace de Datos según el estándar IEEE 802, ¿cuál es la función específica de la subcapa LLC (Logical Link Control)?",
+    "options": [
+      "Definir las características eléctricas y físicas del medio de transmisión.",
+      "Proporcionar direccionamiento físico y acceso al medio mediante direcciones MAC.",
+      "Permitir que múltiples protocolos de capa de red (como IPv4 e IPv6) utilicen el mismo medio físico y se comuniquen con las capas superiores.",
+      "Realizar la detección de colisiones y la retransmisión de tramas en redes Ethernet."
+    ],
+    "a": 3,
+    "info": "La subcapa LLC (IEEE 802.2) actúa como interfaz entre el software de red (capas superiores) y el hardware (subcapa MAC), permitiendo la interoperabilidad[cite: 2291]."
+  },
+  {
+    "q": "En el método de acceso al medio CSMA/CD utilizado en Ethernet clásica, ¿qué acción toma una estación inmediatamente después de detectar una colisión?",
+    "options": [
+      "Reenvía la trama inmediatamente con una prioridad más alta.",
+      "Detiene la transmisión, envía una señal de atascamiento (jam signal) y espera un tiempo aleatorio antes de reintentar.",
+      "Envía una trama ACK negativa al switch para solicitar un puerto libre.",
+      "Cambia a modo Simplex para evitar futuras colisiones en el canal."
+    ],
+    "a": 2,
+    "info": "Al detectar una colisión, la estación deja de transmitir datos útiles, envía una señal de jam para asegurar que todos noten la colisión y ejecuta un algoritmo de postergación aleatoria[cite: 2305, 2315]."
+  },
+  {
+    "q": "Diferenciando entre dominios de colisión y broadcast: Si conectamos 4 PCs a un HUB y este a su vez se conecta a un puerto de un Router, ¿cuántos dominios de colisión y cuántos de broadcast existen en ese segmento específico (sin contar el resto de la red del router)?",
+    "options": [
+      "4 Dominios de Colisión y 1 Dominio de Broadcast.",
+      "1 Dominio de Colisión y 1 Dominio de Broadcast.",
+      "5 Dominios de Colisión y 2 Dominios de Broadcast.",
+      "1 Dominio de Colisión y 4 Dominios de Broadcast."
+    ],
+    "a": 2,
+    "info": "El HUB extiende el dominio de colisión (todos compiten). El router delimita el broadcast. Por tanto, todo lo conectado al Hub es 1 dominio de colisión y, al ser una sola LAN, es 1 dominio de broadcast[cite: 1468, 2399, 2412]."
+  },
+  {
+    "q": "En la trama IEEE 802.3, a diferencia de Ethernet II, el campo que sigue a las direcciones MAC se utiliza para:",
+    "options": [
+      "Indicar el Tipo de protocolo de capa superior (ej. IPv4).",
+      "Indicar la Longitud de la trama de datos.",
+      "Señalar el inicio del delimitador de trama (SoF).",
+      "Almacenar la secuencia de verificación de trama (FCS)."
+    ],
+    "a": 2,
+    "info": "En IEEE 802.3 ese campo es 'Longitud' (<= 1536). En Ethernet II, ese mismo campo es 'Tipo' (> 1536)[cite: 2421, 2424, 2425]."
+  },
+  {
+    "q": "¿Cuál es la característica distintiva de una dirección MAC de Multicast a nivel de bits?",
+    "options": [
+      "Tiene todos los 48 bits en 1 (FF-FF-FF-FF-FF-FF).",
+      "El primer bit del primer byte (el bit menos significativo del primer octeto transmitido) es 1.",
+      "El primer byte siempre es 00 y el segundo es 5E.",
+      "Los primeros 24 bits (OUI) son siempre ceros."
+    ],
+    "a": 2,
+    "info": "Si el bit menos significativo del primer byte (bit 0) es 1, la dirección es Multicast. Si es 0, es Unicast [cite: 2454-2458]."
+  },
+  {
+    "q": "Respecto a las variantes de Ethernet sobre cable coaxial, ¿cuál es la diferencia técnica clave entre 10Base2 y 10Base5?",
+    "options": [
+      "10Base2 usa cable coaxial grueso y llega a 500m; 10Base5 usa fino y llega a 185m.",
+      "10Base2 usa fibra óptica; 10Base5 usa par trenzado.",
+      "10Base2 usa cable coaxial fino con segmento máximo de 185m; 10Base5 usa coaxial grueso con segmento máximo de 500m.",
+      "10Base5 opera a 50 Mbps mientras que 10Base2 opera a 2 Mbps."
+    ],
+    "a": 3,
+    "info": "10Base2 (Thinnet) usa coaxial fino y alcanza ~200m (185m). 10Base5 (Thicknet) usa coaxial grueso y alcanza 500m. Ambas corren a 10 Mbps [cite: 2364-2366]."
+  },
+  {
+    "q": "En un Switch que utiliza el método de conmutación 'Cut-Through' (método de corte), ¿en qué momento exacto comienza a retransmitir la trama?",
+    "options": [
+      "Inmediatamente después de leer la dirección MAC de destino, sin verificar errores.",
+      "Después de recibir los primeros 64 bytes para descartar fragmentos de colisión.",
+      "Una vez que ha recibido la trama completa y verificado el FCS (CRC).",
+      "Inmediatamente después de leer el Preámbulo de sincronización."
+    ],
+    "a": 1,
+    "info": "El método Cut-through transfiere los datos apenas lee la dirección MAC de destino, lo que es muy rápido pero no filtra errores[cite: 1563]."
+  },
+  {
+    "q": "¿Cuál es la función del mecanismo de 'Autonegociación' introducido en Fast Ethernet?",
+    "options": [
+      "Permite que dos dispositivos acuerden automáticamente la dirección IP a utilizar.",
+      "Permite negociar la velocidad (10/100 Mbps) y el modo de dúplex (Half/Full) más alto soportado por ambos extremos.",
+      "Permite al switch determinar automáticamente qué VLAN asignar al puerto.",
+      "Habilita la conversión automática entre cable directo y cruzado (MDI/MDIX)."
+    ],
+    "a": 2,
+    "info": "La autonegociación permite que dos dispositivos conectados elijan los mejores parámetros comunes de velocidad y modo de envío (semidúplex o dúplex)[cite: 2474]."
+  },
+  {
+    "q": "En el protocolo STP (Spanning Tree Protocol), ¿cómo se elige el 'Puente Raíz' (Root Bridge) en una red conmutada?",
+    "options": [
+      "Es el switch con la dirección MAC más alta.",
+      "Es el switch con el ID de puente (Bridge ID) más bajo (prioridad + MAC).",
+      "Es el switch que tiene más puertos conectados activamente.",
+      "Es el switch central que se configura manualmente como 'Server' en VTP."
+    ],
+    "a": 2,
+    "info": "Los switches eligen como raíz aquel que tiene el ID más bajo. El ID se compone de la prioridad y la dirección MAC[cite: 1798]."
+  },
+  {
+    "q": "¿Qué sucede con las tramas de datos y las BPDU cuando un puerto de un switch se encuentra en estado de 'Bloqueo' (Blocking) según STP?",
+    "options": [
+      "El puerto envía y recibe tramas de datos, pero no procesa BPDU.",
+      "El puerto descarta tramas de datos y no aprende direcciones MAC, pero sí recibe y procesa BPDU.",
+      "El puerto está totalmente apagado y no recibe ni envía nada.",
+      "El puerto aprende direcciones MAC para poblar la tabla CAM, pero no reenvía datos."
+    ],
+    "a": 2,
+    "info": "En estado de Bloqueo, el puerto solo recibe BPDU (no las envía) para mantener la topología lógica, pero descarta datos y no actualiza la tabla MAC[cite: 1831, 1841]."
+  },
+  {
+    "q": "En una red WLAN 802.11, ¿cuál es el propósito de las tramas de control RTS (Request to Send) y CTS (Clear to Send)?",
+    "options": [
+      "Realizar la autenticación del cliente con el servidor RADIUS.",
+      "Sincronizar el reloj de las estaciones para el salto de frecuencia.",
+      "Reservar el medio y solucionar el problema del 'terminal oculto', evitando colisiones de datos.",
+      "Confirmar la recepción exitosa de un paquete de datos (ACK)."
+    ],
+    "a": 3,
+    "info": "RTS/CTS se usa en CSMA/CA para anunciar la intención de transmitir y reservar el canal, mitigando colisiones cuando dos estaciones no se ven entre sí (terminal oculto)[cite: 1020, 2330, 2333]."
+  },
+  {
+    "q": "Un 'Switch de Capa 2' toma decisiones de reenvío basándose principalmente en:",
+    "options": [
+      "La dirección IP de destino del paquete.",
+      "El número de puerto TCP de la sesión.",
+      "La dirección MAC de destino de la trama consultando su tabla CAM.",
+      "La dirección MAC de origen para evitar bucles."
+    ],
+    "a": 3,
+    "info": "El switch analiza las tramas entrantes y busca la dirección MAC de destino en su tabla CAM para decidir por qué puerto reenviar[cite: 1581]."
+  },
+  {
+    "q": "¿Qué estándar IEEE corresponde a la tecnología Bluetooth y cuál es su clasificación de red?",
+    "options": [
+      "IEEE 802.11 - WLAN (Red de Área Local Inalámbrica).",
+      "IEEE 802.16 - WMAN (Red de Área Metropolitana Inalámbrica).",
+      "IEEE 802.15 - WPAN (Red de Área Personal Inalámbrica).",
+      "IEEE 802.3 - Ethernet Personal."
+    ],
+    "a": 3,
+    "info": "Bluetooth está definido bajo el estándar IEEE 802.15 y se clasifica como una WPAN (Wireless Personal Area Network)[cite: 1181, 1185]."
+  },
+  {
+    "q": "En el proceso de aprendizaje de un switch (Learning), si llega una trama con una dirección MAC de origen que NO está en la tabla CAM, ¿qué hace el switch?",
+    "options": [
+      "Descarta la trama por seguridad.",
+      "Inunda la trama por todos los puertos (flooding).",
+      "Agrega la dirección MAC y el puerto de entrada a su tabla CAM y luego procesa el reenvío.",
+      "Envía una solicitud ARP para verificar la identidad del dispositivo."
+    ],
+    "a": 3,
+    "info": "El switch aprende mirando la dirección MAC de *origen*. Si no la tiene, la agrega a la tabla asociándola al puerto por donde entró[cite: 1592, 1606]."
+  },
+  {
+    "q": "¿Cuál es el tamaño mínimo y máximo de una trama Ethernet estándar (sin contar preámbulo ni delimitador)?",
+    "options": [
+      "Mínimo 46 bytes, Máximo 1500 bytes.",
+      "Mínimo 64 bytes, Máximo 1518 bytes.",
+      "Mínimo 20 bytes, Máximo 1480 bytes.",
+      "Mínimo 128 bytes, Máximo 1024 bytes."
+    ],
+    "a": 2,
+    "info": "El tamaño mínimo de la trama completa es 64 bytes (46 de datos + 18 de cabecera/trailer). El máximo estándar es 1518 bytes[cite: 2426, 2421]."
+  },
+  {
+    "q": "En Gigabit Ethernet (1000Base-T), ¿qué tipo de cableado es necesario para soportar la transmisión a 1000 Mbps sobre cobre?",
+    "options": [
+      "2 pares de UTP Categoría 3.",
+      "4 pares de UTP Categoría 5 o superior.",
+      "Cable coaxial grueso.",
+      "Fibra óptica multimodo exclusivamente."
+    ],
+    "a": 2,
+    "info": "1000Base-T utiliza los 4 pares del cable UTP Categoría 5 (o superior) para alcanzar el gigabit, con un segmento máximo de 100m[cite: 2481]."
+  },
+  {
+    "q": "¿Cuál es la función del 'Preámbulo' en una trama Ethernet?",
+    "options": [
+      "Indicar la longitud de los datos que siguen.",
+      "Sincronizar los relojes del receptor y el transmisor con un patrón alterno de 1s y 0s.",
+      "Identificar la dirección física del fabricante de la tarjeta de red.",
+      "Detectar errores mediante un cálculo de CRC."
+    ],
+    "a": 2,
+    "info": "El preámbulo son 7 bytes de 101010... utilizados para la sincronización de bit entre emisor y receptor antes de que comience la trama real[cite: 2422]."
+  },
+  {
+    "q": "En una red Token Ring, ¿qué condición debe cumplir una estación para poder transmitir datos?",
+    "options": [
+      "Debe detectar que no hay portadora en el medio (canal libre).",
+      "Debe poseer el 'Token' (testigo) que circula por el anillo.",
+      "Debe enviar una solicitud RTS y recibir un CTS.",
+      "Debe tener la dirección MAC más baja del anillo."
+    ],
+    "a": 2,
+    "info": "Token Ring es un protocolo determinista donde una estación solo puede transmitir si captura el token libre que circula por la red[cite: 2341]."
+  },
+  {
+    "q": "¿Qué dispositivo de red opera en la Capa 1 (Física), regenera la señal eléctrica y la reenvía por todos sus puertos, extendiendo el dominio de colisión?",
+    "options": [
+      "Switch.",
+      "Router.",
+      "Hub (Concentrador).",
+      "Bridge."
+    ],
+    "a": 3,
+    "info": "El Hub es un repetidor multipuerto de Capa 1. Simplemente repite la señal eléctrica, extendiendo el dominio de colisión [cite: 1463-1468]."
+  },
+  {
+    "q": "¿Cuál es la diferencia entre el modo 'Ad-hoc' y el modo 'Infraestructura' en una WLAN 802.11?",
+    "options": [
+      "Ad-hoc usa un Access Point central; Infraestructura es conexión directa entre dispositivos.",
+      "Ad-hoc es conexión directa dispositivo-a-dispositivo sin AP; Infraestructura requiere que todo el tráfico pase por un Access Point.",
+      "Ad-hoc ofrece mayor seguridad y velocidad que el modo Infraestructura.",
+      "Ad-hoc se usa para empresas (Enterprise); Infraestructura para hogares."
+    ],
+    "a": 2,
+    "info": "En modo Ad-hoc (IBSS) no hay AP, los equipos se conectan entre sí. En Infraestructura (BSS), todo el tráfico pasa centralizadamente por el AP [cite: 838-846]."
+  },
+  {
+    "q": "En la seguridad WPA/WPA2, ¿qué función cumple el modo 'Enterprise' a diferencia del modo 'Personal'?",
+    "options": [
+      "Usa una clave precompartida (PSK) estática para todos los usuarios.",
+      "No requiere contraseña, es un sistema abierto.",
+      "Requiere un servidor de autenticación RADIUS para gestionar usuarios y contraseñas individuales.",
+      "Utiliza cifrado WEP de 64 bits para mayor compatibilidad."
+    ],
+    "a": 3,
+    "info": "El modo Enterprise utiliza un servidor de autenticación (como RADIUS) y el estándar 802.1X, mientras que Personal usa una clave precompartida (PSK) en el router [cite: 1076-1078]."
+  },
+  {
+    "q": "¿Qué ventaja ofrece la tecnología WiMAX (802.16) frente a Wi-Fi (802.11)?",
+    "options": [
+      "Mayor velocidad en distancias muy cortas (PAN).",
+      "Cobertura de área metropolitana (WMAN) de hasta 70 km, ideal para conexiones de última milla en zonas rurales.",
+      "Menor consumo de energía, diseñado para periféricos como ratones y teclados.",
+      "Uso exclusivo de frecuencias licenciadas, prohibiendo el uso libre."
+    ],
+    "a": 2,
+    "info": "WiMAX es una tecnología WMAN diseñada para largas distancias (hasta 70 km) y conectividad de banda ancha tipo 'última milla', a diferencia del alcance local de Wi-Fi [cite: 1192-1194]."
+  },
+  {
+    "q": "En el estándar 10 Gigabit Ethernet (10GBase-T), ¿cuál es la distancia máxima teórica sobre cable de par trenzado?",
+    "options": [
+      "25 metros.",
+      "550 metros.",
+      "100 metros (usando Cat 6a o 7).",
+      "40 kilómetros."
+    ],
+    "a": 3,
+    "info": "10GBase-T permite 10 Gbps sobre cable de cobre UTP hasta 100 metros, generalmente requiriendo Categoría 6a[cite: 2493]."
+  },
+  {
+    "q": "Cuando hablamos de 'Encapsulamiento', ¿cuál es la PDU (Unidad de Datos de Protocolo) que se procesa en la Capa de Interred (Internet Layer) del modelo TCP/IP?",
+    "options": [
+      "Segmento.",
+      "Trama.",
+      "Paquete o Datagrama.",
+      "Datos."
+    ],
+    "a": 3,
+    "info": "La capa de Internet (equivalente a Red en OSI) trabaja con Paquetes (o datagramas IP). Segmento es Transporte, Trama es Acceso a Red[cite: 1409, 1978]."
+  },
+  {
+    "q": "En el contexto de las tramas 802.11, ¿qué tipo de trama son las 'Beacons' (Balizas)?",
+    "options": [
+      "Tramas de Control para reservar el medio.",
+      "Tramas de Datos que transportan la información del usuario.",
+      "Tramas de Administración que anuncian la presencia del AP y sus parámetros (SSID, capacidades).",
+      "Tramas de Seguridad para el handshake de WPA2."
+    ],
+    "a": 3,
+    "info": "Las tramas baliza (Beacon) son difusiones periódicas de administración que anuncian la presencia del AP y parámetros de la red [cite: 930-933]."
+  },
+  {
+    "q": "¿Qué es el 'Fragmento Libre' (Fragment Free) en las técnicas de conmutación de un switch?",
+    "options": [
+      "Un modo que espera recibir toda la trama para verificar el CRC.",
+      "Un modo que lee solo los primeros 64 bytes de la trama antes de reenviar, filtrando las colisiones más comunes.",
+      "Un modo que reenvía la trama bit a bit sin ningún almacenamiento.",
+      "Un modo que fragmenta las tramas grandes en paquetes más pequeños."
+    ],
+    "a": 2,
+    "info": "Libre de fragmentos lee los primeros 64 bytes (tamaño mínimo de trama) para asegurar que no es un fragmento de colisión, pero es más rápido que Store-and-Forward [cite: 1565-1566]."
+  },
+  {
+    "q": "¿Qué función cumple el campo FCS (Frame Check Sequence) en una trama Ethernet?",
+    "options": [
+      "Indica el inicio de la trama.",
+      "Contiene la dirección MAC de origen.",
+      "Permite la detección de errores en la transmisión mediante un CRC de 32 bits.",
+      "Indica la prioridad de la trama para QoS."
+    ],
+    "a": 3,
+    "info": "El FCS o Secuencia de Verificación de Trama es un campo de 4 bytes al final que contiene un CRC para detectar si la trama llegó corrupta[cite: 1178, 2418]."
+  },
+  {
+    "q": "Si un dispositivo opera en la Capa 3 (Red) del modelo OSI, como un Router, se asume que:",
+    "options": [
+      "Solo entiende direcciones IP y no interactúa con direcciones MAC.",
+      "Cumple funciones de las capas inferiores (Física y Enlace) además de las funciones de Red.",
+      "Es puramente software y no tiene componentes de hardware.",
+      "Solo puede conectar redes que utilicen el mismo protocolo de enlace de datos."
+    ],
+    "a": 2,
+    "info": "Los dispositivos de capas superiores incluyen la funcionalidad de las capas inferiores. Un router debe tener interfaz física y entender enlaces de datos para desencapsular hasta llegar a la capa de Red."
+  },
+  {
+    "q": "¿Qué es un ESS (Extended Service Set) en la arquitectura 802.11?",
+    "options": [
+      "Una única celda con un solo Access Point.",
+      "La unión de dos o más BSS (Basic Service Set) interconectados por un sistema de distribución (DS), formando una red más grande.",
+      "Una conexión directa entre dos laptops sin AP.",
+      "El protocolo de seguridad utilizado para cifrar la contraseña."
+    ],
+    "a": 2,
+    "info": "ESS es el conjunto de servicio extendido, formado por la unión de varios BSS conectados a través de una red troncal o sistema de distribución[cite: 796, 817]."
+  },
+  {
+    "q": "En Ethernet, ¿qué significa que una tecnología sea de 'máximo esfuerzo' (best-effort)?",
+    "options": [
+      "Que el sistema garantiza la entrega de todos los paquetes mediante retransmisiones automáticas.",
+      "Que el sistema reserva ancho de banda dedicado para cada comunicación.",
+      "Que el sistema intenta entregar la trama, pero no garantiza que llegue ni notifica si se pierde (no es fiable).",
+      "Que el sistema utiliza la máxima potencia eléctrica posible para transmitir."
+    ],
+    "a": 3,
+    "info": "Ethernet e IP son tecnologías de máximo esfuerzo; no garantizan la entrega ni son fiables por sí mismas, delegan la fiabilidad a capas superiores (TCP)[cite: 2362]."
+  },
+  {
+    "q": "¿Qué problema de las redes inalámbricas describe la situación de 'Terminal Oculta'?",
+    "options": [
+      "Una estación no transmite porque cree erróneamente que el medio está ocupado.",
+      "Dos estaciones no se pueden escuchar entre sí debido a la distancia, pero ambas intentan transmitir al mismo AP, causando colisiones.",
+      "Un atacante intercepta la señal sin ser detectado.",
+      "El AP deja de emitir su SSID para ocultar la red."
+    ],
+    "a": 2,
+    "info": "El problema de terminal oculta ocurre cuando una estación no detecta a un competidor por estar lejos, y ambas transmiten al AP simultáneamente, colisionando en el AP[cite: 1020, 1034]."
+  },
+  {
+    "q": "¿Cuál es la unidad de datos (PDU) correspondiente a la Capa Física?",
+    "options": [
+      "Trama.",
+      "Paquete.",
+      "Bits.",
+      "Datos."
+    ],
+    "a": 3,
+    "info": "La capa física trabaja con la transmisión binaria pura, por lo tanto, su unidad es el Bit[cite: 1417, 2278]."
+  },
+  {
+    "q": "En Fast Ethernet (100Base-TX), ¿qué medio físico y distancia máxima se utilizan?",
+    "options": [
+      "Fibra óptica hasta 2000 metros.",
+      "Cable coaxial hasta 500 metros.",
+      "Dos pares de UTP Categoría 5 hasta 100 metros.",
+      "Cuatro pares de UTP Categoría 3 hasta 100 metros."
+    ],
+    "a": 3,
+    "info": "100Base-TX utiliza par trenzado (2 pares, Cat 5) con una distancia máxima de segmento de 100 metros[cite: 2475]."
+  },
+  {
+    "q": "En el contexto de las VLANs (Virtual LAN), ¿cuál es la función principal del etiquetado de tramas (tagging) en el protocolo 802.1Q?",
+    "options": [
+      "Cifrar el contenido de los datos para seguridad entre departamentos.",
+      "Agregar un campo a la trama Ethernet que identifica a qué VLAN pertenece, permitiendo su transporte a través de enlaces troncales.",
+      "Aumentar la prioridad de las tramas de voz sobre las de datos.",
+      "Convertir la trama Ethernet en una trama Token Ring."
+    ],
+    "a": 2,
+    "info": "802.1Q inserta una etiqueta (tag) de 4 bytes en la trama Ethernet original para identificar la VLAN ID cuando viaja por un enlace troncal entre switches[cite: 373, 386]."
+  },
+  {
+    "q": "¿Qué dispositivo divide dominios de colisión pero extiende (no divide) los dominios de broadcast?",
+    "options": [
+      "Hub.",
+      "Switch (y Bridge).",
+      "Router.",
+      "Repetidor."
+    ],
+    "a": 2,
+    "info": "El Switch (o Bridge) segmenta colisiones por puerto, pero el broadcast (FF-FF...) se reenvía a todos los puertos, por lo que extiende el dominio de broadcast[cite: 1477, 1538]."
+  },
+  {
+    "q": "El campo 'Tipo' en una trama Ethernet II (valor mayor a 1536/0x0600) indica:",
+    "options": [
+      "La longitud de la trama.",
+      "El protocolo de capa superior (Red) que está encapsulado en los datos (ej. 0x0800 para IPv4).",
+      "La prioridad de la trama.",
+      "El número de secuencia de la trama."
+    ],
+    "a": 2,
+    "info": "En Ethernet II, el campo Tipo identifica qué protocolo viene dentro de la carga útil (payload), como IPv4, ARP, etc.[cite: 2424]."
+  },
+  {
+    "q": "¿Qué es una NIC (Network Interface Card) y en qué capas del modelo OSI opera?",
+    "options": [
+      "Es un software de red que opera en la capa de Aplicación.",
+      "Es un dispositivo que opera exclusivamente en la capa Física.",
+      "Es la tarjeta de interfaz de red que opera en las capas Física (1) y Enlace de Datos (2), teniendo una dirección MAC física.",
+      "Es un router pequeño que opera en la capa de Red."
+    ],
+    "a": 3,
+    "info": "La NIC brinda acceso físico y maneja el protocolo de enlace (MAC), por lo que opera en capa 1 y 2[cite: 1449]."
+  },
+  {
+    "q": "En STP, ¿qué rol cumple un 'Puerto Designado'?",
+    "options": [
+      "Es el puerto que envía y recibe tráfico hacia el switch raíz con el menor costo en ese segmento de red.",
+      "Es el puerto que está bloqueado para evitar bucles.",
+      "Es el puerto que se conecta directamente a una PC final.",
+      "Es un puerto exclusivo para la administración del switch."
+    ],
+    "a": 1,
+    "info": "El puerto designado es aquel puerto en un segmento que tiene el mejor camino hacia la raíz y por donde fluye el tráfico del segmento hacia la red[cite: 1802]."
+  },
+  {
+    "q": "¿Cuál es la característica principal del estándar IEEE 802.11ac?",
+    "options": [
+      "Opera en 2.4 GHz con velocidades de 11 Mbps.",
+      "Opera exclusivamente en 5 GHz, utiliza MIMO y alcanza velocidades teóricas de gigabits (WiFi 5).",
+      "Fue el primer estándar en introducir OFDM.",
+      "Está diseñado para redes IoT de baja velocidad."
+    ],
+    "a": 2,
+    "info": "802.11ac (WiFi 5) opera en la banda de 5 GHz, usa modulación 256-QAM y MIMO para tasas superiores a 1 Gbps [cite: 1009-1014]."
+  }
+,
+  {
+    "q": "En el modelo OSI, ¿qué capa es responsable de la traducción de datos, el cifrado y la compresión, asegurando que la información enviada por la capa de aplicación de un sistema pueda ser leída por la capa de aplicación de otro?",
+    "options": [
+      "Capa 7 - Aplicación",
+      "Capa 6 - Presentación",
+      "Capa 5 - Sesión",
+      "Capa 4 - Transporte"
+    ],
+    "a": 2,
+    "info": "La Capa 6 (Presentación) se encarga de la representación de los datos (sintaxis), incluyendo cifrado, compresión y traducción de formatos."
+  },
+  {
+    "q": "¿Cuál es la secuencia correcta de las Unidades de Datos de Protocolo (PDU) desde la Capa 1 hasta la Capa 4 del modelo OSI?",
+    "options": [
+      "Trama, Paquete, Segmento, Datos",
+      "Bits, Trama, Paquete, Segmento",
+      "Bits, Paquete, Trama, Segmento",
+      "Datos, Segmento, Paquete, Trama"
+    ],
+    "a": 2,
+    "info": "La jerarquía de encapsulamiento es: Física (Bits) -> Enlace (Trama) -> Red (Paquete) -> Transporte (Segmento)."
+  },
+  {
+    "q": "Si un dispositivo de red toma decisiones de reenvío basándose exclusivamente en direcciones lógicas (IP) y métricas de ruta, ¿a qué capa del modelo OSI pertenece y cuál es su PDU asociada?",
+    "options": [
+      "Capa 2 (Enlace de Datos) - Trama",
+      "Capa 3 (Red) - Paquete",
+      "Capa 4 (Transporte) - Segmento",
+      "Capa 2 (Enlace de Datos) - Paquete"
+    ],
+    "a": 2,
+    "info": "Los routers operan en la Capa 3 (Red), utilizando direcciones lógicas para enrutar Paquetes."
+  },
+  {
+    "q": "El estándar IEEE 802 divide la Capa de Enlace de Datos en dos subcapas. ¿Cuál es la función principal de la subcapa LLC (Logical Link Control)?",
+    "options": [
+      "Definir el acceso al medio físico y el direccionamiento MAC.",
+      "Proporcionar sincronización de bits y codificación de señal.",
+      "Actuar como interfaz entre el software de red (Capa 3) y el hardware (subcapa MAC), identificando el protocolo de capa superior.",
+      "Realizar la detección de colisiones en redes Ethernet compartidas."
+    ],
+    "a": 3,
+    "info": "La LLC (IEEE 802.2) independiza las capas superiores del hardware específico, permitiendo que protocolos como IPv4 o IPv6 usen el mismo medio."
+  },
+  {
+    "q": "¿Qué afirmación es correcta respecto a la relación entre un dispositivo de Capa 3 (Router) y las capas inferiores del modelo OSI?",
+    "options": [
+      "Un Router solo implementa funciones de Capa 3, ignorando por completo las tramas y señales físicas.",
+      "Un Router debe implementar funciones de las Capas 1, 2 y 3 para poder desencapsular la trama, verificar el paquete y volver a encapsularlo.",
+      "Un Router opera en Capa 3 pero utiliza 'tunneling' para evitar procesar la Capa 1 y 2.",
+      "Un Router convierte paquetes de Capa 3 directamente en señales eléctricas sin pasar por la Capa 2."
+    ],
+    "a": 2,
+    "info": "Para procesar un paquete IP (Capa 3), el dispositivo primero debe recibir la señal (Capa 1) y procesar/desencapsular la trama (Capa 2)."
+  },
+  {
+    "q": "¿En qué capa del modelo OSI operan las tecnologías de acceso como Ethernet (IEEE 802.3), Wi-Fi (IEEE 802.11) y Bluetooth (IEEE 802.15)?",
+    "options": [
+      "Exclusivamente en la Capa Física.",
+      "En la Capa de Red y Transporte.",
+      "En la Capa Física y la Capa de Enlace de Datos.",
+      "Solo en la subcapa LLC de la Capa de Enlace."
+    ],
+    "a": 3,
+    "info": "Estos estándares definen tanto las especificaciones físicas (cableado/radio, señalización) como las de enlace (MAC, entramado)."
+  },
+  {
+    "q": "En la asignación estática de canales, ¿qué diferencia a TDMA de FDMA?",
+    "options": [
+      "TDMA divide el canal por frecuencia, mientras que FDMA lo divide por tiempo.",
+      "TDMA permite que todos los usuarios usen toda la frecuencia pero en intervalos de tiempo distintos, mientras que FDMA asigna bandas de frecuencia exclusivas.",
+      "TDMA utiliza códigos ortogonales para separar usuarios, mientras que FDMA usa división temporal.",
+      "TDMA es una técnica dinámica de contienda, mientras que FDMA es estática."
+    ],
+    "a": 2,
+    "info": "TDMA (Time Division Multiple Access) divide por tiempo; FDMA (Frequency Division) divide el espectro en bandas de frecuencia."
+  },
+  {
+    "q": "En el protocolo CSMA/CD, ¿qué función cumple la 'señal de atasco' (jam signal)?",
+    "options": [
+      "Indica que el buffer del switch está lleno y debe pausarse la transmisión.",
+      "Es una señal enviada por el emisor al detectar una colisión para asegurar que todas las demás estaciones sepan que ha ocurrido una colisión.",
+      "Es una señal utilizada en Token Ring para liberar el token.",
+      "Es el preámbulo que sincroniza los relojes antes de la colisión."
+    ],
+    "a": 2,
+    "info": "Cuando una estación detecta colisión, emite un JAM para garantizar que la colisión sea detectada por todas las estaciones del segmento, incluso las lejanas."
+  },
+  {
+    "q": "¿Por qué las redes inalámbricas (802.11) utilizan CSMA/CA en lugar de CSMA/CD?",
+    "options": [
+      "Porque CSMA/CD es demasiado lento para las velocidades de Wi-Fi.",
+      "Porque en un medio inalámbrico es difícil detectar colisiones mientras se transmite (la señal propia opaca a las distantes), por lo que se opta por 'evitarlas'.",
+      "Porque CSMA/CA permite comunicación Full-Duplex, necesaria para Wi-Fi.",
+      "Porque CSMA/CD requiere un token físico que no existe en el aire."
+    ],
+    "a": 2,
+    "info": "En radiofrecuencia, una radio no puede recibir mientras transmite en la misma frecuencia con suficiente sensibilidad para detectar choques, por eso usa 'Collision Avoidance'."
+  },
+  {
+    "q": "En CSMA/CA, ¿cuál es el propósito del mecanismo de vectores de asignación de red (NAV) actualizado por las tramas RTS/CTS?",
+    "options": [
+      "Sincronizar la velocidad de transmisión entre el cliente y el AP.",
+      "Informar a las estaciones vecinas el tiempo estimado que el medio estará ocupado, solucionando el problema del nodo oculto.",
+      "Realizar la autenticación WPA2 antes de enviar datos.",
+      "Confirmar que el paquete de datos llegó sin errores (ACK)."
+    ],
+    "a": 2,
+    "info": "RTS/CTS actualiza el NAV en las estaciones que 'escuchan', indicándoles que deben esperar un tiempo específico antes de intentar transmitir."
+  },
+  {
+    "q": "¿Qué desventaja crítica presentaba la topología física de Token Ring en comparación con Ethernet, a pesar de ser determinista?",
+    "options": [
+      "Era incapaz de soportar velocidades superiores a 1 Mbps.",
+      "Si una estación fallaba o el cable se cortaba, el anillo se rompía y la red entera caía (salvo que hubiera doble anillo/bypass).",
+      "Producía un número excesivo de colisiones bajo alta carga.",
+      "No permitía el uso de fibra óptica."
+    ],
+    "a": 2,
+    "info": "La topología de anillo es vulnerable; un corte interrumpe el paso del token. Ethernet en estrella (con hubs/switches) es más tolerante a fallos individuales."
+  },
+  {
+    "q": "Respecto a los dominios, ¿qué efecto tiene reemplazar un Hub por un Switch en una red LAN?",
+    "options": [
+      "Se reduce el número de dominios de colisión a uno solo y se crean múltiples dominios de broadcast.",
+      "Se mantiene un solo dominio de colisión pero se divide el dominio de broadcast.",
+      "Cada puerto del switch se convierte en su propio dominio de colisión, pero se mantiene un único dominio de broadcast (por VLAN).",
+      "Se eliminan tanto los dominios de colisión como los de broadcast."
+    ],
+    "a": 3,
+    "info": "El switch micro-segmenta la red: cada puerto es un dominio de colisión independiente. Sin embargo, el broadcast (FF-FF...) sigue propagándose a todos."
+  },
+  {
+    "q": "¿Qué dispositivo es capaz de dividir un Dominio de Broadcast?",
+    "options": [
+      "Hub",
+      "Switch de Capa 2",
+      "Bridge",
+      "Router"
+    ],
+    "a": 4,
+    "info": "Los routers no reenvían tramas de broadcast (por defecto), por lo tanto, cada interfaz del router delimita un dominio de broadcast diferente."
+  },
+  {
+    "q": "En Ethernet Clásica (10Base5 y 10Base2), ¿qué tipo de codificación de línea se utiliza para la transmisión de señales en la capa física?",
+    "options": [
+      "NRZ (Non-Return to Zero)",
+      "Codificación Manchester",
+      "4B/5B",
+      "PAM-5"
+    ],
+    "a": 2,
+    "info": "Ethernet original (10 Mbps) utiliza codificación Manchester, que asegura una transición de voltaje en medio de cada bit para la sincronización."
+  },
+  {
+    "q": "¿Cuál es la diferencia principal en términos de cableado y distancia máxima entre 10Base2 y 10Base5?",
+    "options": [
+      "10Base2 usa coaxial grueso (500m); 10Base5 usa coaxial fino (185m).",
+      "10Base2 usa par trenzado (100m); 10Base5 usa fibra (2km).",
+      "10Base2 usa coaxial fino (Thinnet, 185m); 10Base5 usa coaxial grueso (Thicknet, 500m).",
+      "Ambos usan coaxial, pero 10Base2 llega a 2km y 10Base5 a 5km."
+    ],
+    "a": 3,
+    "info": "10Base2 (Thinnet) es más flexible pero alcanza menos distancia (~185m) que 10Base5 (Thicknet, 500m)."
+  },
+  {
+    "q": "En la especificación 10Base-T, ¿qué significan el número '10', la palabra 'Base' y la letra 'T'?",
+    "options": [
+      "10 MHz, Banda Base, Token Ring.",
+      "10 Mbps, Banda Ancha, Twisted Pair.",
+      "10 Mbps, Banda Base, Twisted Pair (Par Trenzado).",
+      "10 Metros, Baseband, Throughput."
+    ],
+    "a": 3,
+    "info": "10 = velocidad (Mbps), Base = transmisión en banda base (digital), T = medio físico (Twisted Pair)."
+  },
+  {
+    "q": "¿Qué sucede con el ancho de banda en una red Ethernet conmutada (Switch) en comparación con una red con Hubs?",
+    "options": [
+      "El ancho de banda se comparte entre todos los puertos igual que en el Hub.",
+      "El ancho de banda nominal está disponible de forma dedicada para cada puerto (en modo Full Duplex).",
+      "El switch reduce el ancho de banda a la mitad debido al procesamiento de tramas.",
+      "El ancho de banda fluctúa dependiendo del protocolo CSMA/CD."
+    ],
+    "a": 2,
+    "info": "En un switch, cada puerto tiene su propio ancho de banda dedicado y no compartido, permitiendo múltiples comunicaciones simultáneas."
+  },
+  {
+    "q": "En la trama Ethernet II, el campo 'Tipo' (EtherType) tiene un valor superior a 1536 (0x0600). ¿Qué indica este valor?",
+    "options": [
+      "La longitud de la trama en bytes.",
+      "El protocolo de capa superior encapsulado (ej. IPv4, ARP).",
+      "El número de secuencia de la trama.",
+      "El nivel de prioridad de la trama (QoS)."
+    ],
+    "a": 2,
+    "info": "Si el campo es > 1536, es Ethernet II e indica el protocolo (Type). Si es <= 1500, es IEEE 802.3 e indica la Longitud."
+  },
+  {
+    "q": "¿Cuál es el tamaño mínimo legal de una trama Ethernet (incluyendo cabeceras y FCS, pero sin preámbulo) y por qué existe este límite?",
+    "options": [
+      "46 bytes, para alojar la cabecera IP.",
+      "64 bytes, para asegurar que la transmisión dure lo suficiente para detectar colisiones en el dominio (slot time).",
+      "128 bytes, para compatibilidad con Token Ring.",
+      "1518 bytes, para maximizar el throughput."
+    ],
+    "a": 2,
+    "info": "El mínimo es 64 bytes. Es necesario para que el tiempo de transmisión sea mayor que el tiempo de propagación de ida y vuelta (RTT) en el segmento máximo, permitiendo que CSMA/CD funcione."
+  },
+  {
+    "q": "¿Qué función cumple el Preámbulo y el SFD (Start Frame Delimiter) en Ethernet?",
+    "options": [
+      "Contienen las direcciones MAC de origen y destino.",
+      "Permiten la sincronización de bit del receptor (patrón 101010...) e indican dónde comienza exactamente la trama (byte 10101011).",
+      "Realizan la corrección de errores mediante CRC.",
+      "Indican la longitud de los datos que siguen."
+    ],
+    "a": 2,
+    "info": "El preámbulo (7 bytes) sincroniza relojes; el SFD (1 byte) marca el final del preámbulo y el inicio de la trama."
+  },
+  {
+    "q": "En Fast Ethernet (100Base-TX), ¿qué pines del conector RJ-45 se utilizan para transmitir y recibir datos?",
+    "options": [
+      "Se utilizan los 8 pines simultáneamente.",
+      "Pines 1, 2 (Transmisión) y 3, 6 (Recepción).",
+      "Pines 4, 5 (Transmisión) y 7, 8 (Recepción).",
+      "Pines 1, 3 (Transmisión) y 2, 6 (Recepción)."
+    ],
+    "a": 2,
+    "info": "100Base-TX (y 10Base-T) usan solo 2 pares: 1 y 2 para TX, 3 y 6 para RX. (Gigabit usa los 4 pares)."
+  },
+  {
+    "q": "¿Qué característica define a Gigabit Ethernet 1000Base-T respecto a su uso del cable UTP?",
+    "options": [
+      "Usa 2 pares en modo Simplex.",
+      "Usa los 4 pares del cable Cat5e/6, transmitiendo en modo Full-Duplex simultáneo sobre cada par gracias a circuitos híbridos.",
+      "Solo funciona sobre fibra óptica.",
+      "Requiere cable coaxial para alcanzar 1 Gbps."
+    ],
+    "a": 2,
+    "info": "1000Base-T es complejo: usa los 4 pares y transmite/recibe simultáneamente en cada par usando cancelación de eco."
+  },
+  {
+    "q": "Una dirección MAC es una dirección de 48 bits. ¿Qué representan los primeros 24 bits (OUI)?",
+    "options": [
+      "El número de serie de la tarjeta.",
+      "El Identificador Único Organizacional asignado por la IEEE al fabricante.",
+      "La dirección de red IP asociada.",
+      "El código de país donde se fabricó el dispositivo."
+    ],
+    "a": 2,
+    "info": "Los primeros 3 bytes (24 bits) son el OUI (Organizationally Unique Identifier) que identifica al fabricante."
+  },
+  {
+    "q": "¿Cómo se determina si una dirección MAC es de Multicast observando su primer byte?",
+    "options": [
+      "El primer byte es FF.",
+      "El bit menos significativo (bit 0) del primer byte es 1.",
+      "El bit menos significativo (bit 0) del primer byte es 0.",
+      "El segundo bit del primer byte es 1."
+    ],
+    "a": 2,
+    "info": "Si el bit I/G (Individual/Group), que es el bit 0 del primer byte, está en 1, es una dirección de grupo (Multicast/Broadcast)."
+  },
+  {
+    "q": "Un Hub opera en la Capa 1. ¿Qué implica esto para el tráfico de red?",
+    "options": [
+      "Que puede filtrar tráfico basado en direcciones MAC.",
+      "Que regenera y repite la señal eléctrica por todos los puertos excepto el de entrada, sin lógica de filtrado.",
+      "Que puede conectar redes con diferentes direcciones IP.",
+      "Que divide el dominio de colisiones."
+    ],
+    "a": 2,
+    "info": "El Hub es un repetidor multipuerto tonto; no lee tramas, solo bits eléctricos, enviándolos a todos lados (inundación)."
+  },
+  {
+    "q": "La función principal de un Bridge (Puente) es:",
+    "options": [
+      "Conectar redes con diferentes protocolos de Capa 3.",
+      "Segmentar una LAN en dos dominios de colisión, filtrando tramas basándose en direcciones MAC (software).",
+      "Amplificar la señal eléctrica como un repetidor.",
+      "Proporcionar conectividad inalámbrica."
+    ],
+    "a": 2,
+    "info": "El Bridge es el antecesor del switch; conecta segmentos, aprende MACs y filtra tráfico local para no saturar el otro segmento."
+  },
+  {
+    "q": "En un Switch, ¿qué significa que el dispositivo sea 'Modular'?",
+    "options": [
+      "Que tiene una configuración de puertos fija que no se puede cambiar.",
+      "Que permite agregar tarjetas de interfaz o módulos para añadir puertos o funcionalidades según sea necesario.",
+      "Que solo funciona en modo Half-Duplex.",
+      "Que se puede apilar con otros switches mediante un cable especial."
+    ],
+    "a": 2,
+    "info": "Los switches modulares (chasis) permiten expansión y flexibilidad de interfaces, a diferencia de los fijos."
+  },
+  {
+    "q": "¿Cuál es la diferencia entre el método de conmutación 'Store-and-Forward' y 'Cut-Through'?",
+    "options": [
+      "Store-and-Forward es más rápido porque no verifica errores.",
+      "Cut-Through almacena toda la trama antes de enviarla.",
+      "Store-and-Forward recibe la trama completa y verifica el FCS antes de reenviar (mayor latencia, sin errores); Cut-Through reenvía apenas lee la destino (menor latencia, pasa errores).",
+      "Cut-Through solo funciona en fibra óptica."
+    ],
+    "a": 3,
+    "info": "Store-and-forward es seguro pero lento (verificación completa). Cut-through es rápido pero arriesgado (sin verificación)."
+  },
+  {
+    "q": "¿Qué es un 'fragmento de colisión' (runt frame) que el método 'Fragment-Free' intenta filtrar?",
+    "options": [
+      "Una trama mayor a 1518 bytes.",
+      "Una trama de broadcast.",
+      "Una trama de menos de 64 bytes, generalmente resultado de una colisión.",
+      "Una trama con el bit de paridad incorrecto."
+    ],
+    "a": 3,
+    "info": "Fragment-free lee los primeros 64 bytes. Si la trama es más corta, es un residuo de colisión (runt) y se descarta."
+  },
+  {
+    "q": "¿Cómo 'aprende' un switch para poblar su tabla de direcciones MAC (CAM)?",
+    "options": [
+      "Mediante configuración manual del administrador.",
+      "Examinando la dirección MAC de DESTINO de cada trama entrante.",
+      "Examinando la dirección MAC de ORIGEN de cada trama entrante y asociándola al puerto por donde llegó.",
+      "Enviando tramas de sondeo a todos los puertos periódicamente."
+    ],
+    "a": 3,
+    "info": "El aprendizaje es pasivo: si entra una trama por el puerto 1 con MAC Origen A, el switch anota 'A está en puerto 1'."
+  },
+  {
+    "q": "Si un switch recibe una trama cuya dirección MAC de destino NO está en su tabla MAC, ¿qué acción realiza?",
+    "options": [
+      "Descarta la trama.",
+      "Envía la trama de vuelta al origen.",
+      "Inunda (floods) la trama por todos los puertos activos excepto por el que se recibió.",
+      "Almacena la trama en buffer hasta que el destino transmita algo."
+    ],
+    "a": 3,
+    "info": "Es el comportamiento de 'Unknown Unicast flooding'. Actúa como un hub para esa trama específica."
+  },
+  {
+    "q": "¿Qué problema crítico de las redes conmutadas redundantes intenta resolver el protocolo STP (Spanning Tree Protocol)?",
+    "options": [
+      "La falta de ancho de banda en los enlaces troncales.",
+      "Los bucles de Capa 2 (bucles de conmutación) y las tormentas de broadcast.",
+      "La seguridad de los puertos contra accesos no autorizados.",
+      "La incompatibilidad entre equipos de diferentes fabricantes."
+    ],
+    "a": 2,
+    "info": "Los bucles físicos en Capa 2 causan que las tramas de broadcast giren indefinidamente (tormentas), saturando la red. STP bloquea lógicamente puertos para romper el bucle."
+  },
+  {
+    "q": "En el algoritmo STP, ¿cómo se selecciona el Switch Raíz (Root Bridge)?",
+    "options": [
+      "Es el switch con la dirección IP más alta.",
+      "Es el switch con el Bridge ID más bajo (Prioridad + MAC).",
+      "Es el switch con el mayor número de puertos.",
+      "Es el switch más central físicamente en la topología."
+    ],
+    "a": 2,
+    "info": "Gana el ID más bajo. Por defecto la prioridad es igual (32768), así que desempata la MAC más baja."
+  },
+  {
+    "q": "En un segmento de red que conecta dos switches (que no son raíz), ¿cómo se elige el 'Puerto Designado'?",
+    "options": [
+      "Es el puerto que tiene el costo de ruta acumulado más bajo hacia el Switch Raíz.",
+      "Es el puerto con la dirección MAC más alta.",
+      "Es el puerto que está bloqueado.",
+      "Es el puerto conectado al switch con el ID más alto."
+    ],
+    "a": 1,
+    "info": "En cada segmento debe haber un Designado (el que envía tráfico hacia el segmento desde la raíz). Es el que tiene mejor costo hacia la raíz."
+  },
+  {
+    "q": "¿En qué estado de STP un puerto recibe BPDUs, aprende direcciones MAC, pero NO reenvía tramas de datos todavía?",
+    "options": [
+      "Bloqueo (Blocking)",
+      "Escucha (Listening)",
+      "Aprendizaje (Learning)",
+      "Envío (Forwarding)"
+    ],
+    "a": 3,
+    "info": "En Learning, el puerto prepara su tabla MAC para evitar inundaciones iniciales, pero aún mantiene el bloqueo de datos para asegurar la topología libre de bucles."
+  },
+  {
+    "q": "¿Qué significa el acrónimo SSID en una red WLAN?",
+    "options": [
+      "Secure System Identity Device",
+      "Service Set Identifier",
+      "Shared Signal Interface Data",
+      "Switch System ID"
+    ],
+    "a": 2,
+    "info": "SSID es el nombre de la red inalámbrica (hasta 32 caracteres) que identifica al BSS o ESS."
+  },
+  {
+    "q": "En la arquitectura 802.11, ¿qué es un 'Sistema de Distribución' (DS)?",
+    "options": [
+      "El software que distribuye las direcciones IP a los clientes.",
+      "El sistema troncal (generalmente cableado Ethernet) que interconecta varios Access Points (BSS) para formar una red extendida (ESS).",
+      "El algoritmo que distribuye los canales de frecuencia.",
+      "El conjunto de antenas del Access Point."
+    ],
+    "a": 2,
+    "info": "El DS es la 'columna vertebral' que une las celdas inalámbricas, permitiendo la movilidad entre ellas."
+  },
+  {
+    "q": "¿Qué define el modo de operación 'Ad-Hoc' (IBSS) en una red Wi-Fi?",
+    "options": [
+      "Comunicación centralizada a través de un router.",
+      "Comunicación directa punto a punto entre dispositivos inalámbricos sin necesidad de un Access Point.",
+      "Comunicación exclusiva para dispositivos IoT.",
+      "Comunicación de alta velocidad usando 4 antenas."
+    ],
+    "a": 2,
+    "info": "Ad-Hoc es una red descentralizada, peer-to-peer, sin infraestructura (AP)."
+  },
+  {
+    "q": "El 'Problema del Terminal Oculto' ocurre cuando:",
+    "options": [
+      "Un atacante oculta su SSID.",
+      "Una estación está dentro del rango del AP pero fuera del rango de otra estación, por lo que ambas transmiten al mismo tiempo causando colisión en el AP.",
+      "Una estación está bloqueada por un muro de plomo.",
+      "Una estación transmite con demasiada potencia y ensordece a las demás."
+    ],
+    "a": 2,
+    "info": "Como A y C no se oyen, creen que el medio está libre y transmiten hacia B (el AP) simultáneamente, colisionando allí."
+  },
+  {
+    "q": "¿Qué es WPA3 y qué mejora principal introduce respecto a WPA2?",
+    "options": [
+      "Es un protocolo más antiguo que usa cifrado RC4.",
+      "Es el nuevo estándar que introduce SAE (Simultaneous Authentication of Equals) para proteger contra ataques de fuerza bruta a contraseñas débiles y ofrece cifrado de 192 bits en modo Enterprise.",
+      "Es una versión ligera de WPA2 para dispositivos móviles.",
+      "Es un protocolo propietario de Cisco no compatible con otros."
+    ],
+    "a": 2,
+    "info": "WPA3 reemplaza el handshake de 4 vías vulnerable de WPA2 por SAE, haciendo mucho más difícil crackear claves offline."
+  },
+  {
+    "q": "¿Qué estándar IEEE corresponde a la tecnología WiMAX?",
+    "options": [
+      "802.11",
+      "802.15",
+      "802.16",
+      "802.3"
+    ],
+    "a": 3,
+    "info": "802.16 es WiMAX (Broadband Wireless Access), diseñado para largas distancias (WMAN)."
+  },
+  {
+    "q": "¿Cuál es la PDU de la Capa de Aplicación?",
+    "options": [
+      "Segmento",
+      "Trama",
+      "Datos",
+      "Paquete"
+    ],
+    "a": 3,
+    "info": "En las capas superiores (Aplicación, Presentación, Sesión), la unidad de información se denomina genéricamente 'Datos'."
+  },
+  {
+    "q": "Si una NIC (Tarjeta de Red) opera en el modelo OSI, ¿qué capas abarca?",
+    "options": [
+      "Solo Capa 1 (Física).",
+      "Capa 1 (Física) y la subcapa MAC de la Capa 2 (Enlace).",
+      "Capa 1, 2 y 3.",
+      "Solo Capa 2."
+    ],
+    "a": 2,
+    "info": "La NIC gestiona la conexión física (cables/radio) y el direccionamiento físico/acceso al medio (MAC)."
+  },
+  {
+    "q": "En CSMA/CD, ¿qué significa 'Acceso Múltiple' (Multiple Access)?",
+    "options": [
+      "Que múltiples estaciones pueden transmitir exactamente al mismo tiempo.",
+      "Que todas las estaciones tienen acceso al mismo medio compartido.",
+      "Que una estación puede acceder a múltiples medios a la vez.",
+      "Que el acceso está controlado por un token múltiple."
+    ],
+    "a": 2,
+    "info": "Significa que el canal es compartido y todos compiten por él (no hay turnos preasignados)."
+  },
+  {
+    "q": "¿Qué tramas utiliza CSMA/CA para reservar virtualmente el medio?",
+    "options": [
+      "HELLO y WELCOME",
+      "SYN y ACK",
+      "RTS (Request to Send) y CTS (Clear to Send)",
+      "BEACON y PROBE"
+    ],
+    "a": 3,
+    "info": "RTS y CTS son el mecanismo de handshake para limpiar el canal antes de enviar la data pesada en redes inalámbricas congestionadas."
+  },
+  {
+    "q": "En 10 Gigabit Ethernet, ¿cuál es el estándar para fibra monomodo de largo alcance (hasta 10 o 40 km)?",
+    "options": [
+      "10GBase-T",
+      "10GBase-SR (Short Range)",
+      "10GBase-LR (Long Range) y 10GBase-ER (Extended Range)",
+      "10GBase-CX"
+    ],
+    "a": 3,
+    "info": "SR es para multimodo (corto). LR (10km) y ER (40km) usan fibra monomodo y láseres de mayor alcance."
+  },
+  {
+    "q": "¿Qué función cumple la integración en el Sistema de Distribución (DS) de una WLAN?",
+    "options": [
+      "Conectar dos redes inalámbricas con diferente SSID.",
+      "Traducir las tramas 802.11 a tramas 802.3 (Ethernet) para que viajen por la red cableada hacia otras redes.",
+      "Integrar la seguridad WEP con WPA.",
+      "Permitir el roaming sin reasociación."
+    ],
+    "a": 2,
+    "info": "El servicio de integración (Portal) permite que la red inalámbrica se comunique con la red cableada, traduciendo los formatos de trama."
+  },
+  {
+    "q": "¿Qué significa que Ethernet sea una tecnología de 'Máximo Esfuerzo' (Best Effort)?",
+    "options": [
+      "Que siempre garantiza el máximo ancho de banda posible.",
+      "Que el sistema de red intentará entregar los datos, pero no garantiza la entrega ni recupera tramas perdidas (no es fiable).",
+      "Que tiene la mejor calidad de servicio (QoS) del mercado.",
+      "Que utiliza toda la energía disponible para transmitir."
+    ],
+    "a": 2,
+    "info": "Ethernet (como IP) no tiene acuse de recibo ni retransmisión en capa 2; si una trama se corrompe o pierde, se descarta sin avisar."
+  },
+  {
+    "q": "En una trama Ethernet, ¿qué dirección aparece primero?",
+    "options": [
+      "Dirección IP de Origen.",
+      "Dirección MAC de Origen.",
+      "Dirección MAC de Destino.",
+      "Dirección IP de Destino."
+    ],
+    "a": 3,
+    "info": "La MAC de Destino va primero (6 bytes) para que los switches y NICs puedan decidir rápidamente si procesan o reenvían la trama."
+  },
+  {
+    "q": "En el protocolo STP, ¿qué es un BPDU (Bridge Protocol Data Unit)?",
+    "options": [
+      "Una trama de datos de usuario.",
+      "Un mensaje de control intercambiado entre switches para negociar la topología de red (raíz, costos, estados).",
+      "Una unidad de energía de respaldo.",
+      "Un protocolo de enrutamiento."
+    ],
+    "a": 2,
+    "info": "Las BPDUs son los mensajes que usan los switches para 'hablar' entre ellos y configurar el árbol de expansión."
+  },
+  {
+    "q": "¿Qué tipo de topología física utiliza 10Base-T?",
+    "options": [
+      "Bus (Coaxial).",
+      "Estrella (con Hub o Switch central).",
+      "Anillo.",
+      "Malla."
+    ],
+    "a": 2,
+    "info": "La 'T' (Twisted Pair) introdujo el cableado estructurado UTP hacia un concentrador central, creando una topología física de estrella."
+  },
+  {
+    "q": "En Bluetooth (802.15), ¿qué tipo de red se forma?",
+    "options": [
+      "WLAN (Local Area).",
+      "WPAN (Personal Area Network), llamada Piconet.",
+      "WMAN (Metropolitan Area).",
+      "WWAN (Wide Area)."
+    ],
+    "a": 2,
+    "info": "Bluetooth crea redes de corto alcance (Piconets) centradas en una persona o dispositivo maestro."
+  },
+  {
+    "q": "¿Qué es una trama 'Runt'?",
+    "options": [
+      "Una trama de administración.",
+      "Una trama válida de 1518 bytes.",
+      "Una trama menor a 64 bytes, inválida, usualmente causada por colisiones.",
+      "Una trama gigante (Jumbo Frame)."
+    ],
+    "a": 3,
+    "info": "Runt es cualquier trama más pequeña que el mínimo legal. Se descartan automáticamente."
+  },
+  {
+    "q": "¿Qué técnica utiliza 802.11n para aumentar la velocidad y fiabilidad usando múltiples antenas?",
+    "options": [
+      "DSSS (Direct Sequence Spread Spectrum).",
+      "MIMO (Multiple Input Multiple Output).",
+      "FHSS (Frequency Hopping).",
+      "CSMA/CD."
+    ],
+    "a": 2,
+    "info": "MIMO aprovecha la propagación multicamino usando varias antenas para transmitir y recibir múltiples flujos de datos simultáneamente."
+  },
+  {
+    "q": "¿Cuál es la velocidad máxima teórica de 802.11g?",
+    "options": [
+      "11 Mbps",
+      "54 Mbps",
+      "600 Mbps",
+      "1.3 Gbps"
+    ],
+    "a": 2,
+    "info": "802.11g usa la banda 2.4GHz pero introduce modulación OFDM (copiada de 802.11a) para llegar a 54 Mbps."
+  },
+  {
+    "q": "En el contexto de VLANs (802.1Q) y Switches, ¿qué es el 'Etiquetado' (Tagging)?",
+    "options": [
+      "Poner una etiqueta física al cable.",
+      "Agregar un encabezado de 4 bytes a la trama Ethernet que incluye el ID de la VLAN, permitiendo que la trama cruce un enlace troncal (trunk).",
+      "Asignar una prioridad al tráfico de voz.",
+      "Marcar la trama como defectuosa."
+    ],
+    "a": 2,
+    "info": "El tagging (802.1Q) es esencial para que los switches sepan a qué VLAN pertenece una trama cuando viaja entre ellos."
+  },
+  {
+    "q": "¿Qué capa del modelo OSI gestiona el control de flujo y la corrección de errores extremo a extremo (entre host origen y destino final)?",
+    "options": [
+      "Capa 2 - Enlace",
+      "Capa 3 - Red",
+      "Capa 4 - Transporte",
+      "Capa 5 - Sesión"
+    ],
+    "a": 3,
+    "info": "La Capa de Transporte (TCP) asegura la fiabilidad de extremo a extremo, retransmitiendo segmentos perdidos en cualquier parte de la red."
+  },
+  {
+    "q": "¿Qué significa que un Switch sea 'Administrable'?",
+    "options": [
+      "Que tiene un botón de encendido.",
+      "Que permite configurar parámetros como IP, VLANs, STP, seguridad de puertos y monitoreo (SNMP), a diferencia de uno 'Plug and Play'.",
+      "Que puede actuar como Router.",
+      "Que tiene más de 24 puertos."
+    ],
+    "a": 2,
+    "info": "Los switches administrables permiten control granular sobre la red, mientras que los no administrables son cajas negras sin configuración."
+  },
+  {
+    "q": "En una trama 802.11, ¿cuántas direcciones MAC pueden estar presentes en la cabecera?",
+    "options": [
+      "Solo 2 (Origen y Destino).",
+      "Hasta 3.",
+      "Hasta 4 (Destino, Origen, Receptor, Transmisor).",
+      "Ninguna, usa direcciones IP."
+    ],
+    "a": 3,
+    "info": "802.11 necesita hasta 4 direcciones porque el transmisor (AP) no siempre es el origen original, y el receptor (AP) no siempre es el destino final."
+  },
+  {
+    "q": "¿Qué es la 'Latencia' en una red?",
+    "options": [
+      "La cantidad de datos que se pueden enviar por segundo.",
+      "El tiempo que tarda un bit en viajar desde el origen hasta el destino.",
+      "La variación en el tiempo de llegada de los paquetes.",
+      "La pérdida de paquetes."
+    ],
+    "a": 2,
+    "info": "Latencia es el retardo de propagación y procesamiento."
+  },
+  {
+    "q": "En Ethernet, ¿qué es el 'Tiempo de Bit' (Bit time)?",
+    "options": [
+      "El tiempo que tarda en llenarse el buffer.",
+      "El tiempo que tarda la tarjeta de red en poner un solo bit en el medio físico (inverso de la velocidad).",
+      "El tiempo de vida de un paquete.",
+      "El tiempo de espera antes de retransmitir."
+    ],
+    "a": 2,
+    "info": "A 10 Mbps, un bit dura 100 nanosegundos. A 100 Mbps, dura 10 ns. Es fundamental para el diseño de la longitud del cable y detección de colisiones."
+  },
+  {
+    "q": "¿Qué es un puerto 'Raíz' (Root Port) en STP?",
+    "options": [
+      "Un puerto en el Switch Raíz.",
+      "El puerto en un switch No-Raíz que tiene el mejor camino (menor costo) hacia el Switch Raíz.",
+      "Un puerto bloqueado.",
+      "Un puerto conectado a una PC."
+    ],
+    "a": 2,
+    "info": "Cada switch (que no sea el jefe) debe tener UN puerto raíz, que es su 'salida' hacia el jefe."
+  },
+  {
+    "q": "¿Qué banda de frecuencia utiliza el estándar 802.11a?",
+    "options": [
+      "2.4 GHz",
+      "5 GHz",
+      "900 MHz",
+      "60 GHz"
+    ],
+    "a": 2,
+    "info": "802.11a fue el pionero en 5 GHz (OFDM, 54 Mbps), ofreciendo menos interferencia pero menos alcance que 2.4 GHz."
+  },
+  {
+    "q": "¿Qué es la 'Autenticación de Sistema Abierto' en Wi-Fi?",
+    "options": [
+      "Un sistema donde se requiere huella digital.",
+      "Un proceso donde el cliente se autentica sin proporcionar una contraseña real, simplemente solicita unirse (típico en redes públicas sin candado).",
+      "El uso de WPA2-Enterprise.",
+      "Un error de configuración."
+    ],
+    "a": 2,
+    "info": "Sistema abierto es básicamente 'sin seguridad' o autenticación nula; cualquiera que pida entrar, entra."
+  },
+  {
+    "q": "¿Qué es el 'Buffer' de un switch?",
+    "options": [
+      "El cable de alimentación.",
+      "Una memoria donde se almacenan temporalmente las tramas antes de ser reenviadas, útil cuando hay congestión o diferentes velocidades de puerto.",
+      "El procesador principal.",
+      "El ventilador de refrigeración."
+    ],
+    "a": 2,
+    "info": "El buffering permite al switch manejar ráfagas de tráfico o adaptar un puerto de 1Gbps enviando a uno de 100Mbps sin perder datos inmediatamente."
+  },
+  {
+    "q": "En el cableado UTP, ¿por qué los pares están trenzados?",
+    "options": [
+      "Para hacerlo más flexible.",
+      "Para cancelar las interferencias electromagnéticas (EMI) y la diafonía (crosstalk) entre pares.",
+      "Para aumentar la resistencia a la tracción.",
+      "Para que sea más fácil de crimpar."
+    ],
+    "a": 2,
+    "info": "El trenzado hace que el ruido afecte a ambos hilos por igual, permitiendo cancelarlo en el receptor (señal diferencial)."
+  },
+  {
+    "q": "¿Qué protocolo de Capa 2 se utiliza para descubrir la dirección MAC asociada a una dirección IP conocida?",
+    "options": [
+      "DNS",
+      "DHCP",
+      "ARP (Address Resolution Protocol)",
+      "ICMP"
+    ],
+    "a": 3,
+    "info": "ARP permite mapear una dirección lógica (IP) a una dirección física (MAC) en redes de difusión."
+  },
+  {
+    "q": "Si una red es 'Baseband' (Banda Base), significa que:",
+    "options": [
+      "Utiliza señales analógicas moduladas en portadoras.",
+      "Utiliza todo el ancho de banda del cable para transmitir una sola señal digital.",
+      "Permite múltiples canales de TV y datos simultáneos (Broadband).",
+      "Es una red inalámbrica."
+    ],
+    "a": 2,
+    "info": "Ethernet es Banda Base (la señal digital ocupa todo el canal). Banda Ancha (como cable TV) divide el canal en frecuencias."
+  },
+  {
+    "q": "¿Qué es un 'Gateway' o Puerta de Enlace?",
+    "options": [
+      "Un switch de alto rendimiento.",
+      "El dispositivo (generalmente un router) que actúa como punto de salida de una red local hacia otras redes remotas (como Internet).",
+      "Un servidor de dominio.",
+      "Un firewall."
+    ],
+    "a": 2,
+    "info": "Sin Gateway, los dispositivos de una LAN no pueden comunicarse con nadie fuera de su subred local."
+  },
+  {
+    "q": "En WiMAX, ¿qué significa que sea una tecnología de 'última milla'?",
+    "options": [
+      "Que es muy lenta.",
+      "Que proporciona conectividad desde el proveedor de servicios hasta el hogar/empresa del usuario final, reemplazando al cableado físico (DSL/Cable).",
+      "Que solo funciona en la última milla de un maratón.",
+      "Que es la tecnología más antigua."
+    ],
+    "a": 2,
+    "info": "WiMAX compite con ADSL y Cablemodem para llevar internet a zonas donde tirar cable es costoso."
+  },
+  {
+    "q": "¿Qué indica el campo 'Longitud' en una trama 802.3 si su valor es menor o igual a 1500?",
+    "options": [
+      "Es una trama inválida.",
+      "Indica la cantidad de bytes de datos (payload) que contiene la trama.",
+      "Indica el tipo de protocolo.",
+      "Indica la prioridad."
+    ],
+    "a": 2,
+    "info": "Es la diferencia clave con Ethernet II. Si <= 1500, es longitud. Si >= 1536, es tipo."
+  },
+  {
+    "q": "En Bluetooth, ¿qué es el 'Emparejamiento' (Pairing)?",
+    "options": [
+      "Conectar dos cables.",
+      "El proceso de establecer una conexión segura y de confianza entre dos dispositivos, a menudo intercambiando claves.",
+      "Aumentar la velocidad al doble.",
+      "Conectarse a Internet."
+    ],
+    "a": 2,
+    "info": "El pairing crea una clave de enlace (link key) compartida para futuras conexiones seguras."
+  },
+  {
+    "q": "¿Qué topología lógica utiliza un Hub físico?",
+    "options": [
+      "Estrella.",
+      "Bus.",
+      "Anillo.",
+      "Malla."
+    ],
+    "a": 2,
+    "info": "Físicamente es una estrella (cables al centro), pero lógicamente es un Bus, ya que la señal se comparte y todos ven todo."
+  },
+  {
+    "q": "¿Cuál es la distancia máxima de un segmento de fibra óptica multimodo en 100Base-FX?",
+    "options": [
+      "100 m",
+      "550 m",
+      "2000 m (2 km)",
+      "10 km"
+    ],
+    "a": 3,
+    "info": "100Base-FX permite hasta 2 km sobre fibra multimodo, superando ampliamente al cobre."
+  },
+  {
+    "q": "En STP, ¿qué puertos se ponen en estado 'Bloqueado'?",
+    "options": [
+      "Todos los puertos del Switch Raíz.",
+      "Los puertos designados.",
+      "Los puertos que no son ni Raíz ni Designados, para romper el bucle redundante.",
+      "Los puertos conectados a impresoras."
+    ],
+    "a": 3,
+    "info": "Los puertos no seleccionados como ruta principal se bloquean para evitar el loop, quedando de respaldo."
+  },
+  {
+    "q": "¿Qué es WEP (Wired Equivalent Privacy) hoy en día?",
+    "options": [
+      "El estándar de seguridad más robusto.",
+      "Un protocolo de seguridad obsoleto y altamente vulnerable que no debe utilizarse.",
+      "Una mejora de WPA2.",
+      "El protocolo usado en 802.11ax."
+    ],
+    "a": 2,
+    "info": "WEP tiene fallas criptográficas graves (IVs cortos y estáticos) y puede ser crackeado en minutos."
+  },
+  {
+    "q": "¿Qué capa del modelo OSI define el voltaje de la señal eléctrica?",
+    "options": [
+      "Capa 2",
+      "Capa 1 (Física)",
+      "Capa 3",
+      "Capa 4"
+    ],
+    "a": 2,
+    "info": "La capa física define especificaciones mecánicas (conectores) y eléctricas (niveles de voltaje, temporización)."
+  },
+  {
+    "q": "¿Qué es un 'Dominio de Colisión'?",
+    "options": [
+      "Un grupo de equipos que comparten el mismo medio físico y cuyas transmisiones pueden interferirse mutuamente.",
+      "Una red protegida por firewall.",
+      "Un grupo de equipos que reciben el mismo broadcast.",
+      "Una VLAN."
+    ],
+    "a": 1,
+    "info": "Es el segmento de red donde si dos dispositivos hablan a la vez, ocurre un choque de señales."
+  },
+  {
+    "q": "En Ethernet, si una trama es menor a 64 bytes, ¿qué debe hacer el emisor?",
+    "options": [
+      "Descartarla.",
+      "Añadir relleno (Padding) hasta alcanzar los 64 bytes.",
+      "Enviarla tal cual.",
+      "Fragmentarla."
+    ],
+    "a": 2,
+    "info": "El padding asegura que la trama cumpla con el tamaño mínimo para que el mecanismo de detección de colisiones funcione."
+  },
+  {
+    "q": "¿Qué es la 'Densidad de Puertos' en un switch?",
+    "options": [
+      "El peso del switch.",
+      "La cantidad de puertos físicos disponibles en el dispositivo.",
+      "La velocidad de los puertos.",
+      "El grosor de la carcasa."
+    ],
+    "a": 2,
+    "info": "Alta densidad significa muchos puertos en poco espacio (ej. 48 puertos en 1U)."
+  },
+  {
+    "q": "¿Qué hace el comando 'ipconfig /all' (o similar en Linux)?",
+    "options": [
+      "Muestra solo la IP.",
+      "Muestra la configuración IP completa y la dirección MAC (Física) de la tarjeta de red.",
+      "Reinicia la red.",
+      "Muestra las conexiones activas."
+    ],
+    "a": 2,
+    "info": "Es fundamental para ver la MAC address y detalles de configuración."
+  },
+  {
+    "q": "¿Qué estándar inalámbrico opera en la banda de 60 GHz (ondas milimétricas)?",
+    "options": [
+      "802.11n",
+      "802.11ad / 802.11ay",
+      "802.11g",
+      "802.11ax"
+    ],
+    "a": 2,
+    "info": "WiGig (802.11ad/ay) usa 60GHz para velocidades extremas pero cortísimo alcance (dentro de una habitación)."
+  },
+  {
+    "q": "¿Qué es una trama 'Unicast'?",
+    "options": [
+      "Una trama dirigida a todos los dispositivos.",
+      "Una trama dirigida a un grupo específico.",
+      "Una trama dirigida a una única dirección MAC de destino específica.",
+      "Una trama de control."
+    ],
+    "a": 3,
+    "info": "Unicast es comunicación 1 a 1."
+  },
+  {
+    "q": "¿Cuál es la principal ventaja de la fibra óptica sobre el cable UTP?",
+    "options": [
+      "Es más barata.",
+      "Es más fácil de instalar.",
+      "Inmunidad total a interferencias electromagnéticas (EMI) y mayor distancia/velocidad.",
+      "Puede transmitir energía eléctrica (PoE) fácilmente."
+    ],
+    "a": 3,
+    "info": "Al usar luz, la fibra no sufre interferencias eléctricas y tiene una atenuación mucho menor."
+  },
+  {
+    "q": "En el modelo OSI, ¿qué capa se encarga del 'Enrutamiento'?",
+    "options": [
+      "Física",
+      "Enlace",
+      "Red (Capa 3)",
+      "Transporte"
+    ],
+    "a": 3,
+    "info": "La capa de Red determina la mejor ruta (path selection) a través de la interred."
+  },
+  {
+    "q": "¿Qué es un 'Switch Troncal'?",
+    "options": [
+      "Un switch que conecta usuarios finales.",
+      "Un switch de alta capacidad que interconecta otros switches y routers en el núcleo de la red.",
+      "Un switch roto.",
+      "Un switch inalámbrico."
+    ],
+    "a": 2,
+    "info": "Los switches troncales manejan tráfico agregado de muchos switches de acceso."
+  },
+  {
+    "q": "¿Qué significa que una comunicación sea 'Full-Duplex'?",
+    "options": [
+      "Solo una dirección a la vez.",
+      "Envío y recepción simultáneos (como un teléfono).",
+      "Solo envío.",
+      "Envío por turnos."
+    ],
+    "a": 2,
+    "info": "Permite duplicar el ancho de banda efectivo (ej. 100 Mbps de subida + 100 Mbps de bajada)."
+  },
+  {
+    "q": "¿Qué es la 'Carga Útil' (Payload) en una trama Ethernet?",
+    "options": [
+      "El preámbulo.",
+      "El CRC.",
+      "Los datos encapsulados que vienen de la capa superior (Paquete IP).",
+      "La dirección MAC."
+    ],
+    "a": 3,
+    "info": "Es la información real que se está transportando, excluyendo las cabeceras del protocolo actual."
+  },
+  {
+    "q": "¿Qué es una trama de 'Broadcast' a nivel MAC?",
+    "options": [
+      "Una trama con MAC destino 00-00-00-00-00-00.",
+      "Una trama con MAC destino FF-FF-FF-FF-FF-FF.",
+      "Una trama con IP 127.0.0.1.",
+      "Una trama vacía."
+    ],
+    "a": 2,
+    "info": "La dirección de todos unos (FF...) indica que todos los dispositivos del segmento deben procesarla."
+  },
+  {
+    "q": "¿Qué es el 'Throughput'?",
+    "options": [
+      "La velocidad teórica máxima.",
+      "La tasa de transferencia real de datos útiles medida en un momento dado (suele ser menor al ancho de banda).",
+      "El retraso.",
+      "El costo del cable."
+    ],
+    "a": 2,
+    "info": "Es la medida real de rendimiento, afectada por overhead, errores y congestión."
+  },
+  {
+    "q": "¿Qué hace el protocolo DHCP?",
+    "options": [
+      "Traduce nombres a IP.",
+      "Asigna dinámicamente direcciones IP y parámetros de configuración a los clientes.",
+      "Enruta paquetes.",
+      "Bloquea virus."
+    ],
+    "a": 2,
+    "info": "Dynamic Host Configuration Protocol automatiza la configuración de red de los hosts."
+  },
+  {
+    "q": "En una red Wi-Fi, ¿qué es el 'Roaming'?",
+    "options": [
+      "Navegar por internet.",
+      "La capacidad de un cliente de moverse de una celda (AP) a otra manteniendo la conexión activa sin interrupción perceptible.",
+      "El robo de señal.",
+      "El uso de datos móviles."
+    ],
+    "a": 2,
+    "info": "Permite la movilidad continua al pasar el cliente de un BSS a otro dentro del mismo ESS."
+  },
+  {
+    "q": "¿Qué es una dirección MAC 'Spoofing'?",
+    "options": [
+      "Una dirección MAC válida.",
+      "La técnica de falsificar la dirección MAC de origen para hacerse pasar por otro dispositivo.",
+      "Un error de hardware.",
+      "Un protocolo de enrutamiento."
+    ],
+    "a": 2,
+    "info": "Es un ataque común para saltar filtros de seguridad o esconder la identidad."
+  },
+  {
+    "q": "¿Qué ventaja tiene la fibra monomodo sobre la multimodo?",
+    "options": [
+      "Es más barata y fácil de conectar.",
+      "Tiene un núcleo más grande.",
+      "Tiene un núcleo muy pequeño, eliminando la dispersión modal, lo que permite distancias muchísimo mayores (km vs m).",
+      "Usa LEDs en lugar de láser."
+    ],
+    "a": 3,
+    "info": "Monomodo usa láser y núcleo fino para larga distancia. Multimodo usa LED y núcleo grueso para corta distancia (LAN)."
+  },
+  {
+    "q": "En el modelo OSI, la capa de Sesión (Capa 5) es responsable de:",
+    "options": [
+      "El enrutamiento de paquetes.",
+      "Establecer, mantener y sincronizar la interacción (diálogo) entre sistemas comunicantes.",
+      "La transmisión de bits.",
+      "El formato de datos (JPG, MP3)."
+    ],
+    "a": 2,
+    "info": "Gestiona el diálogo: quién habla, cuándo, y puntos de control."
+  },
+  {
+    "q": "¿Qué es la 'Atenuación'?",
+    "options": [
+      "El aumento de señal.",
+      "La pérdida de potencia de la señal a medida que viaja por el medio.",
+      "La velocidad de la luz.",
+      "El ruido externo."
+    ],
+    "a": 2,
+    "info": "Es el enemigo principal de la distancia; limita cuán lejos puede ir el cable."
+  },
+  {
+    "q": "¿Qué es un 'Packet Sniffer' (como Wireshark)?",
+    "options": [
+      "Un virus.",
+      "Una herramienta de software que captura y analiza el tráfico de red que pasa por la tarjeta de red.",
+      "Un cable de red.",
+      "Un tipo de router."
+    ],
+    "a": 2,
+    "info": "Permite ver qué está pasando realmente en la red, capa por capa."
+  },
+  {
+    "q": "En 802.11, ¿qué es una trama de 'Asociación'?",
+    "options": [
+      "Una trama de datos.",
+      "Una trama de administración que el cliente envía al AP para solicitar unirse a la red después de la autenticación.",
+      "Una trama de error.",
+      "Una trama de desconexión."
+    ],
+    "a": 2,
+    "info": "Es el paso final para 'entrar' a la red inalámbrica y que el AP registre al cliente."
+  },
+  {
+    "q": "¿Qué es el 'Paso de Testigo' (Token Passing)?",
+    "options": [
+      "Un método de acceso determinista donde un dispositivo solo puede transmitir si tiene un paquete especial llamado Token.",
+      "Un método aleatorio como CSMA.",
+      "Un tipo de cable.",
+      "Una contraseña."
+    ],
+    "a": 1,
+    "info": "Evita colisiones totalmente, pero es complejo y lento si se pierde el token."
+  },
+  {
+    "q": "¿Cuál es la función del campo 'TTL' (Time to Live) en un paquete IP?",
+    "options": [
+      "Indicar la hora de creación.",
+      "Evitar que los paquetes circulen indefinidamente en bucles de enrutamiento (se decrementa en cada router).",
+      "Medir la velocidad.",
+      "Definir la prioridad."
+    ],
+    "a": 2,
+    "info": "Si el TTL llega a 0, el router descarta el paquete, evitando la muerte de la red por bucles de capa 3."
+  },
+  {
+    "q": "En una red Wi-Fi, la frecuencia de 2.4 GHz tiene como principal desventaja frente a 5 GHz:",
+    "options": [
+      "Menor alcance.",
+      "Mayor absorción por paredes.",
+      "Mayor saturación e interferencia (microondas, bluetooth, vecinos) y menos canales no superpuestos.",
+      "No soporta WPA2."
+    ],
+    "a": 3,
+    "info": "2.4 GHz está muy congestionada y solo tiene 3 canales limpios (1, 6, 11). 5 GHz tiene muchos más canales."
+  },
+  {
+    "q": "¿Qué es un puerto 'Uplink' en un switch?",
+    "options": [
+      "Un puerto para conectar una PC.",
+      "Un puerto designado para conectar con otro switch o router, a menudo con mayor ancho de banda.",
+      "Un puerto bloqueado.",
+      "Un puerto de consola."
+    ],
+    "a": 2,
+    "info": "Suele ser el puerto que conecta hacia el núcleo de la red o Internet."
+  },
+  {
+    "q": "¿Qué significa 'QoS' (Quality of Service)?",
+    "options": [
+      "Cantidad de Servicio.",
+      "Mecanismos para priorizar ciertos tipos de tráfico (como voz o video) sobre otros menos críticos.",
+      "Un test de velocidad.",
+      "Un tipo de cable."
+    ],
+    "a": 2,
+    "info": "Es vital para que las llamadas VoIP no se corten cuando alguien descarga un archivo grande."
+  },
+  {
+    "q": "¿Qué es una dirección IP 'Privada' (RFC 1918)?",
+    "options": [
+      "Una dirección que funciona en Internet.",
+      "Una dirección reservada para uso interno en LANs, no enrutable en Internet pública (ej. 192.168.x.x).",
+      "Una dirección de broadcast.",
+      "Una dirección MAC."
+    ],
+    "a": 2,
+    "info": "Permiten que millones de redes usen las mismas IPs internamente, ahorrando direcciones IPv4 públicas."
+  },
+  {
+    "q": "¿Qué es NAT (Network Address Translation)?",
+    "options": [
+      "Un protocolo de enrutamiento.",
+      "Un mecanismo que permite a múltiples dispositivos en una red privada compartir una única dirección IP pública para acceder a Internet.",
+      "Un tipo de cable.",
+      "Un sistema de nombres."
+    ],
+    "a": 2,
+    "info": "El router hace NAT para traducir las IPs privadas a la pública y viceversa."
+  },
+  {
+    "q": "¿Qué estándar define el cableado estructurado (Categorías 5e, 6, etc.)?",
+    "options": [
+      "IEEE 802.3",
+      "TIA/EIA-568",
+      "ISO 9001",
+      "RFC 1918"
+    ],
+    "a": 2,
+    "info": "TIA/EIA define cómo deben ser los cables, conectores y el código de colores."
+  },
+  {
+    "q": "¿Qué es 'PoE' (Power over Ethernet)?",
+    "options": [
+      "Ethernet sobre líneas eléctricas.",
+      "Tecnología que permite enviar energía eléctrica junto con los datos por el cable UTP para alimentar dispositivos como teléfonos IP o cámaras.",
+      "Un protocolo de ahorro de energía.",
+      "Un tipo de batería."
+    ],
+    "a": 2,
+    "info": "Elimina la necesidad de enchufes eléctricos cerca de cada dispositivo de red."
+  },
+  {
+    "q": "En STP, el tiempo por defecto que un puerto pasa en estados de escucha y aprendizaje (Forward Delay) suele ser:",
+    "options": [
+      "1 segundo.",
+      "15 segundos cada uno (total 30s antes de transmitir).",
+      "5 minutos.",
+      "0 segundos."
+    ],
+    "a": 2,
+    "info": "STP clásico es lento convergiendo (30-50s). RSTP lo hace en milisegundos."
+  },
+  {
+    "q": "¿Qué es una 'Tormenta de Broadcast'?",
+    "options": [
+      "Un fenómeno meteorológico.",
+      "Una situación donde tramas de broadcast circulan indefinidamente en bucles redundantes, consumiendo todo el ancho de banda y bloqueando la red.",
+      "Una transmisión rápida de datos.",
+      "Una señal de Wi-Fi fuerte."
+    ],
+    "a": 2,
+    "info": "Es la consecuencia catastrófica de tener bucles físicos sin STP activo."
+  }
+]

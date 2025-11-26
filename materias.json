@@ -3,7 +3,10 @@
         "Parcial 1" : {
             "Arquitectura de Redes" : "assets/redes/p1/rdd_p1_arquitectura.json",
             "Capa de acceso al medio" : "assets/redes/p1/rdd_p1_capa_acceso_al_medio.json",
-            "IPv4" : "assets/redes/p1/rdd_p1_ipv4.json"
+            "IPv4" : "assets/redes/p1/rdd_p1_ipv4.json",
+            "Unidad1" : "assets/redes/p1/rdd_p1_Unidad1.json",
+            "Unidad2" : "assets/redes/p1/rdd_p1_Unidad2.json",
+            "Unidad3" : "assets/redes/p1/rdd_p1_Unidad3.json"
         }   ,
         "Parcial 2": {  }
         ,
