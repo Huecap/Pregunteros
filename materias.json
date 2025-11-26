@@ -4,11 +4,14 @@
             "Arquitectura de Redes" : "assets/redes/p1/rdd_p1_arquitectura.json",
             "Capa de acceso al medio" : "assets/redes/p1/rdd_p1_capa_acceso_al_medio.json",
             "IPv4" : "assets/redes/p1/rdd_p1_ipv4.json",
-            "Unidad1" : "assets/redes/p1/rdd_p1_Unidad1.json",
-            "Unidad2" : "assets/redes/p1/rdd_p1_Unidad2.json",
-            "Unidad3" : "assets/redes/p1/rdd_p1_Unidad3.json"
+            "Unidad 1" : "assets/redes/p1/rdd_p1_Unidad1.json",
+            "Unidad 2" : "assets/redes/p1/rdd_p1_Unidad2.json",
+            "Unidad 3" : "assets/redes/p1/rdd_p1_Unidad3.json"
         }   ,
-        "Parcial 2": {  }
+        "Parcial 2": {  
+            "Unidad 3": "assets/redes/p2/rdd_p2_Unidad3.json",
+            "Unidad 4": "assets/redes/p2/rdd_p2_Unidad4.json"
+        }
         ,
         "Parcial 3": {
             "TCP": "assets/redes/p3/rdd_p3_tcp.json",

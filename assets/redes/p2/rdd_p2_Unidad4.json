@@ -1,0 +1,662 @@
+[
+ {
+  "q": "En el encabezado IPv4, ¿cuál es la función principal del campo IHL (Internet Header Length) y qué implicancia tiene su valor mínimo?",
+  "options": [
+   "Indica la longitud total del paquete en bytes; su valor mínimo es 20 bytes.",
+   "Indica la longitud de la cabecera en palabras de 32 bits; un valor de 5 implica que no hay opciones.",
+   "Indica la longitud de los datos encapsulados; su valor depende del MTU de la red.",
+   "Indica el tiempo de vida del paquete; su valor mínimo es 1 para evitar bucles."
+  ],
+  "a": 2,
+  "info": "IHL mide la cabecera en palabras de 32 bits (4 bytes). El valor mínimo es 5 (5x4=20 bytes), lo que indica una cabecera estándar sin opciones."
+ },
+ {
+  "q": "Un router recibe un paquete IPv4 con el bit DF (Don't Fragment) activo, pero el MTU del siguiente enlace es menor que el tamaño del paquete. ¿Qué acción exacta toma el router?",
+  "options": [
+   "Fragmenta el paquete ignorando el bit DF y lo reenvía para asegurar la entrega.",
+   "Descarta el paquete y envía un mensaje ICMP 'Time Exceeded' al origen.",
+   "Descarta el paquete y envía un mensaje ICMP 'Destination Unreachable' (código: fragmentación necesaria) al origen.",
+   "Almacena el paquete en búfer y solicita al origen que reduzca el tamaño del segmento TCP."
+  ],
+  "a": 3,
+  "info": "Si DF=1 y se requiere fragmentar, el router no puede procesarlo. Lo descarta y debe notificar la causa específica mediante ICMP Tipo 3, Código 4."
+ },
+ {
+  "q": "En el proceso de fragmentación IPv4, ¿cómo utiliza el destino el campo 'Fragment Offset'?",
+  "options": [
+   "Para determinar el número de secuencia del fragmento y solicitar retransmisiones si falta alguno.",
+   "Para identificar a qué datagrama original pertenece el fragmento, combinándolo con el campo ID.",
+   "Para ordenar los fragmentos recibidos basándose en bloques de 8 bytes relativos al inicio del datagrama original.",
+   "Para calcular la longitud total del datagrama original sumando los offsets de todos los fragmentos."
+  ],
+  "a": 3,
+  "info": "El Offset indica la posición de los datos del fragmento respecto al datagrama original en bloques de 8 bytes, permitiendo el reensamblaje desordenado."
+ },
+ {
+  "q": "¿Cuál es la diferencia fundamental entre la suma de verificación (Checksum) en el encabezado IPv4 y en el encabezado IPv6?",
+  "options": [
+   "IPv4 calcula el checksum sobre todo el paquete, mientras que IPv6 solo sobre la cabecera base.",
+   "IPv4 incluye un campo de checksum para la cabecera, mientras que IPv6 elimina este campo confiando en las capas superiores e inferiores.",
+   "IPv6 utiliza un algoritmo de checksum más robusto (CRC-32) en comparación con el complemento a uno de IPv4.",
+   "IPv4 recalcula el checksum en cada salto solo si cambia el TTL, mientras que IPv6 lo mantiene estático."
+  ],
+  "a": 2,
+  "info": "IPv6 elimina el campo Checksum para agilizar el procesamiento en routers, asumiendo que Capa 2 (CRC) y Capa 4 (TCP/UDP) manejan la integridad."
+ },
+ {
+  "q": "Si un host A envía un paquete a un host B que está en una subred remota, ¿qué dirección MAC de destino se coloca en la trama Ethernet saliente de A?",
+  "options": [
+   "La dirección MAC del host B, obtenida mediante una petición ARP a través de los routers.",
+   "La dirección MAC de broadcast (FF:FF:FF:FF:FF:FF) para que el router la intercepte.",
+   "La dirección MAC de la interfaz del router (Gateway) conectado a la misma red que A.",
+   "La dirección MAC del host B, ya que la dirección IP de destino es la de B."
+  ],
+  "a": 3,
+  "info": "En la capa de enlace (trama), si el destino es remoto, se encapsula hacia la MAC del Gateway predeterminado, aunque la IP destino sea la de B."
+ },
+ {
+  "q": "En el protocolo ARP, ¿por qué la solicitud (Request) se envía por broadcast y la respuesta (Reply) por unicast?",
+  "options": [
+   "Porque el origen desconoce la ubicación del destino, pero el destino conoce la MAC del origen al recibir la solicitud.",
+   "Porque ARP es un protocolo de capa 3 y necesita broadcast para atravesar subredes, pero unicast para volver.",
+   "Porque el switch inunda la red con respuestas para actualizar las tablas CAM de todos los hosts.",
+   "Ambos mensajes son broadcast para asegurar que todos los hosts actualicen sus tablas ARP simultáneamente."
+  ],
+  "a": 1,
+  "info": "El Request busca una MAC desconocida (necesita Broadcast). El Reply responde a quien preguntó, cuya MAC ya viene en el campo 'Sender MAC' del Request."
+ },
+ {
+  "q": "Analizando una captura de Wireshark, observas un mensaje ICMP 'Redirect'. ¿Cuál es la causa técnica más probable de este mensaje?",
+  "options": [
+   "El paquete ha excedido su TTL y el router informa que debe ser redirigido a un camino alternativo.",
+   "El destino es inalcanzable y el router sugiere intentar con otro protocolo de capa 4.",
+   "Un router recibe un paquete en una interfaz y determina que el siguiente salto está en la misma red/interfaz por la que llegó el paquete.",
+   "El servidor DHCP está informando al cliente que debe cambiar su dirección IP para acceder a la red de destino."
+  ],
+  "a": 3,
+  "info": "ICMP Redirect ocurre cuando un router detecta una ruta subóptima: el host podría haber enviado el paquete directamente al siguiente salto en su propia LAN."
+ },
+ {
+  "q": "En el contexto de DHCP, si un cliente se encuentra en una VLAN diferente al servidor DHCP, ¿qué función es crítica para permitir la asignación de IP?",
+  "options": [
+   "El switch debe estar configurado con ARP Proxy para responder por el servidor DHCP.",
+   "El router debe configurar una ruta estática hacia la dirección de broadcast de la VLAN del cliente.",
+   "Se requiere un Agente Relay que encapsule el broadcast DHCPDISCOVER en un paquete unicast hacia el servidor.",
+   "El cliente debe utilizar DHCP Inform para localizar el servidor antes de enviar el Discover."
+  ],
+  "a": 3,
+  "info": "Los broadcasts DHCP no atraviesan routers. Un DHCP Relay (helper address) captura el broadcast y lo reenvía como unicast al servidor."
+ },
+ {
+  "q": "¿Qué diferencia operativa existe entre los métodos de asignación 'Automática' y 'Dinámica' en DHCP?",
+  "options": [
+   "La automática asigna una IP fija basada en la MAC manualmente; la dinámica elige una IP al azar del pool.",
+   "La automática otorga una IP de forma permanente al cliente la primera vez; la dinámica la 'alquila' por un tiempo limitado.",
+   "La automática se utiliza para servidores y routers; la dinámica es exclusiva para estaciones de trabajo móviles.",
+   "No hay diferencia, son términos intercambiables para referirse a la asignación sin intervención del administrador."
+  ],
+  "a": 2,
+  "info": "En asignación automática, la IP se asocia permanentemente al cliente tras el primer alquiler. En dinámica, la IP se libera si no se renueva el lease."
+ },
+ {
+  "q": "En el proceso de arranque de un router Cisco, ¿cuál es la función específica del registro de configuración (configuration register) respecto a la NVRAM?",
+  "options": [
+   "Determina si el router debe cargar el IOS desde la memoria Flash o desde un servidor TFTP.",
+   "Controla si el router debe cargar el archivo 'startup-config' o entrar en modo setup (ignorando la NVRAM).",
+   "Almacena la copia de respaldo del IOS en caso de que la memoria Flash esté corrupta.",
+   "Define la velocidad en baudios de la consola para permitir la recuperación de contraseñas exclusivamente."
+  ],
+  "a": 2,
+  "info": "El registro de configuración (ej. 0x2102 vs 0x2142) le dice al router si debe cargar la configuración de inicio de la NVRAM o ignorarla (útil para password recovery)."
+ },
+ {
+  "q": "Considerando IPv6, ¿cuál es el propósito del campo 'Flow Label' en la cabecera?",
+  "options": [
+   "Reemplazar al campo TTL para evitar bucles infinitos en el enrutamiento.",
+   "Identificar paquetes que requieren un tratamiento especial por parte de los routers para mantener la calidad de servicio (QoS) de un flujo.",
+   "Indicar el tipo de cabecera de extensión que sigue a la cabecera base.",
+   "Fragmentar el paquete en flujos más pequeños para adaptarse al MTU de la red."
+  ],
+  "a": 2,
+  "info": "La etiqueta de flujo (Flow Label) se usa para marcar secuencias de paquetes que requieren un manejo especial (QoS, tiempo real) para que los routers no tengan que analizar la carga útil."
+ },
+ {
+  "q": "Al configurar una interfaz con IPv6 usando SLAAC (Stateless Address Auto-Configuration) y formato EUI-64, ¿cómo se transforma una dirección MAC de 48 bits?",
+  "options": [
+   "Se agregan FFFE al principio de la MAC y se invierte el séptimo bit del primer octeto.",
+   "Se inserta FFFE en el medio de la MAC (entre el OUI y el ID de fabricante) y se invierte el séptimo bit del primer octeto.",
+   "Se agregan ceros al final de la MAC hasta completar 64 bits y se mantiene el bit U/L intacto.",
+   "Se calcula un hash MD5 de la MAC para generar los 64 bits del Interface ID aleatoriamente."
+  ],
+  "a": 2,
+  "info": "EUI-64 divide la MAC (24 bits OUI / 24 bits ID), inserta 16 bits (FFFE) en el medio y voltea el bit Universal/Local (bit 7)."
+ },
+ {
+  "q": "¿Qué tipo de dirección IPv6 comienza con el prefijo FE80::/10 y cuál es su restricción de enrutamiento?",
+  "options": [
+   "Es una dirección Global Unicast y es enrutable en todo Internet.",
+   "Es una dirección Unique Local (ULA) y es enrutable solo dentro de la organización privada.",
+   "Es una dirección Link-Local y los routers nunca deben reenviarla fuera del enlace local.",
+   "Es una dirección Multicast y se utiliza para reemplazar al broadcast en la red local."
+  ],
+  "a": 3,
+  "info": "FE80::/10 corresponde a Link-Local. Son obligatorias y su alcance está estrictamente limitado al segmento de red físico; no atraviesan routers."
+ },
+ {
+  "q": "En el protocolo ICMP, ¿qué combinación de Tipo y Código se utiliza cuando un router descarta un paquete porque el TTL ha llegado a cero?",
+  "options": [
+   "Tipo 3 (Destination Unreachable), Código 0 (Net Unreachable).",
+   "Tipo 11 (Time Exceeded), Código 0 (Time to live exceeded in transit).",
+   "Tipo 5 (Redirect), Código 1 (Redirect for Host).",
+   "Tipo 4 (Source Quench), Código 0 (Congestion control)."
+  ],
+  "a": 2,
+  "info": "Cuando el TTL expira en tránsito, el router genera un mensaje ICMP Tipo 11 (Time Exceeded)."
+ },
+ {
+  "q": "Si un host envía un 'ARP Request' para una dirección IP que no existe en la red local y no hay Proxy ARP configurado, ¿qué sucede?",
+  "options": [
+   "El switch responde con su propia MAC para evitar tráfico innecesario.",
+   "El router predeterminado responde con su MAC para enrutar el paquete a Internet.",
+   "No se recibe ninguna respuesta ARP Reply y el host no puede encapsular la trama, resultando en un error de tiempo de espera.",
+   "El host envía el paquete con la MAC de broadcast FF:FF:FF:FF:FF:FF como destino de datos."
+  ],
+  "a": 3,
+  "info": "Si la IP objetivo está en la misma subred (lógica) pero no existe, nadie responderá al ARP (broadcast). Sin la MAC destino, la encapsulación falla."
+ },
+ {
+  "q": "En el encabezado IPv4, el campo 'Protocolo' (8 bits) tiene una función crítica en la demultiplexación. ¿Qué indica exactamente?",
+  "options": [
+   "Indica qué protocolo de capa de aplicación (HTTP, FTP) está contenido en los datos.",
+   "Indica qué versión de IP se está utilizando (4 o 6).",
+   "Indica a qué protocolo de capa superior (transporte o control) se le deben entregar los datos (ej. TCP=6, UDP=17, ICMP=1).",
+   "Indica el tipo de servicio (QoS) para priorizar el paquete en los routers."
+  ],
+  "a": 3,
+  "info": "El campo Protocolo identifica el payload del paquete IP para que el destino sepa a quién entregar los datos (TCP, UDP, ICMP, OSPF, etc.)."
+ },
+ {
+  "q": "¿Cuál es la función principal de un mensaje DHCPDECLINE enviado por un cliente?",
+  "options": [
+   "Rechazar una oferta de un servidor DHCP porque el tiempo de concesión es muy corto.",
+   "Informar al servidor que la dirección IP ofrecida ya está en uso en la red (detectada por ARP gratuito).",
+   "Solicitar la liberación de la dirección IP actual antes de apagarse.",
+   "Negar la renovación de la IP cuando el servidor intenta forzar una nueva configuración."
+  ],
+  "a": 2,
+  "info": "El cliente usa DHCPDECLINE para notificar al servidor que la IP ofrecida es inválida (generalmente porque detectó conflicto mediante ARP)."
+ },
+ {
+  "q": "¿Qué característica define a una dirección IPv6 'Anycast' y cómo se diferencia de 'Multicast'?",
+  "options": [
+   "Anycast envía a todos los miembros de un grupo; Multicast envía solo al más cercano.",
+   "Anycast asigna la misma dirección a múltiples interfaces, pero el paquete se entrega solo a la topológicamente más cercana; Multicast entrega a todas las suscritas.",
+   "Anycast utiliza el prefijo FF00::/8; Multicast utiliza direcciones del rango Global Unicast.",
+   "No hay diferencia técnica en el direccionamiento; la diferencia radica únicamente en la configuración del switch."
+  ],
+  "a": 2,
+  "info": "Anycast es 'uno al más cercano'. Comparte formato con Unicast. Multicast es 'uno a muchos' (grupo)."
+ },
+ {
+  "q": "En el comando `traceroute` (o `tracert` en Windows), ¿cómo se logra identificar cada salto en la ruta?",
+  "options": [
+   "El origen envía paquetes con la opción 'Record Route' del encabezado IP activada.",
+   "El origen envía una serie de paquetes incrementando secuencialmente el valor del TTL, esperando mensajes ICMP 'Time Exceeded' de cada router intermedio.",
+   "Los routers intermedios interceptan los paquetes Echo Request y envían un Echo Reply antes de reenviarlos.",
+   "El protocolo utiliza mensajes SNMP para consultar la tabla de enrutamiento de cada dispositivo en el camino."
+  ],
+  "a": 2,
+  "info": "Traceroute explota el campo TTL. Envía TTL=1 (falla en router 1), TTL=2 (falla en router 2), etc. Los mensajes de error revelan las IPs de los routers."
+ },
+ {
+  "q": "Si una organización utiliza el prefijo IPv6 Unique Local (ULA) FC00::/7, ¿cuál es la característica principal de este tráfico?",
+  "options": [
+   "Es equivalente a las direcciones públicas de IPv4 y se enruta en Internet.",
+   "Es equivalente a las direcciones APIPA (169.254.x.x) y no usa routers.",
+   "Es equivalente a las direcciones privadas (RFC 1918) de IPv4, enrutable dentro de la organización pero no en Internet global.",
+   "Es utilizado exclusivamente para la comunicación entre routers OSPFv3."
+  ],
+  "a": 3,
+  "info": "ULA (Unique Local Address) está diseñado para uso local (sitio/organización), similar a las IPs privadas, y no se enruta en la Internet pública."
+ },
+ {
+  "q": "¿Qué sucede con el campo 'Header Checksum' en IPv4 cada vez que un paquete pasa por un router?",
+  "options": [
+   "Permanece inalterado para preservar la integridad de extremo a extremo.",
+   "Debe ser recalculado porque el campo TTL cambia (se decrementa).",
+   "Solo se recalcula si el paquete es fragmentado; de lo contrario, se mantiene igual.",
+   "Se pone a cero para ahorrar procesamiento en los routers intermedios."
+  ],
+  "a": 2,
+  "info": "Como el TTL se decrementa en cada salto, el encabezado cambia. Por tanto, el Checksum debe recalcularse en cada router."
+ },
+ {
+  "q": "En una tabla ARP, ¿qué significa una entrada 'dinámica' y en qué se diferencia de una 'estática'?",
+  "options": [
+   "Dinámica: aprendida por tráfico de red y tiene temporizador de caducidad. Estática: configurada manualmente y permanente.",
+   "Dinámica: asignada por DHCP. Estática: asignada por el administrador del router.",
+   "Dinámica: cambia cada vez que el host reinicia. Estática: se guarda en la NVRAM de la tarjeta de red.",
+   "Dinámica: válida para cualquier subred. Estática: válida solo para la LAN local."
+  ],
+  "a": 1,
+  "info": "Las entradas dinámicas se crean al recibir respuestas ARP y expiran (timeout) para reflejar cambios. Las estáticas son manuales y no expiran."
+ },
+ {
+  "q": "El mensaje ICMP 'Source Quench' (Tipo 4) fue diseñado originalmente para:",
+  "options": [
+   "Solicitar al origen que detenga la transmisión porque el destino ha apagado su interfaz.",
+   "Indicar que la dirección de origen ha sido falsificada (spoofing).",
+   "Mecanismo de control de congestión rudimentario, solicitando al emisor que reduzca su tasa de transmisión.",
+   "Notificar que el reensamblaje de fragmentos ha excedido el tiempo límite."
+  ],
+  "a": 3,
+  "info": "Source Quench es un mecanismo de control de flujo/congestión donde el router pide al host que baje la velocidad. (Deprecado en redes modernas, pero parte de la teoría)."
+ },
+ {
+  "q": "En la estructura de un paquete IPv6, ¿dónde se maneja la fragmentación si fuera necesaria?",
+  "options": [
+   "En los campos 'Flags' y 'Offset' del encabezado base, igual que en IPv4.",
+   "IPv6 no permite fragmentación bajo ninguna circunstancia; se descarta el paquete si supera el MTU.",
+   "Utilizando una 'Cabecera de Extensión de Fragmentación' colocada entre la cabecera IPv6 y la carga útil.",
+   "La fragmentación la realiza el router de borde utilizando NAT64."
+  ],
+  "a": 3,
+  "info": "IPv6 elimina los campos de fragmentación de la cabecera base. Si el origen necesita fragmentar, añade una Cabecera de Extensión específica."
+ },
+ {
+  "q": "¿Cuál es la función del mensaje DHCPRELEASE?",
+  "options": [
+   "El servidor libera la IP para que cualquier otro cliente la use inmediatamente sin esperar al timeout.",
+   "El cliente informa al servidor que ya no necesita la dirección IP, terminando el arrendamiento anticipadamente.",
+   "El servidor fuerza al cliente a liberar la IP debido a una violación de políticas.",
+   "El agente relay libera el ancho de banda reservado para la transacción DHCP."
+  ],
+  "a": 2,
+  "info": "DHCPRELEASE es un mensaje del cliente al servidor indicando que termina el uso de la dirección IP antes de que expire el lease."
+ },
+ {
+  "q": "En el contexto de direccionamiento IPv4, ¿qué es una dirección de 'Broadcast dirigido'?",
+  "options": [
+   "Una dirección 255.255.255.255 que llega a todos los hosts de la red física actual.",
+   "Una dirección que apunta a todos los hosts de una red remota específica (ej. 192.168.50.255 para la red 192.168.50.0/24).",
+   "Una dirección Multicast que ha sido convertida a Broadcast por el router.",
+   "Una dirección utilizada por DHCP para responder a un cliente específico antes de que tenga IP."
+  ],
+  "a": 2,
+  "info": "Broadcast limitado es 255.255.255.255 (red local). Broadcast dirigido es la última IP de una subred remota, dirigida a todos los hosts de ESA red."
+ },
+ {
+  "q": "¿Qué define el campo 'Traffic Class' en el encabezado IPv6?",
+  "options": [
+   "Identifica paquetes de un mismo flujo para evitar el reordenamiento.",
+   "Es equivalente al campo TOS (Type of Service) de IPv4, utilizado para QoS y Servicios Diferenciados.",
+   "Define el protocolo de capa superior (TCP/UDP) similar al campo Protocolo de IPv4.",
+   "Establece el límite de saltos máximo permitido para el paquete."
+  ],
+  "a": 2,
+  "info": "Traffic Class (8 bits) en IPv6 tiene la misma función que TOS/DiffServ en IPv4: marcar prioridad y tipo de servicio para QoS."
+ },
+ {
+  "q": "Si un router recibe un paquete destinado a una red que no está en su tabla de enrutamiento y no tiene ruta por defecto, ¿qué mensaje ICMP genera?",
+  "options": [
+   "Destination Unreachable: Host Unreachable (Código 1).",
+   "Destination Unreachable: Network Unreachable (Código 0).",
+   "Time Exceeded (Tipo 11).",
+   "Redirect (Tipo 5)."
+  ],
+  "a": 2,
+  "info": "Si el router no sabe cómo llegar a la *red* de destino, envía 'Network Unreachable'. Si llega a la red pero el host no responde ARP, sería 'Host Unreachable'."
+ },
+ {
+  "q": "En el proceso de encapsulamiento, ¿qué valor se coloca en el campo 'EtherType' de la trama Ethernet para indicar que transporta un paquete IPv4?",
+  "options": [
+   "0x0806",
+   "0x86DD",
+   "0x0800",
+   "0x880B"
+  ],
+  "a": 3,
+  "info": "0x0800 indica IPv4. 0x0806 es ARP. 0x86DD es IPv6."
+ },
+ {
+  "q": "¿Qué sucede durante el estado de 'Renovación' (Renew) en DHCP?",
+  "options": [
+   "El cliente envía un DHCPDISCOVER en broadcast al 50% del tiempo de concesión.",
+   "El cliente envía un DHCPREQUEST unicast directamente al servidor que le otorgó la IP al 50% del tiempo de concesión.",
+   "El cliente envía un DHCPREQUEST broadcast a cualquier servidor disponible al 87.5% del tiempo de concesión.",
+   "El servidor envía un DHCPACK proactivo para forzar la renovación de la IP."
+  ],
+  "a": 2,
+  "info": "A la mitad del tiempo de lease (T1), el cliente intenta renovar enviando un Request UNICAST directamente al servidor original."
+ },
+ {
+  "q": "¿Cuál es la estructura correcta de una dirección IPv6 'IPv4-mapped'?",
+  "options": [
+   "2002::A0B:C01",
+   "::FFFF:192.168.1.1",
+   "FE80::192.168.1.1",
+   "FC00::192.168.1.1"
+  ],
+  "a": 2,
+  "info": "Las direcciones IPv4-mapped (usadas para transición) tienen el formato de 80 bits en cero, 16 bits en uno (FFFF) y los 32 bits de la IP v4."
+ },
+ {
+  "q": "En una cabecera IPv4, el campo 'Total Length' tiene 16 bits. ¿Qué limitación teórica impone esto al tamaño del paquete?",
+  "options": [
+   "El paquete no puede exceder los 1500 bytes (MTU de Ethernet).",
+   "El paquete no puede exceder los 65,535 bytes.",
+   "El paquete debe tener un tamaño fijo de 32 bits multiplicado por el IHL.",
+   "El paquete no puede ser fragmentado si supera los 64 KB."
+  ],
+  "a": 2,
+  "info": "2^16 - 1 = 65,535. Esa es la longitud máxima teórica de un datagrama IP (cabecera + datos)."
+ },
+ {
+  "q": "¿Qué afirmación es correcta sobre el protocolo RARP (Reverse ARP)?",
+  "options": [
+   "Permite a un host obtener la dirección MAC de un destino conociendo su IP.",
+   "Permite a una estación sin disco obtener su dirección IP conociendo su propia MAC física.",
+   "Es el protocolo utilizado por los routers para actualizar sus tablas de enrutamiento dinámicamente.",
+   "Reemplaza completamente a DHCP en redes IPv6."
+  ],
+  "a": 2,
+  "info": "RARP es el inverso de ARP. Se usaba (obsoleto por BOOTP/DHCP) para que máquinas tontas (diskless) supieran su propia IP al arrancar."
+ },
+ {
+  "q": "En el contexto de fragmentación, ¿qué indica que un paquete es el último fragmento de una serie?",
+  "options": [
+   "El bit DF está en 0 y el Offset es distinto de cero.",
+   "El bit MF (More Fragments) está en 0 y el Offset es distinto de cero.",
+   "El campo ID cambia con respecto a los fragmentos anteriores.",
+   "El campo 'Total Length' es menor al MTU."
+  ],
+  "a": 2,
+  "info": "MF=1 significa 'vienen más'. MF=0 significa 'este es el último'. Para ser el último fragmento (y no un paquete único sin fragmentar), debe tener Offset > 0."
+ },
+ {
+  "q": "¿Cuál es la dirección IPv6 de Loopback?",
+  "options": [
+   "127.0.0.1",
+   "::1/128",
+   "FE80::1",
+   "2000::1"
+  ],
+  "a": 2,
+  "info": "::1 es la representación comprimida de 0:0:0:0:0:0:0:1, la dirección de loopback en IPv6."
+ },
+ {
+  "q": "¿Qué papel juega el 'Transaction ID' en un intercambio DHCP?",
+  "options": [
+   "Identifica de forma única al cliente mediante su dirección MAC.",
+   "Es un número aleatorio generado por el cliente para asociar las respuestas (Offer/Ack) con sus solicitudes (Discover/Request).",
+   "Determina la prioridad del tráfico DHCP sobre otros tráficos UDP.",
+   "Es la dirección IP temporal asignada antes del DHCPACK."
+  ],
+  "a": 2,
+  "info": "El Transaction ID (XID) permite al cliente distinguir entre múltiples ofertas y asegurar que el mensaje entrante es respuesta a su solicitud específica."
+ },
+ {
+  "q": "En la cabecera IPv4, el campo 'Identificación' (Identification) es crítico para:",
+  "options": [
+   "Identificar la sesión TCP a la que pertenece el paquete.",
+   "Reensamblar correctamente los fragmentos de un datagrama original en el destino.",
+   "Identificar la prioridad del paquete en colas QoS.",
+   "Verificar la integridad del encabezado junto con el checksum."
+  ],
+  "a": 2,
+  "info": "Todos los fragmentos de un mismo datagrama IP original llevan el mismo número de Identificación (ID) para que el destino pueda reagruparlos."
+ },
+ {
+  "q": "¿Qué es el 'DHCP Relay Agent Information Option' (Opción 82) y para qué sirve?",
+  "options": [
+   "Permite al cliente solicitar una duración de concesión específica.",
+   "Permite al agente relay insertar información sobre el puerto físico o VLAN donde recibió la solicitud, para que el servidor asigne políticas específicas.",
+   "Es utilizada por el servidor para informar al cliente sobre la dirección del servidor DNS.",
+   "Permite al router actuar como servidor DHCP de respaldo."
+  ],
+  "a": 2,
+  "info": "La opción 82 permite que el switch/router agregue info de ubicación (puerto, vlan) al paquete DHCP para que el servidor tome decisiones más granulares."
+ },
+ {
+  "q": "¿Cuál es la longitud fija de la cabecera base de IPv6?",
+  "options": [
+   "20 bytes, igual que IPv4 sin opciones.",
+   "40 bytes.",
+   "64 bytes.",
+   "Variable, dependiendo de las cabeceras de extensión."
+  ],
+  "a": 2,
+  "info": "La cabecera base de IPv6 tiene un tamaño fijo de 40 bytes (320 bits), lo que simplifica el procesamiento."
+ },
+ {
+  "q": "Si un paquete ICMP 'Echo Request' es enviado a la dirección de broadcast de la subred (ej. 192.168.1.255), ¿qué comportamiento se espera?",
+  "options": [
+   "El router descarta el paquete inmediatamente por seguridad.",
+   "Todos los hosts activos en la subred deberían recibirlo y, dependiendo de su configuración, enviar un 'Echo Reply'.",
+   "Solo el servidor DHCP responde para indicar su presencia.",
+   "Se genera un bucle de broadcast que satura la red."
+  ],
+  "a": 2,
+  "info": "Es un 'Broadcast Ping'. Teóricamente todos responden. (Nota: Muchos SO modernos lo ignoran por seguridad para evitar ataques Smurf, pero el protocolo lo define así)."
+ },
+ {
+  "q": "En IPv6, el protocolo 'Neighbor Discovery' (ND) reemplaza funciones que en IPv4 realizaba:",
+  "options": [
+   "DHCP y DNS.",
+   "ARP, ICMP Router Discovery y Redirect.",
+   "TCP y UDP.",
+   "OSPF y RIP."
+  ],
+  "a": 2,
+  "info": "ND (sobre ICMPv6) maneja la resolución de direcciones (sustituye ARP), descubrimiento de routers y redirección."
+ },
+ {
+  "q": "¿Qué ocurre si el campo TTL llega a 1 en un router antes de reenviar el paquete?",
+  "options": [
+   "El router lo reenvía y el siguiente router lo descarta.",
+   "El router decrementa el TTL a 0, descarta el paquete y envía 'Time Exceeded' al origen.",
+   "El router restablece el TTL a 255 y lo reenvía.",
+   "El router lo fragmenta para darle más vida."
+  ],
+  "a": 2,
+  "info": "Si llega con 1, al procesarlo se decrementa a 0. Si es 0, no se puede reenviar. Se descarta y se notifica."
+ },
+ {
+  "q": "En una red Ethernet, ¿cuál es el propósito del 'Padding' (Relleno) en una trama que transporta un paquete IP muy pequeño?",
+  "options": [
+   "Alinear el encabezado IP a límites de 32 bits.",
+   "Asegurar que la trama Ethernet alcance el tamaño mínimo de 64 bytes para detección de colisiones.",
+   "Proveer espacio para opciones futuras de IPv4.",
+   "Completar el campo de Checksum."
+  ],
+  "a": 2,
+  "info": "Ethernet requiere un payload mínimo de 46 bytes (trama total 64 bytes). Si el paquete IP es menor, se añade Padding a nivel de trama, no de IP."
+ },
+ {
+  "q": "¿Qué dirección IPv6 se utiliza para enviar un paquete a todos los routers del enlace local?",
+  "options": [
+   "FF02::1",
+   "FF02::2",
+   "FF02::5",
+   "FE80::2"
+  ],
+  "a": 2,
+  "info": "FF02::1 es 'todos los nodos'. FF02::2 es 'todos los routers'. FF02::5 es 'todos los routers OSPF'."
+ },
+ {
+  "q": "El 'Prefix Delegation' en DHCPv6 sirve para:",
+  "options": [
+   "Asignar una única dirección IP de 128 bits a una interfaz.",
+   "Delegar la autenticación del cliente a un servidor RADIUS.",
+   "Asignar un prefijo de red completo (ej. /48 o /56) a un router cliente (CPE) para que lo use en sus redes internas.",
+   "Delegar la función de servidor DNS al cliente."
+  ],
+  "a": 3,
+  "info": "PD (Prefix Delegation) automatiza la asignación de bloques de direcciones a routers clientes (como routers hogareños) por parte del ISP."
+ },
+ {
+  "q": "¿Qué campo del encabezado IPv4 se utiliza para la Calidad de Servicio (QoS) y tiene su equivalente 'Traffic Class' en IPv6?",
+  "options": [
+   "IHL (Internet Header Length).",
+   "Servicios Diferenciados (DS) / TOS.",
+   "Protocolo.",
+   "Flags."
+  ],
+  "a": 2,
+  "info": "Originalmente TOS (Type of Service), ahora redefinido como DiffServ (Differentiated Services) para priorización de tráfico."
+ },
+ {
+  "q": "Cuando se utiliza 'Gratuitous ARP' (ARP Gratuito), ¿cuál es el objetivo principal?",
+  "options": [
+   "Solicitar la MAC de un servidor sin generar costo en la red.",
+   "Anunciar o actualizar la propia dirección IP/MAC a la red (ej. detección de IP duplicada o failover de HSRP).",
+   "Obtener una dirección IP dinámicamente sin usar DHCP.",
+   "Limpiar la caché ARP del router por defecto."
+  ],
+  "a": 2,
+  "info": "Un host envía un ARP Request preguntando por su PROPIA IP. Si nadie responde, no hay duplicados. Además, actualiza las cachés de los vecinos."
+ },
+ {
+  "q": "En IPv6, la dirección `::` (todo ceros) se denomina 'No especificada'. ¿Cuándo se utiliza?",
+  "options": [
+   "Como dirección de destino para broadcast.",
+   "Como dirección de origen por un host durante su inicialización antes de tener una IP válida (ej. DAD).",
+   "Como dirección de loopback.",
+   "Como dirección de puerta de enlace predeterminada."
+  ],
+  "a": 2,
+  "info": "La dirección no especificada (::) se usa como origen cuando el host aún no sabe quién es (ej. al hacer DAD - Duplicate Address Detection)."
+ },
+ {
+  "q": "¿Cuál es la función del campo 'Next Header' en IPv6?",
+  "options": [
+   "Indica exclusivamente el protocolo de capa superior (TCP/UDP).",
+   "Indica la dirección del siguiente salto en la ruta.",
+   "Indica el tipo de cabecera que sigue inmediatamente a la cabecera base (puede ser una cabecera de extensión o protocolo superior).",
+   "Indica el número de secuencia del paquete para reordenamiento."
+  ],
+  "a": 3,
+  "info": "Next Header permite encadenar cabeceras. Puede apuntar a una cabecera de extensión (ej. Routing, Fragment) o al payload final (TCP)."
+ },
+ {
+  "q": "En un entorno DHCP, ¿qué ocurre si un cliente envía un DHCPREQUEST para renovar su IP pero recibe un DHCPNACK?",
+  "options": [
+   "El cliente ignora el NACK y sigue usando la IP hasta que expire el tiempo.",
+   "El cliente debe dejar de usar esa dirección IP inmediatamente y reiniciar el proceso con DHCPDISCOVER.",
+   "El cliente cambia a modo APIPA.",
+   "El cliente envía un DHCPRELEASE y se apaga."
+  ],
+  "a": 2,
+  "info": "NACK significa 'No, no puedes usar esa IP' (quizás el cliente cambió de subred). El cliente debe reiniciar el proceso DORA desde cero."
+ },
+ {
+  "q": "La dirección IPv6 `2001:db8::/32` está reservada específicamente para:",
+  "options": [
+   "Enrutamiento en el backbone de Internet.",
+   "Ejemplos y documentación.",
+   "Proveedores de servicios de Internet (ISP) en Europa.",
+   "Túneles 6to4."
+  ],
+  "a": 2,
+  "info": "El rango 2001:db8::/32 es el rango estándar para documentación y ejemplos técnicos, no se enruta en Internet global."
+ },
+ {
+  "q": "¿Qué protocolo de la capa de red utiliza el tipo de mensaje 'Parameter Problem' (Tipo 12)?",
+  "options": [
+   "ARP, cuando el formato de hardware no coincide.",
+   "DHCP, cuando una opción no es reconocida.",
+   "ICMP, cuando un router encuentra un error en un campo del encabezado IP que le impide procesarlo.",
+   "IPv6, cuando la etiqueta de flujo es inválida."
+  ],
+  "a": 3,
+  "info": "ICMP Parameter Problem se envía si el router detecta un valor inválido o erróneo en la cabecera IP (ej. opciones mal formadas)."
+ },
+ {
+  "q": "En la tabla de enrutamiento de un host, la entrada 0.0.0.0 con máscara 0.0.0.0 corresponde a:",
+  "options": [
+   "La dirección de loopback local.",
+   "La ruta por defecto (Gateway of last resort) para tráfico que no coincide con otras entradas.",
+   "La dirección de broadcast de toda la red.",
+   "Una dirección inválida que debe ser borrada."
+  ],
+  "a": 2,
+  "info": "La ruta 'cuadruple cero' es la ruta por defecto. Si el destino no matchea con ninguna ruta específica, se envía por aquí (al Gateway)."
+ },
+ {
+  "q": "¿Cuál es el orden correcto de los mensajes DHCP cuando un cliente obtiene una IP por primera vez?",
+  "options": [
+   "Request, Offer, Discover, Ack",
+   "Discover, Request, Offer, Ack",
+   "Discover, Offer, Request, Ack",
+   "Offer, Request, Ack, Discover"
+  ],
+  "a": 3,
+  "info": "El proceso es D-O-R-A: Discover (Cliente), Offer (Servidor), Request (Cliente acepta), Ack (Servidor confirma)."
+ },
+ {
+  "q": "En IPv4, el espacio de direcciones privadas definido por RFC 1918 incluye:",
+  "options": [
+   "10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16",
+   "10.0.0.0/8, 169.254.0.0/16, 192.168.0.0/16",
+   "11.0.0.0/8, 172.16.0.0/12, 192.168.0.0/24",
+   "127.0.0.0/8, 10.0.0.0/8, 192.168.0.0/16"
+  ],
+  "a": 1,
+  "info": "Clase A: 10.0.0.0-10.255.255.255. Clase B: 172.16.0.0-172.31.255.255. Clase C: 192.168.0.0-192.168.255.255."
+ },
+ {
+  "q": "¿Qué sucede si dos hosts en la misma red IPv6 intentan usar la misma dirección Link-Local generada por EUI-64?",
+  "options": [
+   "El router detecta el conflicto y asigna una nueva dirección DHCPv6.",
+   "Ambos hosts funcionan, pero reciben el tráfico duplicado.",
+   "El proceso DAD (Duplicate Address Detection) fallará en el segundo host, y este desactivará la interfaz o no asignará la IP.",
+   "Las direcciones EUI-64 son únicas mundialmente por basarse en MAC, por lo que el conflicto es teóricamente imposible a menos que se falsee la MAC."
+  ],
+  "a": 4,
+  "info": "Pregunta con trampa. Si es EUI-64 real, se basa en la MAC (hardware único). Si hay conflicto, hay MAC duplicada. Sin embargo, si sucede (clonación), DAD lo detecta (Opción 3 es el mecanismo, opción 4 es la teoría EUI-64)."
+ },
+ {
+  "q": "Si se requiere fragmentar un paquete IPv4 de 4000 bytes en una red con MTU 1500, ¿cuántos fragmentos se generan y qué tamaño de datos tiene el primero?",
+  "options": [
+   "3 fragmentos; el primero lleva 1500 bytes de datos.",
+   "3 fragmentos; el primero lleva 1480 bytes de datos (1500 - 20 header).",
+   "2 fragmentos; el primero lleva 2000 bytes.",
+   "4 fragmentos de 1000 bytes cada uno."
+  ],
+  "a": 2,
+  "info": "MTU 1500 incluye cabecera (20 bytes). Payload máximo = 1480. 4000 bytes de datos: 1480 (1º) + 1480 (2º) + 1040 (3º). Total 3 fragmentos."
+ },
+ {
+  "q": "¿Qué protocolo se utiliza para mapear una dirección de Capa de Red (IPv4) a una dirección de Capa de Enlace (MAC)?",
+  "options": [
+   "RARP",
+   "DNS",
+   "ARP",
+   "DHCP"
+  ],
+  "a": 3,
+  "info": "ARP (Address Resolution Protocol) resuelve IP conocida a MAC desconocida."
+ },
+ {
+  "q": "El campo 'Payload Length' en IPv6 difiere del 'Total Length' de IPv4 en que:",
+  "options": [
+   "IPv6 Payload Length incluye la cabecera base.",
+   "IPv6 Payload Length cuenta solo los datos y cabeceras de extensión, excluyendo la cabecera base de 40 bytes.",
+   "IPv6 Payload Length se mide en palabras de 64 bits.",
+   "IPv4 Total Length excluye la cabecera."
+  ],
+  "a": 2,
+  "info": "Total Length (IPv4) es todo el paquete. Payload Length (IPv6) es todo lo que sigue a la cabecera base de 40 bytes."
+ },
+ {
+  "q": "¿Qué es una dirección de 'Enlace Local' (Link-Local) en IPv4 y cuándo se usa?",
+  "options": [
+   "Es el rango 127.0.0.0/8 usado para pruebas.",
+   "Es el rango 169.254.0.0/16 (APIPA), usado cuando DHCP falla y no hay configuración estática.",
+   "Es una dirección privada clase C.",
+   "Es una dirección asignada por el router para WAN."
+  ],
+  "a": 2,
+  "info": "APIPA (Automatic Private IP Addressing) asigna 169.254.x.x autoconfigurada cuando no se encuentra servidor DHCP."
+ }
+]

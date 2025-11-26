@@ -1,0 +1,552 @@
+[
+ {
+  "q": "En el contexto de los algoritmos de encaminamiento, ¿cuál es la diferencia fundamental entre el control de flujo y el control de congestión?",
+  "options": [
+   "El control de flujo es global y afecta a toda la subred, mientras que el control de congestión es local entre dos nodos adyacentes.",
+   "El control de flujo regula la velocidad entre un emisor y un receptor específicos para no saturar al receptor, mientras que el control de congestión asegura que la subred pueda transportar el tráfico total entrante.",
+   "El control de flujo se implementa en la capa de red, mientras que el control de congestión es exclusivo de la capa de transporte.",
+   "El control de flujo previene la pérdida de paquetes por errores de bit, mientras que el control de congestión previene la pérdida por desbordamiento de búfer en el host destino."
+  ],
+  "a": 2,
+  "info": "El control de flujo es extremo a extremo (emisor-receptor) [cite: 3189], mientras que el control de congestión es un problema global de la capacidad de la red[cite: 3186]."
+ },
+ {
+  "q": "En el algoritmo de Vector Distancia, ¿cuál es el propósito principal de la técnica de 'Horizonte Dividido' (Split Horizon)?",
+  "options": [
+   "Evitar que un router envíe información de ruta de vuelta por la misma interfaz por la que aprendió dicha ruta, ayudando a prevenir bucles.",
+   "Dividir la tabla de encaminamiento en múltiples segmentos para reducir el tiempo de procesamiento de la CPU.",
+   "Permitir que un router balancee la carga enviando la mitad de los paquetes por un enlace y la otra mitad por otro.",
+   "Limitar el número máximo de saltos a 15 para evitar el problema del conteo al infinito."
+  ],
+  "a": 1,
+  "info": "El horizonte dividido evita bucles simples al prohibir anunciar una ruta de regreso al router del que se aprendió[cite: 1077]."
+ },
+ {
+  "q": "Considerando el funcionamiento interno de un router, ¿qué sucede específicamente durante la fase de 'Bootstrap'?",
+  "options": [
+   "El router ejecuta el POST para verificar el hardware y luego carga el IOS desde la memoria Flash.",
+   "El programa bootstrap, cargado desde la ROM, inicializa la CPU y busca el sistema operativo (IOS) para cargarlo en la RAM.",
+   "El router busca el archivo 'startup-config' en la NVRAM y aplica las configuraciones a las interfaces.",
+   "El router descomprime la imagen del IOS directamente en la memoria Flash para su ejecución."
+  ],
+  "a": 2,
+  "info": "La tarea principal del programa bootstrap (cargado desde ROM) es ubicar al IOS y cargarlo en la RAM[cite: 1461]."
+ },
+ {
+  "q": "En el protocolo OSPF, ¿qué función cumple un Router Designado (DR) en una red multiacceso (broadcast)?",
+  "options": [
+   "Actúa como el gateway predeterminado para todos los hosts en el segmento de red.",
+   "Centraliza la comunicación de estado de enlace, creando adyacencias con todos los routers para reducir el tráfico de actualizaciones LSA.",
+   "Es el único router autorizado para redistribuir rutas desde otros protocolos como RIP o BGP.",
+   "Se encarga de asignar direcciones IP dinámicamente a los routers vecinos mediante DHCP."
+  ],
+  "a": 2,
+  "info": "En redes broadcast, el DR crea adyacencia con todos para minimizar el intercambio de LSAs, evitando una malla completa $n(n-1)/2$[cite: 302]."
+ },
+ {
+  "q": "En la arquitectura de Servicios Diferenciados (DiffServ), ¿cómo se trata el tráfico en los routers intermedios?",
+  "options": [
+   "Se reserva un ancho de banda específico para cada flujo individual utilizando el protocolo RSVP.",
+   "Se clasifica y marca el tráfico en el borde, y los routers intermedios aplican políticas de QoS basadas en clases (PHB) según el campo DSCP.",
+   "Se establece un circuito virtual permanente para cada clase de servicio con garantías estrictas de retardo.",
+   "Se utiliza el algoritmo de 'Token Bucket' para asegurar que ningún flujo exceda el 10% del enlace."
+  ],
+  "a": 2,
+  "info": "DiffServ marca paquetes en clases (campo ToS/Traffic Class) y los routers aplican comportamientos por salto (PHB) según esa clase, sin mantener estado por flujo[cite: 3629]."
+ },
+ {
+  "q": "¿Cuál es la diferencia clave en el comportamiento de descarte entre el algoritmo 'Leaky Bucket' y 'Token Bucket'?",
+  "options": [
+   "Leaky Bucket descarta paquetes si la cola está llena, mientras que Token Bucket los almacena indefinidamente.",
+   "Leaky Bucket permite ráfagas de salida, mientras que Token Bucket fuerza una tasa de salida constante.",
+   "Leaky Bucket alisa el tráfico a una tasa constante (y descarta si se llena la cubeta), mientras que Token Bucket permite ráfagas hasta el límite de fichas acumuladas.",
+   "No hay diferencia en el descarte, ambos algoritmos descartan paquetes que exceden el ancho de banda promedio."
+  ],
+  "a": 3,
+  "info": "Leaky Bucket convierte flujo desigual en constante (goteo)[cite: 3463]. Token Bucket permite transmitir ráfagas si hay fichas acumuladas[cite: 3479]."
+ },
+ {
+  "q": "En el protocolo BGP, ¿qué atributo se utiliza principalmente para evitar bucles de encaminamiento entre Sistemas Autónomos?",
+  "options": [
+   "El número de saltos (hop count), que no puede exceder 255.",
+   "El atributo AS_PATH, que contiene la lista de AS que el anuncio de ruta ha atravesado.",
+   "El ID del router, que debe ser único en todo Internet.",
+   "El tiempo de vida (TTL) del paquete BGP, que se decrementa en cada AS."
+  ],
+  "a": 2,
+  "info": "BGP es un protocolo de vector de rutas (Path Vector). Usa la lista de AS (AS_PATH) para detectar si su propio AS ya está en la ruta y evitar bucles[cite: 469]."
+ },
+ {
+  "q": "Si un router tiene una ruta estática a una red y también aprende la misma red vía OSPF, ¿cuál ruta instalará en su tabla de encaminamiento y por qué?",
+  "options": [
+   "La ruta OSPF, porque tiene una métrica basada en el ancho de banda que es más precisa.",
+   "La ruta estática, porque tiene una distancia administrativa menor (1) comparada con OSPF (110).",
+   "La ruta OSPF, porque es un protocolo dinámico y se adapta a cambios, a diferencia de la estática.",
+   "Ambas rutas, realizando un balanceo de carga entre protocolos."
+  ],
+  "a": 2,
+  "info": "El router elige la ruta con menor Distancia Administrativa. Estática es 1, OSPF es 110. Gana la estática[cite: 89]."
+ },
+ {
+  "q": "En el contexto de MPLS, ¿cuál es la función principal de la etiqueta (Label) insertada entre la cabecera de capa 2 y capa 3?",
+  "options": [
+   "Proveer cifrado de extremo a extremo para el payload IP.",
+   "Permitir la conmutación rápida de paquetes basada en índices cortos en lugar de búsquedas de prefijo más largo (LPM) en la tabla IP.",
+   "Identificar la calidad de servicio (QoS) para que el router aplique Traffic Shaping.",
+   "Reemplazar completamente la dirección IP de destino para ocultar la topología interna."
+  ],
+  "a": 2,
+  "info": "MPLS coninuta en base a la etiqueta (índice exacto) en lugar de procesar la cabecera IP completa, permitiendo reenvío rápido y flexible[cite: 3678]."
+ },
+ {
+  "q": "¿Qué característica distingue al protocolo RIPv2 de RIPv1?",
+  "options": [
+   "RIPv2 utiliza el algoritmo de estado de enlace, mientras que RIPv1 es vector distancia.",
+   "RIPv2 soporta VLSM (Variable Length Subnet Mask) enviando la máscara de subred en las actualizaciones, cosa que RIPv1 no hace.",
+   "RIPv2 tiene una distancia administrativa de 90, mientras que RIPv1 mantiene 120.",
+   "RIPv2 utiliza TCP puerto 520 para mayor fiabilidad, mientras que RIPv1 usa UDP."
+  ],
+  "a": 2,
+  "info": "RIPv1 es classful (no envía máscara)[cite: 94]. RIPv2 es classless, soporta VLSM y envía la máscara en las actualizaciones[cite: 100]."
+ },
+ {
+  "q": "En la gestión de colas de un router, ¿cuál es el principal inconveniente del algoritmo 'Priority Queueing' (PQ) estricto?",
+  "options": [
+   "Requiere demasiada CPU para clasificar los paquetes.",
+   "Puede provocar 'inanición' (starvation) de las colas de baja prioridad si el tráfico de alta prioridad es constante.",
+   "No permite diferenciar entre tráfico TCP y UDP.",
+   "Introduce un jitter excesivo en el tráfico de voz debido al reordenamiento aleatorio."
+  ],
+  "a": 2,
+  "info": "Si siempre se envían primero los paquetes de alta prioridad, una ráfaga continua de estos puede impedir que se envíen los de baja prioridad[cite: 3558]."
+ },
+ {
+  "q": "¿Qué define el concepto de 'Sistema Autónomo' (SA) en el encaminamiento de Internet?",
+  "options": [
+   "Un conjunto de routers que utilizan exclusivamente direccionamiento IPv6.",
+   "Un grupo de redes y routers bajo una administración técnica común que utilizan una política de encaminamiento interno coherente (IGP).",
+   "Un dominio de broadcast aislado mediante VLANs en un switch de capa 3.",
+   "Una red privada que no está conectada al backbone de Internet."
+  ],
+  "a": 2,
+  "info": "Un SA es un conjunto de routers bajo el mismo control técnico/administrativo que ejecutan el mismo protocolo IGP[cite: 12]."
+ },
+ {
+  "q": "En el algoritmo de 'Estado de Enlace' (Link State), ¿qué evento desencadena el envío de un paquete de estado de enlace (LSP)?",
+  "options": [
+   "Un temporizador periódico de 30 segundos, independientemente de si hubo cambios.",
+   "Un cambio en la topología de la red, como la caída o levantamiento de un enlace vecino.",
+   "La recepción de un paquete de datos destinado a una red desconocida.",
+   "La solicitud explícita de un router vecino mediante un mensaje Hello."
+  ],
+  "a": 2,
+  "info": "A diferencia de Vector Distancia (periódico), Estado de Enlace envía actualizaciones ante eventos (cambio de topología)[cite: 190]."
+ },
+ {
+  "q": "¿Cuál es la función de la memoria NVRAM en un router Cisco?",
+  "options": [
+   "Almacenar la tabla de enrutamiento dinámica y la caché ARP.",
+   "Almacenar el archivo de configuración de inicio (startup-config) de manera permanente.",
+   "Ejecutar el sistema operativo IOS una vez descomprimido.",
+   "Almacenar el código de arranque (Bootstrap) y el software de diagnóstico (POST)."
+  ],
+  "a": 2,
+  "info": "La NVRAM almacena el 'startup-config' para que la configuración persista tras el reinicio[cite: 1236]."
+ },
+ {
+  "q": "En el control de congestión TCP, ¿cómo interactúa el mecanismo RED (Random Early Detection) en los routers?",
+  "options": [
+   "RED descarta todos los paquetes UDP para priorizar el tráfico TCP cuando el buffer está lleno.",
+   "RED descarta paquetes aleatoriamente antes de que el buffer se llene por completo para inducir a las fuentes TCP a reducir su ventana de transmisión anticipadamente.",
+   "RED envía mensajes ICMP Source Quench a todos los emisores cuando la utilización del enlace supera el 90%.",
+   "RED aumenta dinámicamente el tamaño del buffer del router tomando memoria de la RAM disponible."
+  ],
+  "a": 2,
+  "info": "RED descarta una fracción de paquetes al azar antes de la saturación para que el emisor detecte la pérdida (falta de ACK) y reduzca la tasa[cite: 3366]."
+ },
+ {
+  "q": "Si un router RIP recibe una actualización que indica que una ruta tiene una métrica de 16 saltos, ¿cómo interpreta esta información?",
+  "options": [
+   "Como una ruta válida pero de muy bajo rendimiento.",
+   "Como una ruta inalcanzable (infinito), ya que el límite máximo de RIP es 15 saltos.",
+   "Como una ruta que requiere fragmentación debido a la distancia.",
+   "Como una ruta externa redistribuida desde otro protocolo como OSPF."
+  ],
+  "a": 2,
+  "info": "RIP define un máximo de 15 saltos. El valor 16 representa infinito, es decir, destino inalcanzable[cite: 80]."
+ },
+ {
+  "q": "¿Qué problema resuelve el uso de Áreas en el protocolo OSPF?",
+  "options": [
+   "La limitación de 15 saltos del protocolo.",
+   "La imposibilidad de usar máscaras de subred de longitud variable (VLSM).",
+   "El consumo excesivo de recursos (CPU/Memoria) y tráfico de inundación en redes grandes, dividiendo el SA en dominios jerárquicos.",
+   "La falta de soporte para autenticación en las actualizaciones de enrutamiento."
+  ],
+  "a": 3,
+  "info": "OSPF divide el SA en áreas para facilitar gestión, reducir tablas de rutas y limitar la inundación de LSAs, ahorrando recursos[cite: 201]."
+ },
+ {
+  "q": "En la arquitectura de Servicios Integrados (IntServ), ¿cuál es el rol del protocolo RSVP?",
+  "options": [
+   "Encaminar los paquetes de datos utilizando etiquetas MPLS.",
+   "Reservar recursos (ancho de banda, buffer) a lo largo de la ruta para un flujo específico antes de transmitir los datos.",
+   "Monitorear la calidad del servicio y reportar estadísticas mediante SNMP.",
+   "Priorizar el tráfico de voz sobre el de datos en la cola de salida del router."
+  ],
+  "a": 2,
+  "info": "IntServ usa RSVP (Resource ReSerVation Protocol) para reservar recursos extremo a extremo para cada flujo[cite: 3602]."
+ },
+ {
+  "q": "¿Qué tipo de memoria del router es volátil y pierde su contenido al apagarse?",
+  "options": [
+   "Flash",
+   "NVRAM",
+   "RAM",
+   "ROM"
+  ],
+  "a": 3,
+  "info": "La RAM es volátil y almacena la configuración en ejecución (running-config) y tablas de enrutamiento. Se borra al apagar[cite: 1220]."
+ },
+ {
+  "q": "En el enrutamiento Inter-VLAN tradicional (Router-on-a-Stick), ¿cómo se configuran las interfaces del router?",
+  "options": [
+   "Se utiliza una interfaz física por cada VLAN conectada al switch.",
+   "Se configuran subinterfaces lógicas en una única interfaz física, cada una asociada a una etiqueta VLAN (802.1Q) y una subred IP.",
+   "Se configura la interfaz física con múltiples direcciones IP secundarias sin usar encapsulamiento.",
+   "Se utiliza un cable cruzado para conectar el puerto troncal del switch al puerto de consola del router."
+  ],
+  "a": 2,
+  "info": "El enrutamiento entre VLANs mediante subinterfaces permite que una interfaz física maneje tráfico de múltiples VLANs etiquetadas[cite: 587]."
+ },
+ {
+  "q": "El protocolo BGP utiliza TCP para el transporte de sus mensajes. ¿Qué puerto utiliza?",
+  "options": [
+   "UDP 520",
+   "TCP 179",
+   "IP Protocolo 89",
+   "UDP 161"
+  ],
+  "a": 2,
+  "info": "BGP corre sobre TCP puerto 179 para garantizar la entrega fiable de las actualizaciones de ruta[cite: 435]."
+ },
+ {
+  "q": "¿Qué mecanismo utiliza OSPF para determinar el mejor camino hacia un destino?",
+  "options": [
+   "El conteo de saltos (menor número de routers).",
+   "El algoritmo de Bellman-Ford basado en vectores de distancia.",
+   "El algoritmo de Dijkstra (SPF) basado en el costo acumulado del ancho de banda de los enlaces.",
+   "Las políticas de ruta definidas manualmente por el administrador del AS."
+  ],
+  "a": 3,
+  "info": "OSPF usa Dijkstra (Shortest Path First) y su métrica es el costo (inversamente proporcional al ancho de banda)[cite: 184]."
+ },
+ {
+  "q": "En el contexto de QoS, ¿qué es el 'Jitter'?",
+  "options": [
+   "El tiempo total que tarda un paquete en ir del origen al destino.",
+   "La cantidad de paquetes perdidos debido a la congestión en la red.",
+   "La variación en el retardo de llegada de los paquetes consecutivos de un mismo flujo.",
+   "El ancho de banda mínimo garantizado para una aplicación de video."
+  ],
+  "a": 3,
+  "info": "Jitter es la variación del retardo (fluctuación). Es crítico en aplicaciones tiempo real como VoIP[cite: 3405]."
+ },
+ {
+  "q": "Cuando se configura un router Cisco, ¿qué comando copia la configuración actual a la memoria no volátil?",
+  "options": [
+   "copy startup-config running-config",
+   "copy running-config tftp",
+   "copy running-config startup-config",
+   "save configuration"
+  ],
+  "a": 3,
+  "info": "Para guardar los cambios (running-config en RAM) permanentemente (startup-config en NVRAM), se usa copy run start[cite: 1409]."
+ },
+ {
+  "q": "¿Cuál es una desventaja significativa de los algoritmos de enrutamiento de Vector Distancia (como RIP) comparados con los de Estado de Enlace?",
+  "options": [
+   "Consumen mucha más memoria y CPU en los routers.",
+   "Tienen una convergencia lenta y son propensos a bucles de enrutamiento (conteo al infinito).",
+   "Requieren una configuración manual compleja de cada enlace.",
+   "No soportan el protocolo IP, solo funcionan con IPX/SPX."
+  ],
+  "a": 2,
+  "info": "Vector distancia converge lentamente (basado en rumores) y puede sufrir bucles. Estado de enlace conoce la topología completa y converge rápido[cite: 848]."
+ },
+ {
+  "q": "En la jerarquía OSPF, ¿cuál es la función de un router ABR (Area Border Router)?",
+  "options": [
+   "Conectar el sistema autónomo OSPF con otros sistemas autónomos externos (ej. BGP).",
+   "Conectar dos o más áreas OSPF, manteniendo bases de datos topológicas separadas para cada área y resumiendo rutas entre ellas.",
+   "Funcionar exclusivamente dentro del área backbone (Área 0) sin conectar áreas satélites.",
+   "Redistribuir rutas estáticas dentro del proceso OSPF."
+  ],
+  "a": 2,
+  "info": "Un ABR conecta áreas. Debe tener una interfaz en el Área 0. Resume redes de un área hacia las otras[cite: 215]."
+ },
+ {
+  "q": "¿Qué técnica de descarte de paquetes en routers trata de evitar la congestión global descartando paquetes de flujos TCP de forma aleatoria antes de que la cola se llene?",
+  "options": [
+   "Tail Drop (Descarte de cola)",
+   "RED (Random Early Detection)",
+   "WFQ (Weighted Fair Queueing)",
+   "Traffic Policing"
+  ],
+  "a": 2,
+  "info": "RED descarta paquetes al azar anticipadamente para evitar la sincronización global de TCP y el llenado del buffer[cite: 3364]."
+ },
+ {
+  "q": "En el protocolo BGP, ¿qué significa que un sistema autónomo sea 'Multihomed'?",
+  "options": [
+   "Que tiene una única conexión a un solo proveedor de servicios (ISP).",
+   "Que actúa como un ISP de tránsito para otros sistemas autónomos.",
+   "Que está conectado a dos o más proveedores de servicios (ISPs) para redundancia, pero no permite tráfico de tránsito.",
+   "Que utiliza múltiples protocolos de enrutamiento interno (IGP) simultáneamente."
+  ],
+  "a": 3,
+  "info": "Multihomed significa conectado a 2+ SA. Generalmente se usa para redundancia/balanceo, no necesariamente para tránsito[cite: 474]."
+ },
+ {
+  "q": "En el proceso de arranque de un router, si no se encuentra el archivo de configuración en la NVRAM, ¿qué acción toma el router por defecto?",
+  "options": [
+   "Se reinicia continuamente hasta que se le proporcione un archivo válido.",
+   "Intenta cargar una configuración desde un servidor TFTP y, si falla, entra en el modo 'Setup' (diálogo de configuración inicial).",
+   "Genera una configuración predeterminada con todas las interfaces activas y enrutamiento RIP habilitado.",
+   "Arranca en modo ROMMON para recuperación de desastres."
+  ],
+  "a": 2,
+  "info": "Si no hay startup-config, busca TFTP. Si falla, entra a Setup mode (preguntas de configuración básica)[cite: 1522]."
+ },
+ {
+  "q": "¿Qué información contienen los paquetes 'Hello' en el protocolo OSPF?",
+  "options": [
+   "La tabla de enrutamiento completa del router emisor.",
+   "Información para descubrir vecinos, establecer adyacencias y mantenerlas vivas (keepalive).",
+   "Los mapas detallados de la topología de toda la red.",
+   "Las etiquetas MPLS asignadas a cada prefijo de red."
+  ],
+  "a": 2,
+  "info": "Los paquetes Hello crean y mantienen adyacencias con vecinos y verifican que el enlace es operacional[cite: 193]."
+ },
+ {
+  "q": "En el modelado de tráfico, ¿cuál es la principal diferencia entre 'Traffic Shaping' y 'Traffic Policing'?",
+  "options": [
+   "Shaping descarta el exceso de tráfico inmediatamente; Policing lo almacena en búfer.",
+   "Shaping almacena el exceso en búfer para suavizar la tasa de salida; Policing descarta o marca el exceso que supera el contrato.",
+   "Shaping se aplica solo al tráfico de entrada; Policing solo al de salida.",
+   "Shaping es utilizado por los clientes; Policing solo por los proveedores de backbone."
+  ],
+  "a": 2,
+  "info": "Policing supervisa y descarta/marca el exceso (estricto)[cite: 3448]. Shaping modera y encola para alisar el flujo[cite: 3436]."
+ },
+ {
+  "q": "¿Qué valor de Distancia Administrativa tiene por defecto una ruta aprendida mediante EIGRP (interno) en un router Cisco?",
+  "options": [
+   "90",
+   "110",
+   "120",
+   "170"
+  ],
+  "a": 1,
+  "info": "Aunque el documento proporcionado se centra en RIP (120) y OSPF (110), el estándar de Cisco para EIGRP interno es 90 (ver tabla comparativa implícita o conocimiento general de DA)."
+ },
+ {
+  "q": "En MPLS, ¿qué es una FEC (Forwarding Equivalence Class)?",
+  "options": [
+   "Una etiqueta de 20 bits que se añade al paquete.",
+   "Un grupo de paquetes que reciben el mismo tratamiento de reenvío por parte del router (ej. mismo destino, misma QoS) y se les asigna la misma etiqueta.",
+   "El router de borde que añade la etiqueta al paquete entrante.",
+   "El protocolo de distribución de etiquetas utilizado para intercambiar información."
+  ],
+  "a": 2,
+  "info": "FEC agrupa flujos (ej. mismo destino) bajo una misma etiqueta para ser conmutados igual[cite: 3675]."
+ },
+ {
+  "q": "¿Cuál es la métrica utilizada por el protocolo RIP para seleccionar la mejor ruta?",
+  "options": [
+   "Ancho de banda mínimo del trayecto.",
+   "Retardo acumulado.",
+   "Conteo de saltos (Hop Count).",
+   "Costo basado en la carga del enlace."
+  ],
+  "a": 3,
+  "info": "La métrica de RIP es exclusivamente el límite de saltos[cite: 65]."
+ },
+ {
+  "q": "En la memoria de un router, ¿qué se almacena típicamente en la memoria Flash?",
+  "options": [
+   "La tabla de enrutamiento activa.",
+   "El archivo de configuración de inicio (startup-config).",
+   "La imagen comprimida del Sistema Operativo (IOS).",
+   "El programa de autodiagnóstico POST."
+  ],
+  "a": 3,
+  "info": "Flash es no volátil y almacena la imagen del IOS y archivos del sistema[cite: 1240]."
+ },
+ {
+  "q": "¿Qué ventaja ofrece el encolamiento WFQ (Weighted Fair Queueing) sobre FIFO?",
+  "options": [
+   "Procesa los paquetes estrictamente en orden de llegada, reduciendo el uso de CPU.",
+   "Asigna ancho de banda de manera justa y ponderada entre los distintos flujos, evitando que un flujo de alto volumen ahogue a los demás.",
+   "Da prioridad absoluta al tráfico de voz, descartando todo el tráfico web si es necesario.",
+   "Elimina la necesidad de buffers en el router."
+  ],
+  "a": 2,
+  "info": "WFQ separa flujos en colas y da peso a cada una, evitando que un flujo pesado acapare el enlace, dando trato justo[cite: 3583]."
+ },
+ {
+  "q": "En el encabezado de un paquete IPv4, ¿qué campo se utiliza para implementar Servicios Diferenciados (DiffServ) y QoS?",
+  "options": [
+   "Identification",
+   "Time to Live (TTL)",
+   "Type of Service (ToS) / Differentiated Services (DS)",
+   "Header Checksum"
+  ],
+  "a": 3,
+  "info": "El campo ToS (ahora DS) se usa para marcar la clase de tráfico en DiffServ[cite: 3627]."
+ },
+ {
+  "q": "¿Qué es un 'Router Stub' en el contexto de OSPF?",
+  "options": [
+   "Un router que conecta con el ISP y recibe la tabla completa de Internet.",
+   "Un router que pertenece a un área que no acepta rutas externas (LSA tipo 5), usando una ruta por defecto en su lugar.",
+   "Un router que solo ejecuta RIP y no OSPF.",
+   "Un router que ha perdido la conexión con el DR."
+  ],
+  "a": 2,
+  "info": "Aunque el texto no detalla 'Stub', en OSPF un área/router Stub tiene una única salida o no recibe rutas externas para simplificar tablas (concepto de redes stub)[cite: 473]."
+ },
+ {
+  "q": "En el algoritmo de estado de enlace, ¿qué algoritmo matemático utiliza cada router para calcular el camino más corto a cada destino?",
+  "options": [
+   "Bellman-Ford",
+   "Dijkstra (SPF)",
+   "Diffusing Update Algorithm (DUAL)",
+   "Floyd-Warshall"
+  ],
+  "a": 2,
+  "info": "OSPF (Estado de Enlace) usa el algoritmo de Dijkstra para calcular el 'Shortest Path First'[cite: 184]."
+ },
+ {
+  "q": "¿Qué ocurre si se configura mal la 'frecuencia de reloj' (clock rate) en una interfaz serial DCE de un laboratorio de routers?",
+  "options": [
+   "La interfaz funcionará a la velocidad máxima soportada por el cable.",
+   "La interfaz no levantará el protocolo de línea (Line Protocol down) porque no hay sincronización de reloj.",
+   "El router negociará automáticamente la velocidad con el extremo DTE.",
+   "La interfaz funcionará como DTE invirtiendo los roles."
+  ],
+  "a": 2,
+  "info": "En conexiones back-to-back seriales, el lado DCE DEBE proveer el reloj (clock rate). Si no se configura, el enlace no sube a nivel físico/enlace."
+ },
+ {
+  "q": "¿Qué es el 'Administrative Distance' (Distancia Administrativa) en un router?",
+  "options": [
+   "La distancia física en kilómetros entre dos routers.",
+   "El costo métrico acumulado de una ruta específica.",
+   "Un valor que indica la confiabilidad o preferencia de la fuente de información de enrutamiento (protocolo).",
+   "El tiempo que tarda un paquete en llegar al destino."
+  ],
+  "a": 3,
+  "info": "La Distancia Administrativa define la confiabilidad de la fuente de la ruta (ej. conectada 0, estática 1, OSPF 110)[cite: 87]."
+ },
+ {
+  "q": "En BGP, ¿qué puerto y protocolo de transporte se utiliza para establecer la sesión entre pares (peers)?",
+  "options": [
+   "UDP puerto 179",
+   "TCP puerto 179",
+   "IP puerto 89",
+   "TCP puerto 520"
+  ],
+  "a": 2,
+  "info": "BGP usa TCP puerto 179 para mantener una sesión fiable entre pares[cite: 435]."
+ },
+ {
+  "q": "¿Qué indica el código 'M' (More fragments) o flag MF en el encabezado IP?",
+  "options": [
+   "Que el paquete es el último fragmento del datagrama.",
+   "Que el paquete ha sido marcado para monitoreo de calidad.",
+   "Que el paquete no es el último fragmento; hay más fragmentos pendientes.",
+   "Que el paquete tiene máxima prioridad."
+  ],
+  "a": 3,
+  "info": "MF=1 significa 'Más Fragmentos' (vienen más). MF=0 significa que es el último fragmento[cite: 2623]."
+ },
+ {
+  "q": "En el control de congestión, los 'Paquetes Reguladores' (Choke Packets) son:",
+  "options": [
+   "Paquetes que el destino envía para confirmar la recepción.",
+   "Paquetes generados por un router congestionado hacia el origen para solicitar que reduzca su tasa de transmisión.",
+   "Paquetes especiales que tienen prioridad absoluta en las colas.",
+   "Paquetes de broadcast para alertar a toda la red de un fallo."
+  ],
+  "a": 2,
+  "info": "El router congestionado envía un paquete regulador (source quench) al origen informando del problema para que baje la velocidad[cite: 3304]."
+ },
+ {
+  "q": "La técnica de 'Inundación' (Flooding) en enrutamiento garantiza que el paquete llegue a destino, pero tiene la desventaja de:",
+  "options": [
+   "Generar bucles infinitos si no se usa un contador de saltos o registro de paquetes.",
+   "Entregar los paquetes desordenados siempre.",
+   "Requerir una tabla de enrutamiento estática compleja.",
+   "Ser incompatible con redes Ethernet."
+  ],
+  "a": 1,
+  "info": "Inundación envía por todas las salidas. Genera muchos duplicados. Requiere control (saltos, secuencia) para no saturar la red[cite: 778]."
+ },
+ {
+  "q": "¿Qué es una 'Ruta Estática Por Defecto' (Gateway of Last Resort)?",
+  "options": [
+   "Una ruta aprendida automáticamente mediante DHCP.",
+   "Una ruta configurada manualmente (0.0.0.0/0) usada cuando no hay ninguna otra coincidencia específica en la tabla de enrutamiento.",
+   "La ruta con la métrica más alta en la tabla OSPF.",
+   "Una ruta que solo se usa cuando el router se reinicia."
+  ],
+  "a": 2,
+  "info": "La ruta 0.0.0.0/0 (Gateway of last resort) se usa si la IP destino no coincide con ninguna otra entrada en la tabla[cite: 381]."
+ },
+ {
+  "q": "En la clasificación de protocolos de enrutamiento, BGP se considera un protocolo:",
+  "options": [
+   "IGP (Interior Gateway Protocol) de estado de enlace.",
+   "EGP (Exterior Gateway Protocol) de vector de rutas (Path Vector).",
+   "IGP de vector distancia avanzado.",
+   "Protocolo de redundancia de primer salto."
+  ],
+  "a": 2,
+  "info": "BGP es el único EGP actual, clasificado como Vector de Rutas (Path Vector)[cite: 39]."
+ },
+ {
+  "q": "¿Qué función cumple la 'Caché ARP' en un router?",
+  "options": [
+   "Almacenar las rutas aprendidas dinámicamente.",
+   "Mantener la asignación temporal entre direcciones IP y direcciones MAC de los dispositivos conectados directamente.",
+   "Guardar los paquetes en cola cuando hay congestión.",
+   "Almacenar la configuración de inicio."
+  ],
+  "a": 2,
+  "info": "La caché ARP guarda el mapeo IP-MAC para evitar hacer solicitudes ARP constantes para destinos frecuentes[cite: 1211]."
+ },
+ {
+  "q": "En OSPF, ¿qué es el Área 0?",
+  "options": [
+   "Un área reservada para pruebas que no enruta tráfico real.",
+   "El área 'Backbone' o troncal a la que deben conectarse todas las demás áreas para intercomunicarse.",
+   "Un área aislada que no acepta rutas externas.",
+   "El área donde se ubican exclusivamente los servidores de la red."
+  ],
+  "a": 2,
+  "info": "El Área 0 es la troncal (backbone). Todas las áreas deben conectarse a ella para pasar tráfico entre áreas[cite: 206]."
+ },
+ {
+  "q": "¿Qué ventaja tiene la asignación de direcciones mediante DHCP frente a la configuración estática?",
+  "options": [
+   "DHCP elimina la necesidad de routers en la red.",
+   "DHCP permite la reutilización de direcciones IP y facilita la administración de cambios y traslados de hosts.",
+   "DHCP garantiza que las direcciones IP nunca cambien, ideal para servidores.",
+   "DHCP proporciona encriptación automática de la dirección IP."
+  ],
+  "a": 2,
+  "info": "DHCP permite reutilizar IPs (pool) y facilita cambios/traslados sin reconfigurar manualmente cada PC[cite: 1694]."
+ }
+]
